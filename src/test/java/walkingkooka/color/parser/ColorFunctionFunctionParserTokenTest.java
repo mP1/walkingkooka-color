@@ -35,21 +35,6 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     }
 
     @Test
-    public void testWithoutSymbols() {
-        final ColorFunctionFunctionParserToken token = this.createToken();
-        final Optional<ColorFunctionParserToken> without = token.withoutSymbols();
-        assertNotEquals(Optional.of(token), without);
-
-        assertEquals(Optional.of(this.createToken(
-                this.text(),
-                this.functionName("rgb"),
-                this.number(1),
-                this.number(2),
-                this.number(3))),
-                without.get().withoutSymbols());
-    }
-
-    @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
         final ColorFunctionFunctionParserToken token = this.createToken();

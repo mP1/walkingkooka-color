@@ -132,12 +132,6 @@ public abstract class ColorFunctionParserToken implements ParserToken, HashCodeE
 
     abstract Object value();
 
-    /**
-     * Returns a copy without any symbols or whitespace tokens. The original text form will still contain
-     * those tokens as text, but the tokens themselves will be removed.
-     */
-    abstract public Optional<ColorFunctionParserToken> withoutSymbols();
-
     // isXXX............................................................................................................
 
     public abstract boolean isDegreesUnitSymbol();
