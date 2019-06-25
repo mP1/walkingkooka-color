@@ -48,28 +48,13 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         Objects.requireNonNull(value, "tokens");
 
         return new ColorFunctionFunctionParserToken(Lists.immutable(value),
-                Objects.requireNonNull(text, "text"),
-                WITHOUT_COMPUTE_REQUIRED);
+                Objects.requireNonNull(text, "text"));
     }
-
-    private final static List<ParserToken> WITHOUT_COMPUTE_REQUIRED = null;
 
     private ColorFunctionFunctionParserToken(final List<ParserToken> value,
-                                             final String text,
-                                             final List<ParserToken> valueWithout) {
+                                             final String text) {
         super(text);
         this.value = value;
-        this.without = value.equals(valueWithout) ?
-                Optional.of(this) :
-                computeWithout(value);
-    }
-
-    private Optional<ColorFunctionParserToken> computeWithout(final List<ParserToken> value) {
-        final List<ParserToken> without = ParentParserToken.filterWithoutNoise(value);
-
-        return Optional.of(value.size() == without.size() ?
-                this :
-                new ColorFunctionFunctionParserToken(without, this.text, without));
     }
 
     @Override
@@ -78,21 +63,6 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     }
 
     final List<ParserToken> value;
-
-    @Override
-    public final Optional<ColorFunctionParserToken> withoutSymbols() {
-        return this.without;
-    }
-
-    final boolean isWithout() {
-        return this.without.get() == this;
-    }
-
-    private final Optional<ColorFunctionParserToken> without;
-
-    final List<ParserToken> valueIfWithoutSymbolsOrNull() {
-        return this == this.without.get() ? this.value : null;
-    }
 
     // toColorHslOrHsv..................................................................................................
 

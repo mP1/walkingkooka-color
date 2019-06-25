@@ -50,7 +50,6 @@ abstract class ColorFunctionSymbolParserToken<V> extends ColorFunctionLeafParser
         super(value, text);
     }
 
-    @Override
     public final Optional<ColorFunctionParserToken> withoutSymbols() {
         return Optional.empty();
     }
