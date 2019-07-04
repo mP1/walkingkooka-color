@@ -38,7 +38,6 @@ import walkingkooka.text.cursor.parser.ParserTokenVisitor;
 import walkingkooka.tree.visit.Visiting;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Base class for a color function {@link ParserToken}.
@@ -156,16 +155,16 @@ public abstract class ColorFunctionParserToken implements ParserToken, HashCodeE
 
     @Override
     public final void accept(final ParserTokenVisitor visitor) {
-        final ColorFunctionParserTokenVisitor visitor2 = Cast.to(visitor);
-        final ColorFunctionParserToken token = this;
-
-        if (Visiting.CONTINUE == visitor2.startVisit(token)) {
-            this.accept(ColorFunctionParserTokenVisitor.class.cast(visitor));
+        if(visitor instanceof ColorFunctionParserTokenVisitor) {
+            final ColorFunctionParserTokenVisitor visitor2 = ColorFunctionParserTokenVisitor.class.cast(visitor);
+            if (Visiting.CONTINUE == visitor2.startVisit(this)) {
+                this.accept(visitor2);
+            }
+            visitor2.endVisit(this);
         }
-        visitor2.endVisit(token);
     }
 
-    public abstract void accept(final ColorFunctionParserTokenVisitor visitor);
+    abstract void accept(final ColorFunctionParserTokenVisitor visitor);
 
     // ColorFunctionTransformer.........................................................................................
 

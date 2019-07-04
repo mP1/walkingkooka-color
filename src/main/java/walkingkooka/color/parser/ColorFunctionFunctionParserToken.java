@@ -36,7 +36,6 @@ import walkingkooka.tree.visit.Visiting;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * Holds a json array which may contain further json values.
