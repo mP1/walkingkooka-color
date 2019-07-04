@@ -124,7 +124,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     // visitor .........................................................................................................
 
     @Override
-    public void accept(final ColorFunctionParserTokenVisitor visitor) {
+    void accept(final ColorFunctionParserTokenVisitor visitor) {
         if (Visiting.CONTINUE == visitor.startVisit(this)) {
             this.acceptValues(visitor);
         }

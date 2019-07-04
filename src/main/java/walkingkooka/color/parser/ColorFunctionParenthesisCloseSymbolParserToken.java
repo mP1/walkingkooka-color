@@ -57,7 +57,7 @@ public final class ColorFunctionParenthesisCloseSymbolParserToken extends ColorF
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
-    public void accept(final ColorFunctionParserTokenVisitor visitor) {
+    void accept(final ColorFunctionParserTokenVisitor visitor) {
         visitor.visit(this);
     }
 
