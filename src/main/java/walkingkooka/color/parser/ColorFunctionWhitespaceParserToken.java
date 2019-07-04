@@ -62,7 +62,7 @@ public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbo
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
-    public void accept(final ColorFunctionParserTokenVisitor visitor) {
+    void accept(final ColorFunctionParserTokenVisitor visitor) {
         visitor.visit(this);
     }
 

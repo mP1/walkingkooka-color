@@ -55,7 +55,7 @@ public final class ColorFunctionDegreesUnitSymbolParserToken extends ColorFuncti
     }
 
     @Override
-    public void accept(final ColorFunctionParserTokenVisitor visitor) {
+    void accept(final ColorFunctionParserTokenVisitor visitor) {
         visitor.visit(this);
     }
 
