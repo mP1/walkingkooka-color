@@ -240,12 +240,7 @@ abstract public class ColorComponent extends ColorHslOrHsvComponent {
     }
 
     // ColorString................................................................................
-
-    final void toStringAlphaAppend(final ColorString format,
-                                   final StringBuilder b) {
-
-    }
-
+    
     /**
      * Formats the value as a decimal between 0 and 255.
      */
