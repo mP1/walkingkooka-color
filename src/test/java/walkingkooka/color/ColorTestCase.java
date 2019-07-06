@@ -644,12 +644,6 @@ abstract public class ColorTestCase<C extends Color> extends ColorHslOrHsvTestCa
         }
     }
 
-    final void mixAndCheck(final ColorComponent mixed,
-                           final float amount,
-                           final RedColorComponent red) {
-        this.mixAndCheck(this.createColorHslOrHsv(), mixed, amount, red);
-    }
-
     final void mixAndCheck(final Color color,
                            final ColorComponent mixed,
                            final float amount,
@@ -681,12 +675,6 @@ abstract public class ColorTestCase<C extends Color> extends ColorHslOrHsvTestCa
                            final float amount,
                            final BlueColorComponent blue) {
         this.mixAndCheck(color, mixed, amount, color.red(), color.green(), blue, color.alpha());
-    }
-
-    final void mixAndCheck(final ColorComponent mixed,
-                           final float amount,
-                           final AlphaColorComponent alpha) {
-        this.mixAndCheck(this.createColorHslOrHsv(), mixed, amount, alpha);
     }
 
     final void mixAndCheck(final Color color,
