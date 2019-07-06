@@ -70,7 +70,7 @@ HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE     = HUE, WHITESPACE,
                                           NUMBER,
                                           [ [WHITESPACE], "/", [WHITESPACE], ALPHA ];
 
-HUE                                     = ( NUMBER, "deg" ) |
+HUE                                     = ( NUMBER, DEGREE_UNIT ) |
                                           NUMBER;
 
 (* common ............................................................................................................*)
