@@ -219,7 +219,7 @@ public abstract class Hsv extends ColorHslOrHsv {
         green += min;
         blue += min;
 
-        return Color.with(red, green, blue);
+        return this.toColor0(Color.with(red, green, blue));
     }
 
     abstract Color toColor0(final Color color);
