@@ -88,10 +88,6 @@ abstract public class HsvComponentTestCase<C extends HsvComponent> extends HslOr
         this.toStringAndCheck(this.createHsvComponent(this.value()), String.valueOf(this.value()));
     }
 
-    final C createHsvComponent() {
-        return this.createHsvComponent(this.value());
-    }
-
     abstract C createHsvComponent(float value);
 
     @Override
