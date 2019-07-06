@@ -18,11 +18,13 @@ package walkingkooka.color.parser;
 
 import walkingkooka.Cast;
 import walkingkooka.collect.map.Maps;
+import walkingkooka.text.CaseSensitivity;
 import walkingkooka.text.cursor.parser.DoubleParserToken;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.Parsers;
+import walkingkooka.text.cursor.parser.StringParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfGrammarLoader;
 import walkingkooka.text.cursor.parser.ebnf.EbnfGrammarParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfIdentifierName;
@@ -61,7 +63,11 @@ public final class ColorParsers implements PublicStaticHelper {
                     .grammar();
 
             final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
-            predefined.put(EbnfIdentifierName.with("NUMBER"), Parsers.doubleParser().transform(ColorParsers::transformNumber));
+
+            predefined.put(EbnfIdentifierName.with("DEGREE_UNIT"), Parsers.string("deg", CaseSensitivity.SENSITIVE)
+                    .transform(ColorParsers::transformDegreeUnit));
+            predefined.put(EbnfIdentifierName.with("NUMBER"), Parsers.doubleParser()
+                    .transform(ColorParsers::transformNumber));
 
             final Map<EbnfIdentifierName, Parser<ParserContext>> result = grammar.get()
                     .combinator(predefined, ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.INSTANCE);
@@ -75,6 +81,11 @@ public final class ColorParsers implements PublicStaticHelper {
         } catch (final Exception cause) {
             throw new ColorParserException("Failed to init parsers from grammar file, message: " + cause.getMessage(), cause);
         }
+    }
+
+    private static ParserToken transformDegreeUnit(final ParserToken token, ParserContext context) {
+        final StringParserToken stringParserToken = Cast.to(token);
+        return ColorFunctionParserToken.degreesUnitSymbol(stringParserToken.value(), token.text());
     }
 
     private static ParserToken transformNumber(final ParserToken token, ParserContext context) {
