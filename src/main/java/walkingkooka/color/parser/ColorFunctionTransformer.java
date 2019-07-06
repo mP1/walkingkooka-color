@@ -33,7 +33,7 @@ enum ColorFunctionTransformer {
                                     final ColorFunctionParserToken second,
                                     final ColorFunctionParserToken third,
                                     final Optional<ColorFunctionParserToken> alpha) {
-            final Color color = Color.with(first.colorRed(),
+            final Color color = ColorHslOrHsv.color(first.colorRed(),
                     second.colorGreen(),
                     third.colorBlue());
             return alpha.map(a -> color.set(a.colorAlpha()))
@@ -47,7 +47,7 @@ enum ColorFunctionTransformer {
                                     final ColorFunctionParserToken second,
                                     final ColorFunctionParserToken third,
                                     final Optional<ColorFunctionParserToken> alpha) {
-            final Hsl hsl = Hsl.with(first.hslHue(),
+            final Hsl hsl = ColorHslOrHsv.hsl(first.hslHue(),
                     second.hslSaturation(),
                     third.hslLightness());
             return alpha.map(a -> hsl.set(a.hslAlpha()))
@@ -61,7 +61,7 @@ enum ColorFunctionTransformer {
                                     final ColorFunctionParserToken second,
                                     final ColorFunctionParserToken third,
                                     final Optional<ColorFunctionParserToken> alpha) {
-            final Hsv hsv = Hsv.with(first.hsvHue(),
+            final Hsv hsv = ColorHslOrHsv.hsv(first.hsvHue(),
                     second.hsvSaturation(),
                     third.hsvValue());
             return alpha.map(a -> hsv.set(a.hsvAlpha()))

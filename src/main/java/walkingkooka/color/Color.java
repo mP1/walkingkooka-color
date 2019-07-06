@@ -47,15 +47,6 @@ abstract public class Color extends ColorHslOrHsv {
      */
     public final static Color WHITE = Color.fromRgb(0xFFFFFF);
 
-    /**
-     * Parses a {@link Color}, currently only #RGB, #RRGGBB, rgb(), rgba() and web color names formats are supported<br>
-     * <a href="https://en.wikipedia.org/wiki/Web_colors#CSS_colors"></a>
-     */
-    public static Color parseColor(final String text) {
-        checkText(text);
-        return parseColor0(text);
-    }
-
     static Color parseColor0(final String text) {
         Color color;
 
@@ -248,10 +239,10 @@ abstract public class Color extends ColorHslOrHsv {
     /**
      * Creates a new {@link Color} with the provided components.
      */
-    public static Color with(final RedColorComponent red,
-                             final GreenColorComponent green,
-                             final BlueColorComponent blue) {
-        return OpaqueColor.createOpaqueColor(red, green, blue);
+    static Color with(final RedColorComponent red,
+                      final GreenColorComponent green,
+                      final BlueColorComponent blue) {
+        return OpaqueColor.withOpaque(red, green, blue);
     }
 
     /**
@@ -633,25 +624,4 @@ abstract public class Color extends ColorHslOrHsv {
 
     // Serializable.....................................................................................................
     private static final long serialVersionUID = 1;
-
-    // HasJsonNode......................................................................................................
-
-    static {
-        HasJsonNode.register("color",
-                Color::fromJsonNodeColor,
-                Color.class, AlphaColor.class, OpaqueColor.class);
-    }
-
-    /**
-     * Creates a {@link Color} from a {@link JsonNode}.
-     */
-    public static Color fromJsonNodeColor(final JsonNode from) {
-        Objects.requireNonNull(from, "from");
-
-        try {
-            return parseColor(from.stringValueOrFail());
-        } catch (final JsonNodeException cause) {
-            throw new IllegalArgumentException(cause.getMessage(), cause);
-        }
-    }
 }

@@ -26,104 +26,104 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseStringTesting<Hsv> {
+public final class HslTest extends ColorHslOrHsvTestCase<Hsl> implements ParseStringTesting<Hsl> {
 
     // constants
 
-    private final static HueHsvComponent HUE = HueHsvComponent.with(359);
-    private final static SaturationHsvComponent SATURATION = SaturationHsvComponent.with(0.25f);
-    private final static ValueHsvComponent VALUE = ValueHsvComponent.with(0.5f);
+    private final static HueHslComponent HUE = HueHslComponent.with(359);
+    private final static SaturationHslComponent SATURATION = SaturationHslComponent.with(0.25f);
+    private final static LightnessHslComponent LIGHTNESS = LightnessHslComponent.with(0.5f);
 
     // tests
 
     @Test
     public void testWithNullHueFails() {
         assertThrows(NullPointerException.class, () -> {
-            Hsv.with(null, SATURATION, VALUE);
+            Hsl.with(null, SATURATION, LIGHTNESS);
         });
     }
 
     @Test
     public void testWithNullSaturationFails() {
         assertThrows(NullPointerException.class, () -> {
-            Hsv.with(HUE, null, VALUE);
+            Hsl.with(HUE, null, LIGHTNESS);
         });
     }
 
     @Test
     public void testWithNullValueFails() {
         assertThrows(NullPointerException.class, () -> {
-            Hsv.with(HUE, SATURATION, null);
+            Hsl.with(HUE, SATURATION, null);
         });
     }
 
     @Test
     public void testWith() {
-        this.check(Hsv.with(HUE, SATURATION, VALUE), HUE, SATURATION, VALUE);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS), HUE, SATURATION, LIGHTNESS);
     }
 
     @Test
     public void testSetNullComponentFails() {
         assertThrows(NullPointerException.class, () -> {
-            Hsv.with(HUE, SATURATION, VALUE).set(null);
+            Hsl.with(HUE, SATURATION, LIGHTNESS).set(null);
         });
     }
 
     @Test
     public void testSetSameHue() {
-        final Hsv hsv = Hsv.with(HUE, SATURATION, VALUE);
+        final Hsl hsl = Hsl.with(HUE, SATURATION, LIGHTNESS);
 
-        this.check(Hsv.with(HUE, SATURATION, VALUE).set(HUE), HUE, SATURATION, VALUE);
-        this.check(hsv, HUE, SATURATION, VALUE);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS).set(HUE), HUE, SATURATION, LIGHTNESS);
+        this.check(hsl, HUE, SATURATION, LIGHTNESS);
     }
 
     @Test
     public void testSetDifferentHue() {
-        final HueHsvComponent different = HueHsvComponent.with(180);
-        final Hsv hsv = Hsv.with(HUE, SATURATION, VALUE);
+        final HueHslComponent different = HueHslComponent.with(180);
+        final Hsl hsl = Hsl.with(HUE, SATURATION, LIGHTNESS);
 
-        this.check(Hsv.with(HUE, SATURATION, VALUE).set(different), different, SATURATION, VALUE);
-        this.check(hsv, HUE, SATURATION, VALUE);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS).set(different), different, SATURATION, LIGHTNESS);
+        this.check(hsl, HUE, SATURATION, LIGHTNESS);
     }
 
     @Test
     public void testSetSameSaturation() {
-        final Hsv hsv = Hsv.with(HUE, SATURATION, VALUE);
-        assertSame(hsv, hsv.set(SATURATION));
+        final Hsl hsl = Hsl.with(HUE, SATURATION, LIGHTNESS);
+        assertSame(hsl, hsl.set(SATURATION));
 
-        this.check(Hsv.with(HUE, SATURATION, VALUE).set(VALUE), HUE, SATURATION, VALUE);
-        this.check(hsv, HUE, SATURATION, VALUE);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS).set(LIGHTNESS), HUE, SATURATION, LIGHTNESS);
+        this.check(hsl, HUE, SATURATION, LIGHTNESS);
     }
 
     @Test
     public void testSetDifferentSaturation() {
-        final SaturationHsvComponent different = SaturationHsvComponent.with(0.5f);
-        final Hsv hsv = Hsv.with(HUE, SATURATION, VALUE);
+        final SaturationHslComponent different = SaturationHslComponent.with(0.5f);
+        final Hsl hsl = Hsl.with(HUE, SATURATION, LIGHTNESS);
 
-        this.check(Hsv.with(HUE, SATURATION, VALUE).set(different), HUE, different, VALUE);
-        this.check(hsv, HUE, SATURATION, VALUE);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS).set(different), HUE, different, LIGHTNESS);
+        this.check(hsl, HUE, SATURATION, LIGHTNESS);
     }
 
     @Test
     public void testSetSameValue() {
-        final Hsv hsv = Hsv.with(HUE, SATURATION, VALUE);
-        this.check(Hsv.with(HUE, SATURATION, VALUE).set(VALUE), HUE, SATURATION, VALUE);
-        this.check(hsv, HUE, SATURATION, VALUE);
+        final Hsl hsl = Hsl.with(HUE, SATURATION, LIGHTNESS);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS).set(LIGHTNESS), HUE, SATURATION, LIGHTNESS);
+        this.check(hsl, HUE, SATURATION, LIGHTNESS);
     }
 
     @Test
     public void testSetDifferentValue() {
-        final ValueHsvComponent different = ValueHsvComponent.with(0.99f);
-        this.check(Hsv.with(HUE, SATURATION, VALUE).set(different), HUE, SATURATION, different);
+        final LightnessHslComponent different = LightnessHslComponent.with(0.99f);
+        this.check(Hsl.with(HUE, SATURATION, LIGHTNESS).set(different), HUE, SATURATION, different);
     }
 
-    private void check(final Hsv hsv,
-                       final HueHsvComponent hue,
-                       final SaturationHsvComponent saturation,
-                       final ValueHsvComponent value) {
-        assertSame(hue, hsv.hue, "hue");
-        assertSame(saturation, hsv.saturation, "saturation");
-        assertSame(value, hsv.value, "value");
+    private void check(final Hsl hsl,
+                       final HueHslComponent hue,
+                       final SaturationHslComponent saturation,
+                       final LightnessHslComponent value) {
+        assertSame(hue, hsl.hue, "hue");
+        assertSame(saturation, hsl.saturation, "saturation");
+        assertSame(value, hsl.lightness, "value");
     }
 
     @Test
@@ -148,7 +148,7 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testReddishToHsv() {
-        this.toColorAndCheck(352f, 0.996f, 1.0f, 0xFF0123);
+        this.toColorAndCheck(352f, 0.99f, 1.0f, 0xffffff);
     }
 
     @Test
@@ -158,7 +158,7 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testGreenishToHsv() {
-        this.toColorAndCheck(133f, 0.929f, 0.996f, 0x12FE45);
+        this.toColorAndCheck(133f, 0.93f, 0.99f, 0xfafffb);
     }
 
     @Test
@@ -168,7 +168,7 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testBlueishToHsv() {
-        this.toColorAndCheck(231f, 0.927f, 0.961f, 0x1234F5);
+        this.toColorAndCheck(231f, 0.92f, 0.96f, 0xebeefe);
     }
 
     @Test
@@ -178,7 +178,7 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testYellowishToHsv() {
-        this.toColorAndCheck(52f, 0.996f, 0.996f, 0xFEDC01);
+        this.toColorAndCheck(52f, 0.99f, 0.99f, 0xfffefa);
     }
 
     @Test
@@ -188,7 +188,7 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testPurplishToHsv() {
-        this.toColorAndCheck(309f, 0.929f, 0.996f, 0xFE12DC);
+        this.toColorAndCheck(309f, 0.92f, 0.98f, 0xfff5fd);
     }
 
     @Test
@@ -198,16 +198,16 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testCyanishToHsv() {
-        this.toColorAndCheck(189f, 1.0f, 0.871f, 0x00BCDE);
+        this.toColorAndCheck(189f, 1.0f, 0.87f, 0xbdf5ff);
     }
 
     private void toColorAndCheck(final float hue, final float saturation, final float value, final int rgb) {
-        final Hsv hsv = Hsv.with(HsvComponent.hue(hue), HsvComponent.saturation(saturation), HsvComponent.value(value));
+        final Hsl hsl = Hsl.with(HslComponent.hue(hue), HslComponent.saturation(saturation), HslComponent.lightness(value));
         final Color expected = Color.fromRgb(rgb);
-        final Color actual = hsv.toColor();
+        final Color actual = hsl.toColor();
         if ((false == this.isEquals(expected.red, actual.red)) || (false == this.isEquals(expected.green, actual.green))
                 || (false == this.isEquals(expected.blue, actual.blue))) {
-            assertEquals(expected, actual, () -> "failed to convert " + hsv + " to a Color");
+            assertEquals(expected, actual, () -> "failed to convert " + hsl + " to a Color");
         }
     }
 
@@ -217,51 +217,51 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
 
     @Test
     public void testEqualsDifferentHue() {
-        this.checkNotEquals(Hsv.with(HueHsvComponent.with(99), SATURATION, VALUE));
+        this.checkNotEquals(Hsl.with(HueHslComponent.with(99), SATURATION, LIGHTNESS));
     }
 
     @Test
     public void testEqualsDifferentSaturation() {
-        this.checkNotEquals(Hsv.with(HUE, SaturationHsvComponent.with(0.99f), VALUE));
+        this.checkNotEquals(Hsl.with(HUE, SaturationHslComponent.with(0.99f), LIGHTNESS));
     }
 
     @Test
     public void testEqualsDifferentValue() {
-        this.checkNotEquals(Hsv.with(HUE, SATURATION, ValueHsvComponent.with(0.99f)));
+        this.checkNotEquals(Hsl.with(HUE, SATURATION, LightnessHslComponent.with(0.99f)));
     }
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsv(359,100%,50%)",
-                Hsv.with(HsvComponent.hue(359),
-                        HsvComponent.saturation(1.0f),
-                        HsvComponent.value(0.5f)));
+        this.parseAndCheck("hsl(359,100%,50%)",
+                Hsl.with(HslComponent.hue(359),
+                        HslComponent.saturation(1.0f),
+                        HslComponent.lightness(0.5f)));
     }
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(Hsv.with(HUE, SATURATION, VALUE),
-                "hsv(359,25%,50%)");
+        this.toStringAndCheck(Hsl.with(HUE, SATURATION, LIGHTNESS),
+                "hsl(359,25%,50%)");
     }
 
     @Test
     public void testToStringZeroes() {
-        this.toStringAndCheck(Hsv.with(HsvComponent.hue(0),
-                HsvComponent.saturation(0),
-                HsvComponent.value(0)),
-                "hsv(0,0%,0%)");
+        this.toStringAndCheck(Hsl.with(HslComponent.hue(0),
+                HslComponent.saturation(0),
+                HslComponent.lightness(0)),
+                "hsl(0,0%,0%)");
     }
 
     @Override
-    Hsv createColorHslOrHsv() {
-        return Hsv.with(HUE, SATURATION, VALUE);
+    Hsl createColorHslOrHsv() {
+        return Hsl.with(HUE, SATURATION, LIGHTNESS);
     }
 
     // ClassTesting ...................................................................................................
 
     @Override
-    public Class<Hsv> type() {
-        return Hsv.class;
+    public Class<Hsl> type() {
+        return Hsl.class;
     }
 
     @Override
@@ -272,14 +272,14 @@ public final class HsvTest extends ColorHslOrHsvTestCase<Hsv> implements ParseSt
     // HasJsonNodeTesting..............................................................................................
 
     @Override
-    public Hsv fromJsonNode(final JsonNode from) {
-        return Hsv.fromJsonNodeHsv(from);
+    public Hsl fromJsonNode(final JsonNode from) {
+        return Hsl.fromJsonNodeHsl(from);
     }
 
     // ParseStringTesting .............................................................................................
 
     @Override
-    public Hsv parse(final String text) {
-        return Hsv.parseHsv(text);
+    public Hsl parse(final String text) {
+        return Hsl.parseHsl(text);
     }
 }

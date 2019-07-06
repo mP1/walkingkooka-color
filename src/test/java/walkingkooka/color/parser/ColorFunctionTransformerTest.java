@@ -113,7 +113,9 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     private Hsl hsl(final float hue,
                     final float saturation,
                     final float lightness) {
-        return Hsl.with(HslComponent.hue(hue), HslComponent.saturation(saturation), HslComponent.lightness(lightness));
+        return ColorHslOrHsv.hsl(HslComponent.hue(hue),
+                HslComponent.saturation(saturation),
+                HslComponent.lightness(lightness));
     }
 
     private Hsl hsl(final float hue,
@@ -196,7 +198,9 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     private Hsv hsv(final float hue,
                     final float saturation,
                     final float value) {
-        return Hsv.with(HsvComponent.hue(hue), HsvComponent.saturation(saturation), HsvComponent.value(value));
+        return ColorHslOrHsv.hsv(HsvComponent.hue(hue),
+                HsvComponent.saturation(saturation),
+                HsvComponent.value(value));
     }
 
     private Hsv hsv(final float hue,

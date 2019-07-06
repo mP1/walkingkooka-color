@@ -262,30 +262,4 @@ public abstract class HslTestCase<H extends Hsl> extends ColorHslOrHsvTestCase<H
     public final Hsl fromJsonNode(final JsonNode from) {
         return Hsl.fromJsonNodeHsl(from);
     }
-
-    // ParseStringTesting .............................................................................................
-
-    @Override
-    public final RuntimeException parseFailedExpected(final RuntimeException expected) {
-        return expected;
-    }
-
-    @Override
-    public final Class<? extends RuntimeException> parseFailedExpected(final Class<? extends RuntimeException> expected) {
-        return expected;
-    }
-
-    // SerializableTesting ............................................................................................
-
-    @Override
-    public final Hsl serializableInstance() {
-        return this.createHsl(HueHslComponent.with(180),
-                SaturationHslComponent.with(0.5f),
-                LightnessHslComponent.with(0.5f));
-    }
-
-    @Override
-    public final boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }
