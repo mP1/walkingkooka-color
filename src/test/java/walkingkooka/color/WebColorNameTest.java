@@ -85,9 +85,17 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
     }
 
     private void colorAndCheck(final String name, final Color color) {
-        assertEquals(Optional.ofNullable(color),
-                Optional.ofNullable(WebColorName.with(name).map(c -> c.color()).orElse(null)),
+        final Optional<WebColorName> webColorName = WebColorName.with(name);
+
+        assertEquals(color,
+                webColorName.map(c -> c.color()).orElse(null),
                 () -> "name " + CharSequences.quoteAndEscape(name));
+
+        if (webColorName.isPresent()) {
+            assertEquals(webColorName.get(),
+                    WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
+                    () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name));
+        }
     }
 
     @Override

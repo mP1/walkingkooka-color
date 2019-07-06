@@ -247,8 +247,10 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
             throw new IllegalArgumentException("Empty text for " + CharSequences.quoteAndEscape(name));
         }
 
-        final WebColorName webColorName = new WebColorName(name, Color.parseColor(text));
+        final Color color = Color.parseColor(text);
+        final WebColorName webColorName = new WebColorName(name, color);
         WebColorName.NAME_CONSTANTS.put(name, webColorName);
+        RRGGBB_CONSTANTS.put(color.argb(), webColorName);
         return webColorName;
     }
 

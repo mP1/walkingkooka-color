@@ -428,7 +428,9 @@ abstract public class Color extends ColorHslOrHsv {
     /**
      * Returns a {@link WebColorName} for this color if one exists. Note that colors with alpha always returns nothing.
      */
-    public abstract Optional<WebColorName> webColorName();
+    public final Optional<WebColorName> webColorName() {
+        return Optional.ofNullable(WebColorName.RRGGBB_CONSTANTS.get(this.argb()));
+    }
 
     /**
      * Factory that creates a {@link java.awt.Color} holding the same color value.
