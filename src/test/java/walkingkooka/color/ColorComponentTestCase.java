@@ -34,12 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-abstract public class ColorComponentTestCase<C extends ColorComponent> implements ClassTesting2<C>,
-        HashCodeEqualsDefinedTesting<C>,
-        IsMethodTesting<C>,
-        SerializationTesting<C>,
-        ToStringTesting<C>,
-        TypeNameTesting<C> {
+abstract public class ColorComponentTestCase<C extends ColorComponent> extends ColorHslOrHsvComponentTestCase<C> {
 
     ColorComponentTestCase() {
         super();
@@ -192,26 +187,11 @@ abstract public class ColorComponentTestCase<C extends ColorComponent> implement
     abstract C createColorComponent(byte value);
 
     @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
-    }
-
-    @Override
     public final C createObject() {
         return this.createColorComponent();
     }
 
     // IsMethodTesting.................................................................................................
-
-    @Override
-    public final C createIsMethodObject() {
-        return this.createObject();
-    }
-
-    @Override
-    public final String isMethodTypeNamePrefix() {
-        return "";
-    }
 
     @Override
     public final String isMethodTypeNameSuffix() {
@@ -223,12 +203,7 @@ abstract public class ColorComponentTestCase<C extends ColorComponent> implement
         return (m) -> false;
     }
 
-    // TypeNameTesting .........................................................................................
-
-    @Override
-    public String typeNamePrefix() {
-        return "";
-    }
+    // TypeNameTesting ................................................................................................
 
     @Override
     public final String typeNameSuffix() {
