@@ -96,6 +96,11 @@ public final class AlphaColorTest extends ColorTestCase<AlphaColor> {
     }
 
     @Test
+    public void testWebNameCyan() {
+        this.webNameAndCheck(WebColorName.CYAN.color().setAlpha(AlphaColorComponent.with((byte) 0x50)), null);
+    }
+
+    @Test
     public void testEqualsDifferentAlpha() {
         final Color color = this.createColorHslOrHsv();
         this.checkNotEquals(AlphaColor.with(color.red(), color.green(), color.blue(), AlphaColorComponent.with((byte) 0xff)));

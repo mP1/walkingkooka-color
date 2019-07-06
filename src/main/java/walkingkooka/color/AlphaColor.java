@@ -144,16 +144,6 @@ final class AlphaColor extends Color {
                 this.alpha.unsignedIntValue);
     }
 
-    // WebColorName....................................................................................................
-
-    /**
-     * Always returns nothing.
-     */
-    @Override
-    public Optional<WebColorName> webColorName(){
-        return Optional.empty();
-    }
-
     // Object..........................................................................................................
 
     @Override

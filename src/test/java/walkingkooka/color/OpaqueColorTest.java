@@ -99,6 +99,23 @@ public final class OpaqueColorTest extends ColorTestCase<OpaqueColor> {
         assertEquals(3, color.getBlue(), "blue");
     }
 
+    // webName..........................................................................................................
+
+    @Test
+    public void testWebNameCyan() {
+        this.webNameAndCheck(WebColorName.CYAN.color(), WebColorName.CYAN);
+    }
+
+    @Test
+    public void testWebNameConstants() {
+        WebColorName.RRGGBB_CONSTANTS.values()
+                .stream()
+                .forEach(n -> {
+                    final Color color = n.color();
+                    this.webNameAndCheck(color, n);
+                });
+    }
+
     // HasJsonNode............................................................................................
 
     @Test

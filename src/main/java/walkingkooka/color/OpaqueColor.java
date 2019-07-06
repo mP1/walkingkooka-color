@@ -137,16 +137,6 @@ final class OpaqueColor extends Color {
         return new java.awt.Color(this.rgb());
     }
 
-    // WebColorName....................................................................................................
-
-    /**
-     * Returns a {@link WebColorName} for this color if one exists.
-     */
-    @Override
-    public Optional<WebColorName> webColorName() {
-        return Optional.ofNullable(WebColorName.RRGGBB_CONSTANTS.get(this.value()));
-    }
-
     // Object..........................................................................................................
 
     /**

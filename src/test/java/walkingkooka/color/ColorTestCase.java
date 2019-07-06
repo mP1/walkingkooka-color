@@ -25,6 +25,9 @@ import walkingkooka.tree.json.HasJsonNodeTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.type.JavaVisibility;
 
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -579,6 +582,17 @@ abstract public class ColorTestCase<C extends Color> extends ColorHslOrHsvTestCa
         this.toHslAndCheck(0x00BCDE, 189f, 0.871f, 0.435f);
     }
 
+    // webColorName.....................................................................................................
+
+    @Test
+    public final void testWebColorNameUnknown() {
+        final byte component = 1;
+        this.webNameAndCheck(this.createColorHslOrHsv(ColorComponent.red(component),
+                ColorComponent.green(component),
+                ColorComponent.blue(component)),
+                null);
+    }
+
     // HasJsonNode.......................................................................................................
 
     @Test
@@ -705,6 +719,12 @@ abstract public class ColorTestCase<C extends Color> extends ColorHslOrHsvTestCa
                     toString(actual),
                     label + " incorrect, failed to mix " + color + " with " + toString(mixed) + " amount=" + amount);
         }
+    }
+
+    final void webNameAndCheck(final Color color, final WebColorName webColorName) {
+        assertEquals(Optional.ofNullable(webColorName),
+                color.webColorName(),
+                () -> color + " web color name");
     }
 
     static private String toString(final ColorComponent component) {
