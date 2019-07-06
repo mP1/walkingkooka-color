@@ -17,12 +17,9 @@
 package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.color.Color;
 import walkingkooka.color.ColorComponent;
 import walkingkooka.color.ColorHslOrHsv;
-import walkingkooka.color.Hsl;
 import walkingkooka.color.HslComponent;
-import walkingkooka.color.Hsv;
 import walkingkooka.color.HsvComponent;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.test.ClassTesting2;
@@ -44,7 +41,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
         PublicStaticHelperTesting<ColorParsers> {
-    
+
     // hsl(359,1.0,1.0).................................................................................................
 
     @Test
@@ -109,7 +106,7 @@ public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
                                   final float lightness) {
         this.parseAndCheck(ColorParsers.hsl(),
                 text,
-                Hsl.with(HslComponent.hue(hue),
+                ColorHslOrHsv.hsl(HslComponent.hue(hue),
                         HslComponent.saturation(saturation),
                         HslComponent.lightness(lightness)));
     }
@@ -178,13 +175,13 @@ public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
     }
 
     private void parseHslAndCheck(final String text,
-                                   final float hue,
-                                   final float saturation,
-                                   final float lightness,
-                                   final float alpha) {
+                                  final float hue,
+                                  final float saturation,
+                                  final float lightness,
+                                  final float alpha) {
         this.parseAndCheck(ColorParsers.hsl(),
                 text,
-                Hsl.with(HslComponent.hue(hue),
+                ColorHslOrHsv.hsl(HslComponent.hue(hue),
                         HslComponent.saturation(saturation),
                         HslComponent.lightness(lightness))
                         .set(HslComponent.alpha(alpha)));
@@ -255,7 +252,7 @@ public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
                                   final float value) {
         this.parseAndCheck(ColorParsers.hsv(),
                 text,
-                Hsv.with(HsvComponent.hue(hue),
+                ColorHslOrHsv.hsv(HsvComponent.hue(hue),
                         HsvComponent.saturation(saturation),
                         HsvComponent.value(value)));
     }
@@ -323,7 +320,7 @@ public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
                                    final float alpha) {
         this.parseAndCheck(ColorParsers.hsv(),
                 text,
-                Hsv.with(HsvComponent.hue(hue),
+                ColorHslOrHsv.hsv(HsvComponent.hue(hue),
                         HsvComponent.saturation(saturation),
                         HsvComponent.value(value))
                         .set(HsvComponent.alpha(alpha)));
@@ -400,7 +397,7 @@ public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
         this.parseAndCheck(
                 ColorParsers.rgb(),
                 text,
-                Color.with(
+                ColorHslOrHsv.color(
                         ColorComponent.red((byte) red),
                         ColorComponent.green((byte) green),
                         ColorComponent.blue((byte) blue))
@@ -468,7 +465,7 @@ public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
     private void parseRgbAndCheck(final String text, final int red, final int green, final int blue) {
         this.parseAndCheck(ColorParsers.rgb(),
                 text,
-                Color.with(ColorComponent.red((byte) red),
+                ColorHslOrHsv.color(ColorComponent.red((byte) red),
                         ColorComponent.green((byte) green),
                         ColorComponent.blue((byte) blue)));
     }

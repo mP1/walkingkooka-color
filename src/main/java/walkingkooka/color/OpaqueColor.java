@@ -30,9 +30,9 @@ final class OpaqueColor extends Color {
     /**
      * Creates a new {@link Color} with the provided components.
      */
-    static OpaqueColor createOpaqueColor(final RedColorComponent red,
-                                         final GreenColorComponent green,
-                                         final BlueColorComponent blue) {
+    static OpaqueColor withOpaque(final RedColorComponent red,
+                                  final GreenColorComponent green,
+                                  final BlueColorComponent blue) {
         Objects.requireNonNull(red, "red");
         Objects.requireNonNull(green, "green");
         Objects.requireNonNull(blue, "blue");

@@ -19,13 +19,7 @@ package walkingkooka.color;
 
 import walkingkooka.Cast;
 import walkingkooka.ToStringBuilder;
-import walkingkooka.color.parser.ColorParsers;
-import walkingkooka.text.cursor.parser.Parser;
-import walkingkooka.text.cursor.parser.ParserContext;
-import walkingkooka.text.cursor.parser.ParserReporters;
 import walkingkooka.tree.json.HasJsonNode;
-import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.JsonNodeException;
 
 import java.util.Objects;
 
@@ -34,22 +28,12 @@ import java.util.Objects;
  */
 public abstract class Hsv extends ColorHslOrHsv {
 
-    // parse hsv(359,100%,100%)..............................................................................................
-
-    public static Hsv parseHsv(final String text) {
-        return parseColorHslOrHsvParserToken(text, HSV_FUNCTION_PARSER)
-                .toHsv();
-    }
-
-    private final static Parser<ParserContext> HSV_FUNCTION_PARSER = ColorParsers.hsv()
-            .orReport(ParserReporters.basic());
-
     /**
      * Factory that creates a new {@link Hsv}
      */
-    public static Hsv with(final HueHsvComponent hue,
-                           final SaturationHsvComponent saturation,
-                           final ValueHsvComponent value) {
+    static Hsv with(final HueHsvComponent hue,
+                    final SaturationHsvComponent saturation,
+                    final ValueHsvComponent value) {
         Objects.requireNonNull(hue, "hue");
         Objects.requireNonNull(saturation, "saturation");
         Objects.requireNonNull(value, "value");
@@ -230,29 +214,8 @@ public abstract class Hsv extends ColorHslOrHsv {
     }
 
     @Override
-    public Hsv toHsv() {
+    public final Hsv toHsv() {
         return this;
-    }
-
-    // HasJsonNode......................................................................................................
-
-    static {
-        HasJsonNode.register("hsv",
-                Hsv::fromJsonNodeHsv,
-                Hsv.class, AlphaHsv.class, OpaqueHsv.class);
-    }
-
-    /**
-     * Creates a {@link Hsv} from a {@link JsonNode}.
-     */
-    public static Hsv fromJsonNodeHsv(final JsonNode from) {
-        Objects.requireNonNull(from, "from");
-
-        try {
-            return parseHsv(from.stringValueOrFail());
-        } catch (final JsonNodeException cause) {
-            throw new IllegalArgumentException(cause.getMessage(), cause);
-        }
     }
 
     // Object...........................................................................................................
@@ -262,7 +225,8 @@ public abstract class Hsv extends ColorHslOrHsv {
         return Objects.hash(this.hue, this.saturation, this.value);
     }
 
-    @Override final boolean equals0(final Object other) {
+    @Override
+    final boolean equals0(final Object other) {
         return this.equals1(Cast.to(other));
     }
 

@@ -21,6 +21,7 @@ import walkingkooka.Cast;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.UsesToStringBuilder;
 import walkingkooka.color.parser.ColorFunctionFunctionParserToken;
+import walkingkooka.color.parser.ColorParsers;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.test.HashCodeEqualsDefined;
 import walkingkooka.text.CharSequences;
@@ -29,6 +30,7 @@ import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserException;
+import walkingkooka.text.cursor.parser.ParserReporters;
 import walkingkooka.tree.json.HasJsonNode;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
@@ -36,6 +38,7 @@ import walkingkooka.tree.json.JsonNodeException;
 import java.io.Serializable;
 import java.math.MathContext;
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Base class for all color like value classes.
@@ -46,11 +49,47 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
         UsesToStringBuilder {
 
     /**
+     * Creates a new {@link Color} with the provided components.
+     */
+    public static Color color(final RedColorComponent red,
+                              final GreenColorComponent green,
+                              final BlueColorComponent blue) {
+        return Color.with(red, green, blue);
+    }
+
+    /**
+     * Creates a new {@link Hsl} with the given components.
+     */
+    public static Hsl hsl(final HueHslComponent hue,
+                          final SaturationHslComponent saturation,
+                          final LightnessHslComponent lightness) {
+        return Hsl.with(hue, saturation, lightness);
+    }
+
+    /**
+     * Factory that creates a new {@link Hsv}
+     */
+    public static Hsv hsv(final HueHsvComponent hue,
+                          final SaturationHsvComponent saturation,
+                          final ValueHsvComponent value) {
+        return Hsv.with(hue, saturation, value);
+    }
+
+    /**
      * Parses the numerous supported {@link Color}, {@link Hsl} and {@link Hsv}.
      * This equivalent to calling any of each until success or failure.
      */
     public static ColorHslOrHsv parse(final String text) {
         return parse0(text, true, true, true);
+    }
+
+    /**
+     * Parses a {@link Color}, currently only #RGB, #RRGGBB, rgb(), rgba() and web color names formats are supported<br>
+     * <a href="https://en.wikipedia.org/wiki/Web_colors#CSS_colors"></a>
+     */
+    public static Color parseColor(final String text) {
+        checkText(text);
+        return Color.parseColor0(text);
     }
 
     static ColorHslOrHsv parse0(final String text,
@@ -61,15 +100,15 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
 
         ColorHslOrHsv color;
         do {
-            if(tryHsl && text.startsWith("hsl")) {
-                color = Hsl.parseHsl(text);
+            if (tryHsl && text.startsWith("hsl")) {
+                color = parseHsl(text);
                 break;
             }
-            if(tryHsv && text.startsWith("hsv")) {
-                color = Hsv.parseHsv(text);
+            if (tryHsv && text.startsWith("hsv")) {
+                color = parseHsv(text);
                 break;
             }
-            if(tryColor) {
+            if (tryColor) {
                 color = Color.parseColor0(text);
                 break;
             }
@@ -84,7 +123,7 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
     }
 
     static ColorHslOrHsv parseColorHslOrHsvParserToken(final String text,
-                                              final Parser<ParserContext> parser) {
+                                                       final Parser<ParserContext> parser) {
         try {
             return parser.parse(TextCursors.charSequence(text), ParserContexts.basic(DecimalNumberContexts.american(MathContext.DECIMAL32)))
                     .map(t -> ColorFunctionFunctionParserToken.class.cast(t).toColorHslOrHsv())
@@ -93,6 +132,27 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
             throw new IllegalArgumentException(cause.getMessage(), cause);
         }
     }
+
+    // parseColor hsl(359,100%,100%) / hsla(359,100%,100%)..............................................................
+
+    public static Hsl parseHsl(final String text) {
+        return parseColorHslOrHsvParserToken(text, HSL_FUNCTION_PARSER)
+                .toHsl();
+    }
+
+    private final static Parser<ParserContext> HSL_FUNCTION_PARSER = ColorParsers.hsl()
+            .orReport(ParserReporters.basic());
+
+    // parse hsv(359,100%,100%)..............................................................................................
+
+    public static Hsv parseHsv(final String text) {
+        return parseColorHslOrHsvParserToken(text, HSV_FUNCTION_PARSER)
+                .toHsv();
+    }
+
+    private final static Parser<ParserContext> HSV_FUNCTION_PARSER = ColorParsers.hsv()
+            .orReport(ParserReporters.basic());
+
 
     ColorHslOrHsv() {
         super();
@@ -116,10 +176,36 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
      * Creates a {@link ColorHslOrHsv} from a {@link JsonNode}.
      */
     public static ColorHslOrHsv fromJsonNode(final JsonNode from) {
+        return fromJsonNode0(from, ColorHslOrHsv::parse);
+    }
+
+    /**
+     * Creates a {@link Color} from a {@link JsonNode}.
+     */
+    public static Color fromJsonNodeColor(final JsonNode from) {
+        return fromJsonNode0(from, ColorHslOrHsv::parseColor);
+    }
+
+    /**
+     * Creates a {@link Hsl} from a {@link JsonNode}.
+     */
+    public static Hsl fromJsonNodeHsl(final JsonNode from) {
+        return fromJsonNode0(from, ColorHslOrHsv::parseHsl);
+    }
+
+    /**
+     * Creates a {@link Hsv} from a {@link JsonNode}.
+     */
+    public static Hsv fromJsonNodeHsv(final JsonNode from) {
+        return fromJsonNode0(from, ColorHslOrHsv::parseHsv);
+    }
+
+    private static <C extends ColorHslOrHsv> C fromJsonNode0(final JsonNode from,
+                                                             final Function<String, C> parse) {
         Objects.requireNonNull(from, "from");
 
         try {
-            return parse(from.stringValueOrFail());
+            return parse.apply(from.stringValueOrFail());
         } catch (final JsonNodeException cause) {
             throw new IllegalArgumentException(cause.getMessage(), cause);
         }
@@ -128,6 +214,20 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
     @Override
     public final JsonNode toJsonNode() {
         return JsonNode.string(this.toString());
+    }
+
+    static {
+        HasJsonNode.register("color",
+                ColorHslOrHsv::fromJsonNodeColor,
+                Color.class, AlphaColor.class, OpaqueColor.class);
+
+        HasJsonNode.register("hsl",
+                ColorHslOrHsv::fromJsonNodeHsl,
+                Hsl.class, AlphaHsl.class, OpaqueHsl.class);
+
+        HasJsonNode.register("hsv",
+                ColorHslOrHsv::fromJsonNodeHsv,
+                Hsv.class, AlphaHsv.class, OpaqueHsv.class);
     }
 
     // Object .........................................................................................................

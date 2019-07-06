@@ -19,10 +19,6 @@ package walkingkooka.color;
 
 import walkingkooka.Cast;
 import walkingkooka.ToStringBuilder;
-import walkingkooka.color.parser.ColorParsers;
-import walkingkooka.text.cursor.parser.Parser;
-import walkingkooka.text.cursor.parser.ParserContext;
-import walkingkooka.text.cursor.parser.ParserReporters;
 import walkingkooka.tree.json.HasJsonNode;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
@@ -34,22 +30,12 @@ import java.util.Objects;
  */
 public abstract class Hsl extends ColorHslOrHsv {
 
-    // parseColor hsl(359,100%,100%) / hsla(359,100%,100%)..............................................................
-
-    public static Hsl parseHsl(final String text) {
-        return parseColorHslOrHsvParserToken(text, HSL_FUNCTION_PARSER)
-                .toHsl();
-    }
-
-    private final static Parser<ParserContext> HSL_FUNCTION_PARSER = ColorParsers.hsl()
-            .orReport(ParserReporters.basic());
-
     /**
      * Factory that creates a new {@link Hsl}
      */
-    public static Hsl with(final HueHslComponent hue,
-                           final SaturationHslComponent saturation,
-                           final LightnessHslComponent lightness) {
+    static Hsl with(final HueHslComponent hue,
+                    final SaturationHslComponent saturation,
+                    final LightnessHslComponent lightness) {
         Objects.requireNonNull(hue, "hue");
         Objects.requireNonNull(saturation, "saturation");
         Objects.requireNonNull(lightness, "lightness");
@@ -286,27 +272,6 @@ public abstract class Hsl extends ColorHslOrHsv {
     @Override
     public final Hsv toHsv() {
         return this.toColor().toHsv();
-    }
-
-    // HasJsonNode......................................................................................................
-
-    static {
-        HasJsonNode.register("hsl",
-                Hsl::fromJsonNodeHsl,
-                Hsl.class, AlphaHsl.class, OpaqueHsl.class);
-    }
-
-    /**
-     * Creates a {@link Hsl} from a {@link JsonNode}.
-     */
-    public static Hsl fromJsonNodeHsl(final JsonNode from) {
-        Objects.requireNonNull(from, "from");
-
-        try {
-            return parseHsl(from.stringValueOrFail());
-        } catch (final JsonNodeException cause) {
-            throw new IllegalArgumentException(cause.getMessage(), cause);
-        }
     }
 
     // Object...........................................................................................................

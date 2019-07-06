@@ -20,10 +20,10 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ParseStringTesting;
+import walkingkooka.tree.json.JsonNode;
 import walkingkooka.type.JavaVisibility;
 
-public final class ColorTest implements ClassTesting2<Color>,
-        ParseStringTesting<Color> {
+public final class ColorTest extends ColorHslOrHsvTestCase<Color> implements ParseStringTesting<Color> {
 
     // parseColor..................................................................
 
@@ -287,6 +287,13 @@ public final class ColorTest implements ClassTesting2<Color>,
         this.parseAndCheck("CYAN", WebColorName.CYAN.color());
     }
 
+    @Override
+    Color createColorHslOrHsv() {
+        return Color.with(ColorComponent.red((byte)0x1),
+                ColorComponent.green((byte) 0x2),
+                ColorComponent.blue((byte) 0x3));
+    }
+
     // ClassTesting ...................................................................................................
 
     @Override
@@ -299,20 +306,17 @@ public final class ColorTest implements ClassTesting2<Color>,
         return JavaVisibility.PUBLIC;
     }
 
+    // HasJsonNodeTesting ..............................................................................................
+
+    @Override
+    public Color fromJsonNode(final JsonNode jsonNode) {
+        return Color.fromJsonNodeColor(jsonNode);
+    }
+
     // ParseStringTesting .............................................................................................
 
     @Override
     public Color parse(final String text) {
         return Color.parseColor(text);
-    }
-
-    @Override
-    public RuntimeException parseFailedExpected(final RuntimeException expected) {
-        return expected;
-    }
-
-    @Override
-    public Class<? extends RuntimeException> parseFailedExpected(final Class<? extends RuntimeException> expected) {
-        return expected;
     }
 }

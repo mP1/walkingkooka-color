@@ -147,18 +147,4 @@ public final class AlphaColorTest extends ColorTestCase<AlphaColor> {
     public Class<AlphaColor> type() {
         return AlphaColor.class;
     }
-
-    @Override
-    public AlphaColor serializableInstance() {
-        final byte value = 1;
-        return AlphaColor.with(ColorComponent.red(value),
-                ColorComponent.green(value),
-                ColorComponent.blue(value),
-                ColorComponent.alpha(value));
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

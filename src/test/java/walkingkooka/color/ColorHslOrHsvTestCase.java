@@ -123,4 +123,26 @@ public abstract class ColorHslOrHsvTestCase<T extends ColorHslOrHsv> implements 
     public final T createHasJsonNode() {
         return this.createColorHslOrHsv();
     }
+
+    // ParseStringTesting .............................................................................................
+
+    public final RuntimeException parseFailedExpected(final RuntimeException expected) {
+        return expected;
+    }
+
+    public final Class<? extends RuntimeException> parseFailedExpected(final Class<? extends RuntimeException> expected) {
+        return expected;
+    }
+
+    // SerializableTesting ............................................................................................
+
+    @Override
+    public final T serializableInstance() {
+        return this.createColorHslOrHsv();
+    }
+
+    @Override
+    public final boolean serializableInstanceIsSingleton() {
+        return false;
+    }
 }
