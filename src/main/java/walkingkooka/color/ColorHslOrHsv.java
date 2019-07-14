@@ -31,9 +31,9 @@ import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserReporters;
+import walkingkooka.tree.json.FromJsonNodeException;
 import walkingkooka.tree.json.HasJsonNode;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.JsonNodeException;
 
 import java.io.Serializable;
 import java.math.MathContext;
@@ -206,8 +206,10 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
 
         try {
             return parse.apply(from.stringValueOrFail());
-        } catch (final JsonNodeException cause) {
-            throw new IllegalArgumentException(cause.getMessage(), cause);
+        } catch (final FromJsonNodeException cause) {
+            throw cause;
+        } catch (final RuntimeException cause) {
+            throw new FromJsonNodeException(cause.getMessage(), from, cause);
         }
     }
 
