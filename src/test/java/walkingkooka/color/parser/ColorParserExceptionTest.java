@@ -18,11 +18,27 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.test.StandardThrowableTesting;
+import walkingkooka.type.JavaVisibility;
 
 public final class ColorParserExceptionTest implements StandardThrowableTesting<ColorParserException> {
 
     @Override
+    public ColorParserException createThrowable(final String message) {
+        return new ColorParserException(message);
+    }
+
+    @Override
+    public ColorParserException createThrowable(final String message, final Throwable cause) {
+        return new ColorParserException(message, cause);
+    }
+
+    @Override
     public Class<ColorParserException> type() {
         return ColorParserException.class;
+    }
+
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PUBLIC;
     }
 }
