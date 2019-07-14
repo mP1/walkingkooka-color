@@ -18,11 +18,27 @@
 package walkingkooka.color;
 
 import walkingkooka.test.StandardThrowableTesting;
+import walkingkooka.type.JavaVisibility;
 
 public final class ColorExceptionTest implements StandardThrowableTesting<ColorException> {
 
     @Override
+    public ColorException createThrowable(final String message) {
+        return new ColorException(message);
+    }
+
+    @Override
+    public ColorException createThrowable(final String message, final Throwable cause) {
+        return new ColorException(message, cause);
+    }
+
+    @Override
     public Class<ColorException> type() {
         return ColorException.class;
+    }
+
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PUBLIC;
     }
 }
