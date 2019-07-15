@@ -62,15 +62,6 @@ abstract public class ColorTestCase<C extends Color> extends ColorHslOrHsvTestCa
     final static float SMALL_AMOUNT = 1.0f / 512f;
     final static float LARGE_AMOUNT = 1 - SMALL_AMOUNT;
 
-    // tests
-
-    // HasJsonNodeTesting..................................................................
-
-    @Override
-    public void testFromJsonNullFails() {
-        throw new UnsupportedOperationException();
-    }
-
     // tests ..................................................................................
 
     abstract public void testHasAlpha();
