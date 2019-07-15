@@ -23,6 +23,7 @@ import walkingkooka.Equality;
 import walkingkooka.test.TypeNameTesting;
 import walkingkooka.tree.json.HasJsonNodeTesting;
 import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.JsonNodeException;
 import walkingkooka.type.JavaVisibility;
 
 import java.util.Optional;
@@ -588,27 +589,22 @@ abstract public class ColorTestCase<C extends Color> extends ColorHslOrHsvTestCa
 
     @Test
     public final void testFromJsonNodeBooleanFails() {
-        this.fromJsonNodeFails(JsonNode.booleanNode(true));
-    }
-
-    @Test
-    public final void testFromJsonNodeNullFails() {
-        this.fromJsonNodeFails(JsonNode.nullNode());
+        this.fromJsonNodeFails(JsonNode.booleanNode(true), JsonNodeException.class);
     }
 
     @Test
     public final void testFromJsonNodeNumberFails() {
-        this.fromJsonNodeFails(JsonNode.number(123));
+        this.fromJsonNodeFails(JsonNode.number(123), JsonNodeException.class);
     }
 
     @Test
     public final void testFromJsonNodeArrayFails() {
-        this.fromJsonNodeFails(JsonNode.array());
+        this.fromJsonNodeFails(JsonNode.array(), JsonNodeException.class);
     }
 
     @Test
     public final void testFromJsonNodeObjectFails() {
-        this.fromJsonNodeFails(JsonNode.object());
+        this.fromJsonNodeFails(JsonNode.object(), JsonNodeException.class);
     }
 
     // helpers..........................................................................................................

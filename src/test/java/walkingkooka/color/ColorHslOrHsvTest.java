@@ -22,6 +22,7 @@ import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.tree.json.HasJsonNodeTesting;
 import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.JsonNodeException;
 import walkingkooka.type.JavaVisibility;
 
 public final class ColorHslOrHsvTest implements ClassTesting2<ColorHslOrHsv>,
@@ -75,8 +76,8 @@ public final class ColorHslOrHsvTest implements ClassTesting2<ColorHslOrHsv>,
     }
 
     @Test
-    public void testFromJsonNodeFails() {
-        this.fromJsonNodeFails("\"abc\"");
+    public void testFromJsonNodeInvalidStringFails() {
+        this.fromJsonNodeFails("\"abc\"", JsonNodeException.class);
     }
 
     @Test
