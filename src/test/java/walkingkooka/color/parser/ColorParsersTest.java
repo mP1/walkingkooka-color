@@ -39,8 +39,7 @@ import java.math.MathContext;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class ColorParsersTest implements ClassTesting2<ColorParsers>,
-        PublicStaticHelperTesting<ColorParsers> {
+public final class ColorParsersTest implements PublicStaticHelperTesting<ColorParsers> {
 
     // hsl(359,1.0,1.0).................................................................................................
 
