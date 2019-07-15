@@ -175,28 +175,28 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
     /**
      * Creates a {@link ColorHslOrHsv} from a {@link JsonNode}.
      */
-    public static ColorHslOrHsv fromJsonNode(final JsonNode from) {
+    static ColorHslOrHsv fromJsonNode(final JsonNode from) {
         return fromJsonNode0(from, ColorHslOrHsv::parse);
     }
 
     /**
      * Creates a {@link Color} from a {@link JsonNode}.
      */
-    public static Color fromJsonNodeColor(final JsonNode from) {
+    static Color fromJsonNodeColor(final JsonNode from) {
         return fromJsonNode0(from, ColorHslOrHsv::parseColor);
     }
 
     /**
      * Creates a {@link Hsl} from a {@link JsonNode}.
      */
-    public static Hsl fromJsonNodeHsl(final JsonNode from) {
+    static Hsl fromJsonNodeHsl(final JsonNode from) {
         return fromJsonNode0(from, ColorHslOrHsv::parseHsl);
     }
 
     /**
      * Creates a {@link Hsv} from a {@link JsonNode}.
      */
-    public static Hsv fromJsonNodeHsv(final JsonNode from) {
+    static Hsv fromJsonNodeHsv(final JsonNode from) {
         return fromJsonNode0(from, ColorHslOrHsv::parseHsv);
     }
 
