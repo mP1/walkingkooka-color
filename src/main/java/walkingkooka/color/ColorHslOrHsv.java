@@ -219,6 +219,10 @@ public abstract class ColorHslOrHsv implements HashCodeEqualsDefined,
     }
 
     static {
+        HasJsonNode.register("color-hsl-hsv",
+                ColorHslOrHsv::fromJsonNode,
+                ColorHslOrHsv.class);
+
         HasJsonNode.register("color",
                 ColorHslOrHsv::fromJsonNodeColor,
                 Color.class, AlphaColor.class, OpaqueColor.class);
