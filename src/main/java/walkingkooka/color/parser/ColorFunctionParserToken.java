@@ -18,18 +18,18 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.Cast;
-import walkingkooka.color.AlphaColorComponent;
-import walkingkooka.color.AlphaHslComponent;
-import walkingkooka.color.AlphaHsvComponent;
-import walkingkooka.color.BlueColorComponent;
-import walkingkooka.color.GreenColorComponent;
-import walkingkooka.color.HueHslComponent;
-import walkingkooka.color.HueHsvComponent;
-import walkingkooka.color.LightnessHslComponent;
-import walkingkooka.color.RedColorComponent;
-import walkingkooka.color.SaturationHslComponent;
-import walkingkooka.color.SaturationHsvComponent;
-import walkingkooka.color.ValueHsvComponent;
+import walkingkooka.color.AlphaHslColorComponent;
+import walkingkooka.color.AlphaHsvColorComponent;
+import walkingkooka.color.AlphaRgbColorComponent;
+import walkingkooka.color.BlueRgbColorComponent;
+import walkingkooka.color.GreenRgbColorComponent;
+import walkingkooka.color.HueHslColorComponent;
+import walkingkooka.color.HueHsvColorComponent;
+import walkingkooka.color.LightnessHslColorComponent;
+import walkingkooka.color.RedRgbColorComponent;
+import walkingkooka.color.SaturationHslColorComponent;
+import walkingkooka.color.SaturationHsvColorComponent;
+import walkingkooka.color.ValueHsvColorComponent;
 import walkingkooka.test.HashCodeEqualsDefined;
 import walkingkooka.text.Whitespace;
 import walkingkooka.text.cursor.parser.Parser;
@@ -40,7 +40,7 @@ import walkingkooka.tree.visit.Visiting;
 import java.util.List;
 
 /**
- * Base class for a color function {@link ParserToken}.
+ * Base class for a rgb function {@link ParserToken}.
  */
 public abstract class ColorFunctionParserToken implements ParserToken, HashCodeEqualsDefined {
 
@@ -168,29 +168,29 @@ public abstract class ColorFunctionParserToken implements ParserToken, HashCodeE
 
     // ColorFunctionTransformer.........................................................................................
 
-    abstract RedColorComponent colorRed();
+    abstract RedRgbColorComponent colorRed();
 
-    abstract BlueColorComponent colorBlue();
+    abstract BlueRgbColorComponent colorBlue();
 
-    abstract GreenColorComponent colorGreen();
+    abstract GreenRgbColorComponent colorGreen();
 
-    abstract AlphaColorComponent colorAlpha();
+    abstract AlphaRgbColorComponent colorAlpha();
 
-    abstract HueHslComponent hslHue();
+    abstract HueHslColorComponent hslHue();
 
-    abstract SaturationHslComponent hslSaturation();
+    abstract SaturationHslColorComponent hslSaturation();
 
-    abstract LightnessHslComponent hslLightness();
+    abstract LightnessHslColorComponent hslLightness();
 
-    abstract AlphaHslComponent hslAlpha();
+    abstract AlphaHslColorComponent hslAlpha();
 
-    abstract HueHsvComponent hsvHue();
+    abstract HueHsvColorComponent hsvHue();
 
-    abstract SaturationHsvComponent hsvSaturation();
+    abstract SaturationHsvColorComponent hsvSaturation();
 
-    abstract ValueHsvComponent hsvValue();
+    abstract ValueHsvColorComponent hsvValue();
 
-    abstract AlphaHsvComponent hsvAlpha();
+    abstract AlphaHsvColorComponent hsvAlpha();
     
     // Object...........................................................................................................
 

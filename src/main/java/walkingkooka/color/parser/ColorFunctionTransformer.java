@@ -18,9 +18,9 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.color.Color;
-import walkingkooka.color.ColorHslOrHsv;
-import walkingkooka.color.Hsl;
-import walkingkooka.color.Hsv;
+import walkingkooka.color.HslColor;
+import walkingkooka.color.HsvColor;
+import walkingkooka.color.RgbColor;
 import walkingkooka.text.CharSequences;
 
 import java.util.Optional;
@@ -29,11 +29,11 @@ enum ColorFunctionTransformer {
 
     RGB {
         @Override
-        ColorHslOrHsv colorHslOrHsv(final ColorFunctionParserToken first,
-                                    final ColorFunctionParserToken second,
-                                    final ColorFunctionParserToken third,
-                                    final Optional<ColorFunctionParserToken> alpha) {
-            final Color color = ColorHslOrHsv.color(first.colorRed(),
+        Color color(final ColorFunctionParserToken first,
+                    final ColorFunctionParserToken second,
+                    final ColorFunctionParserToken third,
+                    final Optional<ColorFunctionParserToken> alpha) {
+            final RgbColor color = Color.rgb(first.colorRed(),
                     second.colorGreen(),
                     third.colorBlue());
             return alpha.map(a -> color.set(a.colorAlpha()))
@@ -43,11 +43,11 @@ enum ColorFunctionTransformer {
     },
     HSL {
         @Override
-        ColorHslOrHsv colorHslOrHsv(final ColorFunctionParserToken first,
-                                    final ColorFunctionParserToken second,
-                                    final ColorFunctionParserToken third,
-                                    final Optional<ColorFunctionParserToken> alpha) {
-            final Hsl hsl = ColorHslOrHsv.hsl(first.hslHue(),
+        Color color(final ColorFunctionParserToken first,
+                    final ColorFunctionParserToken second,
+                    final ColorFunctionParserToken third,
+                    final Optional<ColorFunctionParserToken> alpha) {
+            final HslColor hsl = Color.hsl(first.hslHue(),
                     second.hslSaturation(),
                     third.hslLightness());
             return alpha.map(a -> hsl.set(a.hslAlpha()))
@@ -57,11 +57,11 @@ enum ColorFunctionTransformer {
     },
     HSV {
         @Override
-        ColorHslOrHsv colorHslOrHsv(final ColorFunctionParserToken first,
-                                    final ColorFunctionParserToken second,
-                                    final ColorFunctionParserToken third,
-                                    final Optional<ColorFunctionParserToken> alpha) {
-            final Hsv hsv = ColorHslOrHsv.hsv(first.hsvHue(),
+        Color color(final ColorFunctionParserToken first,
+                    final ColorFunctionParserToken second,
+                    final ColorFunctionParserToken third,
+                    final Optional<ColorFunctionParserToken> alpha) {
+            final HsvColor hsv = Color.hsv(first.hsvHue(),
                     second.hsvSaturation(),
                     third.hsvValue());
             return alpha.map(a -> hsv.set(a.hsvAlpha()))
@@ -71,12 +71,12 @@ enum ColorFunctionTransformer {
     };
 
     /**
-     * Creates a {@link ColorHslOrHsv} using the provided component tokens.
+     * Creates a {@link Color} using the provided component tokens.
      */
-    abstract ColorHslOrHsv colorHslOrHsv(final ColorFunctionParserToken first,
-                                         final ColorFunctionParserToken second,
-                                         final ColorFunctionParserToken third,
-                                         final Optional<ColorFunctionParserToken> alpha);
+    abstract Color color(final ColorFunctionParserToken first,
+                         final ColorFunctionParserToken second,
+                         final ColorFunctionParserToken third,
+                         final Optional<ColorFunctionParserToken> alpha);
 
     /**
      * Returns the {@link ColorFunctionTransformer} by name, failing if the name is unknown.

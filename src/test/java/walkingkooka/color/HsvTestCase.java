@@ -26,7 +26,7 @@ import walkingkooka.type.JavaVisibility;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public abstract class HsvTestCase<H extends Hsv> extends ColorHslOrHsvTestCase<Hsv> implements ParseStringTesting<H> {
+public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvColor> implements ParseStringTesting<H> {
 
     HsvTestCase() {
         super();
@@ -34,89 +34,89 @@ public abstract class HsvTestCase<H extends Hsv> extends ColorHslOrHsvTestCase<H
 
     // constants
 
-    final static HueHsvComponent HUE = HueHsvComponent.with(359);
-    final static SaturationHsvComponent SATURATION = SaturationHsvComponent.with(0.5f);
-    final static ValueHsvComponent VALUE = ValueHsvComponent.with(0.25f);
+    final static HueHsvColorComponent HUE = HueHsvColorComponent.with(359);
+    final static SaturationHsvColorComponent SATURATION = SaturationHsvColorComponent.with(0.5f);
+    final static ValueHsvColorComponent VALUE = ValueHsvColorComponent.with(0.25f);
 
     // tests
 
     @Test
     public final void testSetNullComponentFails() {
         assertThrows(NullPointerException.class, () -> {
-            Hsv.with(HUE, SATURATION, VALUE).set(null);
+            HsvColor.with(HUE, SATURATION, VALUE).set(null);
         });
     }
 
     @Test
     public final void testSetSameHue() {
-        final Hsv hsl = this.createHsv();
+        final HsvColor hsl = this.createHsv();
         assertSame(hsl, hsl.set(HUE));
         assertSame(HUE, hsl.hue, "hue");
         assertSame(SATURATION, hsl.saturation, "saturation");
         assertSame(VALUE, hsl.value, "value");
-        assertSame(this.alphaHsvComponent(), hsl.alpha(), "alpha");
+        assertSame(this.alphaHsvColorComponent(), hsl.alpha(), "alpha");
     }
 
     @Test
     public final void testSetDifferentHue() {
-        final HueHsvComponent different = HueHsvComponent.with(180);
-        final Hsv hsl = this.createHsv().set(different);
+        final HueHsvColorComponent different = HueHsvColorComponent.with(180);
+        final HsvColor hsl = this.createHsv().set(different);
         assertSame(different, hsl.hue, "hue");
         assertSame(SATURATION, hsl.saturation, "saturation");
         assertSame(VALUE, hsl.value, "value");
-        assertSame(this.alphaHsvComponent(), hsl.alpha(), "alpha");
+        assertSame(this.alphaHsvColorComponent(), hsl.alpha(), "alpha");
     }
 
     @Test
     public final void testSetSameSaturation() {
-        final Hsv hsl = this.createHsv();
+        final HsvColor hsl = this.createHsv();
         assertSame(hsl, hsl.set(SATURATION));
         assertSame(HUE, hsl.hue, "hue");
         assertSame(SATURATION, hsl.saturation, "saturation");
         assertSame(VALUE, hsl.value, "value");
-        assertSame(this.alphaHsvComponent(), hsl.alpha(), "alpha");
+        assertSame(this.alphaHsvColorComponent(), hsl.alpha(), "alpha");
     }
 
     @Test
     public final void testSetDifferentSaturation() {
-        final HsvComponent different = SaturationHsvComponent.with(0.99f);
-        final Hsv hsl = this.createHsv().set(different);
+        final HsvColorComponent different = SaturationHsvColorComponent.with(0.99f);
+        final HsvColor hsl = this.createHsv().set(different);
         assertSame(HUE, hsl.hue, "hue");
         assertSame(different, hsl.saturation, "saturation");
         assertSame(VALUE, hsl.value, "value");
-        assertSame(this.alphaHsvComponent(), hsl.alpha(), "alpha");
+        assertSame(this.alphaHsvColorComponent(), hsl.alpha(), "alpha");
     }
 
     @Test
     public final void testSetSameLightness() {
-        final Hsv hsl = this.createHsv();
+        final HsvColor hsl = this.createHsv();
         assertSame(hsl, hsl.set(VALUE));
         assertSame(HUE, hsl.hue, "hue");
         assertSame(SATURATION, hsl.saturation, "saturation");
         assertSame(VALUE, hsl.value, "value");
-        assertSame(this.alphaHsvComponent(), hsl.alpha(), "alpha");
+        assertSame(this.alphaHsvColorComponent(), hsl.alpha(), "alpha");
     }
 
     @Test
     public final void testSetDifferentLightness() {
-        final HsvComponent different = ValueHsvComponent.with(0.5f);
-        final Hsv hsl = this.createHsv().set(different);
+        final HsvColorComponent different = ValueHsvColorComponent.with(0.5f);
+        final HsvColor hsl = this.createHsv().set(different);
         assertSame(HUE, hsl.hue, "hue");
         assertSame(SATURATION, hsl.saturation, "saturation");
         assertSame(different, hsl.value, "value");
-        assertSame(this.alphaHsvComponent(), hsl.alpha(), "alpha");
+        assertSame(this.alphaHsvColorComponent(), hsl.alpha(), "alpha");
     }
 
     @Test
     public final void testSetAlphaSame() {
-        final Hsv hsl = this.createHsv();
+        final HsvColor hsl = this.createHsv();
         assertSame(hsl, hsl.set(hsl.alpha()));
     }
 
     @Test
     public final void testSetAlphaDifferent() {
-        final HsvComponent different = AlphaHsvComponent.with(0.25f);
-        final Hsv hsl = this.createHsv().set(different);
+        final HsvColorComponent different = AlphaHsvColorComponent.with(0.25f);
+        final HsvColor hsl = this.createHsv().set(different);
         assertSame(HUE, hsl.hue, "hue");
         assertSame(SATURATION, hsl.saturation, "saturation");
         assertSame(VALUE, hsl.value, "value");
@@ -206,7 +206,7 @@ public abstract class HsvTestCase<H extends Hsv> extends ColorHslOrHsvTestCase<H
                                   final float value,
                                   final int rgb);
 
-    final boolean isEquals(final ColorComponent expected, final ColorComponent actual) {
+    final boolean isEquals(final RgbColorComponent expected, final RgbColorComponent actual) {
         return Math.abs(expected.value - actual.value) < 5;
     }
 
@@ -214,38 +214,38 @@ public abstract class HsvTestCase<H extends Hsv> extends ColorHslOrHsvTestCase<H
 
     @Test
     public final void testEqualsDifferentHue() {
-        this.checkNotEquals(Hsv.with(HueHsvComponent.with(99), SATURATION, VALUE));
+        this.checkNotEquals(HsvColor.with(HueHsvColorComponent.with(99), SATURATION, VALUE));
     }
 
     @Test
     public final void testEqualsDifferentSaturation() {
-        this.checkNotEquals(Hsv.with(HUE, SaturationHsvComponent.with(0.99f), VALUE));
+        this.checkNotEquals(HsvColor.with(HUE, SaturationHsvColorComponent.with(0.99f), VALUE));
     }
 
     @Test
     public final void testEqualsDifferentLightness() {
-        this.checkNotEquals(Hsv.with(HUE, SATURATION, ValueHsvComponent.with(0.99f)));
+        this.checkNotEquals(HsvColor.with(HUE, SATURATION, ValueHsvColorComponent.with(0.99f)));
     }
 
     @Override
-    final Hsv createColorHslOrHsv() {
+    final HsvColor createColor() {
         return this.createHsv();
     }
 
-    final Hsv createHsv() {
+    final HsvColor createHsv() {
         return this.createHsv(HUE, SATURATION, VALUE);
     }
 
-    abstract H createHsv(final HueHsvComponent hue,
-                         final SaturationHsvComponent saturation,
-                         final ValueHsvComponent value);
+    abstract H createHsv(final HueHsvColorComponent hue,
+                         final SaturationHsvColorComponent saturation,
+                         final ValueHsvColorComponent value);
 
-    abstract AlphaHsvComponent alphaHsvComponent();
+    abstract AlphaHsvColorComponent alphaHsvColorComponent();
 
     // ClassTesting ...................................................................................................
 
     @Override
-    public final Class<Hsv> type() {
+    public final Class<HsvColor> type() {
         return Cast.to(this.hsvType());
     }
 
@@ -259,7 +259,7 @@ public abstract class HsvTestCase<H extends Hsv> extends ColorHslOrHsvTestCase<H
     // HasJsonNodeTesting..............................................................................................
 
     @Override
-    public final Hsv fromJsonNode(final JsonNode from) {
-        return Hsv.fromJsonNodeHsv(from);
+    public final HsvColor fromJsonNode(final JsonNode from) {
+        return HsvColor.fromJsonNodeHsv(from);
     }
 }

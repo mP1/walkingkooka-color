@@ -66,25 +66,25 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
 
     @Test
     public void testBlack() {
-        this.colorAndCheck("black", Color.BLACK);
+        this.colorAndCheck("black", RgbColor.BLACK);
     }
 
     @Test
     public void testBlackUpperCase() {
-        this.colorAndCheck("BLACK", Color.BLACK);
+        this.colorAndCheck("BLACK", RgbColor.BLACK);
     }
 
     @Test
     public void testSilver() {
-        this.colorAndCheck("silver", Color.fromRgb(0xc0c0c0));
+        this.colorAndCheck("silver", RgbColor.fromRgb0(0xc0c0c0));
     }
 
     @Test
     public void testTransparent() {
-        this.colorAndCheck("transparent", Color.parseColor("#00000000"));
+        this.colorAndCheck("transparent", RgbColor.parseRgb("#00000000"));
     }
 
-    private void colorAndCheck(final String name, final Color color) {
+    private void colorAndCheck(final String name, final RgbColor color) {
         final Optional<WebColorName> webColorName = WebColorName.with(name);
 
         assertEquals(color,

@@ -29,7 +29,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A web color name.
+ * A web rgb name.
  * <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"></a>
  */
 public final class WebColorName implements Name, Comparable<WebColorName> {
@@ -67,7 +67,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     private final static Map<String, WebColorName> NAME_CONSTANTS = Maps.sorted(WebColorName.CASE_SENSITIVITY.comparator());
 
     /**
-     * Allows lookup by RRGGBB value, used by {@link Color#webColorName}.
+     * Allows lookup by RRGGBB value, used by {@link RgbColor#webColorName}.
      */
     final static Map<Integer, WebColorName> RRGGBB_CONSTANTS = Maps.sorted();
 
@@ -226,7 +226,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     /**
      * <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"></a>
      * <pre>
-     * The transparent keyword represents a fully transparent color.
+     * The transparent keyword represents a fully transparent rgb.
      * This makes the background behind the colored item completely visible. Technically, transparent is a shortcut for rgba(0,0,0,0).
      * </pre>
      */
@@ -247,7 +247,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
             throw new IllegalArgumentException("Empty text for " + CharSequences.quoteAndEscape(name));
         }
 
-        final Color color = Color.parseColor(text);
+        final RgbColor color = RgbColor.parseRgb(text);
         final WebColorName webColorName = new WebColorName(name, color);
         WebColorName.NAME_CONSTANTS.put(name, webColorName);
         RRGGBB_CONSTANTS.put(color.argb(), webColorName);
@@ -264,7 +264,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     }
 
     // @VisibleForTesting
-    WebColorName(final String name, final Color color) {
+    WebColorName(final String name, final RgbColor color) {
         super();
         this.name = name;
         this.color = color;
@@ -278,13 +278,13 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     private final String name;
 
     /**
-     * Returns the {@link Color} with this name.
+     * Returns the {@link RgbColor} with this name.
      */
-    public Color color() {
+    public RgbColor color() {
         return this.color;
     }
 
-    private final Color color;
+    private final RgbColor color;
 
     // Object..........................................................................................................
 

@@ -17,12 +17,11 @@
 package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.color.ColorComponent;
-import walkingkooka.color.ColorHslOrHsv;
-import walkingkooka.color.HslComponent;
-import walkingkooka.color.HsvComponent;
+import walkingkooka.color.Color;
+import walkingkooka.color.HslColorComponent;
+import walkingkooka.color.HsvColorComponent;
+import walkingkooka.color.RgbColorComponent;
 import walkingkooka.math.DecimalNumberContexts;
-import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.TextCursors;
@@ -105,9 +104,9 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                   final float lightness) {
         this.parseAndCheck(ColorParsers.hsl(),
                 text,
-                ColorHslOrHsv.hsl(HslComponent.hue(hue),
-                        HslComponent.saturation(saturation),
-                        HslComponent.lightness(lightness)));
+                Color.hsl(HslColorComponent.hue(hue),
+                        HslColorComponent.saturation(saturation),
+                        HslColorComponent.lightness(lightness)));
     }
 
     // hsl(359,1.0,1.0).................................................................................................
@@ -180,10 +179,10 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                   final float alpha) {
         this.parseAndCheck(ColorParsers.hsl(),
                 text,
-                ColorHslOrHsv.hsl(HslComponent.hue(hue),
-                        HslComponent.saturation(saturation),
-                        HslComponent.lightness(lightness))
-                        .set(HslComponent.alpha(alpha)));
+                Color.hsl(HslColorComponent.hue(hue),
+                        HslColorComponent.saturation(saturation),
+                        HslColorComponent.lightness(lightness))
+                        .set(HslColorComponent.alpha(alpha)));
     }
 
 
@@ -251,9 +250,9 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                   final float value) {
         this.parseAndCheck(ColorParsers.hsv(),
                 text,
-                ColorHslOrHsv.hsv(HsvComponent.hue(hue),
-                        HsvComponent.saturation(saturation),
-                        HsvComponent.value(value)));
+                Color.hsv(HsvColorComponent.hue(hue),
+                        HsvColorComponent.saturation(saturation),
+                        HsvColorComponent.value(value)));
     }
 
     // hsv(359,1.0,1.0).................................................................................................
@@ -319,10 +318,10 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                    final float alpha) {
         this.parseAndCheck(ColorParsers.hsv(),
                 text,
-                ColorHslOrHsv.hsv(HsvComponent.hue(hue),
-                        HsvComponent.saturation(saturation),
-                        HsvComponent.value(value))
-                        .set(HsvComponent.alpha(alpha)));
+                Color.hsv(HsvColorComponent.hue(hue),
+                        HsvColorComponent.saturation(saturation),
+                        HsvColorComponent.value(value))
+                        .set(HsvColorComponent.alpha(alpha)));
     }
 
     // rgba(1,2,3).......................................................................................................
@@ -396,11 +395,11 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseAndCheck(
                 ColorParsers.rgb(),
                 text,
-                ColorHslOrHsv.color(
-                        ColorComponent.red((byte) red),
-                        ColorComponent.green((byte) green),
-                        ColorComponent.blue((byte) blue))
-                        .set(ColorComponent.alpha((byte) alpha)));
+                Color.rgb(
+                        RgbColorComponent.red((byte) red),
+                        RgbColorComponent.green((byte) green),
+                        RgbColorComponent.blue((byte) blue))
+                        .set(RgbColorComponent.alpha((byte) alpha)));
     }
 
     // rgb(1,2,3).......................................................................................................
@@ -464,9 +463,9 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     private void parseRgbAndCheck(final String text, final int red, final int green, final int blue) {
         this.parseAndCheck(ColorParsers.rgb(),
                 text,
-                ColorHslOrHsv.color(ColorComponent.red((byte) red),
-                        ColorComponent.green((byte) green),
-                        ColorComponent.blue((byte) blue)));
+                Color.rgb(RgbColorComponent.red((byte) red),
+                        RgbColorComponent.green((byte) green),
+                        RgbColorComponent.blue((byte) blue)));
     }
 
     // helpers..........................................................................................................
@@ -482,12 +481,12 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     private void parseAndCheck(final Parser<ParserContext> parser,
                                final String text,
-                               final ColorHslOrHsv value) {
+                               final Color value) {
         assertEquals(value,
                 parser.orReport(ParserReporters.basic())
                         .parse(TextCursors.charSequence(text),
                                 this.parserContext())
-                        .map(t -> ColorFunctionFunctionParserToken.class.cast(t).toColorHslOrHsv())
+                        .map(t -> ((ColorFunctionFunctionParserToken) t).toColorHslOrHsv())
                         .orElseThrow(() -> new AssertionError()),
                 () -> "parse " + CharSequences.quoteAndEscape(text));
     }

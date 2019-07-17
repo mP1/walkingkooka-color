@@ -19,11 +19,11 @@ package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.color.Color;
-import walkingkooka.color.ColorHslOrHsv;
-import walkingkooka.color.Hsl;
-import walkingkooka.color.HslComponent;
-import walkingkooka.color.Hsv;
-import walkingkooka.color.HsvComponent;
+import walkingkooka.color.HslColor;
+import walkingkooka.color.HslColorComponent;
+import walkingkooka.color.HsvColor;
+import walkingkooka.color.HsvColorComponent;
+import walkingkooka.color.RgbColor;
 import walkingkooka.type.JavaVisibility;
 
 import java.util.Optional;
@@ -44,8 +44,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslNumberNumberNumber() {
-        this.colorHslOrHsvAndCheck("hsl",
-                hsl(359, 0.25f,0.5f),
+        this.colorCheck("hsl",
+                hsl(359, 0.25f, 0.5f),
                 number(359),
                 number(0.25),
                 number(0.5));
@@ -53,8 +53,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslNumberNumberNumberNumber() {
-        this.colorHslOrHsvAndCheck("hsl",
-                hsl(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsl",
+                hsl(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 number(0.25),
                 number(0.5),
@@ -63,8 +63,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslNumberNumberNumberNumber2() {
-        this.colorHslOrHsvAndCheck("hsl",
-                hsl(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsl",
+                hsl(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 number(0.25),
                 number(0.5),
@@ -73,8 +73,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslNumberNumberNumberPercentage() {
-        this.colorHslOrHsvAndCheck("hsl",
-                hsl(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsl",
+                hsl(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 number(0.25),
                 number(0.5),
@@ -83,8 +83,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslPercentagePercentagePercentagePercentage() {
-        this.colorHslOrHsvAndCheck("hsl",
-                hsl(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsl",
+                hsl(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 percentage(25),
                 percentage(50),
@@ -93,8 +93,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslPercentagePercentagePercentagePercentage2() {
-        this.colorHslOrHsvAndCheck("hsl",
-                hsl(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsl",
+                hsl(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 percentage(25),
                 percentage(50),
@@ -103,34 +103,34 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHslaNumberNumberNumber() {
-        this.colorHslOrHsvAndCheck("hsla",
-                hsl(359, 0.25f,0.5f),
+        this.colorCheck("hsla",
+                hsl(359, 0.25f, 0.5f),
                 number(359),
                 number(0.25),
                 number(0.5));
     }
 
-    private Hsl hsl(final float hue,
-                    final float saturation,
-                    final float lightness) {
-        return ColorHslOrHsv.hsl(HslComponent.hue(hue),
-                HslComponent.saturation(saturation),
-                HslComponent.lightness(lightness));
+    private HslColor hsl(final float hue,
+                         final float saturation,
+                         final float lightness) {
+        return Color.hsl(HslColorComponent.hue(hue),
+                HslColorComponent.saturation(saturation),
+                HslColorComponent.lightness(lightness));
     }
 
-    private Hsl hsl(final float hue,
-                    final float saturation,
-                    final float lightness,
-                    final float alpha) {
-        return hsl(hue, saturation, lightness).set(HslComponent.alpha(alpha));
+    private HslColor hsl(final float hue,
+                         final float saturation,
+                         final float lightness,
+                         final float alpha) {
+        return hsl(hue, saturation, lightness).set(HslColorComponent.alpha(alpha));
     }
 
     // hsv..............................................................................................................
 
     @Test
     public void testHsvNumberNumberNumber() {
-        this.colorHslOrHsvAndCheck("hsv",
-                hsv(359, 0.25f,0.5f),
+        this.colorCheck("hsv",
+                hsv(359, 0.25f, 0.5f),
                 number(359),
                 number(0.25),
                 number(0.5));
@@ -138,8 +138,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHsvNumberNumberNumberNumber() {
-        this.colorHslOrHsvAndCheck("hsv",
-                hsv(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsv",
+                hsv(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 number(0.25),
                 number(0.5),
@@ -148,8 +148,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHsvNumberNumberNumberNumber2() {
-        this.colorHslOrHsvAndCheck("hsv",
-                hsv(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsv",
+                hsv(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 number(0.25),
                 number(0.5),
@@ -158,8 +158,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHsvNumberNumberNumberPercentage() {
-        this.colorHslOrHsvAndCheck("hsv",
-                hsv(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsv",
+                hsv(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 number(0.25),
                 number(0.5),
@@ -168,8 +168,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHsvPercentagePercentagePercentagePercentage() {
-        this.colorHslOrHsvAndCheck("hsv",
-                hsv(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsv",
+                hsv(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 percentage(25),
                 percentage(50),
@@ -178,8 +178,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHsvPercentagePercentagePercentagePercentage2() {
-        this.colorHslOrHsvAndCheck("hsv",
-                hsv(359, 0.25f,0.5f, 0.75f),
+        this.colorCheck("hsv",
+                hsv(359, 0.25f, 0.5f, 0.75f),
                 number(359),
                 percentage(25),
                 percentage(50),
@@ -188,34 +188,34 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testHsvaNumberNumberNumber() {
-        this.colorHslOrHsvAndCheck("hsva",
-                hsv(359, 0.25f,0.5f),
+        this.colorCheck("hsva",
+                hsv(359, 0.25f, 0.5f),
                 number(359),
                 number(0.25),
                 number(0.5));
     }
 
-    private Hsv hsv(final float hue,
-                    final float saturation,
-                    final float value) {
-        return ColorHslOrHsv.hsv(HsvComponent.hue(hue),
-                HsvComponent.saturation(saturation),
-                HsvComponent.value(value));
+    private HsvColor hsv(final float hue,
+                         final float saturation,
+                         final float value) {
+        return Color.hsv(HsvColorComponent.hue(hue),
+                HsvColorComponent.saturation(saturation),
+                HsvColorComponent.value(value));
     }
 
-    private Hsv hsv(final float hue,
-                    final float saturation,
-                    final float value,
-                    final float alpha) {
-        return hsv(hue, saturation, value).set(HsvComponent.alpha(alpha));
+    private HsvColor hsv(final float hue,
+                         final float saturation,
+                         final float value,
+                         final float alpha) {
+        return hsv(hue, saturation, value).set(HsvColorComponent.alpha(alpha));
     }
 
     // rgb..............................................................................................................
 
     @Test
     public void testRgb() {
-        this.colorHslOrHsvAndCheck("rgb",
-                Color.parseColor("#123456"),
+        this.colorCheck("rgb",
+                RgbColor.parseRgb("#123456"),
                 number(0x12),
                 number(0x34),
                 number(0x56));
@@ -223,8 +223,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testRgbWithAlpha() {
-        this.colorHslOrHsvAndCheck("rgb",
-                Color.parseColor("#1234567f"),
+        this.colorCheck("rgb",
+                RgbColor.parseRgb("#1234567f"),
                 number(0x12),
                 number(0x34),
                 number(0x56),
@@ -233,8 +233,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testRgbWithAlphaPercentage() {
-        this.colorHslOrHsvAndCheck("rgb",
-                Color.parseColor("#12345680"),
+        this.colorCheck("rgb",
+                RgbColor.parseRgb("#12345680"),
                 number(0x12),
                 number(0x34),
                 number(0x56),
@@ -243,8 +243,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testRgba() {
-        this.colorHslOrHsvAndCheck("rgba",
-                Color.parseColor("#123456"),
+        this.colorCheck("rgba",
+                RgbColor.parseRgb("#123456"),
                 number(0x12),
                 number(0x34),
                 number(0x56));
@@ -252,8 +252,8 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testRgbaWithAlpha() {
-        this.colorHslOrHsvAndCheck("rgba",
-                Color.parseColor("#1234567f"),
+        this.colorCheck("rgba",
+                RgbColor.parseRgb("#1234567f"),
                 number(0x12),
                 number(0x34),
                 number(0x56),
@@ -262,33 +262,33 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testRgbaWithAlphaPercentage() {
-        this.colorHslOrHsvAndCheck("rgba",
-                Color.parseColor("#12345680"),
+        this.colorCheck("rgba",
+                RgbColor.parseRgb("#12345680"),
                 number(0x12),
                 number(0x34),
                 number(0x56),
                 percentage(50));
     }
 
-    private ColorFunctionParserToken number(final double value ) {
+    private ColorFunctionParserToken number(final double value) {
         return ColorFunctionParserToken.number(value, String.valueOf(value));
     }
 
-    private ColorFunctionParserToken percentage(final double value ) {
-        return ColorFunctionParserToken.percentage(value, String.valueOf(value) + "%");
+    private ColorFunctionParserToken percentage(final double value) {
+        return ColorFunctionParserToken.percentage(value, value + "%");
     }
 
-    private void colorHslOrHsvAndCheck(final String name,
-                                       final ColorHslOrHsv colorHslOrHsv,
-                                       final ColorFunctionParserToken...values) {
-        assertEquals(colorHslOrHsv,
+    private void colorCheck(final String name,
+                            final Color color,
+                            final ColorFunctionParserToken... values) {
+        assertEquals(color,
                 ColorFunctionTransformer.functionName(ColorFunctionFunctionNameParserToken.with(name, name))
-                        .colorHslOrHsv(
-                            values[0],
+                        .color(
+                                values[0],
                                 values[1],
                                 values[2],
-                                Optional.ofNullable(values.length == 4 ? values[3] : null )),
-                () -> name + " " + colorHslOrHsv);
+                                Optional.ofNullable(values.length == 4 ? values[3] : null)),
+                () -> name + " " + color);
     }
 
     // ClassTesting.....................................................................................................

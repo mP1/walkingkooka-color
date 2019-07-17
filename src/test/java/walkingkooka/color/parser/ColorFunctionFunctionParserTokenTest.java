@@ -22,10 +22,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.tree.visit.Visiting;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionParserTokenTestCase3<ColorFunctionFunctionParserToken> {
@@ -140,7 +137,7 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
                 parenthesisClose());
     }
 
-    private ColorFunctionFunctionParserToken createToken(final String text, final ColorFunctionParserToken...tokens) {
+    private ColorFunctionFunctionParserToken createToken(final String text, final ColorFunctionParserToken... tokens) {
         return ColorFunctionFunctionParserToken.with(Lists.of(tokens), text);
     }
 
