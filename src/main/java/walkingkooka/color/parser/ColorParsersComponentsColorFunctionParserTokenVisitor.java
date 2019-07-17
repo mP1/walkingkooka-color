@@ -19,7 +19,7 @@ package walkingkooka.color.parser;
 
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.Lists;
-import walkingkooka.color.ColorHslOrHsv;
+import walkingkooka.color.Color;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.parser.ParserToken;
 
@@ -27,17 +27,17 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Creates a {@link ColorHslOrHsv} from a {@link ColorFunctionParserToken}.
+ * Creates a {@link Color} from a {@link ColorFunctionParserToken}.
  */
 final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorFunctionParserTokenVisitor {
 
-    static ColorHslOrHsv transform(final ParserToken token) {
+    static Color transform(final ParserToken token) {
         final ColorParsersComponentsColorFunctionParserTokenVisitor visitor = new ColorParsersComponentsColorFunctionParserTokenVisitor();
         visitor.accept(token);
 
         final List<ColorFunctionParserToken> values = visitor.values;
 
-        return visitor.transformer.colorHslOrHsv(ColorFunctionParserToken.class.cast(values.get(0)),
+        return visitor.transformer.color(ColorFunctionParserToken.class.cast(values.get(0)),
                 ColorFunctionParserToken.class.cast(values.get(1)),
                 ColorFunctionParserToken.class.cast(values.get(2)),
                 Optional.ofNullable(values.size() == 4 ?

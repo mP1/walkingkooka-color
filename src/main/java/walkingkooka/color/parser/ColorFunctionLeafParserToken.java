@@ -24,7 +24,7 @@ import walkingkooka.text.cursor.parser.ParserToken;
 import java.util.Objects;
 
 /**
- * Base class for a color function leaf {@link ParserToken}.
+ * Base class for a rgb function leaf {@link ParserToken}.
  */
 abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken implements LeafParserToken<V> {
 

@@ -17,21 +17,21 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.color.AlphaColorComponent;
-import walkingkooka.color.AlphaHslComponent;
-import walkingkooka.color.AlphaHsvComponent;
-import walkingkooka.color.BlueColorComponent;
-import walkingkooka.color.ColorComponent;
-import walkingkooka.color.GreenColorComponent;
-import walkingkooka.color.HslComponent;
-import walkingkooka.color.HsvComponent;
-import walkingkooka.color.HueHslComponent;
-import walkingkooka.color.HueHsvComponent;
-import walkingkooka.color.LightnessHslComponent;
-import walkingkooka.color.RedColorComponent;
-import walkingkooka.color.SaturationHslComponent;
-import walkingkooka.color.SaturationHsvComponent;
-import walkingkooka.color.ValueHsvComponent;
+import walkingkooka.color.AlphaHslColorComponent;
+import walkingkooka.color.AlphaHsvColorComponent;
+import walkingkooka.color.AlphaRgbColorComponent;
+import walkingkooka.color.BlueRgbColorComponent;
+import walkingkooka.color.GreenRgbColorComponent;
+import walkingkooka.color.HslColorComponent;
+import walkingkooka.color.HsvColorComponent;
+import walkingkooka.color.HueHslColorComponent;
+import walkingkooka.color.HueHsvColorComponent;
+import walkingkooka.color.LightnessHslColorComponent;
+import walkingkooka.color.RedRgbColorComponent;
+import walkingkooka.color.RgbColorComponent;
+import walkingkooka.color.SaturationHslColorComponent;
+import walkingkooka.color.SaturationHsvColorComponent;
+import walkingkooka.color.ValueHsvColorComponent;
 
 public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSymbolParserToken<Double> {
 
@@ -79,67 +79,67 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
     // ColorFunctionTransformer.........................................................................................
 
     @Override
-    RedColorComponent colorRed() {
-        return ColorComponent.red(this.byteValue());
+    RedRgbColorComponent colorRed() {
+        return RgbColorComponent.red(this.byteValue());
     }
 
     @Override
-    BlueColorComponent colorBlue() {
-        return ColorComponent.blue(this.byteValue());
+    BlueRgbColorComponent colorBlue() {
+        return RgbColorComponent.blue(this.byteValue());
     }
 
     @Override
-    GreenColorComponent colorGreen() {
-        return ColorComponent.green(this.byteValue());
+    GreenRgbColorComponent colorGreen() {
+        return RgbColorComponent.green(this.byteValue());
     }
 
     @Override
-    AlphaColorComponent colorAlpha() {
-        return ColorComponent.alpha(this.byteValue());
+    AlphaRgbColorComponent colorAlpha() {
+        return RgbColorComponent.alpha(this.byteValue());
     }
 
     private final byte byteValue() {
-        return (byte)Math.round(this.value() * ColorComponent.MAX_VALUE / 100);
+        return (byte)Math.round(this.value() * RgbColorComponent.MAX_VALUE / 100);
     }
 
     @Override
-    HueHslComponent hslHue() {
+    HueHslColorComponent hslHue() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    SaturationHslComponent hslSaturation() {
-        return HslComponent.saturation(this.floatValue());
+    SaturationHslColorComponent hslSaturation() {
+        return HslColorComponent.saturation(this.floatValue());
     }
 
     @Override
-    LightnessHslComponent hslLightness() {
-        return HslComponent.lightness(this.floatValue());
+    LightnessHslColorComponent hslLightness() {
+        return HslColorComponent.lightness(this.floatValue());
     }
 
     @Override
-    AlphaHslComponent hslAlpha() {
-        return HslComponent.alpha(this.floatValue());
+    AlphaHslColorComponent hslAlpha() {
+        return HslColorComponent.alpha(this.floatValue());
     }
 
     @Override
-    HueHsvComponent hsvHue() {
+    HueHsvColorComponent hsvHue() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    SaturationHsvComponent hsvSaturation() {
-        return HsvComponent.saturation(this.floatValue());
+    SaturationHsvColorComponent hsvSaturation() {
+        return HsvColorComponent.saturation(this.floatValue());
     }
 
     @Override
-    ValueHsvComponent hsvValue() {
-        return HsvComponent.value(this.floatValue());
+    ValueHsvColorComponent hsvValue() {
+        return HsvColorComponent.value(this.floatValue());
     }
 
     @Override
-    AlphaHsvComponent hsvAlpha() {
-        return HsvComponent.alpha(this.floatValue());
+    AlphaHsvColorComponent hsvAlpha() {
+        return HsvColorComponent.alpha(this.floatValue());
     }
 
     private float floatValue() {

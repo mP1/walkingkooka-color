@@ -17,19 +17,19 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.collect.list.Lists;
-import walkingkooka.color.AlphaColorComponent;
-import walkingkooka.color.AlphaHslComponent;
-import walkingkooka.color.AlphaHsvComponent;
-import walkingkooka.color.BlueColorComponent;
-import walkingkooka.color.ColorHslOrHsv;
-import walkingkooka.color.GreenColorComponent;
-import walkingkooka.color.HueHslComponent;
-import walkingkooka.color.HueHsvComponent;
-import walkingkooka.color.LightnessHslComponent;
-import walkingkooka.color.RedColorComponent;
-import walkingkooka.color.SaturationHslComponent;
-import walkingkooka.color.SaturationHsvComponent;
-import walkingkooka.color.ValueHsvComponent;
+import walkingkooka.color.AlphaHslColorComponent;
+import walkingkooka.color.AlphaHsvColorComponent;
+import walkingkooka.color.AlphaRgbColorComponent;
+import walkingkooka.color.BlueRgbColorComponent;
+import walkingkooka.color.Color;
+import walkingkooka.color.GreenRgbColorComponent;
+import walkingkooka.color.HueHslColorComponent;
+import walkingkooka.color.HueHsvColorComponent;
+import walkingkooka.color.LightnessHslColorComponent;
+import walkingkooka.color.RedRgbColorComponent;
+import walkingkooka.color.SaturationHslColorComponent;
+import walkingkooka.color.SaturationHsvColorComponent;
+import walkingkooka.color.ValueHsvColorComponent;
 import walkingkooka.text.cursor.parser.ParentParserToken;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.tree.visit.Visiting;
@@ -65,7 +65,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
 
     // toColorHslOrHsv..................................................................................................
 
-    public ColorHslOrHsv toColorHslOrHsv() {
+    public Color toColorHslOrHsv() {
         return ColorParsersComponentsColorFunctionParserTokenVisitor.transform(this);
     }
 
@@ -147,62 +147,62 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     // ColorFunctionTransformer.........................................................................................
 
     @Override
-    RedColorComponent colorRed() {
+    RedRgbColorComponent colorRed() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    BlueColorComponent colorBlue() {
+    BlueRgbColorComponent colorBlue() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    GreenColorComponent colorGreen() {
+    GreenRgbColorComponent colorGreen() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    AlphaColorComponent colorAlpha() {
+    AlphaRgbColorComponent colorAlpha() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    HueHslComponent hslHue() {
+    HueHslColorComponent hslHue() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    SaturationHslComponent hslSaturation() {
+    SaturationHslColorComponent hslSaturation() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    LightnessHslComponent hslLightness() {
+    LightnessHslColorComponent hslLightness() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    AlphaHslComponent hslAlpha() {
+    AlphaHslColorComponent hslAlpha() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    HueHsvComponent hsvHue() {
+    HueHsvColorComponent hsvHue() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    SaturationHsvComponent hsvSaturation() {
+    SaturationHsvColorComponent hsvSaturation() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    ValueHsvComponent hsvValue() {
+    ValueHsvColorComponent hsvValue() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    AlphaHsvComponent hsvAlpha() {
+    AlphaHsvColorComponent hsvAlpha() {
         throw new UnsupportedOperationException();
     }
 }

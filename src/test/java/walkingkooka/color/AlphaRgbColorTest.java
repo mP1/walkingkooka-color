@@ -1,0 +1,150 @@
+/*
+ * Copyright 2019 Miroslav Pokorny (github.com/mP1)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+package walkingkooka.color;
+
+import org.junit.jupiter.api.Test;
+import walkingkooka.tree.json.JsonNode;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
+
+    @Test
+    public void testFromArgb() {
+        final RgbColor rgb = RgbColor.fromArgb0(0x04010203);
+        assertSame(RED, rgb.red(), "red");
+        assertSame(GREEN, rgb.green(), "green");
+        assertSame(BLUE, rgb.blue(), "blue");
+        assertSame(RgbColorComponent.alpha((byte) 0x4), rgb.alpha(), "alpha");
+        assertEquals(0x04010203, rgb.argb(), "argb");
+    }
+
+    @Test
+    public void testFromArgbWhenOpaque() {
+        final RgbColor rgb = RgbColor.fromArgb0(0xFF010203);
+        assertSame(RED, rgb.red(), "red");
+        assertSame(GREEN, rgb.green(), "green");
+        assertSame(BLUE, rgb.blue(), "blue");
+        assertEquals(OpaqueRgbColor.class, rgb.getClass(), "rgb must not be a AlphaRgbColor");
+        assertEquals(0xFF010203, rgb.argb(), "argb");
+    }
+
+    @Test
+    public void testRgbAndArgbAndValue() {
+        final RgbColor rgb = RgbColor.with(RgbColorComponent.red((byte) 0x80),
+                RgbColorComponent.green((byte) 0x81),
+                RgbColorComponent.blue((byte) 0x82)).set(RgbColorComponent.alpha((byte) 0x84));
+        assertEquals(0x808182, rgb.rgb(), "rgb");
+        assertEquals(0x84808182, rgb.argb(), "argb");
+        assertEquals(0x84808182, rgb.value(), "value");
+    }
+
+    @Test
+    @Override
+    public void testHasAlpha() {
+        final AlphaRgbColor rgb = AlphaRgbColor.with(RED, GREEN, BLUE, ALPHA);
+        assertTrue(rgb.hasAlpha(), rgb + " has alpha");
+    }
+
+    @Test
+    public void testSetSameAlpha() {
+        final AlphaRgbColor rgb = this.createColor();
+        assertSame(rgb, rgb.set(ALPHA));
+    }
+
+    @Test
+    public void testSetOpaqueAlphaBecomesOpaqueColor() {
+        final AlphaRgbColor rgb = this.createColor();
+        final RgbColorComponent replacement = AlphaRgbColorComponent.OPAQUE;
+        final OpaqueRgbColor opaque = (OpaqueRgbColor) rgb.set(replacement);
+        assertSame(rgb.red(), opaque.red(), "red");
+        assertSame(rgb.green(), opaque.green(), "green");
+        assertSame(rgb.blue(), opaque.blue(), "blue");
+        assertSame(replacement, opaque.alpha(), "alpha");
+    }
+
+    @Test
+    public void testMixDifferentAlphaVeryLargeAmount() {
+        final AlphaRgbColorComponent replacement = AlphaRgbColorComponent.with(DIFFERENT);
+        this.mixAndCheck(this.createColor(), replacement, LARGE_AMOUNT, replacement);
+    }
+
+    @Test
+    public void testToAwtColor() {
+        final java.awt.Color rgb = this.createColor().toAwtColor();
+        assertEquals(1, rgb.getRed(), "red");
+        assertEquals(2, rgb.getGreen(), "green");
+        assertEquals(3, rgb.getBlue(), "blue");
+        assertEquals(4, rgb.getAlpha(), "alpha");
+    }
+
+    @Test
+    public void testWebNameCyan() {
+        this.webNameAndCheck(WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50)), null);
+    }
+
+    @Test
+    public void testEqualsDifferentAlpha() {
+        final RgbColor rgb = this.createColor();
+        this.checkNotEquals(AlphaRgbColor.with(rgb.red(), rgb.green(), rgb.blue(), AlphaRgbColorComponent.with((byte) 0xff)));
+    }
+
+    // HasJsonNode............................................................................................
+
+    @Test
+    public void testFromJsonNode() {
+        this.fromJsonNodeAndCheck(JsonNode.string("#01020304"), RgbColor.fromArgb0(0x04010203));
+    }
+
+    @Test
+    public void testFromJsonNodeFEDCBA98() {
+        this.fromJsonNodeAndCheck(JsonNode.string("#fedcba98"), RgbColor.fromArgb0(0x98FEDCBA));
+    }
+
+
+    @Test
+    public void testToJsonNode() {
+        this.toJsonNodeAndCheck(RgbColor.fromArgb0(0x04010203), JsonNode.string("#01020304"));
+    }
+
+    @Test
+    public void testToJsonNodeFEDCBA98() {
+        this.toJsonNodeAndCheck(RgbColor.fromArgb0(0x98FEDCBA), JsonNode.string("#fedcba98"));
+    }
+
+    // Object............................................................................................
+
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(RgbColor.fromArgb0(0x04010203), "#01020304");
+    }
+
+    @Override
+    AlphaRgbColor createColor(final RedRgbColorComponent red,
+                              final GreenRgbColorComponent green,
+                              final BlueRgbColorComponent blue) {
+        return AlphaRgbColor.with(red, green, blue, ALPHA);
+    }
+
+    @Override
+    public Class<AlphaRgbColor> type() {
+        return AlphaRgbColor.class;
+    }
+}
