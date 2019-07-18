@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
         HashCodeEqualsDefinedTesting<C>,
-        HasJsonNodeTesting<C>,
+        HasJsonNodeStringTesting<C>,
         SerializationTesting<C>,
         ToStringTesting<C> {
 
