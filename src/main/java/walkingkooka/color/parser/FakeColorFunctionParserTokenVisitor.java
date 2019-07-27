@@ -36,7 +36,7 @@ import walkingkooka.text.cursor.parser.SignParserToken;
 import walkingkooka.text.cursor.parser.SingleQuotedParserToken;
 import walkingkooka.text.cursor.parser.StringParserToken;
 import walkingkooka.text.cursor.parser.ZonedDateTimeParserToken;
-import walkingkooka.tree.visit.Visiting;
+import walkingkooka.visit.Visiting;
 
 public class FakeColorFunctionParserTokenVisitor extends ColorFunctionParserTokenVisitor implements Fake {
 
