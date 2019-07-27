@@ -18,7 +18,7 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.text.cursor.parser.ParserTokenVisitor;
-import walkingkooka.tree.visit.Visiting;
+import walkingkooka.visit.Visiting;
 
 public abstract class ColorFunctionParserTokenVisitor extends ParserTokenVisitor {
 
