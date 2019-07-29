@@ -32,16 +32,6 @@ public abstract class ColorFunctionSymbolParserTokenTestCase<T extends ColorFunc
     }
 
     @Test
-    public void testWithoutSymbols() {
-        assertEquals(Optional.empty(), this.createToken().withoutSymbols());
-    }
-
-    @Test
-    public final void testIsSymbol() {
-        assertEquals(true, this.createToken().isSymbol());
-    }
-
-    @Test
     public final void testDifferentValue() {
         this.checkNotEquals(this.createToken(this.text(), "different-value"));
     }

@@ -17,10 +17,17 @@
 
 package walkingkooka.color;
 
+import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.type.JavaVisibility;
 
 public final class HslOrHsvColorComponentTest implements ClassTesting2<HslOrHsvColorComponent> {
+
+    @Test
+    @Override
+    public void testAllMethodsVisibility() {
+        this.allMethodsVisibilityCheck("value");
+    }
 
     // ClassTesting....................................................................................................
 
