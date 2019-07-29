@@ -39,13 +39,6 @@ abstract class ColorFunctionNonSymbolParserToken<V> extends ColorFunctionLeafPar
         super(value, text);
     }
 
-    /**
-     * Always returns self.
-     */
-    public Optional<ColorFunctionParserToken> withoutSymbols() {
-        return Optional.of(this);
-    }
-
     // isXXX............................................................................................................
 
     @Override

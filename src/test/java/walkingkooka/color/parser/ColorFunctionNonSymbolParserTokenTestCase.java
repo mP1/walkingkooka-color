@@ -32,12 +32,6 @@ public abstract class ColorFunctionNonSymbolParserTokenTestCase<T extends ColorF
     }
 
     @Test
-    public void testWithoutSymbols() {
-        final T token = this.createToken();
-        assertEquals(Optional.of(token), token.withoutSymbols());
-    }
-
-    @Test
     public final void testIsSymbol() {
         assertEquals(false, this.createToken().isSymbol());
     }
