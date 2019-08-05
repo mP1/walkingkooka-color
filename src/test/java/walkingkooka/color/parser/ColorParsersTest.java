@@ -21,6 +21,7 @@ import walkingkooka.color.Color;
 import walkingkooka.color.HslColorComponent;
 import walkingkooka.color.HsvColorComponent;
 import walkingkooka.color.RgbColorComponent;
+import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.test.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
@@ -492,7 +493,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     }
 
     private ParserContext parserContext() {
-        return ParserContexts.basic(DecimalNumberContexts.american(MathContext.DECIMAL32));
+        return ParserContexts.basic(DateTimeContexts.fake(), DecimalNumberContexts.american(MathContext.DECIMAL32));
     }
 
     @Override
