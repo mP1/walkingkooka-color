@@ -22,6 +22,7 @@ import walkingkooka.ToStringBuilder;
 import walkingkooka.UsesToStringBuilder;
 import walkingkooka.color.parser.ColorFunctionFunctionParserToken;
 import walkingkooka.color.parser.ColorParsers;
+import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.test.HashCodeEqualsDefined;
 import walkingkooka.text.CharSequences;
@@ -149,7 +150,7 @@ public abstract class Color implements HashCodeEqualsDefined,
     static Color parseColorParserToken(final String text,
                                        final Parser<ParserContext> parser) {
         try {
-            return parser.parse(TextCursors.charSequence(text), ParserContexts.basic(DecimalNumberContexts.american(MathContext.DECIMAL32)))
+            return parser.parse(TextCursors.charSequence(text), ParserContexts.basic(DateTimeContexts.fake(), DecimalNumberContexts.american(MathContext.DECIMAL32)))
                     .map(t -> ColorFunctionFunctionParserToken.class.cast(t).toColorHslOrHsv())
                     .orElseThrow(() -> new IllegalArgumentException("Parsing " + CharSequences.quoteAndEscape(text) + " failed."));
         } catch (final ParserException cause) {
