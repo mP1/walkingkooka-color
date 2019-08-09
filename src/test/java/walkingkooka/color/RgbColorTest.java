@@ -28,49 +28,49 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     @Test
     public void testParseColorMissingLeadingHashFails() {
-        this.parseFails("123", IllegalArgumentException.class);
+        this.parseStringFails("123", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorInvalidFails() {
-        this.parseFails("xyz", IllegalArgumentException.class);
+        this.parseStringFails("xyz", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorInvalidFails2() {
-        this.parseFails("#1x3", IllegalArgumentException.class);
+        this.parseStringFails("#1x3", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorOneDigitFails() {
-        this.parseFails("#1", IllegalArgumentException.class);
+        this.parseStringFails("#1", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorTwoDigitsFails() {
-        this.parseFails("#12", IllegalArgumentException.class);
+        this.parseStringFails("#12", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorFiveDigitsFails() {
-        this.parseFails("#12345", IllegalArgumentException.class);
+        this.parseStringFails("#12345", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorSevenDigitsFails() {
-        this.parseFails("#1234567", IllegalArgumentException.class);
+        this.parseStringFails("#1234567", IllegalArgumentException.class);
     }
 
     // rgba(1,2,3).......................................................................................................
 
     @Test
     public void testParseColorRgbaFunctionIncompleteFails() {
-        this.parseFails("rgba(1", IllegalArgumentException.class);
+        this.parseStringFails("rgba(1", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorRgbaFunctionMissingParensRightFails() {
-        this.parseFails("rgba(1,2,3,0.5", IllegalArgumentException.class);
+        this.parseStringFails("rgba(1,2,3,0.5", IllegalArgumentException.class);
     }
 
     @Test
@@ -108,7 +108,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
                                     final int green,
                                     final int blue,
                                     final int alpha) {
-        this.parseAndCheck(text,
+        this.parseStringAndCheck(text,
                 RgbColor.with(RedRgbColorComponent.with((byte) red),
                         GreenRgbColorComponent.with((byte) green),
                         BlueRgbColorComponent.with((byte) blue))
@@ -119,12 +119,12 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     @Test
     public void testParseColorRgbFunctionIncompleteFails() {
-        this.parseFails("rgb(1", IllegalArgumentException.class);
+        this.parseStringFails("rgb(1", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorRgbFunctionMissingParensRightFails() {
-        this.parseFails("rgb(1,2,3", IllegalArgumentException.class);
+        this.parseStringFails("rgb(1,2,3", IllegalArgumentException.class);
     }
 
     @Test
@@ -148,7 +148,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     }
 
     private void parseRgbAndCheck2(final String text, final int red, final int green, final int blue) {
-        this.parseAndCheck(text, RgbColor.with(RedRgbColorComponent.with((byte) red),
+        this.parseStringAndCheck(text, RgbColor.with(RedRgbColorComponent.with((byte) red),
                 GreenRgbColorComponent.with((byte) green),
                 BlueRgbColorComponent.with((byte) blue)));
     }
@@ -193,7 +193,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     }
 
     private void parseRgbAndCheck(final String text, final int rgb) {
-        this.parseAndCheck(text, RgbColor.fromRgb0(rgb));
+        this.parseStringAndCheck(text, RgbColor.fromRgb0(rgb));
     }
 
     // #1234.............................................................................................................
@@ -266,24 +266,24 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     }
 
     private void parseArgbAndCheck(final String text, final int argb) {
-        this.parseAndCheck(text, RgbColor.fromArgb0(argb));
+        this.parseStringAndCheck(text, RgbColor.fromArgb0(argb));
     }
 
     // name............................................................................................................
 
     @Test
     public void testParseColorNameUnknownFails() {
-        this.parseFails("Unknown", IllegalArgumentException.class);
+        this.parseStringFails("Unknown", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseColorBlack() {
-        this.parseAndCheck("black", RgbColor.BLACK);
+        this.parseStringAndCheck("black", RgbColor.BLACK);
     }
 
     @Test
     public void testParseColorCyan() {
-        this.parseAndCheck("CYAN", WebColorName.CYAN.color());
+        this.parseStringAndCheck("CYAN", WebColorName.CYAN.color());
     }
 
     @Override
@@ -315,7 +315,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     // ParseStringTesting .............................................................................................
 
     @Override
-    public RgbColor parse(final String text) {
+    public RgbColor parseString(final String text) {
         return RgbColor.parseRgb(text);
     }
 }

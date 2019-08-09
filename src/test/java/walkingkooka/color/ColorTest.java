@@ -33,12 +33,12 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Test
     public void testParseFails() {
-        this.parseFails("abc", IllegalArgumentException.class);
+        this.parseStringFails("abc", IllegalArgumentException.class);
     }
 
     @Test
     public void testParseHsl() {
-        this.parseAndCheck("hsl(359, 0%, 25%)",
+        this.parseStringAndCheck("hsl(359, 0%, 25%)",
                 walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(359f),
                         walkingkooka.color.HslColorComponent.saturation(0.0f),
                         walkingkooka.color.HslColorComponent.lightness(0.25f)));
@@ -46,7 +46,7 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Test
     public void testParseHsla() {
-        this.parseAndCheck("hsla(359, 0%, 25%, 50%)",
+        this.parseStringAndCheck("hsla(359, 0%, 25%, 50%)",
                 walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(359f),
                         walkingkooka.color.HslColorComponent.saturation(0.0f),
                         walkingkooka.color.HslColorComponent.lightness(0.25f))
@@ -55,7 +55,7 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Test
     public void testParseHsv() {
-        this.parseAndCheck("hsv(359, 0%, 25%)",
+        this.parseStringAndCheck("hsv(359, 0%, 25%)",
                 walkingkooka.color.HsvColor.with(walkingkooka.color.HsvColorComponent.hue(359f),
                         walkingkooka.color.HsvColorComponent.saturation(0.0f),
                         walkingkooka.color.HsvColorComponent.value(0.25f)));
@@ -63,7 +63,7 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Test
     public void testParseRgb() {
-        this.parseAndCheck("rgb(12,34,56)",
+        this.parseStringAndCheck("rgb(12,34,56)",
                 walkingkooka.color.RgbColor.with(walkingkooka.color.RgbColorComponent.red((byte) 12),
                         walkingkooka.color.RgbColorComponent.green((byte) 34),
                         walkingkooka.color.RgbColorComponent.blue((byte) 56)));
@@ -117,17 +117,17 @@ public final class ColorTest implements ClassTesting2<Color>,
     // ParseStringTesting...............................................................................................
 
     @Override
-    public Color parse(final String text) {
-        return walkingkooka.color.Color.parse(text);
+    public Color parseString(final String text) {
+        return Color.parse(text);
     }
 
     @Override
-    public Class<? extends RuntimeException> parseFailedExpected(final Class<? extends RuntimeException> expected) {
+    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
         return expected;
     }
 
     @Override
-    public RuntimeException parseFailedExpected(final RuntimeException expected) {
+    public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
         return expected;
     }
 

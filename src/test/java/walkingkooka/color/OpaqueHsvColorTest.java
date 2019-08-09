@@ -73,7 +73,7 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsv(359,100%,50%)",
+        this.parseStringAndCheck("hsv(359,100%,50%)",
                 OpaqueHsvColor.withOpaque(HsvColorComponent.hue(359),
                         HsvColorComponent.saturation(1.0f),
                         HsvColorComponent.value(0.5f)));
@@ -111,7 +111,7 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
     // ParseStringTesting .............................................................................................
 
     @Override
-    public OpaqueHsvColor parse(final String text) {
+    public OpaqueHsvColor parseString(final String text) {
         return Cast.to(HsvColor.parseHsv(text));
     }
 }

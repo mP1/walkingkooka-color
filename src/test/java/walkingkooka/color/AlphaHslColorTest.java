@@ -56,7 +56,7 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsla(359,100%,50%,25%)",
+        this.parseStringAndCheck("hsla(359,100%,50%,25%)",
                 AlphaHslColor.withAlpha(HslColorComponent.hue(359),
                         HslColorComponent.saturation(1.0f),
                         HslColorComponent.lightness(0.5f),
@@ -100,7 +100,7 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
     // ParseStringTesting .............................................................................................
 
     @Override
-    public AlphaHslColor parse(final String text) {
+    public AlphaHslColor parseString(final String text) {
         return Cast.to(HslColor.parseHsl(text));
     }
 }

@@ -232,7 +232,7 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsv(359,100%,50%)",
+        this.parseStringAndCheck("hsv(359,100%,50%)",
                 HsvColor.with(HsvColorComponent.hue(359),
                         HsvColorComponent.saturation(1.0f),
                         HsvColorComponent.value(0.5f)));
@@ -279,7 +279,7 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
     // ParseStringTesting .............................................................................................
 
     @Override
-    public HsvColor parse(final String text) {
+    public HsvColor parseString(final String text) {
         return HsvColor.parseHsv(text);
     }
 }
