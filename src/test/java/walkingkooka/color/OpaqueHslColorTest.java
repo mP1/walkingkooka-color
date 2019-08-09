@@ -73,7 +73,7 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsl(359,100%,50%)",
+        this.parseStringAndCheck("hsl(359,100%,50%)",
                 OpaqueHslColor.withOpaque(HslColorComponent.hue(359),
                         HslColorComponent.saturation(1.0f),
                         HslColorComponent.lightness(0.5f)));
@@ -111,7 +111,7 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
     // ParseStringTesting .............................................................................................
 
     @Override
-    public OpaqueHslColor parse(final String text) {
+    public OpaqueHslColor parseString(final String text) {
         return Cast.to(HslColor.parseHsl(text));
     }
 }

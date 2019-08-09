@@ -127,11 +127,11 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
 
     // ParseStringTesting .............................................................................................
 
-    public final RuntimeException parseFailedExpected(final RuntimeException expected) {
+    public final RuntimeException parseStringFailedExpected(final RuntimeException expected) {
         return expected;
     }
 
-    public final Class<? extends RuntimeException> parseFailedExpected(final Class<? extends RuntimeException> expected) {
+    public final Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
         return expected;
     }
 

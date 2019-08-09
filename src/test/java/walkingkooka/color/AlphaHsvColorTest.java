@@ -56,7 +56,7 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsva(359,100%,50%,25%)",
+        this.parseStringAndCheck("hsva(359,100%,50%,25%)",
                 AlphaHsvColor.withAlpha(HsvColorComponent.hue(359),
                         HsvColorComponent.saturation(1.0f),
                         HsvColorComponent.value(0.5f),
@@ -100,7 +100,7 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
     // ParseStringTesting .............................................................................................
 
     @Override
-    public AlphaHsvColor parse(final String text) {
+    public AlphaHsvColor parseString(final String text) {
         return Cast.to(HsvColor.parseHsv(text));
     }
 }

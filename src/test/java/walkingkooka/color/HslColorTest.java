@@ -232,7 +232,7 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
 
     @Test
     public void testParse() {
-        this.parseAndCheck("hsl(359,100%,50%)",
+        this.parseStringAndCheck("hsl(359,100%,50%)",
                 HslColor.with(HslColorComponent.hue(359),
                         HslColorComponent.saturation(1.0f),
                         HslColorComponent.lightness(0.5f)));
@@ -279,7 +279,7 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
     // ParseStringTesting .............................................................................................
 
     @Override
-    public HslColor parse(final String text) {
+    public HslColor parseString(final String text) {
         return HslColor.parseHsl(text);
     }
 }
