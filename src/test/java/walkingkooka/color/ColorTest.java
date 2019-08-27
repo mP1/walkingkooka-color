@@ -20,13 +20,14 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ParseStringTesting;
-import walkingkooka.tree.json.HasJsonNodeTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
+import walkingkooka.tree.json.map.FromJsonNodeContext;
+import walkingkooka.tree.json.map.JsonNodeMappingTesting;
 import walkingkooka.type.JavaVisibility;
 
 public final class ColorTest implements ClassTesting2<Color>,
-        HasJsonNodeTesting<Color>,
+        JsonNodeMappingTesting<Color>,
         ParseStringTesting<Color> {
 
     // parse...........................................................................................................
@@ -71,10 +72,6 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     // fromJsonNode.....................................................................................................
 
-    @Override
-    public void testHasJsonNodeFactoryRegistered() {
-    }
-
     @Test
     public void testFromJsonNodeInvalidStringFails() {
         this.fromJsonNodeFails("\"abc\"", JsonNodeException.class);
@@ -83,7 +80,7 @@ public final class ColorTest implements ClassTesting2<Color>,
     @Test
     public void testFromJsonNodeColor() {
         final walkingkooka.color.RgbColor color = walkingkooka.color.RgbColor.fromRgb0(0x123456);
-        this.fromJsonNodeAndCheck(color.toJsonNode(), color);
+        this.fromJsonNodeAndCheck(color.toJsonNode(this.toJsonNodeContext()), color);
     }
 
     @Test
@@ -91,7 +88,7 @@ public final class ColorTest implements ClassTesting2<Color>,
         final walkingkooka.color.HslColor hsl = walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(99),
                 walkingkooka.color.HslColorComponent.saturation(0.25f),
                 walkingkooka.color.HslColorComponent.lightness(0.75f));
-        this.fromJsonNodeAndCheck(hsl.toJsonNode(), hsl);
+        this.fromJsonNodeAndCheck(hsl.toJsonNode(this.toJsonNodeContext()), hsl);
     }
 
     @Test
@@ -99,18 +96,19 @@ public final class ColorTest implements ClassTesting2<Color>,
         final walkingkooka.color.HsvColor hsv = walkingkooka.color.HsvColor.with(walkingkooka.color.HsvColorComponent.hue(99),
                 walkingkooka.color.HsvColorComponent.saturation(0.25f),
                 walkingkooka.color.HsvColorComponent.value(0.75f));
-        this.fromJsonNodeAndCheck(hsv.toJsonNode(), hsv);
+        this.fromJsonNodeAndCheck(hsv.toJsonNode(this.toJsonNodeContext()), hsv);
     }
 
     // HasJsonNode.....................................................................................................
 
     @Override
-    public Color fromJsonNode(final JsonNode from) {
-        return walkingkooka.color.Color.fromJsonNode(from);
+    public Color fromJsonNode(final JsonNode from,
+                              final FromJsonNodeContext context) {
+        return Color.fromJsonNode(from, context);
     }
 
     @Override
-    public Color createHasJsonNode() {
+    public Color createJsonNodeMappingValue() {
         return walkingkooka.color.RgbColor.fromArgb0(0x123456);
     }
 

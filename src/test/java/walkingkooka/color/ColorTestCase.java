@@ -22,7 +22,7 @@ import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.HashCodeEqualsDefinedTesting;
 import walkingkooka.test.SerializationTesting;
 import walkingkooka.test.ToStringTesting;
-import walkingkooka.tree.json.HasJsonNodeStringTesting;
+import walkingkooka.tree.json.map.JsonNodeMappingTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
         HashCodeEqualsDefinedTesting<C>,
-        HasJsonNodeStringTesting<C>,
+        JsonNodeMappingTesting<C>,
         SerializationTesting<C>,
         ToStringTesting<C> {
 
@@ -121,7 +121,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     // HasJsonNodeTesting..............................................................................................
 
     @Override
-    public final C createHasJsonNode() {
+    public final C createJsonNodeMappingValue() {
         return this.createColor();
     }
 
