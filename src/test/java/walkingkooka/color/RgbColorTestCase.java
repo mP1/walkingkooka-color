@@ -21,9 +21,10 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.Equality;
 import walkingkooka.test.TypeNameTesting;
-import walkingkooka.tree.json.HasJsonNodeTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
+import walkingkooka.tree.json.map.FromJsonNodeContext;
+import walkingkooka.tree.json.map.JsonNodeMappingTesting;
 import walkingkooka.type.JavaVisibility;
 
 import java.util.Optional;
@@ -34,7 +35,8 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase<C> implements HasJsonNodeTesting<C>,
+abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase<C>
+        implements JsonNodeMappingTesting<C>,
         TypeNameTesting<C> {
 
     RgbColorTestCase() {
@@ -784,7 +786,8 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // HasJsonNodeTesting...............................................................................................
 
     @Override
-    public final C fromJsonNode(final JsonNode from) {
-        return Cast.to(RgbColor.fromJsonNodeRgb(from));
+    public final C fromJsonNode(final JsonNode from,
+                                final FromJsonNodeContext context) {
+        return Cast.to(RgbColor.fromJsonNodeRgb(from, context));
     }
 }

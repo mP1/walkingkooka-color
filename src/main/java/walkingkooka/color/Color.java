@@ -32,9 +32,11 @@ import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserReporters;
-import walkingkooka.tree.json.FromJsonNodeException;
-import walkingkooka.tree.json.HasJsonNode;
 import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.map.FromJsonNodeContext;
+import walkingkooka.tree.json.map.FromJsonNodeException;
+import walkingkooka.tree.json.map.JsonNodeContext;
+import walkingkooka.tree.json.map.ToJsonNodeContext;
 
 import java.io.Serializable;
 import java.math.MathContext;
@@ -45,7 +47,6 @@ import java.util.function.Function;
  * Base class for all rgb like value classes.
  */
 public abstract class Color implements HashCodeEqualsDefined,
-        HasJsonNode,
         Serializable,
         UsesToStringBuilder {
 
@@ -200,28 +201,32 @@ public abstract class Color implements HashCodeEqualsDefined,
     /**
      * Creates a {@link Color} from a {@link JsonNode}.
      */
-    static Color fromJsonNode(final JsonNode from) {
+    static Color fromJsonNode(final JsonNode from,
+                              final FromJsonNodeContext context) {
         return fromJsonNode0(from, Color::parse);
     }
 
     /**
      * Creates a {@link RgbColor} from a {@link JsonNode}.
      */
-    static RgbColor fromJsonNodeRgb(final JsonNode from) {
+    static RgbColor fromJsonNodeRgb(final JsonNode from,
+                                    final FromJsonNodeContext context) {
         return fromJsonNode0(from, Color::parseRgb);
     }
 
     /**
      * Creates a {@link HslColor} from a {@link JsonNode}.
      */
-    static HslColor fromJsonNodeHsl(final JsonNode from) {
+    static HslColor fromJsonNodeHsl(final JsonNode from,
+                                    final FromJsonNodeContext context) {
         return fromJsonNode0(from, Color::parseHsl);
     }
 
     /**
      * Creates a {@link HsvColor} from a {@link JsonNode}.
      */
-    static HsvColor fromJsonNodeHsv(final JsonNode from) {
+    static HsvColor fromJsonNodeHsv(final JsonNode from,
+                                    final FromJsonNodeContext context) {
         return fromJsonNode0(from, Color::parseHsv);
     }
 
@@ -238,26 +243,29 @@ public abstract class Color implements HashCodeEqualsDefined,
         }
     }
 
-    @Override
-    public final JsonNode toJsonNode() {
+    final JsonNode toJsonNode(final ToJsonNodeContext context) {
         return JsonNode.string(this.toString());
     }
 
     static {
-        HasJsonNode.register("rgb-hsl-hsv",
+        JsonNodeContext.register("rgb-hsl-hsv",
                 Color::fromJsonNode,
+                Color::toJsonNode,
                 Color.class);
 
-        HasJsonNode.register("rgb",
+        JsonNodeContext.register("rgb",
                 Color::fromJsonNodeRgb,
+                Color::toJsonNode,
                 RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class);
 
-        HasJsonNode.register("hsl",
+        JsonNodeContext.register("hsl",
                 Color::fromJsonNodeHsl,
+                Color::toJsonNode,
                 HslColor.class, AlphaHslColor.class, OpaqueHslColor.class);
 
-        HasJsonNode.register("hsv",
+        JsonNodeContext.register("hsv",
                 Color::fromJsonNodeHsv,
+                Color::toJsonNode,
                 HsvColor.class, AlphaHsvColor.class, OpaqueHsvColor.class);
     }
 
