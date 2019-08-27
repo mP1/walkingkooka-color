@@ -31,8 +31,6 @@ import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
 import walkingkooka.tree.search.SearchNode;
 
-import java.util.Optional;
-
 /**
  * Base for all rgb function symbols.
  */

@@ -20,8 +20,6 @@ package walkingkooka.color.parser;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.tree.search.SearchNode;
 
-import java.util.Optional;
-
 /**
  * Base class for a non symbol {@link ParserToken}.
  */
