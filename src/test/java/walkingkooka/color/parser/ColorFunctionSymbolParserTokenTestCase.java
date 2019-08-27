@@ -20,10 +20,6 @@ package walkingkooka.color.parser;
 import org.junit.jupiter.api.Test;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public abstract class ColorFunctionSymbolParserTokenTestCase<T extends ColorFunctionSymbolParserToken> extends ColorFunctionLeafParserTokenTestCase<T>
         implements ParserTokenTesting<T> {
 
