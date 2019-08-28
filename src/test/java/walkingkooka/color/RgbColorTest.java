@@ -20,7 +20,7 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.map.FromJsonNodeContext;
+import walkingkooka.tree.json.marshall.FromJsonNodeContext;
 import walkingkooka.type.JavaVisibility;
 
 public final class RgbColorTest extends ColorTestCase<RgbColor> implements ParseStringTesting<RgbColor> {
