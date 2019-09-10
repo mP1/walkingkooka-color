@@ -19,6 +19,7 @@ package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.test.HashCodeEqualsDefinedTesting;
+import walkingkooka.test.HashCodeEqualsDefinedTesting2;
 import walkingkooka.test.IsMethodTesting;
 import walkingkooka.test.PublicStaticFactoryTesting;
 import walkingkooka.text.cursor.parser.ParserToken;
@@ -31,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionParserToken> extends ColorFunctionParserTokenTestCase<T>
         implements ParserTokenTesting<T>,
-        HashCodeEqualsDefinedTesting<T>,
+        HashCodeEqualsDefinedTesting2<T>,
         IsMethodTesting<T> {
 
     ColorFunctionParserTokenTestCase3() {
