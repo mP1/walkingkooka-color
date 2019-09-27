@@ -22,12 +22,12 @@ import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
-import walkingkooka.tree.json.marshall.FromJsonNodeContext;
-import walkingkooka.tree.json.marshall.JsonNodeMappingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 import walkingkooka.type.JavaVisibility;
 
 public final class ColorTest implements ClassTesting2<Color>,
-        JsonNodeMappingTesting<Color>,
+        JsonNodeMarshallingTesting<Color>,
         ParseStringTesting<Color> {
 
     // parse...........................................................................................................
@@ -70,41 +70,41 @@ public final class ColorTest implements ClassTesting2<Color>,
                         walkingkooka.color.RgbColorComponent.blue((byte) 56)));
     }
 
-    // fromJsonNode.....................................................................................................
+    // unmarshall.....................................................................................................
 
     @Test
-    public void testFromJsonNodeInvalidStringFails() {
-        this.fromJsonNodeFails("\"abc\"", JsonNodeException.class);
+    public void testJsonNodeUnmarshallInvalidStringFails() {
+        this.unmarshallFails("\"abc\"", JsonNodeException.class);
     }
 
     @Test
-    public void testFromJsonNodeColor() {
+    public void testJsonNodeUnmarshallColor() {
         final walkingkooka.color.RgbColor color = walkingkooka.color.RgbColor.fromRgb0(0x123456);
-        this.fromJsonNodeAndCheck(color.toJsonNode(this.toJsonNodeContext()), color);
+        this.unmarshallAndCheck(color.marshall(this.marshallContext()), color);
     }
 
     @Test
-    public void testFromJsonNodeHsl() {
+    public void testJsonNodeUnmarshallHsl() {
         final walkingkooka.color.HslColor hsl = walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(99),
                 walkingkooka.color.HslColorComponent.saturation(0.25f),
                 walkingkooka.color.HslColorComponent.lightness(0.75f));
-        this.fromJsonNodeAndCheck(hsl.toJsonNode(this.toJsonNodeContext()), hsl);
+        this.unmarshallAndCheck(hsl.marshall(this.marshallContext()), hsl);
     }
 
     @Test
-    public void testFromJsonNodeHsv() {
+    public void testJsonNodeUnmarshallHsv() {
         final walkingkooka.color.HsvColor hsv = walkingkooka.color.HsvColor.with(walkingkooka.color.HsvColorComponent.hue(99),
                 walkingkooka.color.HsvColorComponent.saturation(0.25f),
                 walkingkooka.color.HsvColorComponent.value(0.75f));
-        this.fromJsonNodeAndCheck(hsv.toJsonNode(this.toJsonNodeContext()), hsv);
+        this.unmarshallAndCheck(hsv.marshall(this.marshallContext()), hsv);
     }
 
     // HasJsonNode.....................................................................................................
 
     @Override
-    public Color fromJsonNode(final JsonNode from,
-                              final FromJsonNodeContext context) {
-        return Color.fromJsonNode(from, context);
+    public Color unmarshall(final JsonNode from,
+                              final JsonNodeUnmarshallContext context) {
+        return Color.unmarshall(from, context);
     }
 
     @Override

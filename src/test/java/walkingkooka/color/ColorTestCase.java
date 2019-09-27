@@ -19,11 +19,10 @@ package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
-import walkingkooka.test.HashCodeEqualsDefinedTesting;
 import walkingkooka.test.HashCodeEqualsDefinedTesting2;
 import walkingkooka.test.SerializationTesting;
 import walkingkooka.test.ToStringTesting;
-import walkingkooka.tree.json.marshall.JsonNodeMappingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -31,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
         HashCodeEqualsDefinedTesting2<C>,
-        JsonNodeMappingTesting<C>,
+        JsonNodeMarshallingTesting<C>,
         SerializationTesting<C>,
         ToStringTesting<C> {
 

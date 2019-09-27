@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.marshall.FromJsonNodeContext;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 import walkingkooka.type.JavaVisibility;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -260,8 +260,8 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
     // HasJsonNodeTesting..............................................................................................
 
     @Override
-    public final HslColor fromJsonNode(final JsonNode from,
-                                       final FromJsonNodeContext context) {
-        return HslColor.fromJsonNodeHsl(from, context);
+    public final HslColor unmarshall(final JsonNode from,
+                                       final JsonNodeUnmarshallContext context) {
+        return HslColor.unmarshallHsl(from, context);
     }
 }
