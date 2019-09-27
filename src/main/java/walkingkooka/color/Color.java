@@ -33,10 +33,10 @@ import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserReporters;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.marshall.FromJsonNodeContext;
-import walkingkooka.tree.json.marshall.FromJsonNodeException;
 import walkingkooka.tree.json.marshall.JsonNodeContext;
-import walkingkooka.tree.json.marshall.ToJsonNodeContext;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallContext;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallException;
 
 import java.io.Serializable;
 import java.math.MathContext;
@@ -201,71 +201,71 @@ public abstract class Color implements HashCodeEqualsDefined,
     /**
      * Creates a {@link Color} from a {@link JsonNode}.
      */
-    static Color fromJsonNode(final JsonNode from,
-                              final FromJsonNodeContext context) {
-        return fromJsonNode0(from, Color::parse);
+    static Color unmarshall(final JsonNode from,
+                            final JsonNodeUnmarshallContext context) {
+        return unmarshall0(from, Color::parse);
     }
 
     /**
      * Creates a {@link RgbColor} from a {@link JsonNode}.
      */
-    static RgbColor fromJsonNodeRgb(final JsonNode from,
-                                    final FromJsonNodeContext context) {
-        return fromJsonNode0(from, Color::parseRgb);
+    static RgbColor unmarshallRgb(final JsonNode from,
+                                  final JsonNodeUnmarshallContext context) {
+        return unmarshall0(from, Color::parseRgb);
     }
 
     /**
      * Creates a {@link HslColor} from a {@link JsonNode}.
      */
-    static HslColor fromJsonNodeHsl(final JsonNode from,
-                                    final FromJsonNodeContext context) {
-        return fromJsonNode0(from, Color::parseHsl);
+    static HslColor unmarshallHsl(final JsonNode from,
+                                  final JsonNodeUnmarshallContext context) {
+        return unmarshall0(from, Color::parseHsl);
     }
 
     /**
      * Creates a {@link HsvColor} from a {@link JsonNode}.
      */
-    static HsvColor fromJsonNodeHsv(final JsonNode from,
-                                    final FromJsonNodeContext context) {
-        return fromJsonNode0(from, Color::parseHsv);
+    static HsvColor unmarshallHsv(final JsonNode from,
+                                  final JsonNodeUnmarshallContext context) {
+        return unmarshall0(from, Color::parseHsv);
     }
 
-    private static <C extends Color> C fromJsonNode0(final JsonNode from,
-                                                     final Function<String, C> parse) {
+    private static <C extends Color> C unmarshall0(final JsonNode from,
+                                                   final Function<String, C> parse) {
         Objects.requireNonNull(from, "from");
 
         try {
             return parse.apply(from.stringValueOrFail());
-        } catch (final FromJsonNodeException cause) {
+        } catch (final JsonNodeUnmarshallException cause) {
             throw cause;
         } catch (final RuntimeException cause) {
-            throw new FromJsonNodeException(cause.getMessage(), from, cause);
+            throw new JsonNodeUnmarshallException(cause.getMessage(), from, cause);
         }
     }
 
-    final JsonNode toJsonNode(final ToJsonNodeContext context) {
+    final JsonNode marshall(final JsonNodeMarshallContext context) {
         return JsonNode.string(this.toString());
     }
 
     static {
         JsonNodeContext.register("rgb-hsl-hsv",
-                Color::fromJsonNode,
-                Color::toJsonNode,
+                Color::unmarshall,
+                Color::marshall,
                 Color.class);
 
         JsonNodeContext.register("rgb",
-                Color::fromJsonNodeRgb,
-                Color::toJsonNode,
+                Color::unmarshallRgb,
+                Color::marshall,
                 RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class);
 
         JsonNodeContext.register("hsl",
-                Color::fromJsonNodeHsl,
-                Color::toJsonNode,
+                Color::unmarshallHsl,
+                Color::marshall,
                 HslColor.class, AlphaHslColor.class, OpaqueHslColor.class);
 
         JsonNodeContext.register("hsv",
-                Color::fromJsonNodeHsv,
-                Color::toJsonNode,
+                Color::unmarshallHsv,
+                Color::marshall,
                 HsvColor.class, AlphaHsvColor.class, OpaqueHsvColor.class);
     }
 

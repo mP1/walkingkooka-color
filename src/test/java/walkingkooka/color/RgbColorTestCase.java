@@ -23,8 +23,8 @@ import walkingkooka.Equality;
 import walkingkooka.test.TypeNameTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
-import walkingkooka.tree.json.marshall.FromJsonNodeContext;
-import walkingkooka.tree.json.marshall.JsonNodeMappingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 import walkingkooka.type.JavaVisibility;
 
 import java.util.Optional;
@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase<C>
-        implements JsonNodeMappingTesting<C>,
+        implements JsonNodeMarshallingTesting<C>,
         TypeNameTesting<C> {
 
     RgbColorTestCase() {
@@ -590,23 +590,23 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // HasJsonNode.......................................................................................................
 
     @Test
-    public final void testFromJsonNodeBooleanFails() {
-        this.fromJsonNodeFails(JsonNode.booleanNode(true), JsonNodeException.class);
+    public final void testJsonNodeUnmarshallBooleanFails() {
+        this.unmarshallFails(JsonNode.booleanNode(true), JsonNodeException.class);
     }
 
     @Test
-    public final void testFromJsonNodeNumberFails() {
-        this.fromJsonNodeFails(JsonNode.number(123), JsonNodeException.class);
+    public final void testJsonNodeUnmarshallNumberFails() {
+        this.unmarshallFails(JsonNode.number(123), JsonNodeException.class);
     }
 
     @Test
-    public final void testFromJsonNodeArrayFails() {
-        this.fromJsonNodeFails(JsonNode.array(), JsonNodeException.class);
+    public final void testJsonNodeUnmarshallArrayFails() {
+        this.unmarshallFails(JsonNode.array(), JsonNodeException.class);
     }
 
     @Test
-    public final void testFromJsonNodeObjectFails() {
-        this.fromJsonNodeFails(JsonNode.object(), JsonNodeException.class);
+    public final void testJsonNodeUnmarshallObjectFails() {
+        this.unmarshallFails(JsonNode.object(), JsonNodeException.class);
     }
 
     // helpers..........................................................................................................
@@ -786,8 +786,8 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // HasJsonNodeTesting...............................................................................................
 
     @Override
-    public final C fromJsonNode(final JsonNode from,
-                                final FromJsonNodeContext context) {
-        return Cast.to(RgbColor.fromJsonNodeRgb(from, context));
+    public final C unmarshall(final JsonNode from,
+                                final JsonNodeUnmarshallContext context) {
+        return Cast.to(RgbColor.unmarshallRgb(from, context));
     }
 }

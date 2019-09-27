@@ -18,7 +18,6 @@
 package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.test.HashCodeEqualsDefinedTesting;
 import walkingkooka.test.HashCodeEqualsDefinedTesting2;
 import walkingkooka.test.IsMethodTesting;
 import walkingkooka.test.PublicStaticFactoryTesting;

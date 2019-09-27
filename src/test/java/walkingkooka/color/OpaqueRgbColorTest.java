@@ -119,14 +119,14 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     // HasJsonNode............................................................................................
 
     @Test
-    public void testFromJsonNodeString() {
-        this.fromJsonNodeAndCheck(JsonNode.string("#123456"),
+    public void testJsonNodeUnmarshallString() {
+        this.unmarshallAndCheck(JsonNode.string("#123456"),
                 Cast.to(RgbColor.fromRgb0(0x123456)));
     }
 
     @Test
-    public void testToJsonNode() {
-        this.toJsonNodeAndCheck(RgbColor.fromRgb0(0x123456),
+    public void testJsonNodeMarshall() {
+        this.marshallAndCheck(RgbColor.fromRgb0(0x123456),
                 JsonNode.string("#123456"));
     }
 

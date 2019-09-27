@@ -109,24 +109,24 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     // HasJsonNode............................................................................................
 
     @Test
-    public void testFromJsonNode() {
-        this.fromJsonNodeAndCheck(JsonNode.string("#01020304"), RgbColor.fromArgb0(0x04010203));
+    public void testJsonNodeUnmarshall() {
+        this.unmarshallAndCheck(JsonNode.string("#01020304"), RgbColor.fromArgb0(0x04010203));
     }
 
     @Test
-    public void testFromJsonNodeFEDCBA98() {
-        this.fromJsonNodeAndCheck(JsonNode.string("#fedcba98"), RgbColor.fromArgb0(0x98FEDCBA));
+    public void testJsonNodeUnmarshallFEDCBA98() {
+        this.unmarshallAndCheck(JsonNode.string("#fedcba98"), RgbColor.fromArgb0(0x98FEDCBA));
     }
 
 
     @Test
-    public void testToJsonNode() {
-        this.toJsonNodeAndCheck(RgbColor.fromArgb0(0x04010203), JsonNode.string("#01020304"));
+    public void testJsonNodeMarshall() {
+        this.marshallAndCheck(RgbColor.fromArgb0(0x04010203), JsonNode.string("#01020304"));
     }
 
     @Test
-    public void testToJsonNodeFEDCBA98() {
-        this.toJsonNodeAndCheck(RgbColor.fromArgb0(0x98FEDCBA), JsonNode.string("#fedcba98"));
+    public void testJsonNodeMarshallFEDCBA98() {
+        this.marshallAndCheck(RgbColor.fromArgb0(0x98FEDCBA), JsonNode.string("#fedcba98"));
     }
 
     // Object............................................................................................
