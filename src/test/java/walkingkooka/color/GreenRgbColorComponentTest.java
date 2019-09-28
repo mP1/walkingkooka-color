@@ -50,14 +50,4 @@ public final class GreenRgbColorComponentTest extends RgbColorComponentTestCase<
     public Class<GreenRgbColorComponent> type() {
         return GreenRgbColorComponent.class;
     }
-
-    @Override
-    public GreenRgbColorComponent serializableInstance() {
-        return GreenRgbColorComponent.with((byte) 123);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return true;
-    }
 }

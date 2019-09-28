@@ -82,7 +82,4 @@ final class AlphaHsvColor extends HsvColor {
     void buildToStringAlpha(final ToStringBuilder builder) {
         builder.value(this.alpha);
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1L;
 }

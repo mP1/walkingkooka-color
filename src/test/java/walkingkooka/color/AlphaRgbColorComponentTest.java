@@ -18,10 +18,8 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.test.SerializationTesting;
 
-public final class AlphaRgbColorComponentTest extends RgbColorComponentTestCase<AlphaRgbColorComponent>
-        implements SerializationTesting<AlphaRgbColorComponent> {
+public final class AlphaRgbColorComponentTest extends RgbColorComponentTestCase<AlphaRgbColorComponent> {
 
     @Test
     public void testEqualsDifferentValue() {
@@ -51,15 +49,5 @@ public final class AlphaRgbColorComponentTest extends RgbColorComponentTestCase<
     @Override
     public Class<AlphaRgbColorComponent> type() {
         return AlphaRgbColorComponent.class;
-    }
-
-    @Override
-    public AlphaRgbColorComponent serializableInstance() {
-        return AlphaRgbColorComponent.with((byte) 123);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return true;
     }
 }

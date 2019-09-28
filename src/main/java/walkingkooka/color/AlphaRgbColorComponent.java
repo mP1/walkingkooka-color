@@ -87,15 +87,4 @@ final public class AlphaRgbColorComponent extends RgbColorComponent {
     public boolean isAlpha() {
         return true;
     }
-
-    // Serializable
-
-    private static final long serialVersionUID = 1;
-
-    /**
-     * Handles keeping instances singletons.
-     */
-    private Object readResolve() {
-        return AlphaRgbColorComponent.CONSTANTS[this.unsignedIntValue];
-    }
 }

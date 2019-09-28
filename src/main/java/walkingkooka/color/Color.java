@@ -38,7 +38,6 @@ import walkingkooka.tree.json.marshall.JsonNodeMarshallContext;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallException;
 
-import java.io.Serializable;
 import java.math.MathContext;
 import java.util.Objects;
 import java.util.function.Function;
@@ -47,7 +46,6 @@ import java.util.function.Function;
  * Base class for all rgb like value classes.
  */
 public abstract class Color implements HashCodeEqualsDefined,
-        Serializable,
         UsesToStringBuilder {
 
     /**
@@ -289,8 +287,4 @@ public abstract class Color implements HashCodeEqualsDefined,
     public final String toString() {
         return ToStringBuilder.buildFrom(this);
     }
-
-    // Serializable.....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

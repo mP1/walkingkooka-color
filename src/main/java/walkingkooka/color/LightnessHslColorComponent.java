@@ -81,7 +81,4 @@ final public class LightnessHslColorComponent extends AlphaLightnessOrSaturation
     boolean canBeEqual(final Object other) {
         return other instanceof LightnessHslColorComponent;
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1;
 }

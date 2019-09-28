@@ -65,14 +65,4 @@ public final class SaturationHslColorComponentTest extends HslColorComponentTest
     public Class<SaturationHslColorComponent> type() {
         return SaturationHslColorComponent.class;
     }
-
-    @Override
-    public SaturationHslColorComponent serializableInstance() {
-        return SaturationHslColorComponent.with(0.5f);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

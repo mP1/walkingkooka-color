@@ -100,8 +100,4 @@ abstract public class HsvColorComponent extends HslOrHsvColorComponent {
     // Object...........................................................................................................
 
     abstract boolean canBeEqual(Object other);
-
-    // Serializable....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

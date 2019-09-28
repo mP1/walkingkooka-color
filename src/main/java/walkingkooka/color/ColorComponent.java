@@ -19,15 +19,9 @@ package walkingkooka.color;
 
 import walkingkooka.test.HashCodeEqualsDefined;
 
-import java.io.Serializable;
-
-abstract class ColorComponent implements HashCodeEqualsDefined, Serializable {
+abstract class ColorComponent implements HashCodeEqualsDefined {
 
     ColorComponent() {
         super();
     }
-
-    // Serializable....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

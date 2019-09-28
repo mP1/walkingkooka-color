@@ -85,15 +85,4 @@ final public class BlueRgbColorComponent extends RgbColorComponent {
     public boolean isAlpha() {
         return false;
     }
-
-    // Serializable
-
-    private static final long serialVersionUID = 1;
-
-    /**
-     * Handles keeping instances singletons.
-     */
-    private Object readResolve() {
-        return BlueRgbColorComponent.CONSTANTS[this.unsignedIntValue];
-    }
 }

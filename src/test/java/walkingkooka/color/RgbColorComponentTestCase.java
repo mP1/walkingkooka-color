@@ -168,11 +168,6 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
         this.toStringAndCheck(this.createColorComponent((byte) 0xF), "0f");
     }
 
-    @Test
-    public final void testFF() throws Exception {
-        this.cloneUsingSerialization(this.createColorComponent((byte) 0x255));
-    }
-
     final C createColorComponent() {
         return this.createColorComponent(VALUE);
     }

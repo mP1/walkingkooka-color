@@ -65,14 +65,4 @@ public final class LightnessHslColorComponentTest extends HslColorComponentTestC
     public Class<LightnessHslColorComponent> type() {
         return LightnessHslColorComponent.class;
     }
-
-    @Override
-    public LightnessHslColorComponent serializableInstance() {
-        return LightnessHslColorComponent.with(0.5f);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

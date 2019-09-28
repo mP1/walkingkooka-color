@@ -276,8 +276,4 @@ abstract public class RgbColorComponent extends ColorComponent {
     private static String toPercentageString(final int value) {
         return String.valueOf(Math.round(100f * value / MAX_VALUE)) + '%';
     }
-
-    // Serializable.....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }
