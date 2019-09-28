@@ -142,21 +142,7 @@ public abstract class HslColor extends Color {
      */
     public abstract AlphaHslColorComponent alpha();
 
-    // Color....................................................................................................
-
-    @Override
-    public final boolean isHsl() {
-        return true;
-    }
-
-    public final boolean isHsv() {
-        return false;
-    }
-
-    @Override
-    public final boolean isRgb() {
-        return false;
-    }
+    // Color............................................................................................................
 
     @Override
     public final HslColor toHsl() {

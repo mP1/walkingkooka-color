@@ -417,20 +417,6 @@ abstract public class RgbColor extends Color {
 
     // Color............................................................................................................
 
-    @Override
-    public final boolean isHsl() {
-        return false;
-    }
-
-    public final boolean isHsv() {
-        return false;
-    }
-
-    @Override
-    public final boolean isRgb() {
-        return true;
-    }
-
     /**
      * Returns a {@link HslColor} which is equivalent to this {@link Color} form, ignoring any {@link AlphaRgbColorComponent}.<br>
      *

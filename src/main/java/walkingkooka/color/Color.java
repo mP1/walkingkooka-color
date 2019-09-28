@@ -182,11 +182,17 @@ public abstract class Color implements HashCodeEqualsDefined,
         super();
     }
 
-    public abstract boolean isHsl();
+    public final boolean isHsl() {
+        return this instanceof HslColor;
+    }
 
-    public abstract boolean isHsv();
+    public final boolean isHsv() {
+        return this instanceof HsvColor;
+    }
 
-    public abstract boolean isRgb();
+    public final boolean isRgb() {
+        return this instanceof RgbColor;
+    }
 
     public abstract HslColor toHsl();
 
