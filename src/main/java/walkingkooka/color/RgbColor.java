@@ -608,7 +608,4 @@ abstract public class RgbColor extends Color {
 
     abstract void alphaComponentToString(final StringBuilder b,
                                          final RgbColorString format);
-
-    // Serializable.....................................................................................................
-    private static final long serialVersionUID = 1;
 }

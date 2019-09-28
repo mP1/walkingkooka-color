@@ -65,14 +65,4 @@ public final class AlphaHslColorComponentTest extends HslColorComponentTestCase<
     public Class<AlphaHslColorComponent> type() {
         return AlphaHslColorComponent.class;
     }
-
-    @Override
-    public AlphaHslColorComponent serializableInstance() {
-        return AlphaHslColorComponent.with(0.5f);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

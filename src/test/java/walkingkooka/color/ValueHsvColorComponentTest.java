@@ -65,14 +65,4 @@ public final class ValueHsvColorComponentTest extends HsvColorComponentTestCase<
     public Class<ValueHsvColorComponent> type() {
         return ValueHsvColorComponent.class;
     }
-
-    @Override
-    public ValueHsvColorComponent serializableInstance() {
-        return ValueHsvColorComponent.with(0.5f);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

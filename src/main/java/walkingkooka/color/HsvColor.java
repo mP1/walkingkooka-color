@@ -251,8 +251,4 @@ public abstract class HsvColor extends Color {
     abstract String functionName();
 
     abstract void buildToStringAlpha(final ToStringBuilder builder);
-
-    // Serializable....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

@@ -173,8 +173,4 @@ final class AlphaRgbColor extends RgbColor {
         b.append(RgbColorComponent.SEPARATOR);
         b.append(format.componentToString(this.alpha));
     }
-
-    // Serializable.....................................................................................................
-
-    private static final long serialVersionUID = 1L;
 }

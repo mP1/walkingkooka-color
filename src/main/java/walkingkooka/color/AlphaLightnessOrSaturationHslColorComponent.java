@@ -55,7 +55,4 @@ abstract class AlphaLightnessOrSaturationHslColorComponent extends HslColorCompo
     public final String toString() {
         return this.toStringPercentage();
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1;
 }

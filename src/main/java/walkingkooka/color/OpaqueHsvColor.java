@@ -78,7 +78,4 @@ final class OpaqueHsvColor extends HsvColor {
     @Override
     void buildToStringAlpha(final ToStringBuilder builder) {
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1L;
 }

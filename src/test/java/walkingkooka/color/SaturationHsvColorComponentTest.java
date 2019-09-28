@@ -65,14 +65,4 @@ public final class SaturationHsvColorComponentTest extends HsvColorComponentTest
     public Class<SaturationHsvColorComponent> type() {
         return SaturationHsvColorComponent.class;
     }
-
-    @Override
-    public SaturationHsvColorComponent serializableInstance() {
-        return SaturationHsvColorComponent.with(0.5f);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

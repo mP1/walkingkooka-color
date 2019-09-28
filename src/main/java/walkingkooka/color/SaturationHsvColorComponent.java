@@ -84,7 +84,4 @@ final public class SaturationHsvColorComponent extends AlphaSaturationOrValueHsv
     boolean canBeEqual(final Object other) {
         return other instanceof SaturationHsvColorComponent;
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1;
 }

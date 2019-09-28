@@ -168,8 +168,4 @@ final class OpaqueRgbColor extends RgbColor {
                                  final RgbColorString format) {
         // no alpha component.
     }
-
-    // Serializable.....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

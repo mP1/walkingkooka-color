@@ -89,7 +89,4 @@ final public class AlphaHslColorComponent extends AlphaLightnessOrSaturationHslC
     boolean canBeEqual(final Object other) {
         return other instanceof AlphaHslColorComponent;
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1;
 }

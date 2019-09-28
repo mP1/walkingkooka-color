@@ -65,14 +65,4 @@ public final class HueHsvColorComponentTest extends HsvColorComponentTestCase<Hu
     public Class<HueHsvColorComponent> type() {
         return HueHsvColorComponent.class;
     }
-
-    @Override
-    public HueHsvColorComponent serializableInstance() {
-        return HueHsvColorComponent.with(180);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

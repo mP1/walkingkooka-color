@@ -96,8 +96,4 @@ abstract public class HslColorComponent extends HslOrHsvColorComponent {
      * Setter used to create a new {@link HslColor} with this component replaced if different
      */
     abstract HslColor setComponent(HslColor hsl);
-
-    // Serializable.....................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

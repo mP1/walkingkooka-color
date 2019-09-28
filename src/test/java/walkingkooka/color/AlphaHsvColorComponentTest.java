@@ -65,14 +65,4 @@ public final class AlphaHsvColorComponentTest extends HsvColorComponentTestCase<
     public Class<AlphaHsvColorComponent> type() {
         return AlphaHsvColorComponent.class;
     }
-
-    @Override
-    public AlphaHsvColorComponent serializableInstance() {
-        return AlphaHsvColorComponent.with(0.5f);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return false;
-    }
 }

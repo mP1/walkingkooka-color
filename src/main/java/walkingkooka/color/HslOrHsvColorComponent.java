@@ -76,8 +76,4 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
     final String toStringPercentage() {
         return Math.round(100 * this.value) + "%";
     }
-
-    // Serializable......................................................................................................
-
-    private static final long serialVersionUID = 1;
 }

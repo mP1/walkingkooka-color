@@ -55,7 +55,4 @@ abstract class AlphaSaturationOrValueHsvColorComponent extends HsvColorComponent
     public final String toString() {
         return this.toStringPercentage();
     }
-
-    // Serializable
-    private static final long serialVersionUID = 1;
 }

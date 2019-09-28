@@ -50,14 +50,4 @@ public final class RedRgbColorComponentTest extends RgbColorComponentTestCase<Re
     public Class<RedRgbColorComponent> type() {
         return RedRgbColorComponent.class;
     }
-
-    @Override
-    public RedRgbColorComponent serializableInstance() {
-        return RedRgbColorComponent.with((byte) 123);
-    }
-
-    @Override
-    public boolean serializableInstanceIsSingleton() {
-        return true;
-    }
 }

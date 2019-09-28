@@ -20,7 +20,6 @@ package walkingkooka.color;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.HashCodeEqualsDefinedTesting2;
 import walkingkooka.test.IsMethodTesting;
-import walkingkooka.test.SerializationTesting;
 import walkingkooka.test.ToStringTesting;
 import walkingkooka.test.TypeNameTesting;
 import walkingkooka.type.JavaVisibility;
@@ -28,7 +27,6 @@ import walkingkooka.type.JavaVisibility;
 public abstract class ColorComponentTestCase<C extends ColorComponent> implements ClassTesting2<C>,
         HashCodeEqualsDefinedTesting2<C>,
         IsMethodTesting<C>,
-        SerializationTesting<C>,
         ToStringTesting<C>,
         TypeNameTesting<C> {
 
