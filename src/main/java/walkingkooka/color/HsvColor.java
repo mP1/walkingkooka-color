@@ -142,20 +142,6 @@ public abstract class HsvColor extends Color {
     // Color............................................................................................................
 
     @Override
-    public final boolean isHsl() {
-        return false;
-    }
-
-    public final boolean isHsv() {
-        return true;
-    }
-
-    @Override
-    public final boolean isRgb() {
-        return false;
-    }
-
-    @Override
     public final HslColor toHsl() {
         return this.toRgb().toHsl();
     }
