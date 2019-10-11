@@ -48,9 +48,7 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
 
     @Test
     public void testEmptyTextFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createToken("");
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createToken(""));
     }
 
     // HashCodeEqualsDefinedTesting.....................................................................................

@@ -35,9 +35,7 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
 
     @Test
     public void testFunctionNameInvalidFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            ColorFunctionTransformer.functionName(ColorFunctionParserToken.functionName("unknown", "unknown"));
-        });
+        assertThrows(IllegalArgumentException.class, () -> ColorFunctionTransformer.functionName(ColorFunctionParserToken.functionName("unknown", "unknown")));
     }
 
     // hsl..............................................................................................................

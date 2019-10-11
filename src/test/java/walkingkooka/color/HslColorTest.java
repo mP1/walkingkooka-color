@@ -39,23 +39,17 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
 
     @Test
     public void testWithNullHueFails() {
-        assertThrows(NullPointerException.class, () -> {
-            HslColor.with(null, SATURATION, LIGHTNESS);
-        });
+        assertThrows(NullPointerException.class, () -> HslColor.with(null, SATURATION, LIGHTNESS));
     }
 
     @Test
     public void testWithNullSaturationFails() {
-        assertThrows(NullPointerException.class, () -> {
-            HslColor.with(HUE, null, LIGHTNESS);
-        });
+        assertThrows(NullPointerException.class, () -> HslColor.with(HUE, null, LIGHTNESS));
     }
 
     @Test
     public void testWithNullValueFails() {
-        assertThrows(NullPointerException.class, () -> {
-            HslColor.with(HUE, SATURATION, null);
-        });
+        assertThrows(NullPointerException.class, () -> HslColor.with(HUE, SATURATION, null));
     }
 
     @Test
@@ -65,9 +59,7 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
 
     @Test
     public void testSetNullComponentFails() {
-        assertThrows(NullPointerException.class, () -> {
-            HslColor.with(HUE, SATURATION, LIGHTNESS).set(null);
-        });
+        assertThrows(NullPointerException.class, () -> HslColor.with(HUE, SATURATION, LIGHTNESS).set(null));
     }
 
     @Test

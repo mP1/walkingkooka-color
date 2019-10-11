@@ -30,23 +30,17 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
 
     @Test
     public final void testWithNullRedFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueRgbColor.withOpaque(null, GREEN, BLUE);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(null, GREEN, BLUE));
     }
 
     @Test
     public final void testWithNullGreenFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueRgbColor.withOpaque(RED, null, BLUE);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(RED, null, BLUE));
     }
 
     @Test
     public final void testWithNullBlueFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueRgbColor.withOpaque(RED, GREEN, null);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(RED, GREEN, null));
     }
 
     @Test

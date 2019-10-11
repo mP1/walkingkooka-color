@@ -70,9 +70,7 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     @Test
     public final void testSetNullFails() {
-        assertThrows(NullPointerException.class, () -> {
-            this.createColor().set(null);
-        });
+        assertThrows(NullPointerException.class, () -> this.createColor().set(null));
     }
 
     // red
@@ -190,23 +188,17 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     @Test
     public void testMixNullComponentFails() {
-        assertThrows(NullPointerException.class, () -> {
-            this.createColor().mix(null, 1.0f);
-        });
+        assertThrows(NullPointerException.class, () -> this.createColor().mix(null, 1.0f));
     }
 
     @Test
     public void testMixInvalidAmountBelowZeroFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createColor().mix(RED, -0.1f);
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createColor().mix(RED, -0.1f));
     }
 
     @Test
     public void testMixInvalidAmountAboveOneFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createColor().mix(RED, +1.1f);
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createColor().mix(RED, +1.1f));
     }
 
     // mix red
