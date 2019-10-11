@@ -109,7 +109,6 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Test
     public void testWebNameConstants() {
         WebColorName.RRGGBB_CONSTANTS.values()
-                .stream()
                 .forEach(n -> {
                     final RgbColor color = n.color();
                     this.webNameAndCheck(color, n);
