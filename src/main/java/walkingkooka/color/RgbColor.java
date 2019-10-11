@@ -127,7 +127,7 @@ abstract public class RgbColor extends Color {
         return fromArgb0((alpha << 24) +
                 (red << 16) +
                 (green << 8) +
-                (blue << 0));
+                blue);
     }
 
     /**
@@ -152,7 +152,7 @@ abstract public class RgbColor extends Color {
         return fromArgb0((alpha << 24) +
                 (red << 16) +
                 (green << 8) +
-                (blue << 0));
+                blue);
     }
 
     private static int parseHashHexDigits(final String text) {
