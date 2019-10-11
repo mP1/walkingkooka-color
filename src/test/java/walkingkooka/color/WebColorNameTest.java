@@ -91,11 +91,9 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
                 webColorName.map(WebColorName::color).orElse(null),
                 () -> "name " + CharSequences.quoteAndEscape(name));
 
-        if (webColorName.isPresent()) {
-            assertEquals(webColorName.get(),
-                    WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
-                    () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name));
-        }
+        webColorName.ifPresent(colorName -> assertEquals(colorName,
+                WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
+                () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name)));
     }
 
     @Override
