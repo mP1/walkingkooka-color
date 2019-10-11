@@ -30,23 +30,17 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
 
     @Test
     public void testWithNullHueFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueHsvColor.with(null, SATURATION, VALUE);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueHsvColor.with(null, SATURATION, VALUE));
     }
 
     @Test
     public void testWithNullSaturationFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueHsvColor.with(HUE, null, VALUE);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueHsvColor.with(HUE, null, VALUE));
     }
 
     @Test
     public void testWithNullValueFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueHsvColor.with(HUE, SATURATION, null);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueHsvColor.with(HUE, SATURATION, null));
     }
 
     @Test

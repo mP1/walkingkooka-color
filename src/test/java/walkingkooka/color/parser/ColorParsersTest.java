@@ -474,10 +474,8 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     private void parseFails(final Parser<ParserContext> parser,
                             final String text,
                             final Class<? extends Throwable> thrown) {
-        assertThrows(thrown, () -> {
-            parser.orReport(ParserReporters.basic())
-                    .parse(TextCursors.charSequence(text), parserContext());
-        });
+        assertThrows(thrown, () -> parser.orReport(ParserReporters.basic())
+                .parse(TextCursors.charSequence(text), parserContext()));
     }
 
     private void parseAndCheck(final Parser<ParserContext> parser,

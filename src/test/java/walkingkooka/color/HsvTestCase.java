@@ -43,9 +43,7 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
 
     @Test
     public final void testSetNullComponentFails() {
-        assertThrows(NullPointerException.class, () -> {
-            HsvColor.with(HUE, SATURATION, VALUE).set(null);
-        });
+        assertThrows(NullPointerException.class, () -> HsvColor.with(HUE, SATURATION, VALUE).set(null));
     }
 
     @Test

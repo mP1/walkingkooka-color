@@ -30,23 +30,17 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
 
     @Test
     public void testWithNullHueFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueHslColor.with(null, SATURATION, LIGHTNESS);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueHslColor.with(null, SATURATION, LIGHTNESS));
     }
 
     @Test
     public void testWithNullSaturationFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueHslColor.with(HUE, null, LIGHTNESS);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueHslColor.with(HUE, null, LIGHTNESS));
     }
 
     @Test
     public void testWithNullLightnessFails() {
-        assertThrows(NullPointerException.class, () -> {
-            OpaqueHslColor.with(HUE, SATURATION, null);
-        });
+        assertThrows(NullPointerException.class, () -> OpaqueHslColor.with(HUE, SATURATION, null));
     }
 
     @Test

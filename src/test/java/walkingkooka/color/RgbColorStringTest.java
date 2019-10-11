@@ -28,9 +28,7 @@ public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
 
     @Test
     public void testToStringNullFails() {
-        assertThrows(NullPointerException.class, () -> {
-            RgbColorString.RGB_DECIMAL.toString(null);
-        });
+        assertThrows(NullPointerException.class, () -> RgbColorString.RGB_DECIMAL.toString(null));
     }
 
     // hash..........................................................................................................

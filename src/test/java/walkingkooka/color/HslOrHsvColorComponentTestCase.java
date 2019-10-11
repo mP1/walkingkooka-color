@@ -34,16 +34,12 @@ public abstract class HslOrHsvColorComponentTestCase<C extends HslOrHsvColorComp
 
     @Test
     public final void testBelowLowerBoundsFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createHslOrHsvComponent(this.min() - 0.1f);
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createHslOrHsvComponent(this.min() - 0.1f));
     }
 
     @Test
     public final void testAboveUpperBoundsFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createHslOrHsvComponent(this.max() + 0.1f);
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createHslOrHsvComponent(this.max() + 0.1f));
     }
 
     @Test
@@ -62,16 +58,12 @@ public abstract class HslOrHsvColorComponentTestCase<C extends HslOrHsvColorComp
 
     @Test
     public final void testSetBelowLowerBoundsFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createHslOrHsvComponent(this.min()).setValue(this.min() - 0.1f);
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createHslOrHsvComponent(this.min()).setValue(this.min() - 0.1f));
     }
 
     @Test
     public final void testSetAboveUpperBoundsFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            this.createHslOrHsvComponent(this.min()).setValue(this.max() + 0.1f);
-        });
+        assertThrows(IllegalArgumentException.class, () -> this.createHslOrHsvComponent(this.min()).setValue(this.max() + 0.1f));
     }
 
     abstract float value();
