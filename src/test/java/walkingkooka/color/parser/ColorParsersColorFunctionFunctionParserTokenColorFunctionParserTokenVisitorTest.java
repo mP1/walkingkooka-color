@@ -86,7 +86,7 @@ public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionPars
     }
 
     private ColorFunctionNumberParserToken number(final double value) {
-        return ColorFunctionParserToken.number(Double.valueOf(value), String.valueOf(value));
+        return ColorFunctionParserToken.number(value, String.valueOf(value));
     }
 
     private ColorFunctionParenthesisCloseSymbolParserToken parenthesisCloseSymbol() {
