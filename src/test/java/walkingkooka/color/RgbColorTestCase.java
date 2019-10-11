@@ -19,7 +19,6 @@ package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
-import walkingkooka.Equality;
 import walkingkooka.test.TypeNameTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.JsonNodeException;
@@ -736,8 +735,10 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         }
     }
 
-    private boolean isEqual(final HslColorComponent component, final HslColorComponent otherComponent, final float epislon) {
-        return Equality.isAlmostEquals(component.value(), otherComponent.value(), epislon);
+    private boolean isEqual(final HslColorComponent component,
+                            final HslColorComponent otherComponent,
+                            final float epislon) {
+        return isAlmostEquals(component.value(), otherComponent.value(), epislon);
     }
 
     // toHsv
@@ -760,8 +761,16 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         }
     }
 
-    private boolean isEqual(final HsvColorComponent component, final HsvColorComponent otherComponent, final float epison) {
-        return Equality.isAlmostEquals(component.value(), otherComponent.value(), epison);
+    private boolean isEqual(final HsvColorComponent component,
+                            final HsvColorComponent otherComponent,
+                            final float epison) {
+        return isAlmostEquals(component.value(), otherComponent.value(), epison);
+    }
+
+    private boolean isAlmostEquals(final float value,
+                                  final float test,
+                                  final float epsilon) {
+        return value + epsilon >= test && value - epsilon <= test;
     }
 
     // ClassTesting ...................................................................................................
