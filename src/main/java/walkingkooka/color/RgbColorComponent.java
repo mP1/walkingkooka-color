@@ -86,9 +86,7 @@ abstract public class RgbColorComponent extends ColorComponent {
         final int sum = value + value2;
         return (byte) (sum > MAX_VALUE ?
                 MAX_VALUE :
-                sum < 0 ?
-                        0 :
-                        sum);
+                Math.max(sum, 0));
     }
 
     /**

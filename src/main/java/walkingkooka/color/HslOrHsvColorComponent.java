@@ -50,7 +50,7 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
      * Performs a saturated add.
      */
     static float add(final float value, final float min, final float max) {
-        return value < min ? min : value > max ? max : value;
+        return value < min ? min : Math.min(value, max);
     }
 
     // Object..........................................................................................................
