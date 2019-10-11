@@ -88,7 +88,7 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
         final Optional<WebColorName> webColorName = WebColorName.with(name);
 
         assertEquals(color,
-                webColorName.map(c -> c.color()).orElse(null),
+                webColorName.map(WebColorName::color).orElse(null),
                 () -> "name " + CharSequences.quoteAndEscape(name));
 
         if (webColorName.isPresent()) {
