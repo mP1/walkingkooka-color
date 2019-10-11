@@ -252,21 +252,25 @@ public abstract class Color implements HashCodeEqualsDefined,
     }
 
     static {
+        //noinspection unchecked
         JsonNodeContext.register("rgb-hsl-hsv",
                 Color::unmarshall,
                 Color::marshall,
                 Color.class);
 
+        //noinspection unchecked
         JsonNodeContext.register("rgb",
                 Color::unmarshallRgb,
                 Color::marshall,
                 RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class);
 
+        //noinspection unchecked
         JsonNodeContext.register("hsl",
                 Color::unmarshallHsl,
                 Color::marshall,
                 HslColor.class, AlphaHslColor.class, OpaqueHslColor.class);
 
+        //noinspection unchecked
         JsonNodeContext.register("hsv",
                 Color::unmarshallHsv,
                 Color::marshall,
