@@ -54,7 +54,7 @@ import java.util.Optional;
  */
 public final class ColorParsers implements PublicStaticHelper {
 
-    /**
+    /*
      * Loads the grammar extracts parsers sets some {@link Parser} constants.
      */
     static {
