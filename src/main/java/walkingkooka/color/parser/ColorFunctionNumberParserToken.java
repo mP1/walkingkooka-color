@@ -98,7 +98,7 @@ public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbol
         return RgbColorComponent.alpha(this.byteValue());
     }
 
-    private final byte byteValue() {
+    private byte byteValue() {
         return this.value().byteValue();
     }
 
