@@ -47,11 +47,6 @@ abstract class AlphaLightnessOrSaturationHslColorComponent extends HslColorCompo
     }
 
     @Override
-    public final boolean isHue() {
-        return false;
-    }
-
-    @Override
     public final String toString() {
         return this.toStringPercentage();
     }

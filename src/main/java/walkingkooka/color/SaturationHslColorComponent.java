@@ -59,21 +59,6 @@ final public class SaturationHslColorComponent extends AlphaLightnessOrSaturatio
     }
 
     @Override
-    public boolean isSaturation() {
-        return true;
-    }
-
-    @Override
-    public boolean isLightness() {
-        return false;
-    }
-
-    @Override
-    public boolean isAlpha() {
-        return false;
-    }
-
-    @Override
     HslColor setComponent(final HslColor hsl) {
         return hsl.setSaturation(this);
     }

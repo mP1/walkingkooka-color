@@ -74,26 +74,6 @@ final public class HueHslColorComponent extends HslColorComponent {
     }
 
     @Override
-    public boolean isHue() {
-        return true;
-    }
-
-    @Override
-    public boolean isSaturation() {
-        return false;
-    }
-
-    @Override
-    public boolean isLightness() {
-        return false;
-    }
-
-    @Override
-    public boolean isAlpha() {
-        return false;
-    }
-
-    @Override
     HslColor setComponent(final HslColor hsl) {
         return hsl.setHue(this);
     }
