@@ -75,22 +75,30 @@ abstract public class HsvColorComponent extends HslOrHsvColorComponent {
     /**
      * Returns true if this is a {@link HueHsvColorComponent}
      */
-    public abstract boolean isHue();
+    public final boolean isHue() {
+        return this instanceof HueHsvColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link SaturationHsvColorComponent}
      */
-    public abstract boolean isSaturation();
+    public final boolean isSaturation() {
+        return this instanceof SaturationHsvColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link ValueHsvColorComponent}
      */
-    public abstract boolean isValue();
+    public final boolean isValue() {
+        return this instanceof ValueHsvColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link AlphaHsvColorComponent}
      */
-    public abstract boolean isAlpha();
+    public final boolean isAlpha() {
+        return this instanceof AlphaHsvColorComponent;
+    }
 
     /**
      * Setter used to create a new {@link HsvColor} with this component replaced if different

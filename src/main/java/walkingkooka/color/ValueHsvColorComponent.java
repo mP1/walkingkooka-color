@@ -58,21 +58,6 @@ final public class ValueHsvColorComponent extends AlphaSaturationOrValueHsvColor
     }
 
     @Override
-    public boolean isSaturation() {
-        return false;
-    }
-
-    @Override
-    public boolean isValue() {
-        return true;
-    }
-
-    @Override
-    public boolean isAlpha() {
-        return false;
-    }
-
-    @Override
     HsvColor setComponent(final HsvColor hsv) {
         return hsv.setValue(this);
     }
