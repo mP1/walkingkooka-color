@@ -153,22 +153,30 @@ abstract public class RgbColorComponent extends ColorComponent {
     /**
      * Returns true if this is a {@link RedRgbColorComponent}.
      */
-    public abstract boolean isRed();
+    public final boolean isRed() {
+        return this instanceof RedRgbColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link GreenRgbColorComponent}.
      */
-    public abstract boolean isGreen();
+    public final boolean isGreen() {
+        return this instanceof GreenRgbColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link BlueRgbColorComponent}.
      */
-    public abstract boolean isBlue();
+    public final boolean isBlue() {
+        return this instanceof BlueRgbColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link AlphaRgbColorComponent}.
      */
-    public abstract boolean isAlpha();
+    public final boolean isAlpha() {
+        return this instanceof AlphaRgbColorComponent;
+    }
 
     /**
      * Returns the raw RGB value as an byte.

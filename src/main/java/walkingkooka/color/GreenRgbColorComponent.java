@@ -65,24 +65,4 @@ final public class GreenRgbColorComponent extends RgbColorComponent {
     RgbColor setComponent(final RgbColor color, final int value) {
         return color.setGreen(GreenRgbColorComponent.CONSTANTS[RgbColorComponent.mask(value)]);
     }
-
-    @Override
-    public boolean isRed() {
-        return false;
-    }
-
-    @Override
-    public boolean isGreen() {
-        return true;
-    }
-
-    @Override
-    public boolean isBlue() {
-        return false;
-    }
-
-    @Override
-    public boolean isAlpha() {
-        return false;
-    }
 }
