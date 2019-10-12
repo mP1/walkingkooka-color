@@ -75,22 +75,30 @@ abstract public class HslColorComponent extends HslOrHsvColorComponent {
     /**
      * Returns true if this is a {@link HueHslColorComponent}.
      */
-    public abstract boolean isHue();
+    public final boolean isHue() {
+        return this instanceof HueHslColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link SaturationHslColorComponent}.
      */
-    public abstract boolean isSaturation();
+    public final boolean isSaturation() {
+        return this instanceof SaturationHslColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link LightnessHslColorComponent}.
      */
-    public abstract boolean isLightness();
+    public final boolean isLightness() {
+        return this instanceof LightnessHslColorComponent;
+    }
 
     /**
      * Returns true if this is a {@link AlphaHslColorComponent}.
      */
-    public abstract boolean isAlpha();
+    public final boolean isAlpha() {
+        return this instanceof AlphaHslColorComponent;
+    }
 
     /**
      * Setter used to create a new {@link HslColor} with this component replaced if different
