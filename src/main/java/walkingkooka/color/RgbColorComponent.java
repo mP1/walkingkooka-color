@@ -128,16 +128,14 @@ abstract public class RgbColorComponent extends ColorComponent {
      */
     final RgbColor mix(final RgbColor color, final float amount) {
         // special case if missing same components.
-        final int to = this.unsignedIntValue;
         final int from = this.value(color);
-        final int difference = to - from;
+        final int difference = this.unsignedIntValue - from;
         RgbColor mixed = color;
 
         // if components are equal do not bother mixing and updating component.
-        if (0 != difference) {
-            mixed = this.setComponent(color, from + Math.round(difference * amount));
-        }
-        return mixed;
+        return 0 != difference ?
+                this.setComponent(color, from + Math.round(difference * amount)) :
+                mixed;
     }
 
     /**
