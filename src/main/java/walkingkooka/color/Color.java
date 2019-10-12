@@ -117,10 +117,10 @@ public abstract class Color implements HashCodeEqualsDefined,
         return RgbColor.parseRgb0(text);
     }
 
-    static Color parse0(final String text,
-                        final boolean tryRgb,
-                        final boolean tryHsl,
-                        final boolean tryHsv) {
+    private static Color parse0(final String text,
+                                final boolean tryRgb,
+                                final boolean tryHsl,
+                                final boolean tryHsv) {
         checkText(text);
 
         Color color;
@@ -143,7 +143,7 @@ public abstract class Color implements HashCodeEqualsDefined,
         return color;
     }
 
-    static void checkText(final String text) {
+    private static void checkText(final String text) {
         CharSequences.failIfNullOrEmpty(text, "text");
     }
 

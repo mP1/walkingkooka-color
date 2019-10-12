@@ -127,7 +127,7 @@ public abstract class ColorFunctionParserToken implements ParserToken, HashCodeE
         return this.text;
     }
 
-    final String text;
+    private final String text;
 
     abstract Object value();
 
