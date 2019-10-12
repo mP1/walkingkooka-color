@@ -40,7 +40,7 @@ import java.util.Objects;
 /**
  * Holds a json array which may contain further json values.
  */
-public final class ColorFunctionFunctionParserToken extends ColorFunctionParserToken implements ParentParserToken<ColorFunctionFunctionParserToken>  {
+public final class ColorFunctionFunctionParserToken extends ColorFunctionParserToken implements ParentParserToken {
 
     static ColorFunctionFunctionParserToken with(final List<ParserToken> value,
                                                  final String text) {
