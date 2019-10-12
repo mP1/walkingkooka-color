@@ -37,11 +37,11 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
 
         final List<ColorFunctionParserToken> values = visitor.values;
 
-        return visitor.transformer.color(ColorFunctionParserToken.class.cast(values.get(0)),
-                ColorFunctionParserToken.class.cast(values.get(1)),
-                ColorFunctionParserToken.class.cast(values.get(2)),
+        return visitor.transformer.color(values.get(0).cast(ColorFunctionParserToken.class),
+                values.get(1).cast(ColorFunctionParserToken.class),
+                values.get(2).cast(ColorFunctionParserToken.class),
                 Optional.ofNullable(values.size() == 4 ?
-                        ColorFunctionParserToken.class.cast(values.get(3)) :
+                        values.get(3).cast(ColorFunctionParserToken.class) :
                         null));
     }
 
