@@ -67,24 +67,4 @@ final public class AlphaRgbColorComponent extends RgbColorComponent {
     RgbColor setComponent(final RgbColor color, final int value) {
         return color.setAlpha(AlphaRgbColorComponent.CONSTANTS[value]);
     }
-
-    @Override
-    public boolean isRed() {
-        return false;
-    }
-
-    @Override
-    public boolean isGreen() {
-        return false;
-    }
-
-    @Override
-    public boolean isBlue() {
-        return false;
-    }
-
-    @Override
-    public boolean isAlpha() {
-        return true;
-    }
 }
