@@ -74,26 +74,6 @@ final public class HueHsvColorComponent extends HsvColorComponent {
     }
 
     @Override
-    public boolean isHue() {
-        return true;
-    }
-
-    @Override
-    public boolean isSaturation() {
-        return false;
-    }
-
-    @Override
-    public boolean isValue() {
-        return false;
-    }
-
-    @Override
-    public boolean isAlpha() {
-        return false;
-    }
-
-    @Override
     HsvColor setComponent(final HsvColor hsv) {
         return hsv.setHue(this);
     }

@@ -47,11 +47,6 @@ abstract class AlphaSaturationOrValueHsvColorComponent extends HsvColorComponent
     }
 
     @Override
-    public final boolean isHue() {
-        return false;
-    }
-
-    @Override
     public final String toString() {
         return this.toStringPercentage();
     }
