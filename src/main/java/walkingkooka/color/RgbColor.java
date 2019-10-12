@@ -134,7 +134,7 @@ abstract public class RgbColor extends Color {
      * Handles parsing RRGGBB 6 hex digits.
      */
     // WebColorName.registerConstant
-    static RgbColor parseRrggbb(final String text) {
+    private static RgbColor parseRrggbb(final String text) {
         return fromRgb0(parseHashHexDigits(text));
     }
 
@@ -205,7 +205,7 @@ abstract public class RgbColor extends Color {
     /**
      * A mask that may be used to extract only the alpha component of a ARGB value.
      */
-    final static int ALPHA_MASK = 0xFF << RgbColor.ALPHA_SHIFT;
+    private final static int ALPHA_MASK = 0xFF << RgbColor.ALPHA_SHIFT;
 
     /**
      * Used to extract 8 red bits from a 32 bit ARGB value.
