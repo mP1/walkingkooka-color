@@ -156,7 +156,7 @@ public abstract class ColorFunctionParserToken implements ParserToken, HashCodeE
     @Override
     public final void accept(final ParserTokenVisitor visitor) {
         if(visitor instanceof ColorFunctionParserTokenVisitor) {
-            final ColorFunctionParserTokenVisitor visitor2 = ColorFunctionParserTokenVisitor.class.cast(visitor);
+            final ColorFunctionParserTokenVisitor visitor2 = (ColorFunctionParserTokenVisitor)visitor;
             if (Visiting.CONTINUE == visitor2.startVisit(this)) {
                 this.accept(visitor2);
             }

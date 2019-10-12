@@ -32,6 +32,7 @@ import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserReporters;
+import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeContext;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallContext;
@@ -150,11 +151,15 @@ public abstract class Color implements HashCodeEqualsDefined,
                                        final Parser<ParserContext> parser) {
         try {
             return parser.parse(TextCursors.charSequence(text), ParserContexts.basic(DateTimeContexts.fake(), DecimalNumberContexts.american(MathContext.DECIMAL32)))
-                    .map(t -> ColorFunctionFunctionParserToken.class.cast(t).toColorHslOrHsv())
+                    .map(Color::toColorHslOrHsv)
                     .orElseThrow(() -> new IllegalArgumentException("Parsing " + CharSequences.quoteAndEscape(text) + " failed."));
         } catch (final ParserException cause) {
             throw new IllegalArgumentException(cause.getMessage(), cause);
         }
+    }
+
+    private static Color toColorHslOrHsv(final ParserToken token) {
+        return token.cast(ColorFunctionFunctionParserToken.class).toColorHslOrHsv();
     }
 
     // parseRgb hsl(359,100%,100%) / hsla(359,100%,100%)..............................................................
