@@ -52,11 +52,13 @@ public abstract class Color implements HashCodeEqualsDefined,
     /**
      * A constant holding black
      */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
     public final static RgbColor BLACK = RgbColor.fromRgb0(0);
 
     /**
      * A constant holding white
      */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
     public final static RgbColor WHITE = RgbColor.fromRgb0(0xFFFFFF);
 
     /**
