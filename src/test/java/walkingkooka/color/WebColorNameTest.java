@@ -21,9 +21,9 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.naming.NameTesting2;
+import walkingkooka.reflect.FieldAttributes;
 import walkingkooka.text.CaseSensitivity;
 import walkingkooka.text.CharSequences;
-import walkingkooka.type.FieldAttributes;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

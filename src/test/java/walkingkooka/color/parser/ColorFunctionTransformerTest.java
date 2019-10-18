@@ -24,7 +24,7 @@ import walkingkooka.color.HslColorComponent;
 import walkingkooka.color.HsvColor;
 import walkingkooka.color.HsvColorComponent;
 import walkingkooka.color.RgbColor;
-import walkingkooka.type.JavaVisibility;
+import walkingkooka.reflect.JavaVisibility;
 
 import java.util.Optional;
 

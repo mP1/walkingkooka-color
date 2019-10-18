@@ -17,7 +17,7 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.type.JavaVisibility;
+import walkingkooka.reflect.JavaVisibility;
 
 public abstract class ColorFunctionParserTokenTestCase2<T extends ColorFunctionParserToken> extends ColorFunctionParserTokenTestCase<T> {
 

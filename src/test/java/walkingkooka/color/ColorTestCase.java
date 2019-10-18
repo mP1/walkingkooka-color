@@ -18,9 +18,9 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.test.ClassTesting2;
-import walkingkooka.test.HashCodeEqualsDefinedTesting2;
-import walkingkooka.test.ToStringTesting;
+import walkingkooka.HashCodeEqualsDefinedTesting2;
+import walkingkooka.ToStringTesting;
+import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

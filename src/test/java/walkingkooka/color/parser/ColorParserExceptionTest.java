@@ -17,8 +17,8 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.test.StandardThrowableTesting;
-import walkingkooka.type.JavaVisibility;
+import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.StandardThrowableTesting;
 
 public final class ColorParserExceptionTest implements StandardThrowableTesting<ColorParserException> {
 

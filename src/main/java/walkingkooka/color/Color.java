@@ -24,7 +24,6 @@ import walkingkooka.color.parser.ColorFunctionFunctionParserToken;
 import walkingkooka.color.parser.ColorParsers;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
-import walkingkooka.test.HashCodeEqualsDefined;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.TextCursors;
 import walkingkooka.text.cursor.parser.Parser;
@@ -46,8 +45,7 @@ import java.util.function.Function;
 /**
  * Base class for all rgb like value classes.
  */
-public abstract class Color implements HashCodeEqualsDefined,
-        UsesToStringBuilder {
+public abstract class Color implements UsesToStringBuilder {
 
     /**
      * A constant holding black
