@@ -18,7 +18,7 @@
 package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.test.IsMethodTesting;
+import walkingkooka.reflect.IsMethodTesting;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
 public abstract class ColorFunctionLeafParserTokenTestCase<T extends ColorFunctionLeafParserToken> extends ColorFunctionParserTokenTestCase3<T>

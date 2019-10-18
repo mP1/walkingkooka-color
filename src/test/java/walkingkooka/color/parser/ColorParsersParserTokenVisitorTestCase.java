@@ -17,10 +17,10 @@
 
 package walkingkooka.color.parser;
 
+import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.ParserTokenVisitor;
 import walkingkooka.text.cursor.parser.ParserTokenVisitorTesting;
-import walkingkooka.type.JavaVisibility;
 
 public abstract class ColorParsersParserTokenVisitorTestCase<P extends ParserTokenVisitor> implements ParserTokenVisitorTesting<P, ParserToken> {
 

@@ -23,7 +23,8 @@ import walkingkooka.color.HsvColorComponent;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
-import walkingkooka.test.PublicStaticHelperTesting;
+import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.TextCursors;
 import walkingkooka.text.cursor.parser.Parser;
@@ -31,7 +32,6 @@ import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserReporterException;
 import walkingkooka.text.cursor.parser.ParserReporters;
-import walkingkooka.type.JavaVisibility;
 
 import java.lang.reflect.Method;
 import java.math.MathContext;

@@ -17,9 +17,7 @@
 
 package walkingkooka.color;
 
-import walkingkooka.test.HashCodeEqualsDefined;
-
-abstract class ColorComponent implements HashCodeEqualsDefined {
+abstract class ColorComponent {
 
     ColorComponent() {
         super();

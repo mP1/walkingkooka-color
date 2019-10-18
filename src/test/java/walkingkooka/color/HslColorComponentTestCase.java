@@ -18,8 +18,8 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.reflect.MethodAttributes;
 import walkingkooka.text.CharSequences;
-import walkingkooka.type.MethodAttributes;
 
 import java.lang.reflect.Method;
 

@@ -30,7 +30,6 @@ import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
-import walkingkooka.test.HashCodeEqualsDefined;
 import walkingkooka.text.Whitespace;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserToken;
@@ -42,7 +41,7 @@ import java.util.List;
 /**
  * Base class for a rgb function {@link ParserToken}.
  */
-public abstract class ColorFunctionParserToken implements ParserToken, HashCodeEqualsDefined {
+public abstract class ColorFunctionParserToken implements ParserToken {
 
     /**
      * {@see ColorFunctionDegreesUnitSymbolParserToken}
