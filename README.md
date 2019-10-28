@@ -11,14 +11,14 @@ Small sample showing some supported operations.
 Color red = WebColorName.with("red")
 	.orElse(Color.BLACK);
 
-// parsea rgba function..................................................
+// parse rgba function....................................................
 Color rgba = Color.parse("rgba(255,254,253,100%)");
 
 // convert hsv to a rgb color.............................................
 Color hsv = Color.parseHsv("hsv(270, 0.5, 0.25)")
      .toColor();
 
-// mix the green component (3 to 1), preserving RBA components............
-Color mixed = red(hsv.green(), 0.75);
+// mix the green component (3 to 1), preserving RBGA components...........
+Color mixed = red.mix(hsv.green(), 0.75);
 
 ```
