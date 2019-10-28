@@ -75,14 +75,6 @@ abstract class ColorFunctionSymbolParserToken<V> extends ColorFunctionLeafParser
         return true;
     }
 
-    // HasSearchNode....................................................................................................
-
-    @Override
-    public final SearchNode toSearchNode() {
-        final String text = this.text();
-        return SearchNode.text(text, text);
-    }
-
     // ColorFunctionTransformer.........................................................................................
 
     @Override

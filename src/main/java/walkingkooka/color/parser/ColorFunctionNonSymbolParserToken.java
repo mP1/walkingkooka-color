@@ -68,12 +68,4 @@ abstract class ColorFunctionNonSymbolParserToken<V> extends ColorFunctionLeafPar
     public final boolean isWhitespace() {
         return false;
     }
-
-    // HasSearchNode....................................................................................................
-
-    @Override
-    public final SearchNode toSearchNode() {
-        final String text = this.text();
-        return SearchNode.text(text, text);
-    }
 }
