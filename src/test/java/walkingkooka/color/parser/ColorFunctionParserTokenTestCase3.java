@@ -40,9 +40,9 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
 
     @Test
     public final void testPublicStaticFactoryMethod() {
-        PublicStaticFactoryTesting.check(ColorFunctionParserToken.class,
+        PublicStaticFactoryTesting.checkFactoryMethods(ColorFunctionParserToken.class,
                 "ColorFunction",
-                ParserToken.class,
+                ParserToken.class.getSimpleName(),
                 this.type());
     }
 
