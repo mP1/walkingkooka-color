@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/mP1/walkingkooka-color.svg?branch=master)](https://travis-ci.com/mP1/walkingkooka-color.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/mP1/walkingkooka-color/badge.svg?branch=master)](https://coveralls.io/github/mP1/walkingkooka-color?branch=master)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Represent color values in numerous color forms(rgb, rgba, hsl, hsla, hsv, hsva), color operations like mix, text and parsing support.
 
