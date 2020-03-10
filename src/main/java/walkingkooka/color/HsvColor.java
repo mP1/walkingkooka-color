@@ -25,6 +25,7 @@ import java.util.Objects;
 /**
  * Holds the hue, saturation and value which describe a rgb.
  */
+@SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
 public abstract class HsvColor extends Color {
 
     /**
