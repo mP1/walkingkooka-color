@@ -20,18 +20,21 @@ import walkingkooka.Cast;
 import walkingkooka.collect.map.Maps;
 import walkingkooka.reflect.PublicStaticHelper;
 import walkingkooka.text.CaseSensitivity;
+import walkingkooka.text.cursor.TextCursor;
+import walkingkooka.text.cursor.TextCursors;
 import walkingkooka.text.cursor.parser.DoubleParserToken;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
+import walkingkooka.text.cursor.parser.ParserReporters;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.Parsers;
 import walkingkooka.text.cursor.parser.StringParserToken;
-import walkingkooka.text.cursor.parser.ebnf.EbnfGrammarLoader;
 import walkingkooka.text.cursor.parser.ebnf.EbnfGrammarParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfIdentifierName;
+import walkingkooka.text.cursor.parser.ebnf.EbnfParserContexts;
+import walkingkooka.text.cursor.parser.ebnf.EbnfParserToken;
 
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * A collection of factory methods to create parsers.
@@ -55,13 +58,10 @@ import java.util.Optional;
 public final class ColorParsers implements PublicStaticHelper {
 
     /*
-     * Loads the grammar extracts parsers sets some {@link Parser} constants.
+     * Loads the grammar, picks parsers sets some {@link Parser} constants.
      */
     static {
         try {
-            final Optional<EbnfGrammarParserToken> grammar = EbnfGrammarLoader.with("color-parsers.grammar", ColorParsers.class)
-                    .grammar();
-
             final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
 
             predefined.put(EbnfIdentifierName.with("DEGREE_UNIT"), Parsers.string("deg", CaseSensitivity.SENSITIVE)
@@ -69,17 +69,22 @@ public final class ColorParsers implements PublicStaticHelper {
             predefined.put(EbnfIdentifierName.with("NUMBER"), Parsers.doubleParser()
                     .transform(ColorParsers::transformNumber));
 
-            final Map<EbnfIdentifierName, Parser<ParserContext>> result = grammar.get()
+            final TextCursor grammarFile = TextCursors.charSequence(new ColorParsersGrammarProvider().text());
+
+            final Map<EbnfIdentifierName, Parser<ParserContext>> parsers = EbnfParserToken.grammarParser()
+                    .orFailIfCursorNotEmpty(ParserReporters.basic())
+                    .parse(grammarFile, EbnfParserContexts.basic())
+                    .orElseThrow(() -> new IllegalStateException("Unable to parse color parsers grammar file."))
+                    .cast(EbnfGrammarParserToken.class)
                     .combinator(predefined, ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.INSTANCE);
 
-            RGB_PARSER = result.get(EbnfIdentifierName.with("RGB_RGBA_FUNCTION"));
-            HSL_PARSER = result.get(EbnfIdentifierName.with("HSL_HSLA_FUNCTION"));
-            HSV_PARSER = result.get(EbnfIdentifierName.with("HSV_HSVA_FUNCTION"));
-
+            RGB_PARSER = parsers.get(EbnfIdentifierName.with("RGB_RGBA_FUNCTION"));
+            HSL_PARSER = parsers.get(EbnfIdentifierName.with("HSL_HSLA_FUNCTION"));
+            HSV_PARSER = parsers.get(EbnfIdentifierName.with("HSV_HSVA_FUNCTION"));
         } catch (final RuntimeException rethrow) {
             throw rethrow;
         } catch (final Exception cause) {
-            throw new ColorParserException("Failed to init parsers from grammar file, message: " + cause.getMessage(), cause);
+            throw new ColorParserException("Failed to load grammar and fetch parsers, message: " + cause.getMessage(), cause);
         }
     }
 
