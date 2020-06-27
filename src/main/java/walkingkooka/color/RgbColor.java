@@ -17,6 +17,7 @@
 
 package walkingkooka.color;
 
+import javaemul.internal.annotations.GwtIncompatible;
 import walkingkooka.Cast;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.ToStringBuilderOption;
@@ -414,6 +415,7 @@ abstract public class RgbColor extends Color {
     /**
      * Factory that creates a {@link java.awt.Color} holding the same rgb value.
      */
+    @GwtIncompatible
     abstract public java.awt.Color toAwtColor();
 
     // Color............................................................................................................
