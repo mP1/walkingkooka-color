@@ -17,6 +17,7 @@
 
 package walkingkooka.color;
 
+import javaemul.internal.annotations.GwtIncompatible;
 import walkingkooka.ToStringBuilder;
 
 import java.util.Objects;
@@ -131,6 +132,7 @@ final class OpaqueRgbColor extends RgbColor {
         return this.rgb();
     }
 
+    @GwtIncompatible
     @Override
     public java.awt.Color toAwtColor() {
         return new java.awt.Color(this.rgb());
