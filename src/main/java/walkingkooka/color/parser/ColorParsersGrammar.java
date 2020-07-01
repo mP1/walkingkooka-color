@@ -19,6 +19,6 @@ package walkingkooka.color.parser;
 
 import walkingkooka.resource.TextResourceAware;
 
-@TextResourceAware
+@TextResourceAware(normalizeSpace = true)
 final class ColorParsersGrammar {
 }
