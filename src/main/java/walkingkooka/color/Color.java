@@ -244,7 +244,7 @@ public abstract class Color implements UsesToStringBuilder {
         Objects.requireNonNull(from, "from");
 
         try {
-            return parse.apply(from.stringValueOrFail());
+            return parse.apply(from.stringOrFail());
         } catch (final JsonNodeUnmarshallException cause) {
             throw cause;
         } catch (final RuntimeException cause) {
