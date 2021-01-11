@@ -21,7 +21,12 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallContexts;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class RgbColorTest extends ColorTestCase<RgbColor> implements ParseStringTesting<RgbColor> {
 
@@ -286,6 +291,18 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     public void testParseColorCyan() {
         this.parseStringAndCheck("CYAN", WebColorName.CYAN.color());
     }
+
+    // json......... ...................................................................................................
+
+    @Test
+    public void testJsonTypeName() {
+        assertEquals(Optional.of(
+                JsonNode.string("rgb")
+                ),
+                JsonNodeMarshallContexts.basic().typeName(RgbColor.class));
+    }
+
+    // factory...... ...................................................................................................
 
     @Override
     RgbColor createColor() {
