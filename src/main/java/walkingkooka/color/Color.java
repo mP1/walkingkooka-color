@@ -40,6 +40,7 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallException;
 
 import java.math.MathContext;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
@@ -258,28 +259,55 @@ public abstract class Color implements UsesToStringBuilder {
 
     static {
         //noinspection unchecked
-        JsonNodeContext.register("rgb-hsl-hsv",
+        register(
+                "rgb-hsl-hsv",
                 Color::unmarshall,
-                Color::marshall,
-                Color.class);
+                Color.class
+        );
 
         //noinspection unchecked
-        JsonNodeContext.register("rgb",
+        register(
                 Color::unmarshallRgb,
-                Color::marshall,
-                RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class);
+                RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class
+        );
 
         //noinspection unchecked
-        JsonNodeContext.register("hsl",
+        register(
                 Color::unmarshallHsl,
-                Color::marshall,
-                HslColor.class, AlphaHslColor.class, OpaqueHslColor.class);
+                HslColor.class, AlphaHslColor.class, OpaqueHslColor.class
+        );
 
         //noinspection unchecked
-        JsonNodeContext.register("hsv",
+        register(
                 Color::unmarshallHsv,
+                HsvColor.class, AlphaHsvColor.class, OpaqueHsvColor.class
+        );
+    }
+
+    private static <T extends Color> void register(
+            final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
+            final Class<T> type,
+            final Class<? extends T>... types) {
+        register(
+                JsonNodeContext.computeTypeName(type),
+                unmarshaller,
+                type,
+                types
+        );
+    }
+
+    private static <T extends Color> void register(
+            final String typeName,
+            final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
+            final Class<T> type,
+            final Class<? extends T>... types) {
+        JsonNodeContext.register(
+                JsonNodeContext.computeTypeName(type),
+                unmarshaller,
                 Color::marshall,
-                HsvColor.class, AlphaHsvColor.class, OpaqueHsvColor.class);
+                type,
+                types
+        );
     }
 
     // Object .........................................................................................................
