@@ -289,7 +289,9 @@ public abstract class Color implements UsesToStringBuilder {
             final Class<T> type,
             final Class<? extends T>... types) {
         register(
-                JsonNodeContext.computeTypeName(type),
+                CharSequences.subSequence(
+                        JsonNodeContext.computeTypeName(type), 0,  -"color-".length()
+                ).toString(), // drop the leading "color-".
                 unmarshaller,
                 type,
                 types
@@ -302,7 +304,7 @@ public abstract class Color implements UsesToStringBuilder {
             final Class<T> type,
             final Class<? extends T>... types) {
         JsonNodeContext.register(
-                JsonNodeContext.computeTypeName(type),
+                typeName,
                 unmarshaller,
                 Color::marshall,
                 type,
