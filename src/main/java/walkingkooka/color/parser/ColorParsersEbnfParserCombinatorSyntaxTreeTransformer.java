@@ -34,7 +34,7 @@ import walkingkooka.text.cursor.parser.ebnf.EbnfRepeatedParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfTerminalParserToken;
 import walkingkooka.text.cursor.parser.ebnf.combinator.EbnfParserCombinatorSyntaxTreeTransformer;
 
-final class ColorParsersEbnfParserCombinatorSyntaxTreeTransformer implements EbnfParserCombinatorSyntaxTreeTransformer {
+final class ColorParsersEbnfParserCombinatorSyntaxTreeTransformer implements EbnfParserCombinatorSyntaxTreeTransformer<ParserContext> {
 
     final static ColorParsersEbnfParserCombinatorSyntaxTreeTransformer INSTANCE = new ColorParsersEbnfParserCombinatorSyntaxTreeTransformer();
 
