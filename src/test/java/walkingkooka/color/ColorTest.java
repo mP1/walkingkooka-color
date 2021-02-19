@@ -74,7 +74,7 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Test
     public void testJsonNodeUnmarshallInvalidStringFails() {
-        this.unmarshallFails("\"abc\"", JsonNodeException.class);
+        this.unmarshallFails("\"abc\"");
     }
 
     @Test

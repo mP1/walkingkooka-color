@@ -582,22 +582,22 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     @Test
     public final void testJsonNodeUnmarshallBooleanFails() {
-        this.unmarshallFails(JsonNode.booleanNode(true), JsonNodeException.class);
+        this.unmarshallFails(JsonNode.booleanNode(true));
     }
 
     @Test
     public final void testJsonNodeUnmarshallNumberFails() {
-        this.unmarshallFails(JsonNode.number(123), JsonNodeException.class);
+        this.unmarshallFails(JsonNode.number(123));
     }
 
     @Test
     public final void testJsonNodeUnmarshallArrayFails() {
-        this.unmarshallFails(JsonNode.array(), JsonNodeException.class);
+        this.unmarshallFails(JsonNode.array());
     }
 
     @Test
     public final void testJsonNodeUnmarshallObjectFails() {
-        this.unmarshallFails(JsonNode.object(), JsonNodeException.class);
+        this.unmarshallFails(JsonNode.object());
     }
 
     // helpers..........................................................................................................
