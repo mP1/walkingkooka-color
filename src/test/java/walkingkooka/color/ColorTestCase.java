@@ -119,7 +119,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     // HasJsonNodeTesting..............................................................................................
 
     @Override
-    public final C createJsonNodeMappingValue() {
+    public final C createJsonNodeMarshallingValue() {
         return this.createColor();
     }
 
