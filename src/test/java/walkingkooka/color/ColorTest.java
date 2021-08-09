@@ -108,7 +108,7 @@ public final class ColorTest implements ClassTesting2<Color>,
     }
 
     @Override
-    public Color createJsonNodeMappingValue() {
+    public Color createJsonNodeMarshallingValue() {
         return walkingkooka.color.RgbColor.fromArgb0(0x123456);
     }
 
