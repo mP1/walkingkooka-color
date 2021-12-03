@@ -22,14 +22,11 @@ import walkingkooka.Cast;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.TypeNameTesting;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.JsonNodeException;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -684,13 +681,13 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         checkComponent(alpha, mixedColor.alpha(), "alpha", rgb, mixed, amount);
     }
 
-    static private void checkComponent(final RgbColorComponent expected,
-                                       final RgbColorComponent actual,
-                                       final String label,
-                                       final RgbColor rgb,
-                                       final RgbColorComponent mixed, final float amount) {
+    private void checkComponent(final RgbColorComponent expected,
+                                final RgbColorComponent actual,
+                                final String label,
+                                final RgbColor rgb,
+                                final RgbColorComponent mixed, final float amount) {
         if (expected != actual) {
-            assertNotEquals(
+            this.checkNotEquals(
                     toString(expected),
                     toString(actual),
                     label + " incorrect, failed to mix " + rgb + " with " + toString(mixed) + " amount=" + amount);
@@ -698,7 +695,7 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     }
 
     final void webNameAndCheck(final RgbColor color, final WebColorName webColorName) {
-        assertEquals(Optional.ofNullable(webColorName),
+        this.checkEquals(Optional.ofNullable(webColorName),
                 color.webColorName(),
                 () -> color + " web rgb name");
     }
@@ -723,7 +720,7 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         if ((false == this.isEqual(hsl.hue(), result.hue(), 0.9f)) || //
                 (false == this.isEqual(hsl.saturation(), result.saturation(), 0.13f)) || //
                 (false == this.isEqual(hsl.lightness(), result.lightness(), 0.05f))) {
-            assertNotEquals("failed to convert " + rgb + " to hsl", hsl.toString(), result.toString());
+            this.checkNotEquals("failed to convert " + rgb + " to hsl", hsl.toString(), result.toString());
         }
     }
 
@@ -749,7 +746,7 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         if ((false == this.isEqual(hsv.hue(), result.hue(), 0.5f)) || //
                 (false == this.isEqual(hsv.saturation(), result.saturation(), 0.01f)) || //
                 (false == this.isEqual(hsv.value(), result.value(), 0.01f))) {
-            assertNotEquals("failed to convert " + rgb + " to hsv", hsv.toString(), result.toString());
+            this.checkNotEquals("failed to convert " + rgb + " to hsv", hsv.toString(), result.toString());
         }
     }
 

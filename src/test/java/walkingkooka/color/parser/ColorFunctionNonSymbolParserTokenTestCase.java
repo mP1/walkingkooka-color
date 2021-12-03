@@ -20,8 +20,6 @@ package walkingkooka.color.parser;
 import org.junit.jupiter.api.Test;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public abstract class ColorFunctionNonSymbolParserTokenTestCase<T extends ColorFunctionNonSymbolParserToken, V> extends ColorFunctionLeafParserTokenTestCase<T>
         implements ParserTokenTesting<T> {
 
@@ -31,7 +29,7 @@ public abstract class ColorFunctionNonSymbolParserTokenTestCase<T extends ColorF
 
     @Test
     public final void testIsSymbol() {
-        assertEquals(false, this.createToken().isSymbol());
+        this.checkEquals(false, this.createToken().isSymbol());
     }
 
     @Test

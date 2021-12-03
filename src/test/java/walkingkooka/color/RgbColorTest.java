@@ -26,8 +26,6 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class RgbColorTest extends ColorTestCase<RgbColor> implements ParseStringTesting<RgbColor> {
 
     // parseRgb..................................................................
@@ -296,8 +294,8 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     @Test
     public void testJsonTypeName() {
-        assertEquals(Optional.of(
-                JsonNode.string("rgb")
+        this.checkEquals(Optional.of(
+                        JsonNode.string("rgb")
                 ),
                 JsonNodeMarshallContexts.basic().typeName(RgbColor.class));
     }

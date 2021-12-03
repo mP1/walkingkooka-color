@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.tree.json.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -50,7 +49,7 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         assertSame(GREEN, rgb.green(), "green");
         assertSame(BLUE, rgb.blue(), "blue");
         assertSame(AlphaRgbColorComponent.OPAQUE, rgb.alpha(), "alpha");
-        assertEquals((RED.value << 16) + (GREEN.value << 8) + BLUE.value, rgb.rgb(), "rgb");
+        this.checkEquals((RED.value << 16) + (GREEN.value << 8) + BLUE.value, rgb.rgb(), "rgb");
     }
 
     @Test
@@ -60,7 +59,7 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         assertSame(GREEN, rgb.green(), "green");
         assertSame(BLUE, rgb.blue(), "blue");
         assertSame(AlphaRgbColorComponent.OPAQUE, rgb.alpha(), "alpha");
-        assertEquals(0x010203, rgb.rgb(), "rgb");
+        this.checkEquals(0x010203, rgb.rgb(), "rgb");
     }
 
     @Test
@@ -68,9 +67,9 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         final RgbColor rgb = OpaqueRgbColor.withOpaque(RedRgbColorComponent.with((byte) 0x80),
                 GreenRgbColorComponent.with((byte) 0x81),
                 BlueRgbColorComponent.with((byte) 0x82));
-        assertEquals(0x808182, rgb.rgb(), "rgb");
-        assertEquals(0xFF808182, rgb.argb(), "argb");
-        assertEquals(0x808182, rgb.value(), "value");
+        this.checkEquals(0x808182, rgb.rgb(), "rgb");
+        this.checkEquals(0xFF808182, rgb.argb(), "argb");
+        this.checkEquals(0x808182, rgb.value(), "value");
     }
 
     @Override
@@ -88,9 +87,9 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Test
     public void testToAwtColor() {
         final java.awt.Color rgb = RgbColor.fromRgb0(0x010203).toAwtColor();
-        assertEquals(1, rgb.getRed(), "red");
-        assertEquals(2, rgb.getGreen(), "green");
-        assertEquals(3, rgb.getBlue(), "blue");
+        this.checkEquals(1, rgb.getRed(), "red");
+        this.checkEquals(2, rgb.getGreen(), "green");
+        this.checkEquals(3, rgb.getBlue(), "blue");
     }
 
     // webName..........................................................................................................

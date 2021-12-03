@@ -20,7 +20,6 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -61,7 +60,7 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
         if ((false == this.isEquals(expected.red, actual.red)) || //
                 (false == this.isEquals(expected.green, actual.green)) || //
                 (false == this.isEquals(expected.blue, actual.blue))) {
-            assertEquals(expected, actual, "failed to convert " + hsv + " to a RgbColor");
+            this.checkEquals(expected, actual, "failed to convert " + hsv + " to a RgbColor");
         }
     }
 

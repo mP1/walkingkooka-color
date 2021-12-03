@@ -25,8 +25,6 @@ import walkingkooka.text.cursor.parser.ParserTokens;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitorTest extends ColorParsersParserTokenVisitorTestCase<ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor> {
 
     @Test
@@ -47,7 +45,7 @@ public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionPars
 
         final String text = ParserToken.text(tokens);
 
-        assertEquals(ColorFunctionParserToken.function(tokens, text),
+        this.checkEquals(ColorFunctionParserToken.function(tokens, text),
                 ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor.transform(ParserTokens.sequence(tokens, text), ParserContexts.fake()),
                 () -> "transform " + tokens);
     }
@@ -76,7 +74,7 @@ public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionPars
 
         final String text = ParserToken.text(tokens);
 
-        assertEquals(ColorFunctionParserToken.function(tokens, text),
+        this.checkEquals(ColorFunctionParserToken.function(tokens, text),
                 ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor.transform(ParserTokens.sequence(tokens, text), ParserContexts.fake()),
                 () -> "transform " + tokens);
     }

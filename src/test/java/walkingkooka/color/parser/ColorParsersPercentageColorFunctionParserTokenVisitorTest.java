@@ -26,8 +26,6 @@ import walkingkooka.text.cursor.parser.SequenceParserToken;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class ColorParsersPercentageColorFunctionParserTokenVisitorTest extends ColorParsersParserTokenVisitorTestCase<ColorParsersPercentageColorFunctionParserTokenVisitor> {
 
     @Test
@@ -37,7 +35,7 @@ public final class ColorParsersPercentageColorFunctionParserTokenVisitorTest ext
         tokens.add(ParserTokens.string("%", "%"));
         final SequenceParserToken sequence = ParserTokens.sequence(tokens, ParserToken.text(tokens));
 
-        assertEquals(ColorFunctionParserToken.percentage(150d, "150%"),
+        this.checkEquals(ColorFunctionParserToken.percentage(150d, "150%"),
                 ColorParsersPercentageColorFunctionParserTokenVisitor.transform(sequence, ParserContexts.fake()),
                 () -> "transform " + sequence);
     }

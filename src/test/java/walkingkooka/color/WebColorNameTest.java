@@ -30,13 +30,11 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class WebColorNameTest implements NameTesting2<WebColorName, WebColorName> {
 
     @Test
     public void testConstants() {
-        assertEquals(Lists.empty(),
+        this.checkEquals(Lists.empty(),
                 Arrays.stream(WebColorName.class.getDeclaredFields())
                         .filter(FieldAttributes.STATIC::is)
                         .filter(f -> f.getType() == WebColorName.class)
@@ -87,11 +85,11 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
     private void colorAndCheck(final String name, final RgbColor color) {
         final Optional<WebColorName> webColorName = WebColorName.with(name);
 
-        assertEquals(color,
+        this.checkEquals(color,
                 webColorName.map(WebColorName::color).orElse(null),
                 () -> "name " + CharSequences.quoteAndEscape(name));
 
-        webColorName.ifPresent(colorName -> assertEquals(colorName,
+        webColorName.ifPresent(colorName -> this.checkEquals(colorName,
                 WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
                 () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name)));
     }

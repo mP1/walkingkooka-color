@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
@@ -140,7 +139,7 @@ public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
     private void toStringAndCheck(final RgbColorString format,
                                   final RgbColor color,
                                   final String toString) {
-        assertEquals(toString,
+        this.checkEquals(toString,
                 format.toString(color),
                 () -> "format " + format + " rgb=" + color);
     }
