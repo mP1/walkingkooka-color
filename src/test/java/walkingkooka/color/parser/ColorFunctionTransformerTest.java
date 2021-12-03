@@ -28,7 +28,6 @@ import walkingkooka.reflect.JavaVisibility;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<ColorFunctionTransformer> {
@@ -279,7 +278,7 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     private void colorCheck(final String name,
                             final Color color,
                             final ColorFunctionParserToken... values) {
-        assertEquals(color,
+        this.checkEquals(color,
                 ColorFunctionTransformer.functionName(ColorFunctionFunctionNameParserToken.with(name, name))
                         .color(
                                 values[0],

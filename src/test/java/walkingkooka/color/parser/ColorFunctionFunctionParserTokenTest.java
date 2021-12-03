@@ -22,7 +22,6 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.visit.Visiting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionParserTokenTestCase3<ColorFunctionFunctionParserToken> {
@@ -103,7 +102,7 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
             }
         }.accept(token);
 
-        assertEquals("1351374213A421384213B421384213B421384213942642", b.toString());
+        this.checkEquals("1351374213A421384213B421384213B421384213942642", b.toString());
     }
 
     @Override

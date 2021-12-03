@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.visit.Visiting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public final class ColorFunctionParenthesisOpenSymbolParserTokenTest extends ColorFunctionSymbolParserTokenTestCase<ColorFunctionParenthesisOpenSymbolParserToken> {
@@ -64,7 +63,7 @@ public final class ColorFunctionParenthesisOpenSymbolParserTokenTest extends Col
                 b.append("5");
             }
         }.accept(token);
-        assertEquals("13542", b.toString());
+        this.checkEquals("13542", b.toString());
     }
 
     @Override

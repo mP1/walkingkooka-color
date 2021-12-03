@@ -36,7 +36,6 @@ import walkingkooka.text.cursor.parser.ParserReporters;
 import java.lang.reflect.Method;
 import java.math.MathContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class ColorParsersTest implements PublicStaticHelperTesting<ColorParsers> {
@@ -481,7 +480,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     private void parseAndCheck(final Parser<ParserContext> parser,
                                final String text,
                                final Color value) {
-        assertEquals(value,
+        this.checkEquals(value,
                 parser.orReport(ParserReporters.basic())
                         .parse(TextCursors.charSequence(text),
                                 this.parserContext())

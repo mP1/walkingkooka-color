@@ -23,7 +23,6 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -39,7 +38,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     @Test
     public final void testIsHsl() {
         final C color = this.createColor();
-        assertEquals(color instanceof HslColor,
+        this.checkEquals(color instanceof HslColor,
                 color.isHsl(),
                 () -> "isHsl " + color);
     }
@@ -47,7 +46,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     @Test
     public final void testIsHsv() {
         final C color = this.createColor();
-        assertEquals(color instanceof HsvColor,
+        this.checkEquals(color instanceof HsvColor,
                 color.isHsv(),
                 () -> "isHsv " + color);
     }
@@ -55,7 +54,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     @Test
     public final void testIsRgb() {
         final C color = this.createColor();
-        assertEquals(color instanceof RgbColor,
+        this.checkEquals(color instanceof RgbColor,
                 color.isRgb(),
                 () -> "isRgb " + color);
     }

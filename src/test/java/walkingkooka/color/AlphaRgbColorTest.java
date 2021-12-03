@@ -20,7 +20,6 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.tree.json.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,7 +32,7 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         assertSame(GREEN, rgb.green(), "green");
         assertSame(BLUE, rgb.blue(), "blue");
         assertSame(RgbColorComponent.alpha((byte) 0x4), rgb.alpha(), "alpha");
-        assertEquals(0x04010203, rgb.argb(), "argb");
+        this.checkEquals(0x04010203, rgb.argb(), "argb");
     }
 
     @Test
@@ -42,8 +41,8 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         assertSame(RED, rgb.red(), "red");
         assertSame(GREEN, rgb.green(), "green");
         assertSame(BLUE, rgb.blue(), "blue");
-        assertEquals(OpaqueRgbColor.class, rgb.getClass(), "rgb must not be a AlphaRgbColor");
-        assertEquals(0xFF010203, rgb.argb(), "argb");
+        this.checkEquals(OpaqueRgbColor.class, rgb.getClass(), "rgb must not be a AlphaRgbColor");
+        this.checkEquals(0xFF010203, rgb.argb(), "argb");
     }
 
     @Test
@@ -51,9 +50,9 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         final RgbColor rgb = RgbColor.with(RgbColorComponent.red((byte) 0x80),
                 RgbColorComponent.green((byte) 0x81),
                 RgbColorComponent.blue((byte) 0x82)).set(RgbColorComponent.alpha((byte) 0x84));
-        assertEquals(0x808182, rgb.rgb(), "rgb");
-        assertEquals(0x84808182, rgb.argb(), "argb");
-        assertEquals(0x84808182, rgb.value(), "value");
+        this.checkEquals(0x808182, rgb.rgb(), "rgb");
+        this.checkEquals(0x84808182, rgb.argb(), "argb");
+        this.checkEquals(0x84808182, rgb.value(), "value");
     }
 
     @Test
@@ -89,10 +88,10 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testToAwtColor() {
         final java.awt.Color rgb = this.createColor().toAwtColor();
-        assertEquals(1, rgb.getRed(), "red");
-        assertEquals(2, rgb.getGreen(), "green");
-        assertEquals(3, rgb.getBlue(), "blue");
-        assertEquals(4, rgb.getAlpha(), "alpha");
+        this.checkEquals(1, rgb.getRed(), "red");
+        this.checkEquals(2, rgb.getGreen(), "green");
+        this.checkEquals(3, rgb.getBlue(), "blue");
+        this.checkEquals(4, rgb.getAlpha(), "alpha");
     }
 
     @Test

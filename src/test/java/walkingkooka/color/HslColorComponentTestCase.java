@@ -101,7 +101,7 @@ abstract public class HslColorComponentTestCase<C extends HslColorComponent> ext
             if (!methodName.startsWith("is")) {
                 continue;
             }
-            assertEquals(methodName.equals(isMethodName),
+            this.checkEquals(methodName.equals(isMethodName),
                     method.invoke(component),
                     method + " returned");
         }

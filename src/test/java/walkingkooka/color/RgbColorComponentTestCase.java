@@ -62,8 +62,8 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
 
     private void createComponentAndCheck(final byte value, final int unsigned, final float floatValue) {
         final C component = this.createColorComponent(value);
-        assertEquals(value, component.value(), "value");
-        assertEquals(unsigned, component.unsignedIntValue, "unsignedIntValue");
+        this.checkEquals(value, component.value(), "value");
+        this.checkEquals(unsigned, component.unsignedIntValue, "unsignedIntValue");
         assertEquals(floatValue, component.floatValue, 0.1f, "floatValue");
     }
 
@@ -104,14 +104,14 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
     public final void testAddSaturatedOverflows() {
         final C component = this.createColorComponent(VALUE);
         final C added = Cast.to(component.add(512));
-        assertEquals(255, added.unsignedIntValue);
+        this.checkEquals(255, added.unsignedIntValue);
     }
 
     @Test
     public final void testAddSaturatedUnderflow() {
         final C component = this.createColorComponent(VALUE);
         final C added = Cast.to(component.add(-512));
-        assertEquals(0, added.unsignedIntValue);
+        this.checkEquals(0, added.unsignedIntValue);
     }
 
     private void addAndCheck(final RgbColorComponent component,
@@ -119,8 +119,8 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
                              final int value) {
         final RgbColorComponent added = Cast.to(component.add(add));
         assertNotSame(component, added);
-        assertEquals(component.getClass(), added.getClass(), "result of add was not the same component type");
-        assertEquals(value, added.unsignedIntValue, "component " + component + " add " + add + " =" + value);
+        this.checkEquals(component.getClass(), added.getClass(), "result of add was not the same component type");
+        this.checkEquals(value, added.unsignedIntValue, "component " + component + " add " + add + " =" + value);
     }
 
     // invert
@@ -145,7 +145,7 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
     private void invertAndCheck(final RgbColorComponent component, final int value) {
         final RgbColorComponent inverted = component.invert();
         assertNotSame(component, inverted, "invert should not return this");
-        assertEquals((byte) value, inverted.value(), "value");
+        this.checkEquals((byte) value, inverted.value(), "value");
     }
 
     @Test
