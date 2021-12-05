@@ -57,7 +57,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     }
 
     @Override
-    public final List<ParserToken> value() {
+    public List<ParserToken> value() {
         return this.value;
     }
 
@@ -131,7 +131,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         visitor.endVisit(this);
     }
 
-    final void acceptValues(final ColorFunctionParserTokenVisitor visitor) {
+    void acceptValues(final ColorFunctionParserTokenVisitor visitor) {
         for (ParserToken token : this.value()) {
             visitor.accept(token);
         }
