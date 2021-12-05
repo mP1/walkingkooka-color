@@ -29,7 +29,6 @@ import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
-import walkingkooka.tree.search.SearchNode;
 
 /**
  * Base for all rgb function symbols.
