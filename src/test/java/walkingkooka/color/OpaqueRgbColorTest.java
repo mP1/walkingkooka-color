@@ -28,17 +28,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
 
     @Test
-    public final void testWithNullRedFails() {
+    public void testWithNullRedFails() {
         assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(null, GREEN, BLUE));
     }
 
     @Test
-    public final void testWithNullGreenFails() {
+    public void testWithNullGreenFails() {
         assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(RED, null, BLUE));
     }
 
     @Test
-    public final void testWithNullBlueFails() {
+    public void testWithNullBlueFails() {
         assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(RED, GREEN, null));
     }
 
