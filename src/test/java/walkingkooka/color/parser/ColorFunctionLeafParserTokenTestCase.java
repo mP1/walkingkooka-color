@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.IsMethodTesting;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
-public abstract class ColorFunctionLeafParserTokenTestCase<T extends ColorFunctionLeafParserToken> extends ColorFunctionParserTokenTestCase3<T>
+public abstract class ColorFunctionLeafParserTokenTestCase<T extends ColorFunctionLeafParserToken<?>> extends ColorFunctionParserTokenTestCase3<T>
         implements ParserTokenTesting<T>,
         IsMethodTesting<T> {
 
