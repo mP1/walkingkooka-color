@@ -17,10 +17,12 @@
 
 package walkingkooka.color.parser;
 
-public final class ColorFunctionSymbolParserTokenTest extends ColorFunctionParserTokenTestCase2<ColorFunctionSymbolParserToken> {
+import walkingkooka.Cast;
+
+public final class ColorFunctionSymbolParserTokenTest extends ColorFunctionParserTokenTestCase2<ColorFunctionSymbolParserToken<?>> {
 
     @Override
-    public Class<ColorFunctionSymbolParserToken> type() {
-        return ColorFunctionSymbolParserToken.class;
+    public Class<ColorFunctionSymbolParserToken<?>> type() {
+        return Cast.to(ColorFunctionSymbolParserToken.class);
     }
 }
