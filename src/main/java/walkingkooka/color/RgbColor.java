@@ -506,7 +506,6 @@ abstract public class RgbColor extends Color {
         final float max = RgbColor.max(red, green, blue);
         final float min = RgbColor.min(red, green, blue);
 
-        final float value = max;
         float saturation = 0.0f;
         if (max != 0) {
             saturation = ((max - min)) / max;
@@ -538,7 +537,8 @@ abstract public class RgbColor extends Color {
         return HsvColor.with(
                 HsvColorComponent.hue(hue),
                 HsvColorComponent.saturation(saturation),
-                HsvColorComponent.value(value));
+                HsvColorComponent.value(max)
+        );
     }
 
     @Override
