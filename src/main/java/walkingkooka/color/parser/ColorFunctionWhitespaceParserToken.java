@@ -22,10 +22,10 @@ import walkingkooka.text.CharSequences;
 public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbolParserToken<String> {
 
     static ColorFunctionWhitespaceParserToken with(final String value, final String text) {
-        checkValue(value);
-        CharSequences.failIfNullOrEmpty(text, "text");
-
-        return new ColorFunctionWhitespaceParserToken(value, text);
+        return new ColorFunctionWhitespaceParserToken(
+                checkValue(value),
+                CharSequences.failIfNullOrEmpty(text, "text")
+        );
     }
 
     private ColorFunctionWhitespaceParserToken(final String value, final String text) {
