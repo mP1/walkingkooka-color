@@ -29,12 +29,11 @@ import java.util.Objects;
 abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken implements LeafParserToken<V> {
 
     static String checkValue(final String text) {
-        CharSequences.failIfNullOrEmpty(text, "text");
-        return text;
+        return CharSequences.failIfNullOrEmpty(text, "text");
     }
 
-    static void checkValue(final Object value) {
-        Objects.requireNonNull(value, "value");
+    static <T> T checkValue(final T value) {
+        return Objects.requireNonNull(value, "value");
     }
 
     /**

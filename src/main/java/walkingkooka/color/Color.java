@@ -144,8 +144,8 @@ public abstract class Color implements UsesToStringBuilder {
         return color;
     }
 
-    private static void checkText(final String text) {
-        CharSequences.failIfNullOrEmpty(text, "text");
+    private static String checkText(final String text) {
+        return CharSequences.failIfNullOrEmpty(text, "text");
     }
 
     static Color parseColorParserToken(final String text,
