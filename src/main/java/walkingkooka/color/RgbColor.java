@@ -37,24 +37,21 @@ import java.util.Optional;
 abstract public class RgbColor extends Color {
 
     static RgbColor parseRgb0(final String text) {
-        RgbColor color;
+        final RgbColor color;
 
-        do {
-            if (text.startsWith("rgb")) {
-                color = parseRgbFunction(text);
-                break;
-            }
+        if (text.startsWith("rgb")) {
+            color = parseRgbFunction(text);
+        } else {
             if (Character.isLetter(text.charAt(0))) {
                 color = parseWebColorName(text);
-                break;
+            } else {
+                if (text.startsWith("#")) {
+                    color = parseHash(text);
+                } else {
+                    throw new IllegalArgumentException("Invalid rgb " + CharSequences.quoteAndEscape(text));
+                }
             }
-            if (text.startsWith("#")) {
-                color = parseHash(text);
-                break;
-            }
-            throw new IllegalArgumentException("Invalid rgb " + CharSequences.quoteAndEscape(text));
-        } while (false);
-
+        }
         return color;
     }
 
