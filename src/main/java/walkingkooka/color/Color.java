@@ -106,7 +106,21 @@ public abstract class Color implements UsesToStringBuilder {
      * This equivalent to calling any of each until success or failure.
      */
     public static Color parse(final String text) {
-        return parse0(text, true, true, true);
+        checkText(text);
+
+        final Color color;
+
+        if (text.startsWith("hsl")) {
+            color = parseHsl(text);
+        } else {
+            if (text.startsWith("hsv")) {
+                color = parseHsv(text);
+            } else {
+                color = RgbColor.parseRgb0(text);
+            }
+        }
+
+        return color;
     }
 
     /**
@@ -116,32 +130,6 @@ public abstract class Color implements UsesToStringBuilder {
     public static RgbColor parseRgb(final String text) {
         checkText(text);
         return RgbColor.parseRgb0(text);
-    }
-
-    private static Color parse0(final String text,
-                                final boolean tryRgb,
-                                final boolean tryHsl,
-                                final boolean tryHsv) {
-        checkText(text);
-
-        Color color;
-        do {
-            if (tryHsl && text.startsWith("hsl")) {
-                color = parseHsl(text);
-                break;
-            }
-            if (tryHsv && text.startsWith("hsv")) {
-                color = parseHsv(text);
-                break;
-            }
-            if (tryRgb) {
-                color = RgbColor.parseRgb0(text);
-                break;
-            }
-            throw new IllegalArgumentException("Invalid rgb " + CharSequences.quoteAndEscape(text));
-        } while (false);
-
-        return color;
     }
 
     private static String checkText(final String text) {
