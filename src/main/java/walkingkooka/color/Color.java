@@ -272,6 +272,7 @@ public abstract class Color implements UsesToStringBuilder {
         );
     }
 
+    @SafeVarargs
     private static <T extends Color> void register(
             final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
             final Class<T> type,
@@ -286,6 +287,7 @@ public abstract class Color implements UsesToStringBuilder {
         );
     }
 
+    @SafeVarargs
     private static <T extends Color> void register(
             final String typeName,
             final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
