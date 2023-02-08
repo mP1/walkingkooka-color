@@ -3,7 +3,9 @@ package test;
 import com.google.gwt.junit.client.GWTTestCase;
 
 import walkingkooka.color.Color;
+import walkingkooka.j2cl.locale.LocaleAware;
 
+@LocaleAware
 public class TestGwtTest extends GWTTestCase {
 
     @Override
