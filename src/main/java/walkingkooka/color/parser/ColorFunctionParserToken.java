@@ -137,7 +137,17 @@ public abstract class ColorFunctionParserToken implements ParserToken {
 
     public abstract boolean isFunctionName();
 
+    @Override
+    public final boolean isLeaf() {
+        return this instanceof ColorFunctionLeafParserToken;
+    }
+
     public abstract boolean isNumber();
+
+    @Override
+    public final boolean isParent() {
+        return false == this.isLeaf();
+    }
 
     public abstract boolean isParenthesisCloseSymbol();
 

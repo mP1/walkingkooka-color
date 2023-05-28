@@ -16,6 +16,7 @@
  */
 package walkingkooka.color.parser;
 
+import walkingkooka.Value;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.AlphaHslColorComponent;
 import walkingkooka.color.AlphaHsvColorComponent;
@@ -30,7 +31,6 @@ import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
-import walkingkooka.text.cursor.parser.ParentParserToken;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.visit.Visiting;
 
@@ -40,7 +40,7 @@ import java.util.Objects;
 /**
  * Holds a json array which may contain further json values.
  */
-public final class ColorFunctionFunctionParserToken extends ColorFunctionParserToken implements ParentParserToken {
+public final class ColorFunctionFunctionParserToken extends ColorFunctionParserToken implements Value<List<ParserToken>> {
 
     static ColorFunctionFunctionParserToken with(final List<ParserToken> value,
                                                  final String text) {
