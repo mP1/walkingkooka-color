@@ -17,8 +17,8 @@
 
 package walkingkooka.color.parser;
 
+import walkingkooka.Value;
 import walkingkooka.text.CharSequences;
-import walkingkooka.text.cursor.parser.LeafParserToken;
 import walkingkooka.text.cursor.parser.ParserToken;
 
 import java.util.Objects;
@@ -26,7 +26,7 @@ import java.util.Objects;
 /**
  * Base class for a rgb function leaf {@link ParserToken}.
  */
-abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken implements LeafParserToken<V> {
+abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken implements Value<V> {
 
     static String checkValue(final String text) {
         return CharSequences.failIfNullOrEmpty(text, "text");

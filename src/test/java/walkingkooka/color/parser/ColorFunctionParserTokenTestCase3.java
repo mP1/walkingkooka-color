@@ -76,7 +76,10 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
 
     @Override
     public final Predicate<String> isMethodIgnoreMethodFilter() {
-        return (m) -> m.equals("isNoise") || m.equals("isSymbol"); // skip isNoise
+        return (m) -> m.equals("isLeaf") ||
+                m.equals("isNoise") ||
+                m.equals("isParent") ||
+                m.equals("isSymbol"); // skip isNoise
     }
 
     @Override
