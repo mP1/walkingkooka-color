@@ -21,6 +21,7 @@ import walkingkooka.Value;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.parser.ParserToken;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -50,6 +51,16 @@ abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken 
     }
 
     private final V value;
+
+    // children.........................................................................................................
+
+    @Override
+    public final ParserToken setChildren(final List<ParserToken> children) {
+        return ParserToken.leafSetChildren(
+                this,
+                children
+        );
+    }
 
     // isXXX............................................................................................................
 
