@@ -121,6 +121,17 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         return false;
     }
 
+    // children.........................................................................................................
+
+    @Override
+    public ColorFunctionFunctionParserToken setChildren(final List<ParserToken> children) {
+        return ParserToken.parentSetChildren(
+                this,
+                children,
+                ColorFunctionFunctionParserToken::new
+        );
+    }
+
     // visitor .........................................................................................................
 
     @Override
