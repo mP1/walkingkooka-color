@@ -47,33 +47,6 @@ abstract class ColorFunctionSymbolParserToken<V> extends ColorFunctionLeafParser
         super(value, text);
     }
 
-    // isXXX............................................................................................................
-
-    @Override
-    public final boolean isFunctionName() {
-        return false;
-    }
-
-    @Override
-    public final boolean isNoise() {
-        return true;
-    }
-
-    @Override
-    public final boolean isNumber() {
-        return false;
-    }
-
-    @Override
-    public final boolean isPercentage() {
-        return false;
-    }
-
-    @Override
-    public final boolean isSymbol() {
-        return true;
-    }
-
     // ColorFunctionTransformer.........................................................................................
 
     @Override

@@ -35,36 +35,4 @@ abstract class ColorFunctionNonSymbolParserToken<V> extends ColorFunctionLeafPar
     ColorFunctionNonSymbolParserToken(final V value, final String text) {
         super(value, text);
     }
-
-    // isXXX............................................................................................................
-
-    @Override
-    public final boolean isDegreesUnitSymbol() {
-        return false;
-    }
-
-    @Override
-    public final boolean isParenthesisCloseSymbol() {
-        return false;
-    }
-
-    @Override
-    public final boolean isParenthesisOpenSymbol() {
-        return false;
-    }
-
-    @Override
-    public final boolean isSeparatorSymbol() {
-        return false;
-    }
-
-    @Override
-    public final boolean isSymbol() {
-        return false;
-    }
-
-    @Override
-    public final boolean isWhitespace() {
-        return false;
-    }
 }

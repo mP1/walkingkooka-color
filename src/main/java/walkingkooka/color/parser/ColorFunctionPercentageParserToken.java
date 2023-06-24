@@ -45,23 +45,6 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
         super(value, text);
     }
 
-    // isXXX............................................................................................................
-
-    @Override
-    public boolean isFunctionName() {
-        return false;
-    }
-
-    @Override
-    public boolean isNumber() {
-        return false;
-    }
-
-    @Override
-    public boolean isPercentage() {
-        return true;
-    }
-
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
