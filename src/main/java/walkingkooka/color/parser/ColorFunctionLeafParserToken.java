@@ -70,11 +70,4 @@ abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken 
         Objects.requireNonNull(predicate, "predicate");
         return this;
     }
-
-    // isXXX............................................................................................................
-
-    @Override
-    public final boolean isFunction() {
-        return false;
-    }
 }

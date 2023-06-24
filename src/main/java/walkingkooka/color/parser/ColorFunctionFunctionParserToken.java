@@ -70,58 +70,6 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         return ColorParsersComponentsColorFunctionParserTokenVisitor.transform(this);
     }
 
-    // isXXX............................................................................................................
-
-    @Override
-    public boolean isDegreesUnitSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isFunction() {
-        return true;
-    }
-
-    @Override
-    public boolean isFunctionName() {
-        return false;
-    }
-
-    @Override
-    public boolean isNumber() {
-        return false;
-    }
-
-    @Override
-    public boolean isParenthesisCloseSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isParenthesisOpenSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isPercentage() {
-        return false;
-    }
-
-    @Override
-    public boolean isSeparatorSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isWhitespace() {
-        return false;
-    }
-
     // children.........................................................................................................
 
     @Override

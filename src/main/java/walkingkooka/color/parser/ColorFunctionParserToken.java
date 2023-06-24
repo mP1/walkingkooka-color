@@ -131,40 +131,68 @@ public abstract class ColorFunctionParserToken implements ParserToken {
 
     // isXXX............................................................................................................
 
-    public abstract boolean isDegreesUnitSymbol();
+    public final boolean isDegreesUnitSymbol() {
+        return this instanceof ColorFunctionDegreesUnitSymbolParserToken;
+    }
 
-    public abstract boolean isFunction();
+    public final boolean isFunction() {
+        return this instanceof ColorFunctionFunctionParserToken;
+    }
 
-    public abstract boolean isFunctionName();
+    public final boolean isFunctionName() {
+        return this instanceof ColorFunctionFunctionNameParserToken;
+    }
 
-    @Override
     public final boolean isLeaf() {
         return this instanceof ColorFunctionLeafParserToken;
     }
 
-    public abstract boolean isNumber();
+    @Override
+    public final boolean isNoise() {
+        return this.isSymbol();
+    }
+
+    public final boolean isNumber() {
+        return this instanceof ColorFunctionNumberParserToken;
+    }
 
     @Override
     public final boolean isParent() {
         return false == this.isLeaf();
     }
 
-    public abstract boolean isParenthesisCloseSymbol();
+    public final boolean isParenthesisCloseSymbol() {
+        return this instanceof ColorFunctionParenthesisCloseSymbolParserToken;
+    }
 
-    public abstract boolean isParenthesisOpenSymbol();
+    public final boolean isParenthesisOpenSymbol() {
+        return this instanceof ColorFunctionParenthesisOpenSymbolParserToken;
+    }
 
-    public abstract boolean isPercentage();
+    public final boolean isPercentage() {
+        return this instanceof ColorFunctionPercentageParserToken;
+    }
 
-    public abstract boolean isSeparatorSymbol();
+    public final boolean isSeparatorSymbol() {
+        return this instanceof ColorFunctionSeparatorSymbolParserToken;
+    }
 
-    public abstract boolean isWhitespace();
+    @Override
+    public final boolean isSymbol() {
+        return this instanceof ColorFunctionSymbolParserToken;
+    }
+
+    @Override
+    public final boolean isWhitespace() {
+        return this instanceof ColorFunctionWhitespaceParserToken;
+    }
 
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
     public final void accept(final ParserTokenVisitor visitor) {
-        if(visitor instanceof ColorFunctionParserTokenVisitor) {
-            final ColorFunctionParserTokenVisitor visitor2 = (ColorFunctionParserTokenVisitor)visitor;
+        if (visitor instanceof ColorFunctionParserTokenVisitor) {
+            final ColorFunctionParserTokenVisitor visitor2 = (ColorFunctionParserTokenVisitor) visitor;
             if (Visiting.CONTINUE == visitor2.startVisit(this)) {
                 this.accept(visitor2);
             }

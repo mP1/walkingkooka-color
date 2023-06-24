@@ -29,33 +29,6 @@ public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunction
         super(value, text);
     }
 
-    // isXXX............................................................................................................
-
-    @Override
-    public boolean isDegreesUnitSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isParenthesisCloseSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isParenthesisOpenSymbol() {
-        return false;
-    }
-
-    @Override
-    public boolean isSeparatorSymbol() {
-        return true;
-    }
-
-    @Override
-    public boolean isWhitespace() {
-        return false;
-    }
-
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
