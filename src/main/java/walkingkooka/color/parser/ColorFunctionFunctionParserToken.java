@@ -36,6 +36,7 @@ import walkingkooka.visit.Visiting;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 /**
  * Holds a json array which may contain further json values.
@@ -129,6 +130,17 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
                 this,
                 children,
                 ColorFunctionFunctionParserToken::new
+        );
+    }
+
+    // removeFirstIf....................................................................................................
+
+    @Override
+    public ColorFunctionFunctionParserToken removeFirstIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.parentRemoveFirstIf(
+                this,
+                predicate,
+                ColorFunctionFunctionParserToken.class
         );
     }
 
