@@ -92,6 +92,17 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         );
     }
 
+    // removeIf.........................................................................................................
+
+    @Override
+    public ColorFunctionFunctionParserToken removeIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.parentRemoveIf(
+                this,
+                predicate,
+                ColorFunctionFunctionParserToken.class
+        );
+    }
+
     // visitor .........................................................................................................
 
     @Override
