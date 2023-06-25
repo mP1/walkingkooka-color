@@ -103,6 +103,19 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         );
     }
 
+    // replaceFirstIf...................................................................................................
+
+    @Override
+    public ColorFunctionFunctionParserToken replaceFirstIf(final Predicate<ParserToken> predicate,
+                                                           final ParserToken token) {
+        return ParserToken.replaceFirstIf(
+                this,
+                predicate,
+                token,
+                ColorFunctionFunctionParserToken.class
+        );
+    }
+
     // visitor .........................................................................................................
 
     @Override
