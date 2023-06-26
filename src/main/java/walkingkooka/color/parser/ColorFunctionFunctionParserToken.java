@@ -116,6 +116,19 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         );
     }
 
+    // replaceIf........................................................................................................
+
+    @Override
+    public ColorFunctionFunctionParserToken replaceIf(final Predicate<ParserToken> predicate,
+                                                      final ParserToken token) {
+        return ParserToken.replaceIf(
+                this,
+                predicate,
+                token,
+                ColorFunctionFunctionParserToken.class
+        );
+    }
+
     // visitor .........................................................................................................
 
     @Override

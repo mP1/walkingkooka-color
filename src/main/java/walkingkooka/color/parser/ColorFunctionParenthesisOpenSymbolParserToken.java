@@ -46,6 +46,19 @@ public final class ColorFunctionParenthesisOpenSymbolParserToken extends ColorFu
         );
     }
 
+    // replaceIf........................................................................................................
+
+    @Override
+    public ColorFunctionParenthesisOpenSymbolParserToken replaceIf(final Predicate<ParserToken> predicate,
+                                                                   final ParserToken token) {
+        return ParserToken.replaceIf(
+                this,
+                predicate,
+                token,
+                ColorFunctionParenthesisOpenSymbolParserToken.class
+        );
+    }
+
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override

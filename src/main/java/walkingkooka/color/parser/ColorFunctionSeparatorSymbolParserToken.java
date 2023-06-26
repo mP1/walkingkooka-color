@@ -46,6 +46,19 @@ public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunction
         );
     }
 
+    // replaceIf........................................................................................................
+
+    @Override
+    public ColorFunctionSeparatorSymbolParserToken replaceIf(final Predicate<ParserToken> predicate,
+                                                             final ParserToken token) {
+        return ParserToken.replaceIf(
+                this,
+                predicate,
+                token,
+                ColorFunctionSeparatorSymbolParserToken.class
+        );
+    }
+
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
