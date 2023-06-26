@@ -61,6 +61,19 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
         );
     }
 
+    // replaceIf........................................................................................................
+
+    @Override
+    public ColorFunctionPercentageParserToken replaceIf(final Predicate<ParserToken> predicate,
+                                                        final ParserToken token) {
+        return ParserToken.replaceIf(
+                this,
+                predicate,
+                token,
+                ColorFunctionPercentageParserToken.class
+        );
+    }
+
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override

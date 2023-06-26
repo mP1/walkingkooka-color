@@ -61,6 +61,19 @@ public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbol
         );
     }
 
+    // replaceIf........................................................................................................
+
+    @Override
+    public ColorFunctionNumberParserToken replaceIf(final Predicate<ParserToken> predicate,
+                                                    final ParserToken token) {
+        return ParserToken.replaceIf(
+                this,
+                predicate,
+                token,
+                ColorFunctionNumberParserToken.class
+        );
+    }
+
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
