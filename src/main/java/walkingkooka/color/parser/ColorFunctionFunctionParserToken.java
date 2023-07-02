@@ -55,6 +55,12 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     private ColorFunctionFunctionParserToken(final List<ParserToken> value,
                                              final String text) {
         super(text);
+
+        final int count = value.size();
+        if (count < 1) {
+            throw new IllegalArgumentException("Expected at least 1 token but got 0");
+        }
+
         this.value = value;
     }
 
@@ -96,7 +102,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     // removeIf.........................................................................................................
 
     @Override
-    public ColorFunctionFunctionParserToken removeIf(final Predicate<ParserToken> predicate) {
+    public Optional<ColorFunctionFunctionParserToken> removeIf(final Predicate<ParserToken> predicate) {
         return ParserToken.removeIfParent(
                 this,
                 predicate,

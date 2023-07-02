@@ -45,6 +45,17 @@ public final class ColorFunctionParenthesisCloseSymbolParserToken extends ColorF
         );
     }
 
+    // removeIf.........................................................................................................
+
+    @Override
+    public Optional<ColorFunctionParenthesisCloseSymbolParserToken> removeIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.removeIfLeaf(
+                this,
+                predicate,
+                ColorFunctionParenthesisCloseSymbolParserToken.class
+        );
+    }
+
     // replaceFirstIf...................................................................................................
 
     @Override

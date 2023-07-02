@@ -45,6 +45,17 @@ public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunction
         );
     }
 
+    // removeIf.........................................................................................................
+
+    @Override
+    public Optional<ColorFunctionSeparatorSymbolParserToken> removeIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.removeIfLeaf(
+                this,
+                predicate,
+                ColorFunctionSeparatorSymbolParserToken.class
+        );
+    }
+
     // replaceFirstIf...................................................................................................
 
     @Override

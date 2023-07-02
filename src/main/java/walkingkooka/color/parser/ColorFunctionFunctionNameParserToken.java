@@ -57,6 +57,17 @@ public final class ColorFunctionFunctionNameParserToken extends ColorFunctionNon
         );
     }
 
+    // removeIf.........................................................................................................
+
+    @Override
+    public Optional<ColorFunctionFunctionNameParserToken> removeIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.removeIfLeaf(
+                this,
+                predicate,
+                ColorFunctionFunctionNameParserToken.class
+        );
+    }
+
     // replaceFirstIf...................................................................................................
 
     @Override
