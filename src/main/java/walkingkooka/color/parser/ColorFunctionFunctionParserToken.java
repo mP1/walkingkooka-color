@@ -36,6 +36,7 @@ import walkingkooka.visit.Visiting;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
@@ -84,7 +85,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     // removeFirstIf....................................................................................................
 
     @Override
-    public ColorFunctionFunctionParserToken removeFirstIf(final Predicate<ParserToken> predicate) {
+    public Optional<ColorFunctionFunctionParserToken> removeFirstIf(final Predicate<ParserToken> predicate) {
         return ParserToken.removeFirstIfParent(
                 this,
                 predicate,

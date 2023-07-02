@@ -63,14 +63,6 @@ abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken 
         );
     }
 
-    // removeIf.........................................................................................................
-
-    @Override
-    public final ParserToken removeFirstIf(final Predicate<ParserToken> predicate) {
-        Objects.requireNonNull(predicate, "predicate");
-        return this;
-    }
-
     // removeIf....................................................................................................
 
     @Override
