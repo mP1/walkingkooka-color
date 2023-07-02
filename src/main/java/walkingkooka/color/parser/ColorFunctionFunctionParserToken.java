@@ -97,7 +97,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
 
     @Override
     public ColorFunctionFunctionParserToken removeIf(final Predicate<ParserToken> predicate) {
-        return ParserToken.parentRemoveIf(
+        return ParserToken.removeIfParent(
                 this,
                 predicate,
                 ColorFunctionFunctionParserToken.class
