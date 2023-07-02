@@ -45,6 +45,17 @@ public final class ColorFunctionDegreesUnitSymbolParserToken extends ColorFuncti
         );
     }
 
+    // removeIf.........................................................................................................
+
+    @Override
+    public Optional<ColorFunctionDegreesUnitSymbolParserToken> removeIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.removeIfLeaf(
+                this,
+                predicate,
+                ColorFunctionDegreesUnitSymbolParserToken.class
+        );
+    }
+
     // replaceFirstIf...................................................................................................
 
     @Override

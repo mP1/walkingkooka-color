@@ -60,6 +60,17 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
         );
     }
 
+    // removeIf........................................................................................................
+
+    @Override
+    public Optional<ColorFunctionPercentageParserToken> removeIf(final Predicate<ParserToken> predicate) {
+        return ParserToken.removeIfLeaf(
+                this,
+                predicate,
+                ColorFunctionPercentageParserToken.class
+        );
+    }
+
     // replaceFirstIf...................................................................................................
 
     @Override
