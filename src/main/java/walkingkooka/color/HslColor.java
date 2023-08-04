@@ -84,7 +84,7 @@ public abstract class HslColor extends Color {
     /**
      * Factory that creates a new {@link HslColor} with the new {@link LightnessHslColorComponent}.
      */
-    final HslColor setValue(final LightnessHslColorComponent lightness) {
+    final HslColor setLightness(final LightnessHslColorComponent lightness) {
         return this.lightness.equals(lightness) ?
                 this :
                 this.replace(this.hue, this.saturation, lightness);
@@ -266,7 +266,7 @@ public abstract class HslColor extends Color {
                 (HueHslColorComponent) this.hue().invert()
         ).setSaturation(
                 (SaturationHslColorComponent) this.saturation().invert()
-        ).setValue(
+        ).setLightness(
                 (LightnessHslColorComponent) this.lightness().invert()
         );
     }

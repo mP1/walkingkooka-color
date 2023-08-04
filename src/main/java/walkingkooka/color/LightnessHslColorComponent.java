@@ -59,7 +59,7 @@ final public class LightnessHslColorComponent extends AlphaLightnessOrSaturation
 
     @Override
     HslColor setComponent(final HslColor hsl) {
-        return hsl.setValue(this);
+        return hsl.setLightness(this);
     }
 
     @Override
