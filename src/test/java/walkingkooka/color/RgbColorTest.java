@@ -290,6 +290,16 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
         this.parseStringAndCheck("CYAN", WebColorName.CYAN.color());
     }
 
+    // invert...........................................................................................................
+
+    @Test
+    public void testInvertRed() {
+        this.checkEquals(
+                Color.parse("#ff0000").invert(),
+                Color.parse("#00ffff")
+        );
+    }
+
     // json......... ...................................................................................................
 
     @Test

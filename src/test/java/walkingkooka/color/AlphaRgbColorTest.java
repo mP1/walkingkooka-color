@@ -86,6 +86,14 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     }
 
     @Test
+    public void testInvert2() {
+        this.invertAndCheck(
+                Color.fromArgb(0xff010203),
+                Color.fromArgb(0xfffefdfc)
+        );
+    }
+
+    @Test
     public void testToAwtColor() {
         final java.awt.Color rgb = this.createColor().toAwtColor();
         this.checkEquals(1, rgb.getRed(), "red");

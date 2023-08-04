@@ -194,6 +194,11 @@ public abstract class Color implements UsesToStringBuilder {
 
     public abstract RgbColor toRgb();
 
+    /**
+     * Inverts the {@link Color}, giving the opposite, eg blue will give orange, black white etc.
+     */
+    public abstract Color invert();
+
     // HasJsonNode......................................................................................................
 
     /**

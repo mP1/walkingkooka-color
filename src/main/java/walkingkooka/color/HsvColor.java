@@ -203,6 +203,19 @@ public abstract class HsvColor extends Color {
 
     abstract RgbColor toRgb0(final RgbColor color);
 
+    // invert...........................................................................................................
+
+    @Override
+    public final HsvColor invert() {
+        return this.setHue(
+                (HueHsvColorComponent) this.hue().invert()
+        ).setSaturation(
+                (SaturationHsvColorComponent) this.saturation().invert()
+        ).setValue(
+                (ValueHsvColorComponent) this.value().invert()
+        );
+    }
+
     // Object...........................................................................................................
 
     @Override
@@ -210,8 +223,7 @@ public abstract class HsvColor extends Color {
         return Objects.hash(this.hue, this.saturation, this.value);
     }
 
-    @Override
-    final boolean equals0(final Object other) {
+    @Override final boolean equals0(final Object other) {
         return this.equals1(Cast.to(other));
     }
 

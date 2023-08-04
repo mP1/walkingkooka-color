@@ -22,4 +22,6 @@ abstract class ColorComponent {
     ColorComponent() {
         super();
     }
+
+    abstract public ColorComponent invert();
 }
