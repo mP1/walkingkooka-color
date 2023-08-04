@@ -47,6 +47,13 @@ abstract class AlphaLightnessOrSaturationHslColorComponent extends HslColorCompo
     }
 
     @Override
+    public final HslColorComponent invert() {
+        return this.setValue(
+                MAX - this.value()
+        );
+    }
+
+    @Override
     public final String toString() {
         return this.toStringPercentage();
     }

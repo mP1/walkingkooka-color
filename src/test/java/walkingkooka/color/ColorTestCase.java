@@ -108,6 +108,49 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         }
     }
 
+    // invert...........................................................................................................
+
+    @Test
+    public final void testInvert() {
+        final C color = this.createColor();
+        final Color inverted = color.invert();
+        this.checkNotEquals(
+                color,
+                inverted
+        );
+    }
+
+    @Test
+    public final void testInvertSameType() {
+        final C color = this.createColor();
+        final Color inverted = color.invert();
+        this.checkEquals(
+                color.getClass(),
+                inverted.getClass()
+        );
+    }
+
+    @Test
+    public final void testInvertInvertRoundtrip() {
+        final C color = this.createColor();
+        final Color inverted = color.invert();
+        this.invertAndCheck(
+                color,
+                inverted
+        );
+    }
+
+    final void invertAndCheck(final Color color,
+                              final Color inverted) {
+        this.checkEquals(
+                color,
+                inverted.invert(),
+                () -> color + " invert"
+        );
+    }
+
+    // factory..........................................................................................................
+
     abstract C createColor();
 
     @Override

@@ -258,6 +258,19 @@ public abstract class HslColor extends Color {
         return p;
     }
 
+    // invert...........................................................................................................
+
+    @Override
+    public final HslColor invert() {
+        return this.setHue(
+                (HueHslColorComponent) this.hue().invert()
+        ).setSaturation(
+                (SaturationHslColorComponent) this.saturation().invert()
+        ).setValue(
+                (LightnessHslColorComponent) this.lightness().invert()
+        );
+    }
+
     // Object...........................................................................................................
 
     @Override

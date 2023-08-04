@@ -47,6 +47,11 @@ abstract class AlphaSaturationOrValueHsvColorComponent extends HsvColorComponent
     }
 
     @Override
+    public final HsvColorComponent invert() {
+        return this.setValue(MAX - this.value);
+    }
+
+    @Override
     public final String toString() {
         return this.toStringPercentage();
     }

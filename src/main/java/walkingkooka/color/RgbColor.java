@@ -543,13 +543,25 @@ abstract public class RgbColor extends Color {
         return this;
     }
 
+    // invert...........................................................................................................
+
+    @Override
+    public final RgbColor invert() {
+        return this.setRed(
+                (RedRgbColorComponent) this.red().invert()
+        ).setGreen(
+                (GreenRgbColorComponent) this.green().invert()
+        ).setBlue(
+                (BlueRgbColorComponent) this.blue().invert()
+        );
+    }
+
     // Object..........................................................................................................
 
     /**
      * Lazily calculates the hash code and stores it for future retrieval.
      */
-    @Override
-    final public int hashCode() {
+    @Override final public int hashCode() {
         return this.value();
     }
 
