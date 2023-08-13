@@ -25,6 +25,7 @@ import walkingkooka.text.cursor.TextCursors;
 import walkingkooka.text.cursor.parser.DoubleParserToken;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
+import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserReporters;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.Parsers;
@@ -84,7 +85,7 @@ public final class ColorParsers implements PublicStaticHelper {
         } catch (final RuntimeException rethrow) {
             throw rethrow;
         } catch (final Exception cause) {
-            throw new ColorParserException("Failed to load grammar and fetch parsers, message: " + cause.getMessage(), cause);
+            throw new ParserException("Failed to load grammar and fetch parsers, message: " + cause.getMessage(), cause);
         }
     }
 
