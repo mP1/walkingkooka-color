@@ -215,7 +215,7 @@ public abstract class HsvColor extends Color {
     @Override
     public final HsvColor invert() {
         return this.setHue(
-                (HueHsvColorComponent) this.hue().invert()
+                this.hue().invert()
         ).setSaturation(
                 (SaturationHsvColorComponent) this.saturation().invert()
         ).setValue(
