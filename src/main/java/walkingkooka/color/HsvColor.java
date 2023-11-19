@@ -203,6 +203,13 @@ public abstract class HsvColor extends Color {
 
     abstract RgbColor toRgb0(final RgbColor color);
 
+    // toCss............................................................................................................
+
+    @Override
+    public final String toCss() {
+        throw new UnsupportedOperationException(this.toString());
+    }
+
     // invert...........................................................................................................
 
     @Override

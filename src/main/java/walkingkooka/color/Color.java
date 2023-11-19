@@ -194,6 +194,18 @@ public abstract class Color implements UsesToStringBuilder {
 
     public abstract RgbColor toRgb();
 
+    // css..............................................................................................................
+
+
+    /**
+     * Returns a {@link String} holding the css representation of this {@link Color}.
+     * <br>
+     * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+     */
+    public abstract String toCss();
+
+    // invert...........................................................................................................
+
     /**
      * Inverts the {@link Color}, giving the opposite, eg blue will give orange, black white etc.
      */

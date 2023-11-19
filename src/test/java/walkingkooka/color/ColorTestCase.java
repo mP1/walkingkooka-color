@@ -108,6 +108,17 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         }
     }
 
+    // toCss............................................................................................................
+
+    final void toCssAndCheck(final Color color,
+                             final String css) {
+        this.checkEquals(
+                css,
+                color.toCss(),
+                () -> color.toString()
+        );
+    }
+
     // invert...........................................................................................................
 
     @Test
