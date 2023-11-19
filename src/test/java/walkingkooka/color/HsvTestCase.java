@@ -209,6 +209,16 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
         return Math.abs(expected.value - actual.value) < 5;
     }
 
+    // toCss............................................................................................................
+
+    @Test
+    public void testToCssFails() {
+        assertThrows(
+                UnsupportedOperationException.class,
+                () -> this.createHsv().toCss()
+        );
+    }
+
     // HashCodeEqualsDefined ..................................................................................................
 
     @Test

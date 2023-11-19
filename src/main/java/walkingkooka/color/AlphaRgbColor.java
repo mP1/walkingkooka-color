@@ -146,6 +146,21 @@ final class AlphaRgbColor extends RgbColor {
                 this.alpha.unsignedIntValue);
     }
 
+    // toCss............................................................................................................
+
+    @Override
+    public String toCss() {
+        return "rgba(" +
+                this.red.unsignedIntValue +
+                ", " +
+                this.green.unsignedIntValue +
+                ", " +
+                this.blue.unsignedIntValue +
+                ", " +
+                this.alpha.floatValue +
+                ')';
+    }
+
     // Object..........................................................................................................
 
     @Override

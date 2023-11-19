@@ -103,6 +103,14 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     }
 
     @Test
+    public void testToCss() {
+        this.toCssAndCheck(
+                Color.parse("#12345681"),
+                "rgba(18, 52, 86, 0.5019608)"
+        );
+    }
+
+    @Test
     public void testWebNameCyan() {
         this.webNameAndCheck(WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50)), null);
     }

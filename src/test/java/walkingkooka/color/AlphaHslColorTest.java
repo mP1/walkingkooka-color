@@ -62,6 +62,19 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
                         HslColorComponent.alpha(0.25f)));
     }
 
+    // toCss............................................................................................................
+
+    @Test
+    public void testToCss() {
+        final String css = "hsla(359,100%,50%,25%)";
+        this.toCssAndCheck(
+                Color.parse(css),
+                css
+        );
+    }
+
+    // toString.........................................................................................................
+
     @Test
     public void testToString() {
         this.toStringAndCheck(AlphaHslColor.withAlpha(HUE, SATURATION, LIGHTNESS, HslColorComponent.alpha(0.75f)),
