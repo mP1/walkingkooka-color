@@ -409,6 +409,8 @@ abstract public class RgbColor extends Color {
         return Optional.ofNullable(WebColorName.RRGGBB_CONSTANTS.get(this.argb()));
     }
 
+    // AWT..............................................................................................................
+
     /**
      * Factory that creates a {@link java.awt.Color} holding the same rgb value.
      */

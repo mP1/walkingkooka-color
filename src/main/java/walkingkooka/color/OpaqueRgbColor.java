@@ -132,6 +132,8 @@ final class OpaqueRgbColor extends RgbColor {
         return this.rgb();
     }
 
+    // AWT..............................................................................................................
+
     @GwtIncompatible
     @Override
     public java.awt.Color toAwtColor() {

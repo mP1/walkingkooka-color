@@ -135,6 +135,8 @@ final class AlphaRgbColor extends RgbColor {
         return this.argb();
     }
 
+    // AWT..............................................................................................................
+
     @GwtIncompatible
     @Override
     public java.awt.Color toAwtColor() {
