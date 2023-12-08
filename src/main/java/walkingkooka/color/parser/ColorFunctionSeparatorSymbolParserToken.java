@@ -20,6 +20,7 @@ package walkingkooka.color.parser;
 import walkingkooka.text.cursor.parser.ParserToken;
 
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunctionSymbolParserToken<String> {
@@ -60,11 +61,11 @@ public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunction
 
     @Override
     public ColorFunctionSeparatorSymbolParserToken replaceFirstIf(final Predicate<ParserToken> predicate,
-                                                                  final ParserToken token) {
+                                                                  final Function<ParserToken, ParserToken> mapper) {
         return ParserToken.replaceFirstIf(
                 this,
                 predicate,
-                token,
+                mapper,
                 ColorFunctionSeparatorSymbolParserToken.class
         );
     }
