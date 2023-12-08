@@ -74,11 +74,11 @@ public final class ColorFunctionDegreesUnitSymbolParserToken extends ColorFuncti
 
     @Override
     public ColorFunctionDegreesUnitSymbolParserToken replaceIf(final Predicate<ParserToken> predicate,
-                                                               final ParserToken token) {
+                                                               final Function<ParserToken, ParserToken> mapper) {
         return ParserToken.replaceIf(
                 this,
                 predicate,
-                token,
+                mapper,
                 ColorFunctionDegreesUnitSymbolParserToken.class
         );
     }
