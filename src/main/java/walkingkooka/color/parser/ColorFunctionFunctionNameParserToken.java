@@ -29,10 +29,6 @@ import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
-import walkingkooka.text.cursor.parser.ParserToken;
-
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 public final class ColorFunctionFunctionNameParserToken extends ColorFunctionNonSymbolParserToken<String> {
 
@@ -44,32 +40,6 @@ public final class ColorFunctionFunctionNameParserToken extends ColorFunctionNon
 
     private ColorFunctionFunctionNameParserToken(final String value, final String text) {
         super(value, text);
-    }
-
-    // replaceFirstIf...................................................................................................
-
-    @Override
-    public ColorFunctionFunctionNameParserToken replaceFirstIf(final Predicate<ParserToken> predicate,
-                                                               final Function<ParserToken, ParserToken> mapper) {
-        return ParserToken.replaceFirstIf(
-                this,
-                predicate,
-                mapper,
-                ColorFunctionFunctionNameParserToken.class
-        );
-    }
-
-    // replaceIf........................................................................................................
-
-    @Override
-    public ColorFunctionFunctionNameParserToken replaceIf(final Predicate<ParserToken> predicate,
-                                                          final Function<ParserToken, ParserToken> mapper) {
-        return ParserToken.replaceIf(
-                this,
-                predicate,
-                mapper,
-                ColorFunctionFunctionNameParserToken.class
-        );
     }
 
     // ColorFunctionParserTokenVisitor..................................................................................
