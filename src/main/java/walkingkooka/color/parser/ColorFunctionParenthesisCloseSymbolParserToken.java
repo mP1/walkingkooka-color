@@ -17,11 +17,6 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.text.cursor.parser.ParserToken;
-
-import java.util.function.Function;
-import java.util.function.Predicate;
-
 public final class ColorFunctionParenthesisCloseSymbolParserToken extends ColorFunctionSymbolParserToken<String> {
 
     static ColorFunctionParenthesisCloseSymbolParserToken with(final String value, final String text) {
@@ -32,32 +27,6 @@ public final class ColorFunctionParenthesisCloseSymbolParserToken extends ColorF
 
     private ColorFunctionParenthesisCloseSymbolParserToken(final String value, final String text) {
         super(value, text);
-    }
-
-    // replaceFirstIf...................................................................................................
-
-    @Override
-    public ColorFunctionParenthesisCloseSymbolParserToken replaceFirstIf(final Predicate<ParserToken> predicate,
-                                                                         final Function<ParserToken, ParserToken> mapper) {
-        return ParserToken.replaceFirstIf(
-                this,
-                predicate,
-                mapper,
-                ColorFunctionParenthesisCloseSymbolParserToken.class
-        );
-    }
-
-    // replaceIf........................................................................................................
-
-    @Override
-    public ColorFunctionParenthesisCloseSymbolParserToken replaceIf(final Predicate<ParserToken> predicate,
-                                                                    final Function<ParserToken, ParserToken> mapper) {
-        return ParserToken.replaceIf(
-                this,
-                predicate,
-                mapper,
-                ColorFunctionParenthesisCloseSymbolParserToken.class
-        );
     }
 
     // ColorFunctionParserTokenVisitor..................................................................................

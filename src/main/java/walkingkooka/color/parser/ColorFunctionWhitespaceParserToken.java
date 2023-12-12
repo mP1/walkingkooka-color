@@ -18,10 +18,6 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.text.CharSequences;
-import walkingkooka.text.cursor.parser.ParserToken;
-
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbolParserToken<String> {
 
@@ -34,32 +30,6 @@ public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbo
 
     private ColorFunctionWhitespaceParserToken(final String value, final String text) {
         super(value, text);
-    }
-
-    // replaceFirstIf...................................................................................................
-
-    @Override
-    public ColorFunctionWhitespaceParserToken replaceFirstIf(final Predicate<ParserToken> predicate,
-                                                             final Function<ParserToken, ParserToken> mapper) {
-        return ParserToken.replaceFirstIf(
-                this,
-                predicate,
-                mapper,
-                ColorFunctionWhitespaceParserToken.class
-        );
-    }
-
-    // replaceIf........................................................................................................
-
-    @Override
-    public ColorFunctionWhitespaceParserToken replaceIf(final Predicate<ParserToken> predicate,
-                                                        final Function<ParserToken, ParserToken> mapper) {
-        return ParserToken.replaceIf(
-                this,
-                predicate,
-                mapper,
-                ColorFunctionWhitespaceParserToken.class
-        );
     }
 
     // ColorFunctionParserTokenVisitor..................................................................................
