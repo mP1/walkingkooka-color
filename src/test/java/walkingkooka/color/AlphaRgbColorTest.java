@@ -83,9 +83,9 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     }
 
     @Test
-    public void testMixDifferentAlphaVeryLargeAmount() {
+    public void testMixComponentDifferentAlphaVeryLargeAmount() {
         final AlphaRgbColorComponent replacement = AlphaRgbColorComponent.with(DIFFERENT);
-        this.mixAndCheck(this.createColor(), replacement, LARGE_AMOUNT, replacement);
+        this.mixComponentAndCheck(this.createColor(), replacement, LARGE_AMOUNT, replacement);
     }
 
     @Test
@@ -95,6 +95,50 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
                 Color.fromArgb(0xfffefdfc)
         );
     }
+
+    // mix..............................................................................................................
+
+    @Test
+    public void testMixHalf() {
+        this.mixAndCheck(
+                "#00000000",
+                "#ffffffff",
+                0.5f,
+                "#80808080"
+        );
+    }
+
+    @Test
+    public void testMixHalf2() {
+        this.mixAndCheck(
+                "#01234567",
+                "#ffffffff",
+                0.5f,
+                "#8091a2b3"
+        );
+    }
+
+    @Test
+    public void testMixQuarter() {
+        this.mixAndCheck(
+                "#00000000",
+                "#ffffffff",
+                0.25f,
+                "#40404040"
+        );
+    }
+
+    @Test
+    public void testMixThreeQuarter() {
+        this.mixAndCheck(
+                "#00000000",
+                "#ffffffff",
+                0.75f,
+                "#bfbfbfbf"
+        );
+    }
+
+    // toAwt............................................................................................................
 
     @Test
     public void testToAwtColor() {

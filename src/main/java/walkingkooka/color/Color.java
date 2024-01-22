@@ -197,6 +197,70 @@ public abstract class Color implements UsesToStringBuilder {
     // css..............................................................................................................
 
     /**
+     * Mixes this and the other color using the amount.
+     */
+    public abstract Color mix(final Color other,
+                              final float amount);
+
+    static Color checkColor(final Color color) {
+        return Objects.requireNonNull(color, "color");
+    }
+
+    static float checkAmount(final float amount) {
+        if ((amount < 0f) || (amount > 1.0f)) {
+            throw new IllegalArgumentException("amount must be between 0.0 and 1.0 but was " + amount);
+        }
+        return amount;
+    }
+
+    static boolean isMixSmall(final float amount) {
+        return amount <= MIX_SMALL_AMOUNT;
+    }
+
+    static boolean isMixLarge(final float amount) {
+        return amount >= MIX_LARGE_AMOUNT;
+    }
+
+    /**
+     * Any attempt to mix an amount less than this will return the original {@link Color}.
+     */
+    private final static float MIX_SMALL_AMOUNT = 1.0f / 512f;
+
+    /**
+     * Any attempt to mix an amount greater than this will return the new {@link Color} skipping the attempt to mix.
+     */
+    private final static float MIX_LARGE_AMOUNT = 1.0f - MIX_SMALL_AMOUNT;
+
+    /**
+     * Adds both int values and returns the average
+     */
+    static byte mixIntValue(final int value,
+                            final int otherValue,
+                            final float amount) {
+        final int difference = RgbColorComponent.mask(value) - RgbColorComponent.mask(otherValue);
+
+        return (byte)
+                RgbColorComponent.mask(
+                        Math.round(value - difference * amount)
+                );
+    }
+
+    /**
+     * Adds both float values and returns the average
+     */
+    static float mixFloatValue(final float value,
+                               final float otherValue,
+                               final float amount) {
+        return value -
+                (
+                        (value - otherValue)
+                                * amount
+                );
+    }
+
+    // css..............................................................................................................
+
+    /**
      * Returns a {@link String} holding the css representation of this {@link Color}.
      * <br>
      * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value

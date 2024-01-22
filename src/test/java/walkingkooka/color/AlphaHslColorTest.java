@@ -65,6 +65,48 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
                         HslColorComponent.alpha(0.25f)));
     }
 
+    // mix..............................................................................................................
+
+    @Test
+    public void testMixHalf() {
+        this.mixAndCheck(
+                "hsla(359,0%,0%,0%)",
+                "hsla(0,50%,50%,50%)",
+                0.5f,
+                "hsla(180,25%,25%,25%)"
+        );
+    }
+
+    @Test
+    public void testMixHalf2() {
+        this.mixAndCheck(
+                "hsla(0,0%,0%,0%)",
+                "hsla(359,70%,50%,50%)",
+                0.5f,
+                "hsla(180,35%,25%,25%)"
+        );
+    }
+
+    @Test
+    public void testMixQuarter() {
+        this.mixAndCheck(
+                "hsla(0,0%,0%,100%)",
+                "hsla(359,80%,20%,100%)",
+                0.25f,
+                "hsla(90,20%,5%,100%)"
+        );
+    }
+
+    @Test
+    public void testMixThreeQuarter() {
+        this.mixAndCheck(
+                "hsla(0,0%,0%,100%)",
+                "hsla(359,100%,50%,0%)",
+                0.75f,
+                "hsla(269,75%,38%,25%)"
+        );
+    }
+
     // toCss............................................................................................................
 
     @Test

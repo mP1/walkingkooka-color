@@ -258,6 +258,61 @@ public abstract class HslColor extends Color {
         return p;
     }
 
+    // mix.............................................................................................................
+
+    @Override
+    public HslColor mix(final Color color,
+                        final float amount) {
+        checkColor(color);
+        checkAmount(amount);
+
+        return isMixSmall(amount) ? //
+                this : // amount of new component is too small ignore
+                isMixLarge(amount) ? // amount results in replace.
+                        color.toHsl() :
+                        mixHsl(
+                                color.toHsl(),
+                                amount
+                        );
+    }
+
+    private HslColor mixHsl(final HslColor color,
+                            final float amount) {
+        return this.setHue(
+                HslColorComponent.hue(
+                        mixFloatValue(
+                                this.hue().value,
+                                color.hue().value,
+                                amount
+                        )
+                )
+        ).setSaturation(
+                HslColorComponent.saturation(
+                        mixFloatValue(
+                                this.saturation().value,
+                                color.saturation().value,
+                                amount
+                        )
+                )
+        ).setLightness(
+                HslColorComponent.lightness(
+                        mixFloatValue(
+                                this.lightness().value,
+                                color.lightness().value,
+                                amount
+                        )
+                )
+        ).setAlpha(
+                HslColorComponent.alpha(
+                        mixFloatValue(
+                                this.alpha().value,
+                                color.alpha().value,
+                                amount
+                        )
+                )
+        );
+    }
+
     // toCss............................................................................................................
 
     @Override
