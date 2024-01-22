@@ -196,7 +196,6 @@ public abstract class Color implements UsesToStringBuilder {
 
     // css..............................................................................................................
 
-
     /**
      * Returns a {@link String} holding the css representation of this {@link Color}.
      * <br>
@@ -339,7 +338,6 @@ public abstract class Color implements UsesToStringBuilder {
     public final String toString() {
         return ToStringBuilder.buildFrom(this);
     }
-
 
     // helpers..........................................................................................................
 
