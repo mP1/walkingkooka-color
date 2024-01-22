@@ -339,4 +339,11 @@ public abstract class Color implements UsesToStringBuilder {
     public final String toString() {
         return ToStringBuilder.buildFrom(this);
     }
+
+
+    // helpers..........................................................................................................
+
+    static <TT extends ColorComponent> TT checkComponent(final TT component) {
+        return Objects.requireNonNull(component, "component");
+    }
 }

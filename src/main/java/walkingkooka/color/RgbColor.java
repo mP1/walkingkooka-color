@@ -27,7 +27,6 @@ import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserReporters;
 
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -261,7 +260,7 @@ abstract public class RgbColor extends Color {
      * Would be setter that returns a {@link RgbColor} holding the new component. If the component is not new this will be returned.
      */
     public RgbColor set(final RgbColorComponent component) {
-        Objects.requireNonNull(component, "component");
+        checkComponent(component);
 
         return component.setComponent(this);
     }
@@ -314,7 +313,7 @@ abstract public class RgbColor extends Color {
      */
     public RgbColor mix(final RgbColorComponent component,
                         final float amount) {
-        Objects.requireNonNull(component, "component");
+        checkComponent(component);
 
         if ((amount < 0f) || (amount > 1.0f)) {
             throw new IllegalArgumentException("amount must be between 0.0 and 1.0 but was " + amount);

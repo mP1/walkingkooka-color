@@ -56,7 +56,7 @@ public abstract class HsvColor extends Color {
      * Would be setter that returns a {@link HsvColor} holding the new component. If the component is not new this will be returned.
      */
     public final HsvColor set(final HsvColorComponent component) {
-        Objects.requireNonNull(component, "component");
+        checkComponent(component);
 
         return component.setComponent(this);
     }
