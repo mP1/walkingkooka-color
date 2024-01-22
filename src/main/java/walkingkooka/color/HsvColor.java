@@ -203,6 +203,61 @@ public abstract class HsvColor extends Color {
 
     abstract RgbColor toRgb0(final RgbColor color);
 
+    // mix.............................................................................................................
+
+    @Override
+    public HsvColor mix(final Color color,
+                        final float amount) {
+        checkColor(color);
+        checkAmount(amount);
+
+        return isMixSmall(amount) ? //
+                this : // amount of new component is too small ignore
+                isMixLarge(amount) ? // amount results in replace.
+                        color.toHsv() :
+                        mixHsv(
+                                color.toHsv(),
+                                amount
+                        );
+    }
+
+    private HsvColor mixHsv(final HsvColor color,
+                            final float amount) {
+        return this.setHue(
+                HsvColorComponent.hue(
+                        mixFloatValue(
+                                this.hue().value,
+                                color.hue().value,
+                                amount
+                        )
+                )
+        ).setSaturation(
+                HsvColorComponent.saturation(
+                        mixFloatValue(
+                                this.saturation().value,
+                                color.saturation().value,
+                                amount
+                        )
+                )
+        ).setValue(
+                HsvColorComponent.value(
+                        mixFloatValue(
+                                this.value().value,
+                                color.value().value,
+                                amount
+                        )
+                )
+        ).setAlpha(
+                HsvColorComponent.alpha(
+                        mixFloatValue(
+                                this.alpha().value,
+                                color.alpha().value,
+                                amount
+                        )
+                )
+        );
+    }
+    
     // toCss............................................................................................................
 
     @Override

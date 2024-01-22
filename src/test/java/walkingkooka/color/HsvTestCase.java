@@ -209,6 +209,20 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
         return Math.abs(expected.value - actual.value) < 5;
     }
 
+    // mix..............................................................................................................
+
+    final void mixAndCheck(final String color,
+                           final String other,
+                           final float amount,
+                           final String expected) {
+        this.mixAndCheck(
+                Color.parseHsv(color),
+                Color.parse(other),
+                amount,
+                Color.parseHsv(expected)
+        );
+    }
+
     // toCss............................................................................................................
 
     @Test

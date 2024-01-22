@@ -25,6 +25,7 @@ import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
         HashCodeEqualsDefinedTesting2<C>,
@@ -106,6 +107,87 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
                     rgb,
                     () -> color + " toRgb()");
         }
+    }
+
+    // mix..............................................................................................................
+
+    @Test
+    public void testMixWithNullColorFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createColor()
+                        .mix(
+                                null,
+                                0
+                        )
+        );
+    }
+
+    @Test
+    public void testMixWithAmountLessThanZeroFails() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> this.createColor()
+                        .mix(
+                                Color.BLACK,
+                                -0.01f
+                        )
+        );
+    }
+
+    @Test
+    public void testMixWithAmountGreaterThanOneFails() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> this.createColor()
+                        .mix(
+                                Color.BLACK,
+                                1.01f
+                        )
+        );
+    }
+
+    @Test
+    public void testMixZeroAmount() {
+        final C color = this.createColor();
+
+        assertSame(
+                color,
+                color.mix(
+                        color.invert(),
+                        0
+                )
+        );
+    }
+
+    @Test
+    public void testMixZeroOne() {
+        final Color color = this.createColor()
+                .invert();
+
+        assertSame(
+                color,
+                this.createColor()
+                        .mix(
+                                color,
+                                1.0f
+                        )
+        );
+    }
+
+    final void mixAndCheck(final Color color,
+                           final Color other,
+                           final float amount,
+                           final Color expected) {
+        // compare using toString because Hsl floats might be slightly different after mixing.
+        this.checkEquals(
+                expected.toString(),
+                color.mix(
+                        other,
+                        amount
+                ).toString(),
+                color + " mix " + other + " " + amount
+        );
     }
 
     // toCss............................................................................................................

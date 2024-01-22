@@ -308,33 +308,73 @@ abstract public class RgbColor extends Color {
                               final GreenRgbColorComponent green,
                               final BlueRgbColorComponent blue);
 
+    @Override
+    public RgbColor mix(final Color color,
+                        final float amount) {
+        checkColor(color);
+        checkAmount(amount);
+
+        return isMixSmall(amount) ? //
+                this : // amount of new component is too small ignore
+                isMixLarge(amount) ? // amount results in replace.
+                        color.toRgb() :
+                        mixRgb(
+                                color.toRgb(),
+                                amount
+                        );
+    }
+
+    private RgbColor mixRgb(final RgbColor color,
+                            final float amount) {
+        return this.setRed(
+                RgbColorComponent.red(
+                        mixIntValue(
+                                this.red().value,
+                                color.red().value,
+                                amount
+                        )
+                )
+        ).setGreen(
+                RgbColorComponent.green(
+                        mixIntValue(
+                                this.green().value,
+                                color.green().value,
+                                amount
+                        )
+                )
+        ).setBlue(
+                RgbColorComponent.blue(
+                        mixIntValue(
+                                this.blue().value,
+                                color.blue().value,
+                                amount
+                        )
+                )
+        ).setAlpha(
+                RgbColorComponent.alpha(
+                        mixIntValue(
+                                this.alpha().value,
+                                color.alpha().value,
+                                amount
+                        )
+                )
+        );
+    }
+
     /**
      * Mixes the given {@link RgbColorComponent} by the provided amount and returns a {@link RgbColor} with that amount.
      */
     public RgbColor mix(final RgbColorComponent component,
                         final float amount) {
         checkComponent(component);
+        checkAmount(amount);
 
-        if ((amount < 0f) || (amount > 1.0f)) {
-            throw new IllegalArgumentException("amount must be between 0.0 and 1.0 but was " + amount);
-        }
-
-        return amount <= RgbColor.SMALL_AMOUNT ? //
+        return isMixSmall(amount) ? //
                 this : // amount of new component is too small ignore
-                amount >= RgbColor.LARGE_AMOUNT ? // amount results in replace.
+                isMixLarge(amount) ? // amount results in replace.
                         component.setComponent(this) : //
                         component.mix(this, amount); // mix
     }
-
-    /**
-     * Any attempt to mix an amount less than this will return the original {@link RgbColor}.
-     */
-    private final static float SMALL_AMOUNT = 1.0f / 512f;
-
-    /**
-     * Any attempt to mix an amount greater than this will return the new {@link RgbColor} skipping the attempt to mix.
-     */
-    private final static float LARGE_AMOUNT = 1.0f - RgbColor.SMALL_AMOUNT;
 
     // getters
 

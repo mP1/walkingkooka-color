@@ -86,6 +86,48 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
         );
     }
 
+    // mix..............................................................................................................
+
+    @Test
+    public void testMixHalf() {
+        this.mixAndCheck(
+                "hsl(359,0%,0%)",
+                "hsl(0,50%,50%)",
+                0.5f,
+                "hsl(180,25%,25%)"
+        );
+    }
+
+    @Test
+    public void testMixHalf2() {
+        this.mixAndCheck(
+                "hsl(0,0%,0%)",
+                "hsl(359,70%,50%)",
+                0.5f,
+                "hsl(180,35%,25%)"
+        );
+    }
+
+    @Test
+    public void testMixQuarter() {
+        this.mixAndCheck(
+                "hsl(0,0%,0%)",
+                "hsl(359,80%,20%)",
+                0.25f,
+                "hsl(90,20%,5%)"
+        );
+    }
+
+    @Test
+    public void testMixThreeQuarter() {
+        this.mixAndCheck(
+                "hsl(0,0%,0%)",
+                "hsl(359,100%,50%)",
+                0.75f,
+                "hsl(269,75%,38%)"
+        );
+    }
+
     // toString.........................................................................................................
 
     @Test

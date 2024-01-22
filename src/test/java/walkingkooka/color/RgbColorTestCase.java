@@ -181,70 +181,96 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         assertSame(alpha, color.alpha(), "alpha");
     }
 
-    // mix
+    // mix..............................................................................................................
+
+    final void mixAndCheck(final String color,
+                           final String other,
+                           final float amount,
+                           final String expected) {
+        this.mixAndCheck(
+                Color.parseRgb(color),
+                Color.parse(other),
+                amount,
+                Color.parseRgb(expected)
+        );
+    }
+
+    // mixComponent.....................................................................................................
 
     @Test
-    public void testMixNullComponentFails() {
-        assertThrows(NullPointerException.class, () -> this.createColor().mix(null, 1.0f));
+    public void testMixComponentNullComponentFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createColor().mix(
+                        (RgbColorComponent) null,
+                        1.0f
+                )
+        );
     }
 
     @Test
-    public void testMixInvalidAmountBelowZeroFails() {
-        assertThrows(IllegalArgumentException.class, () -> this.createColor().mix(RED, -0.1f));
+    public void testMixComponentInvalidAmountBelowZeroFails() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> this.createColor().mix(RED, -0.1f)
+        );
     }
 
     @Test
-    public void testMixInvalidAmountAboveOneFails() {
-        assertThrows(IllegalArgumentException.class, () -> this.createColor().mix(RED, +1.1f));
+    public void testMixComponentInvalidAmountAboveOneFails() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> this.createColor().mix(RED, +1.1f)
+        );
     }
 
     // mix red
 
     @Test
-    public final void testMixSameRed() {
+    public final void testMixComponentSameRed() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.red(), AMOUNT);
+        this.mixComponentAndCheckSame(color, color.red(), AMOUNT);
     }
 
     @Test
-    public final void testMixSameRedVerySmallAmount() {
+    public final void testMixComponentSameRedVerySmallAmount() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.red(), SMALL_AMOUNT);
+        this.mixComponentAndCheckSame(color, color.red(), SMALL_AMOUNT);
     }
 
     @Test
-    public final void testMixDifferentRedVeryLargeAmount() {
+    public final void testMixComponentDifferentRedVeryLargeAmount() {
         final RedRgbColorComponent replacement = RgbColorComponent.red(DIFFERENT);
-        this.mixAndCheck(this.createColor(), replacement, LARGE_AMOUNT, replacement);
+        this.mixComponentAndCheck(this.createColor(), replacement, LARGE_AMOUNT, replacement);
     }
 
     @Test
-    public final void testMixRed1() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.red(FROM_COMPONENT)), //
+    public final void testMixComponentRed1() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(FROM_COMPONENT)), //
                 RgbColorComponent.red(TO_COMPONENT),//
                 AMOUNT, //
                 RgbColorComponent.red(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixRed2() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.red(TO_COMPONENT)), //
+    public final void testMixComponentRed2() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(TO_COMPONENT)), //
                 RgbColorComponent.red(FROM_COMPONENT),//
                 REVERSE_AMOUNT, //
                 RgbColorComponent.red(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixRed3() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.red(FROM_COMPONENT2)), //
+    public final void testMixComponentRed3() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(FROM_COMPONENT2)), //
                 RgbColorComponent.red(TO_COMPONENT2),//
                 AMOUNT, //
                 RgbColorComponent.red(MIXED_COMPONENT2));
     }
 
     @Test
-    public final void testMixRed4() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.red(TO_COMPONENT2)), //
+    public final void testMixComponentRed4() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(TO_COMPONENT2)), //
                 RgbColorComponent.red(FROM_COMPONENT2),//
                 REVERSE_AMOUNT, //
                 RgbColorComponent.red(MIXED_COMPONENT2));
@@ -253,50 +279,50 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // mix green
 
     @Test
-    public final void testMixSameGreen() {
+    public final void testMixComponentSameGreen() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.green(), AMOUNT);
+        this.mixComponentAndCheckSame(color, color.green(), AMOUNT);
     }
 
     @Test
-    public final void testMixSameGreenVeryLargeAmount() {
+    public final void testMixComponentSameGreenVeryLargeAmount() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.green(), LARGE_AMOUNT);
+        this.mixComponentAndCheckSame(color, color.green(), LARGE_AMOUNT);
     }
 
     @Test
-    public final void testMixDifferentGreenVeryLargeAmount() {
+    public final void testMixComponentDifferentGreenVeryLargeAmount() {
         final GreenRgbColorComponent replacement = RgbColorComponent.green(DIFFERENT);
-        this.mixAndCheck(replacement, LARGE_AMOUNT, replacement);
+        this.mixComponentAndCheck(replacement, LARGE_AMOUNT, replacement);
     }
 
     @Test
-    public final void testMixGreen1() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.green(FROM_COMPONENT)), //
+    public final void testMixComponentGreen1() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(FROM_COMPONENT)), //
                 RgbColorComponent.green(TO_COMPONENT),//
                 AMOUNT, //
                 RgbColorComponent.green(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixGreen2() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.green(TO_COMPONENT)), //
+    public final void testMixComponentGreen2() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(TO_COMPONENT)), //
                 RgbColorComponent.green(FROM_COMPONENT),//
                 REVERSE_AMOUNT, //
                 RgbColorComponent.green(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixGreen3() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.green(FROM_COMPONENT2)), //
+    public final void testMixComponentGreen3() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(FROM_COMPONENT2)), //
                 RgbColorComponent.green(TO_COMPONENT2),//
                 AMOUNT, //
                 RgbColorComponent.green(MIXED_COMPONENT2));
     }
 
     @Test
-    public final void testMixGreen4() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.green(TO_COMPONENT2)), //
+    public final void testMixComponentGreen4() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(TO_COMPONENT2)), //
                 RgbColorComponent.green(FROM_COMPONENT2),//
                 REVERSE_AMOUNT, //
                 RgbColorComponent.green(MIXED_COMPONENT2));
@@ -305,55 +331,55 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // mix blue
 
     @Test
-    public final void testMixSameBlue() {
+    public final void testMixComponentSameBlue() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.blue(), AMOUNT);
+        this.mixComponentAndCheckSame(color, color.blue(), AMOUNT);
     }
 
     @Test
-    public final void testMixSameBlueVerySmallAmount() {
+    public final void testMixComponentSameBlueVerySmallAmount() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.blue(), SMALL_AMOUNT);
+        this.mixComponentAndCheckSame(color, color.blue(), SMALL_AMOUNT);
     }
 
     @Test
-    public final void testMixDifferentBlueVerySmallAmount() {
-        this.mixAndCheckSame(RgbColorComponent.blue(DIFFERENT), SMALL_AMOUNT);
+    public final void testMixComponentDifferentBlueVerySmallAmount() {
+        this.mixComponentAndCheckSame(RgbColorComponent.blue(DIFFERENT), SMALL_AMOUNT);
     }
 
     @Test
-    public final void testMixDifferentBlueVeryLargeAmount() {
+    public final void testMixComponentDifferentBlueVeryLargeAmount() {
         final BlueRgbColorComponent replacement = RgbColorComponent.blue(DIFFERENT);
-        this.mixAndCheck(replacement, LARGE_AMOUNT, replacement);
+        this.mixComponentAndCheck(replacement, LARGE_AMOUNT, replacement);
     }
 
     @Test
-    public final void testMixBlue1() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.blue(FROM_COMPONENT)), //
+    public final void testMixComponentBlue1() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(FROM_COMPONENT)), //
                 RgbColorComponent.blue(TO_COMPONENT),//
                 AMOUNT, //
                 RgbColorComponent.blue(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixBlue2() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.blue(TO_COMPONENT)), //
+    public final void testMixComponentBlue2() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(TO_COMPONENT)), //
                 RgbColorComponent.blue(FROM_COMPONENT),//
                 REVERSE_AMOUNT, //
                 RgbColorComponent.blue(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixBlue3() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.blue(FROM_COMPONENT2)), //
+    public final void testMixComponentBlue3() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(FROM_COMPONENT2)), //
                 RgbColorComponent.blue(TO_COMPONENT2),//
                 AMOUNT, //
                 RgbColorComponent.blue(MIXED_COMPONENT2));
     }
 
     @Test
-    public final void testMixBlue4() {
-        this.mixAndCheck(this.createColor().set(RgbColorComponent.blue(TO_COMPONENT2)), //
+    public final void testMixComponentBlue4() {
+        this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(TO_COMPONENT2)), //
                 RgbColorComponent.blue(FROM_COMPONENT2),//
                 REVERSE_AMOUNT, //
                 RgbColorComponent.blue(MIXED_COMPONENT2));
@@ -362,52 +388,125 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // mix alpha
 
     @Test
-    public final void testMixSameAlpha() {
+    public final void testMixComponentSameAlpha() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.alpha(), AMOUNT);
+        this.mixComponentAndCheckSame(color, color.alpha(), AMOUNT);
     }
 
     @Test
-    public final void testMixSameAlphaVerySmallAmount() {
+    public final void testMixComponentSameAlphaVerySmallAmount() {
         final C color = this.createColor();
-        this.mixAndCheckSame(color, color.alpha(), SMALL_AMOUNT);
+        this.mixComponentAndCheckSame(color, color.alpha(), SMALL_AMOUNT);
     }
 
     @Test
-    public final void testMixDifferentAlphaVerySmallAmount() {
-        this.mixAndCheckSame(AlphaRgbColorComponent.with(DIFFERENT), SMALL_AMOUNT);
+    public final void testMixComponentDifferentAlphaVerySmallAmount() {
+        this.mixComponentAndCheckSame(AlphaRgbColorComponent.with(DIFFERENT), SMALL_AMOUNT);
     }
 
     @Test
-    public final void testMixAlpha1() {
-        this.mixAndCheck(this.createColor().set(AlphaRgbColorComponent.with(FROM_COMPONENT)), //
+    public final void testMixComponentAlpha1() {
+        this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(FROM_COMPONENT)), //
                 AlphaRgbColorComponent.with(TO_COMPONENT),//
                 AMOUNT, //
                 AlphaRgbColorComponent.with(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixAlpha2() {
-        this.mixAndCheck(this.createColor().set(AlphaRgbColorComponent.with(TO_COMPONENT)), //
+    public final void testMixComponentAlpha2() {
+        this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(TO_COMPONENT)), //
                 AlphaRgbColorComponent.with(FROM_COMPONENT),//
                 REVERSE_AMOUNT, //
                 AlphaRgbColorComponent.with(MIXED_COMPONENT));
     }
 
     @Test
-    public final void testMixAlpha3() {
-        this.mixAndCheck(this.createColor().set(AlphaRgbColorComponent.with(FROM_COMPONENT2)), //
+    public final void testMixComponentAlpha3() {
+        this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(FROM_COMPONENT2)), //
                 AlphaRgbColorComponent.with(TO_COMPONENT2),//
                 AMOUNT, //
                 AlphaRgbColorComponent.with(MIXED_COMPONENT2));
     }
 
     @Test
-    public final void testMixAlpha4() {
-        this.mixAndCheck(this.createColor().set(AlphaRgbColorComponent.with(TO_COMPONENT2)), //
+    public final void testMixComponentAlpha4() {
+        this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(TO_COMPONENT2)), //
                 AlphaRgbColorComponent.with(FROM_COMPONENT2),//
                 REVERSE_AMOUNT, //
                 AlphaRgbColorComponent.with(MIXED_COMPONENT2));
+    }
+
+    final void mixComponentAndCheckSame(final RgbColorComponent mixed, final float amount) {
+        this.mixComponentAndCheckSame(this.createColor(), mixed, amount);
+    }
+
+    final void mixComponentAndCheckSame(final RgbColor rgb,
+                                        final RgbColorComponent mixed,
+                                        final float amount) {
+        final RgbColor result = rgb.mix(mixed, amount);
+        if (rgb != result) {
+            assertSame(
+                    rgb,
+                    result,
+                    "mixing " + rgb + " with " + toString(mixed) + " amount=" + amount
+                            + " did not return the original rgb");
+        }
+    }
+
+    final void mixComponentAndCheck(final RgbColor rgb,
+                                    final RgbColorComponent mixed,
+                                    final float amount,
+                                    final RedRgbColorComponent red) {
+        this.mixComponentAndCheck(rgb, mixed, amount, red, rgb.green(), rgb.blue(), rgb.alpha());
+    }
+
+    final void mixComponentAndCheck(final RgbColorComponent mixed,
+                                    final float amount,
+                                    final GreenRgbColorComponent green) {
+        this.mixComponentAndCheck(this.createColor(), mixed, amount, green);
+    }
+
+    final void mixComponentAndCheck(final RgbColor rgb,
+                                    final RgbColorComponent mixed,
+                                    final float amount,
+                                    final GreenRgbColorComponent green) {
+        this.mixComponentAndCheck(rgb, mixed, amount, rgb.red(), green, rgb.blue(), rgb.alpha());
+    }
+
+    final void mixComponentAndCheck(final RgbColorComponent mixed,
+                                    final float amount,
+                                    final BlueRgbColorComponent blue) {
+        this.mixComponentAndCheck(this.createColor(), mixed, amount, blue);
+    }
+
+    final void mixComponentAndCheck(final RgbColor rgb,
+                                    final RgbColorComponent mixed,
+                                    final float amount,
+                                    final BlueRgbColorComponent blue) {
+        this.mixComponentAndCheck(rgb, mixed, amount, rgb.red(), rgb.green(), blue, rgb.alpha());
+    }
+
+    final void mixComponentAndCheck(final RgbColor rgb,
+                                    final RgbColorComponent mixed,
+                                    final float amount,
+                                    final AlphaRgbColorComponent alpha) {
+        this.mixComponentAndCheck(rgb, mixed, amount, rgb.red(), rgb.green(), rgb.blue(), alpha);
+    }
+
+    final void mixComponentAndCheck(final RgbColor rgb,
+                                    final RgbColorComponent mixed,
+                                    final float amount,
+                                    final RedRgbColorComponent red,
+                                    final GreenRgbColorComponent green,
+                                    final BlueRgbColorComponent blue,
+                                    final AlphaRgbColorComponent alpha) {
+        final RgbColor mixedColor = rgb.mix(mixed, amount);
+        assertNotSame(rgb, mixedColor, "mix should not return this but another RgbColor");
+
+        checkComponent(red, mixedColor.red(), "red", rgb, mixed, amount);
+        checkComponent(green, mixedColor.green(), "green", rgb, mixed, amount);
+        checkComponent(blue, mixedColor.blue(), "blue", rgb, mixed, amount);
+        checkComponent(alpha, mixedColor.alpha(), "alpha", rgb, mixed, amount);
     }
 
     // toHsv http://web.forret.com/tools/color.asp
@@ -607,79 +706,6 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     abstract C createColor(final RedRgbColorComponent red,
                            final GreenRgbColorComponent green,
                            final BlueRgbColorComponent blue);
-
-    final void mixAndCheckSame(final RgbColorComponent mixed, final float amount) {
-        this.mixAndCheckSame(this.createColor(), mixed, amount);
-    }
-
-    final void mixAndCheckSame(final RgbColor rgb,
-                               final RgbColorComponent mixed,
-                               final float amount) {
-        final RgbColor result = rgb.mix(mixed, amount);
-        if (rgb != result) {
-            assertSame(
-                    rgb,
-                    result,
-                    "mixing " + rgb + " with " + toString(mixed) + " amount=" + amount
-                            + " did not return the original rgb");
-        }
-    }
-
-    final void mixAndCheck(final RgbColor rgb,
-                           final RgbColorComponent mixed,
-                           final float amount,
-                           final RedRgbColorComponent red) {
-        this.mixAndCheck(rgb, mixed, amount, red, rgb.green(), rgb.blue(), rgb.alpha());
-    }
-
-    final void mixAndCheck(final RgbColorComponent mixed,
-                           final float amount,
-                           final GreenRgbColorComponent green) {
-        this.mixAndCheck(this.createColor(), mixed, amount, green);
-    }
-
-    final void mixAndCheck(final RgbColor rgb,
-                           final RgbColorComponent mixed,
-                           final float amount,
-                           final GreenRgbColorComponent green) {
-        this.mixAndCheck(rgb, mixed, amount, rgb.red(), green, rgb.blue(), rgb.alpha());
-    }
-
-    final void mixAndCheck(final RgbColorComponent mixed,
-                           final float amount,
-                           final BlueRgbColorComponent blue) {
-        this.mixAndCheck(this.createColor(), mixed, amount, blue);
-    }
-
-    final void mixAndCheck(final RgbColor rgb,
-                           final RgbColorComponent mixed,
-                           final float amount,
-                           final BlueRgbColorComponent blue) {
-        this.mixAndCheck(rgb, mixed, amount, rgb.red(), rgb.green(), blue, rgb.alpha());
-    }
-
-    final void mixAndCheck(final RgbColor rgb,
-                           final RgbColorComponent mixed,
-                           final float amount,
-                           final AlphaRgbColorComponent alpha) {
-        this.mixAndCheck(rgb, mixed, amount, rgb.red(), rgb.green(), rgb.blue(), alpha);
-    }
-
-    final void mixAndCheck(final RgbColor rgb,
-                           final RgbColorComponent mixed,
-                           final float amount,
-                           final RedRgbColorComponent red,
-                           final GreenRgbColorComponent green,
-                           final BlueRgbColorComponent blue,
-                           final AlphaRgbColorComponent alpha) {
-        final RgbColor mixedColor = rgb.mix(mixed, amount);
-        assertNotSame(rgb, mixedColor, "mix should not return this but another RgbColor");
-
-        checkComponent(red, mixedColor.red(), "red", rgb, mixed, amount);
-        checkComponent(green, mixedColor.green(), "green", rgb, mixed, amount);
-        checkComponent(blue, mixedColor.blue(), "blue", rgb, mixed, amount);
-        checkComponent(alpha, mixedColor.alpha(), "alpha", rgb, mixed, amount);
-    }
 
     private void checkComponent(final RgbColorComponent expected,
                                 final RgbColorComponent actual,

@@ -209,6 +209,20 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
         return Math.abs(expected.value - actual.value) < 5;
     }
 
+    // mix..............................................................................................................
+
+    final void mixAndCheck(final String color,
+                           final String other,
+                           final float amount,
+                           final String expected) {
+        this.mixAndCheck(
+                Color.parseHsl(color),
+                Color.parse(other),
+                amount,
+                Color.parseHsl(expected)
+        );
+    }
+
     // HashCodeEqualsDefined ..................................................................................................
 
     @Test

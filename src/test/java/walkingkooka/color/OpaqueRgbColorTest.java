@@ -94,6 +94,48 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         this.checkEquals(3, rgb.getBlue(), "blue");
     }
 
+    // mix..............................................................................................................
+
+    @Test
+    public void testMixHalf() {
+        this.mixAndCheck(
+                "#000000",
+                "#ffffff",
+                0.5f,
+                "#808080"
+        );
+    }
+
+    @Test
+    public void testMixHalf2() {
+        this.mixAndCheck(
+                "#012345",
+                "#ffffff",
+                0.5f,
+                "#8091a2"
+        );
+    }
+
+    @Test
+    public void testMixQuarter() {
+        this.mixAndCheck(
+                "#000000",
+                "#ffffff",
+                0.25f,
+                "#404040"
+        );
+    }
+
+    @Test
+    public void testMixThreeQuarter() {
+        this.mixAndCheck(
+                "#000000",
+                "#ffffff",
+                0.75f,
+                "#bfbfbf"
+        );
+    }
+
     // webName..........................................................................................................
 
     @Test
