@@ -167,7 +167,7 @@ abstract public class RgbColor extends Color {
      */
     static RgbColor fromRgb0(final int rgb) {
         if (rgb < 0 || rgb > 0xFFFFFF) {
-            throw new IllegalArgumentException("Invalid rgb value " + rgb);
+            throw new IllegalArgumentException("Invalid rgb value " + Integer.toHexString(rgb));
         }
 
         return OpaqueRgbColor.with( //
