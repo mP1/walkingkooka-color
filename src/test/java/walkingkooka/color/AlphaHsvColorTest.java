@@ -35,7 +35,10 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
     }
 
     @Override
-    void toColorAndCheck(final float hue, final float saturation, final float value, final int rgb) {
+    void toRgbColorAndCheck(final float hue,
+                            final float saturation,
+                            final float value,
+                            final int rgb) {
         final float alpha = 0.0f;
 
         final AlphaHsvColor hsva = AlphaHsvColor.withAlpha(HsvColorComponent.hue(hue),

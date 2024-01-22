@@ -35,7 +35,10 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
     }
 
     @Override
-    void toRgbColorAndCheck(final float hue, final float saturation, final float value, final int rgb) {
+    void toRgbColorAndCheck(final float hue,
+                            final float saturation,
+                            final float value,
+                            final int rgb) {
         final float alpha = 0.5f;
 
         final AlphaHslColor hsla = AlphaHslColor.withAlpha(HslColorComponent.hue(hue),

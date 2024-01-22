@@ -63,10 +63,12 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     }
 
     @Test
-    public void testRgbAndArgbAndValue() {
-        final RgbColor rgb = OpaqueRgbColor.withOpaque(RedRgbColorComponent.with((byte) 0x80),
+    public void testWithRgbAndArgbAndValue() {
+        final RgbColor rgb = OpaqueRgbColor.withOpaque(
+                RedRgbColorComponent.with((byte) 0x80),
                 GreenRgbColorComponent.with((byte) 0x81),
-                BlueRgbColorComponent.with((byte) 0x82));
+                BlueRgbColorComponent.with((byte) 0x82)
+        );
         this.checkEquals(0x808182, rgb.rgb(), "rgb");
         this.checkEquals(0xFF808182, rgb.argb(), "argb");
         this.checkEquals(0x808182, rgb.value(), "value");

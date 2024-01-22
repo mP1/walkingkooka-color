@@ -52,7 +52,10 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
     }
 
     @Override
-    void toRgbColorAndCheck(final float hue, final float saturation, final float value, final int rgb) {
+    void toRgbColorAndCheck(final float hue,
+                            final float saturation,
+                            final float value,
+                            final int rgb) {
         final OpaqueHslColor hsl = OpaqueHslColor.withOpaque(HslColorComponent.hue(hue), HslColorComponent.saturation(saturation),
                 HslColorComponent.lightness(value));
         final RgbColor expected = RgbColor.fromRgb0(rgb);

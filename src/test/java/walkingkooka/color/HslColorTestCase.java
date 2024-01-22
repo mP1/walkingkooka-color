@@ -126,77 +126,77 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
     // http://serennu.com/colour/hsltorgb.php
 
     @Test
-    public final void testBlackToColor() {
+    public final void testToRgbColorBlack() {
         this.toRgbColorAndCheck(0, 0, 0, 0);
     }
 
     @Test
-    public final void testWhiteToColor() {
+    public final void testToRgbColorColorWhite() {
         this.toRgbColorAndCheck(0, 0, 1.0f, 0xFFFFFF);
     }
 
     @Test
-    public final void testGrayToColor() {
+    public final void testToRgbColorColorGray() {
         this.toRgbColorAndCheck(0, 0, 0.533f, 0x888888);
     }
 
     @Test
-    public final void testRedToHsl() {
+    public final void testToRgbColorRed() {
         this.toRgbColorAndCheck(0f, 1.0f, 1.0f, 0xFF0000);
     }
 
     @Test
-    public final void testReddishToHsl() {
+    public final void testToRgbColorReddish() {
         this.toRgbColorAndCheck(352f, 0.996f, 0.502f, 0xFF0123);
     }
 
     @Test
-    public final void testGreenToHsl() {
+    public final void testToRgbColorGreen() {
         this.toRgbColorAndCheck(120f, 1.0f, 1.0f, 0x00FF00);
     }
 
     @Test
-    public final void testGreenishToHsl() {
+    public final void testToRgbColorGreenish() {
         this.toRgbColorAndCheck(133f, 0.925f, 0.533f, 0x19F549);
     }
 
     @Test
-    public final void testBlueToHsl() {
+    public final void testToRgbColorBlue() {
         this.toRgbColorAndCheck(240f, 1.0f, 1.0f, 0x0000FF);
     }
 
     @Test
-    public final void testBlueishToHsl() {
+    public final void testToRgbColorBlueish() {
         this.toRgbColorAndCheck(231f, 0.89f, 0.516f, 0x1838F2);
     }
 
     @Test
-    public final void testYellowToHsl() {
+    public final void testToRgbColorYellow() {
         this.toRgbColorAndCheck(60f, 1.0f, 1.0f, 0xFFFF00);
     }
 
     @Test
-    public final void testYellowishToHsl() {
+    public final void testToRgbColorYellowish() {
         this.toRgbColorAndCheck(52f, 0.992f, 0.5f, 0xFEDC01);
     }
 
     @Test
-    public final void testPurpleToHsl() {
+    public final void testToRgbColorPurple() {
         this.toRgbColorAndCheck(300f, 1.0f, 1.0f, 0xFF00FF);
     }
 
     @Test
-    public final void testPurplishToHsl() {
+    public final void testToRgbColorPurplish() {
         this.toRgbColorAndCheck(309f, 0.99f, 0.533f, 0xFE12DC);
     }
 
     @Test
-    public final void testCyanToHsl() {
+    public final void testToRgbColorCyan() {
         this.toRgbColorAndCheck(180f, 1.0f, 1.0f, 0x00FFFF);
     }
 
     @Test
-    public final void testCyanishToHsl() {
+    public final void testToRgbColorCyanish() {
         this.toRgbColorAndCheck(189f, 1, 0.435f, 0x00BCDE);
     }
 

@@ -119,81 +119,84 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
     }
 
     @Test
-    public void testBlackToColor() {
-        this.toColorAndCheck(0, 0, 0, 0);
+    public void testToRgbBlack() {
+        this.toRgbColorAndCheck(0, 0, 0, 0);
     }
 
     @Test
-    public void testWhiteToColor() {
-        this.toColorAndCheck(0, 0, 1.0f, 0xFFFFFF);
+    public void testToRgbWhite() {
+        this.toRgbColorAndCheck(0, 0, 1.0f, 0xFFFFFF);
     }
 
     @Test
-    public void testGrayToColor() {
-        this.toColorAndCheck(0, 0, 0.533f, 0x888888);
+    public void testToRgbGray() {
+        this.toRgbColorAndCheck(0, 0, 0.533f, 0x888888);
     }
 
     @Test
-    public void testRedToHsv() {
-        this.toColorAndCheck(0f, 1.0f, 1.0f, 0xFF0000);
+    public void testToRgbRed() {
+        this.toRgbColorAndCheck(0f, 1.0f, 1.0f, 0xFF0000);
     }
 
     @Test
-    public void testReddishToHsv() {
-        this.toColorAndCheck(352f, 0.996f, 1.0f, 0xFF0123);
+    public void testToRgbReddish() {
+        this.toRgbColorAndCheck(352f, 0.996f, 1.0f, 0xFF0123);
     }
 
     @Test
-    public void testGreenToHsv() {
-        this.toColorAndCheck(120f, 1.0f, 1.0f, 0x00FF00);
+    public void testToRgbGreen() {
+        this.toRgbColorAndCheck(120f, 1.0f, 1.0f, 0x00FF00);
     }
 
     @Test
-    public void testGreenishToHsv() {
-        this.toColorAndCheck(133f, 0.929f, 0.996f, 0x12FE45);
+    public void testToRgbGreenish() {
+        this.toRgbColorAndCheck(133f, 0.929f, 0.996f, 0x12FE45);
     }
 
     @Test
-    public void testBlueToHsv() {
-        this.toColorAndCheck(240f, 1.0f, 1.0f, 0x0000FF);
+    public void testToRgbBlue() {
+        this.toRgbColorAndCheck(240f, 1.0f, 1.0f, 0x0000FF);
     }
 
     @Test
-    public void testBlueishToHsv() {
-        this.toColorAndCheck(231f, 0.927f, 0.961f, 0x1234F5);
+    public void testToRgbBlueish() {
+        this.toRgbColorAndCheck(231f, 0.927f, 0.961f, 0x1234F5);
     }
 
     @Test
-    public void testYellowToHsv() {
-        this.toColorAndCheck(60f, 1.0f, 1.0f, 0xFFFF00);
+    public void testToRgbYellow() {
+        this.toRgbColorAndCheck(60f, 1.0f, 1.0f, 0xFFFF00);
     }
 
     @Test
-    public void testYellowishToHsv() {
-        this.toColorAndCheck(52f, 0.996f, 0.996f, 0xFEDC01);
+    public void testToRgbYellowish() {
+        this.toRgbColorAndCheck(52f, 0.996f, 0.996f, 0xFEDC01);
     }
 
     @Test
-    public void testPurpleToHsv() {
-        this.toColorAndCheck(300f, 1.0f, 1.0f, 0xFF00FF);
+    public void testToRgbPurple() {
+        this.toRgbColorAndCheck(300f, 1.0f, 1.0f, 0xFF00FF);
     }
 
     @Test
-    public void testPurplishToHsv() {
-        this.toColorAndCheck(309f, 0.929f, 0.996f, 0xFE12DC);
+    public void testToRgbPurplish() {
+        this.toRgbColorAndCheck(309f, 0.929f, 0.996f, 0xFE12DC);
     }
 
     @Test
-    public void testCyanToHsv() {
-        this.toColorAndCheck(180f, 1.0f, 1.0f, 0x00FFFF);
+    public void testToRgbCyan() {
+        this.toRgbColorAndCheck(180f, 1.0f, 1.0f, 0x00FFFF);
     }
 
     @Test
-    public void testCyanishToHsv() {
-        this.toColorAndCheck(189f, 1.0f, 0.871f, 0x00BCDE);
+    public void testToRgbCyanish() {
+        this.toRgbColorAndCheck(189f, 1.0f, 0.871f, 0x00BCDE);
     }
 
-    private void toColorAndCheck(final float hue, final float saturation, final float value, final int rgb) {
+    private void toRgbColorAndCheck(final float hue,
+                                    final float saturation,
+                                    final float value,
+                                    final int rgb) {
         final HsvColor hsv = HsvColor.with(HsvColorComponent.hue(hue), HsvColorComponent.saturation(saturation), HsvColorComponent.value(value));
         final RgbColor expected = RgbColor.fromRgb0(rgb);
         final RgbColor actual = hsv.toRgb();
