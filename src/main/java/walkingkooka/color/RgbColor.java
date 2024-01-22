@@ -35,7 +35,7 @@ import java.util.Optional;
 @SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
 abstract public class RgbColor extends Color {
 
-    static RgbColor parseRgb0(final String text) {
+    static RgbColor parseRgbOrHash(final String text) {
         final RgbColor color;
 
         if (text.startsWith("rgb")) {
