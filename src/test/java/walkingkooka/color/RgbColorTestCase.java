@@ -413,154 +413,154 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // toHsv http://web.forret.com/tools/color.asp
 
     @Test
-    public final void testBlackToHsv() {
+    public final void testToHsvBlack() {
         this.toHsvAndCheck(0x000000, 0f, 0f, 0f);
     }
 
     @Test
-    public final void testWhiteToHsv() {
+    public final void testToHsvWhite() {
         this.toHsvAndCheck(0xFFFFFF, 0f, 0f, 1.0f);
     }
 
     @Test
-    public final void testGrayToHsv() {
+    public final void testToHsvGray() {
         this.toHsvAndCheck(0x888888, 0f, 0f, 0.533f);
     }
 
     @Test
-    public final void testRedToHsv() {
+    public final void testToHsvRed() {
         this.toHsvAndCheck(0xFF0000, 0f, 1.0f, 1.0f);
     }
 
     @Test
-    public final void testReddishToHsv() {
+    public final void testToHsvReddish() {
         this.toHsvAndCheck(0xFF0123, 352f, 0.996f, 1.0f);
     }
 
     @Test
-    public final void testGreenToHsv() {
+    public final void testToHsvGreen() {
         this.toHsvAndCheck(0x00FF00, 120f, 1.0f, 1.0f);
     }
 
     @Test
-    public final void testGreenishToHsv() {
+    public final void testToHsvGreenish() {
         this.toHsvAndCheck(0x12FE45, 133f, 0.929f, 0.996f);
     }
 
     @Test
-    public final void testBlueToHsv() {
+    public final void testToHsvBlue() {
         this.toHsvAndCheck(0x0000FF, 240f, 1.0f, 1.0f);
     }
 
     @Test
-    public final void testBlueishToHsv() {
+    public final void testToHsvBlueish() {
         this.toHsvAndCheck(0x1234F5, 231f, 0.927f, 0.961f);
     }
 
     @Test
-    public final void testYellowToHsv() {
+    public final void testToHsvYellow() {
         this.toHsvAndCheck(0xFFFF00, 60f, 1.0f, 1.0f);
     }
 
     @Test
-    public final void testYellowishToHsv() {
+    public final void testToHsvYellowish() {
         this.toHsvAndCheck(0xFEDC01, 52f, 0.996f, 0.996f);
     }
 
     @Test
-    public final void testPurpleToHsv() {
+    public final void testToHsvPurple() {
         this.toHsvAndCheck(0xFF00FF, 300f, 1.0f, 1.0f);
     }
 
     @Test
-    public final void testPurplishToHsv() {
+    public final void testToHsvPurplish() {
         this.toHsvAndCheck(0xFE12DC, 309f, 0.929f, 0.996f);
     }
 
     @Test
-    public final void testCyanToHsv() {
+    public final void testToHsvCyan() {
         this.toHsvAndCheck(0x00FFFF, 180f, 1.0f, 1.0f);
     }
 
     @Test
-    public final void testCyanishToHsv() {
+    public final void testToHsvCyanish() {
         this.toHsvAndCheck(0x00BCDE, 189f, 1.0f, 0.871f);
     }
 
     // toHsl http://web.forret.com/tools/color.asp
 
     @Test
-    public final void testBlackToHsl() {
+    public final void testToHslBlack() {
         this.toHslAndCheck(0x000000, 0f, 0f, 0f);
     }
 
     @Test
-    public final void testWhiteToHsl() {
+    public final void testToHslWhite() {
         this.toHslAndCheck(0xFFFFFF, 0f, 0f, 1.0f);
     }
 
     @Test
-    public final void testGrayToHsl() {
+    public final void testToHslGray() {
         this.toHslAndCheck(0x888888, 0f, 0f, 0.533f);
     }
 
     @Test
-    public final void testRedToHsl() {
+    public final void testToHslRed() {
         this.toHslAndCheck(0xFF0000, 0f, 1.0f, 0.5f);
     }
 
     @Test
-    public final void testReddishToHsl() {
+    public final void testToHslReddish() {
         this.toHslAndCheck(0xFF0123, 352f, 0.996f, 0.502f);
     }
 
     @Test
-    public final void testGreenToHsl() {
+    public final void testToHslGreen() {
         this.toHslAndCheck(0x00FF00, 120f, 1.0f, 0.5f);
     }
 
     @Test
-    public final void testGreenishToHsl() {
+    public final void testToHslGreenish() {
         this.toHslAndCheck(0x12FE45, 133f, 0.925f, 0.533f);
     }
 
     @Test
-    public final void testBlueToHsl() {
+    public final void testToHslBlue() {
         this.toHslAndCheck(0x0000FF, 240f, 1.0f, 0.5f);
     }
 
     @Test
-    public final void testBlueishToHsl() {
+    public final void testToHslBlueish() {
         this.toHslAndCheck(0x1234F5, 231f, 0.89f, 0.516f);
     }
 
     @Test
-    public final void testYellowToHsl() {
+    public final void testToHslYellow() {
         this.toHslAndCheck(0xFFFF00, 60f, 1.0f, 0.5f);
     }
 
     @Test
-    public final void testYellowishToHsl() {
+    public final void testToHslYellowish() {
         this.toHslAndCheck(0xFEDC01, 52f, 0.992f, 0.5f);
     }
 
     @Test
-    public final void testPurpleToHsl() {
+    public final void testToHslPurple() {
         this.toHslAndCheck(0xFF00FF, 300f, 1.0f, 0.5f);
     }
 
     @Test
-    public final void testPurplishToHsl() {
+    public final void testToHslPurplish() {
         this.toHslAndCheck(0xFE12DC, 309f, 0.925f, 0.533f);
     }
 
     @Test
-    public final void testCyanToHsl() {
+    public final void testToHslCyan() {
         this.toHslAndCheck(0x00FFFF, 180f, 1.0f, 0.5f);
     }
 
     @Test
-    public final void testCyanishToHsl() {
+    public final void testToHslCyanish() {
         this.toHslAndCheck(0x00BCDE, 189f, 0.871f, 0.435f);
     }
 

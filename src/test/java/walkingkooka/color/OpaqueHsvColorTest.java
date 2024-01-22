@@ -52,7 +52,10 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
     }
 
     @Override
-    void toColorAndCheck(final float hue, final float saturation, final float value, final int rgb) {
+    void toRgbColorAndCheck(final float hue,
+                            final float saturation,
+                            final float value,
+                            final int rgb) {
         final OpaqueHsvColor hsv = OpaqueHsvColor.withOpaque(HsvColorComponent.hue(hue), HsvColorComponent.saturation(saturation),
                 HsvColorComponent.value(value));
         final RgbColor expected = RgbColor.fromRgb0(rgb);

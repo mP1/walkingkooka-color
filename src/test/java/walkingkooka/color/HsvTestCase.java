@@ -126,84 +126,84 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
     // http://serennu.com/colour/hsltorgb.php
 
     @Test
-    public final void testBlackToColor() {
-        this.toColorAndCheck(0, 0, 0, 0);
+    public final void testToRgbBlack() {
+        this.toRgbColorAndCheck(0, 0, 0, 0);
     }
 
     @Test
-    public final void testWhiteToColor() {
-        this.toColorAndCheck(0, 0, 1.0f, 0xFFFFFF);
+    public final void testToRgbWhite() {
+        this.toRgbColorAndCheck(0, 0, 1.0f, 0xFFFFFF);
     }
 
     @Test
-    public final void testGrayToColor() {
-        this.toColorAndCheck(0, 0, 0.533f, 0x888888);
+    public final void testToRgbGray() {
+        this.toRgbColorAndCheck(0, 0, 0.533f, 0x888888);
     }
 
     @Test
-    public final void testRedToHsv() {
-        this.toColorAndCheck(0f, 1.0f, 1.0f, 0xFF0000);
+    public final void testToRgbRed() {
+        this.toRgbColorAndCheck(0f, 1.0f, 1.0f, 0xFF0000);
     }
 
     @Test
-    public final void testReddishToHsv() {
-        this.toColorAndCheck(352f, 0.99f, 0.5f, 0x800112);
+    public final void testToRgbReddish() {
+        this.toRgbColorAndCheck(352f, 0.99f, 0.5f, 0x800112);
     }
 
     @Test
-    public final void testGreenToHsv() {
-        this.toColorAndCheck(120f, 1.0f, 1.0f, 0x00FF00);
+    public final void testToRgbGreen() {
+        this.toRgbColorAndCheck(120f, 1.0f, 1.0f, 0x00FF00);
     }
 
     @Test
-    public final void testGreenishToHsv() {
-        this.toColorAndCheck(133f, 0.93f, 0.96f, 0x11f542);
+    public final void testToRgbGreenish() {
+        this.toRgbColorAndCheck(133f, 0.93f, 0.96f, 0x11f542);
     }
 
     @Test
-    public final void testBlueToHsv() {
-        this.toColorAndCheck(240f, 1.0f, 1.0f, 0x0000FF);
+    public final void testToRgbBlue() {
+        this.toRgbColorAndCheck(240f, 1.0f, 1.0f, 0x0000FF);
     }
 
     @Test
-    public final void testBlueishToHsv() {
-        this.toColorAndCheck(231f, 0.89f, 0.94f, 0x1a3af0);
+    public final void testToRgbBlueish() {
+        this.toRgbColorAndCheck(231f, 0.89f, 0.94f, 0x1a3af0);
     }
 
     @Test
-    public final void testYellowToHsv() {
-        this.toColorAndCheck(60f, 1.0f, 1.0f, 0xFFFF00);
+    public final void testToRgbYellow() {
+        this.toRgbColorAndCheck(60f, 1.0f, 1.0f, 0xFFFF00);
     }
 
     @Test
-    public final void testYellowishToHsv() {
-        this.toColorAndCheck(52f, 0.99f, 0.5f, 0x806f01);
+    public final void testToRgbYellowish() {
+        this.toRgbColorAndCheck(52f, 0.99f, 0.5f, 0x806f01);
     }
 
     @Test
-    public final void testPurpleToHsv() {
-        this.toColorAndCheck(300f, 1.0f, 1.0f, 0xFF00FF);
+    public final void testToRgbPurple() {
+        this.toRgbColorAndCheck(300f, 1.0f, 1.0f, 0xFF00FF);
     }
 
     @Test
-    public final void testPurplishToHsv() {
-        this.toColorAndCheck(309f, 0.99f, 0.53f, 0x870173);
+    public final void testToRgbPurplish() {
+        this.toRgbColorAndCheck(309f, 0.99f, 0.53f, 0x870173);
     }
 
     @Test
-    public final void testCyanToHsv() {
-        this.toColorAndCheck(180f, 1.0f, 1.0f, 0x00FFFF);
+    public final void testToRgbCyan() {
+        this.toRgbColorAndCheck(180f, 1.0f, 1.0f, 0x00FFFF);
     }
 
     @Test
-    public final void testCyanishToHsv() {
-        this.toColorAndCheck(189f, 1, 0.4f, 0x005766);
+    public final void testToRgbCyanish() {
+        this.toRgbColorAndCheck(189f, 1, 0.4f, 0x005766);
     }
 
-    abstract void toColorAndCheck(final float hue,
-                                  final float saturation,
-                                  final float value,
-                                  final int rgb);
+    abstract void toRgbColorAndCheck(final float hue,
+                                     final float saturation,
+                                     final float value,
+                                     final int rgb);
 
     final boolean isEquals(final RgbColorComponent expected, final RgbColorComponent actual) {
         return Math.abs(expected.value - actual.value) < 5;

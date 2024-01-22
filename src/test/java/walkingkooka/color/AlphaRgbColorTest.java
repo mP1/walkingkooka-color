@@ -46,10 +46,13 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     }
 
     @Test
-    public void testRgbAndArgbAndValue() {
-        final RgbColor rgb = RgbColor.with(RgbColorComponent.red((byte) 0x80),
+    public void testWithRgbAndArgbAndValue() {
+        final RgbColor rgb = RgbColor.with(
+                RgbColorComponent.red((byte) 0x80),
                 RgbColorComponent.green((byte) 0x81),
-                RgbColorComponent.blue((byte) 0x82)).set(RgbColorComponent.alpha((byte) 0x84));
+                RgbColorComponent.blue((byte) 0x82)
+        ).set(RgbColorComponent.alpha((byte) 0x84));
+
         this.checkEquals(0x808182, rgb.rgb(), "rgb");
         this.checkEquals(0x84808182, rgb.argb(), "argb");
         this.checkEquals(0x84808182, rgb.value(), "value");
