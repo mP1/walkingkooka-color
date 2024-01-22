@@ -116,7 +116,7 @@ public abstract class Color implements UsesToStringBuilder {
             if (text.startsWith("hsv")) {
                 color = parseHsv(text);
             } else {
-                color = RgbColor.parseRgb0(text);
+                color = RgbColor.parseRgbOrHash(text);
             }
         }
 
@@ -129,7 +129,7 @@ public abstract class Color implements UsesToStringBuilder {
      */
     public static RgbColor parseRgb(final String text) {
         checkText(text);
-        return RgbColor.parseRgb0(text);
+        return RgbColor.parseRgbOrHash(text);
     }
 
     private static String checkText(final String text) {
