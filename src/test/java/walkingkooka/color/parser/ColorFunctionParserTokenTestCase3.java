@@ -79,7 +79,8 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
         return (m) -> m.equals("isLeaf") ||
                 m.equals("isNoise") ||
                 m.equals("isParent") ||
-                m.equals("isSymbol"); // skip isNoise
+                m.equals("isSymbol") ||
+                m.equals("isEmpty"); // skip isNoise
     }
 
     @Override
