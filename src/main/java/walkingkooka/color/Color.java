@@ -25,13 +25,10 @@ import walkingkooka.color.parser.ColorParsers;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.text.CharSequences;
-import walkingkooka.text.cursor.TextCursors;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
-import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserReporters;
-import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeContext;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallContext;
@@ -138,18 +135,17 @@ public abstract class Color implements UsesToStringBuilder {
 
     static Color parseColorParserToken(final String text,
                                        final Parser<ParserContext> parser) {
-        try {
-            return parser.parse(TextCursors.charSequence(text), ParserContexts.basic(DateTimeContexts.fake(), DecimalNumberContexts.american(MathContext.DECIMAL32)))
-                    .map(Color::toColorHslOrHsv)
-                    .orElseThrow(() -> new IllegalArgumentException("Parsing " + CharSequences.quoteAndEscape(text) + " failed."));
-        } catch (final ParserException cause) {
-            throw new IllegalArgumentException(cause.getMessage(), cause);
-        }
+        return parser.parseText(
+                        text,
+                        PARSER_CONTEXT
+                ).cast(ColorFunctionFunctionParserToken.class)
+                .toColorHslOrHsv();
     }
 
-    private static Color toColorHslOrHsv(final ParserToken token) {
-        return token.cast(ColorFunctionFunctionParserToken.class).toColorHslOrHsv();
-    }
+    private final static ParserContext PARSER_CONTEXT = ParserContexts.basic(
+            DateTimeContexts.fake(),
+            DecimalNumberContexts.american(MathContext.DECIMAL32)
+    );
 
     // parseRgb hsl(359,100%,100%) / hsla(359,100%,100%)..............................................................
 
