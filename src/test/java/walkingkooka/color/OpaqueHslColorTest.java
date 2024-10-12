@@ -75,12 +75,12 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
                         HslColorComponent.lightness(0.5f)));
     }
 
-    // toCss............................................................................................................
+    // text............................................................................................................
 
     @Test
-    public void testToCss() {
+    public void testText() {
         final String css = "hsl(359,50%,25%)";
-        this.toCssAndCheck(
+        this.textAndCheck(
                 Color.parse(css),
                 css
         );

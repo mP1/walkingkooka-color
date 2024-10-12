@@ -313,10 +313,10 @@ public abstract class HslColor extends Color {
         );
     }
 
-    // toCss............................................................................................................
+    // text............................................................................................................
 
     @Override
-    public final String toCss() {
+    public final String text() {
         return this.toString();
     }
 

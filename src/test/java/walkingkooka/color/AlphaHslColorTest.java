@@ -107,12 +107,12 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
         );
     }
 
-    // toCss............................................................................................................
+    // text............................................................................................................
 
     @Test
-    public void testToCss() {
+    public void testText() {
         final String css = "hsla(359,100%,50%,25%)";
-        this.toCssAndCheck(
+        this.textAndCheck(
                 Color.parse(css),
                 css
         );

@@ -25,6 +25,7 @@ import walkingkooka.color.parser.ColorParsers;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.text.CharSequences;
+import walkingkooka.text.HasText;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
@@ -43,7 +44,8 @@ import java.util.function.Function;
 /**
  * Base class for all rgb like value classes.
  */
-public abstract class Color implements UsesToStringBuilder {
+public abstract class Color implements HasText,
+        UsesToStringBuilder {
 
     /**
      * A constant holding black
@@ -261,7 +263,8 @@ public abstract class Color implements UsesToStringBuilder {
      * <br>
      * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
      */
-    public abstract String toCss();
+    @Override
+    public abstract String text();
 
     // invert...........................................................................................................
 

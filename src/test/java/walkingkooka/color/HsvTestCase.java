@@ -223,13 +223,13 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
         );
     }
 
-    // toCss............................................................................................................
+    // text............................................................................................................
 
     @Test
-    public void testToCssFails() {
+    public void testTextFails() {
         assertThrows(
                 UnsupportedOperationException.class,
-                () -> this.createHsv().toCss()
+                () -> this.createHsv().text()
         );
     }
 
