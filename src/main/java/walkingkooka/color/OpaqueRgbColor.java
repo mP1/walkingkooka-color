@@ -140,10 +140,10 @@ final class OpaqueRgbColor extends RgbColor {
         return new java.awt.Color(this.rgb());
     }
 
-    // toCss............................................................................................................
+    // text............................................................................................................
 
     @Override
-    public String toCss() {
+    public String text() {
         return "rgb(" +
                 this.red.unsignedIntValue +
                 ", " +

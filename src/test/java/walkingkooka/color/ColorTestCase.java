@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.text.HasTextTesting;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -30,6 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
         HashCodeEqualsDefinedTesting2<C>,
         JsonNodeMarshallingTesting<C>,
+        HasTextTesting,
         ToStringTesting<C> {
 
     ColorTestCase() {
@@ -187,17 +189,6 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
                         amount
                 ).toString(),
                 color + " mix " + other + " " + amount
-        );
-    }
-
-    // toCss............................................................................................................
-
-    final void toCssAndCheck(final Color color,
-                             final String css) {
-        this.checkEquals(
-                css,
-                color.toCss(),
-                () -> color.toString()
         );
     }
 

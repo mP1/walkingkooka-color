@@ -257,11 +257,11 @@ public abstract class HsvColor extends Color {
                 )
         );
     }
-    
-    // toCss............................................................................................................
+
+    // text............................................................................................................
 
     @Override
-    public final String toCss() {
+    public final String text() {
         throw new UnsupportedOperationException(this.toString());
     }
 
