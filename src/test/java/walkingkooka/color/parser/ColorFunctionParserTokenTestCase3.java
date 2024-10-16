@@ -80,7 +80,8 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
                 m.equals("isNoise") ||
                 m.equals("isParent") ||
                 m.equals("isSymbol") ||
-                m.equals("isEmpty"); // skip isNoise
+                m.equals("isEmpty") ||
+                m.equals("isNotEmpty"); // skip isNoise
     }
 
     @Override
