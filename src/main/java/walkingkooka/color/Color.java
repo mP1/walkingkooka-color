@@ -103,6 +103,16 @@ public abstract class Color implements HasText,
     /**
      * Parses the numerous supported {@link RgbColor}, {@link HslColor} and {@link HsvColor}.
      * This equivalent to calling any of each until success or failure.
+     * Examples of supported text forms include.
+     * <pre>
+     * rgb(0, 11, 22)
+     * #123 // equivalent to #112233
+     * #123456
+     * RED // web color names
+     * hsl(359, 100%, 99%)
+     * hsv(359, 100%, 99%)
+     *
+     * </pre>
      */
     public static Color parse(final String text) {
         checkText(text);
