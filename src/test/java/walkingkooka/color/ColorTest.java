@@ -39,34 +39,34 @@ public final class ColorTest implements ClassTesting2<Color>,
     @Test
     public void testParseHsl() {
         this.parseStringAndCheck("hsl(359, 0%, 25%)",
-                walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(359f),
-                        walkingkooka.color.HslColorComponent.saturation(0.0f),
-                        walkingkooka.color.HslColorComponent.lightness(0.25f)));
+                HslColor.with(HslColorComponent.hue(359f),
+                        HslColorComponent.saturation(0.0f),
+                        HslColorComponent.lightness(0.25f)));
     }
 
     @Test
     public void testParseHsla() {
         this.parseStringAndCheck("hsla(359, 0%, 25%, 50%)",
-                walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(359f),
-                        walkingkooka.color.HslColorComponent.saturation(0.0f),
-                        walkingkooka.color.HslColorComponent.lightness(0.25f))
-                        .set(walkingkooka.color.HslColorComponent.alpha(0.5f)));
+                HslColor.with(HslColorComponent.hue(359f),
+                                HslColorComponent.saturation(0.0f),
+                                HslColorComponent.lightness(0.25f))
+                        .set(HslColorComponent.alpha(0.5f)));
     }
 
     @Test
     public void testParseHsv() {
         this.parseStringAndCheck("hsv(359, 0%, 25%)",
-                walkingkooka.color.HsvColor.with(walkingkooka.color.HsvColorComponent.hue(359f),
-                        walkingkooka.color.HsvColorComponent.saturation(0.0f),
-                        walkingkooka.color.HsvColorComponent.value(0.25f)));
+                HsvColor.with(HsvColorComponent.hue(359f),
+                        HsvColorComponent.saturation(0.0f),
+                        HsvColorComponent.value(0.25f)));
     }
 
     @Test
     public void testParseRgb() {
         this.parseStringAndCheck("rgb(12,34,56)",
-                walkingkooka.color.RgbColor.with(walkingkooka.color.RgbColorComponent.red((byte) 12),
-                        walkingkooka.color.RgbColorComponent.green((byte) 34),
-                        walkingkooka.color.RgbColorComponent.blue((byte) 56)));
+                RgbColor.with(RgbColorComponent.red((byte) 12),
+                        RgbColorComponent.green((byte) 34),
+                        RgbColorComponent.blue((byte) 56)));
     }
 
     @Test
@@ -85,23 +85,23 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Test
     public void testJsonNodeUnmarshallColor() {
-        final walkingkooka.color.RgbColor color = walkingkooka.color.RgbColor.fromRgb0(0x123456);
+        final RgbColor color = RgbColor.fromRgb0(0x123456);
         this.unmarshallAndCheck(color.marshall(this.marshallContext()), color);
     }
 
     @Test
     public void testJsonNodeUnmarshallHsl() {
-        final walkingkooka.color.HslColor hsl = walkingkooka.color.HslColor.with(walkingkooka.color.HslColorComponent.hue(99),
-                walkingkooka.color.HslColorComponent.saturation(0.25f),
-                walkingkooka.color.HslColorComponent.lightness(0.75f));
+        final HslColor hsl = HslColor.with(HslColorComponent.hue(99),
+                HslColorComponent.saturation(0.25f),
+                HslColorComponent.lightness(0.75f));
         this.unmarshallAndCheck(hsl.marshall(this.marshallContext()), hsl);
     }
 
     @Test
     public void testJsonNodeUnmarshallHsv() {
-        final walkingkooka.color.HsvColor hsv = walkingkooka.color.HsvColor.with(walkingkooka.color.HsvColorComponent.hue(99),
-                walkingkooka.color.HsvColorComponent.saturation(0.25f),
-                walkingkooka.color.HsvColorComponent.value(0.75f));
+        final HsvColor hsv = HsvColor.with(HsvColorComponent.hue(99),
+                HsvColorComponent.saturation(0.25f),
+                HsvColorComponent.value(0.75f));
         this.unmarshallAndCheck(hsv.marshall(this.marshallContext()), hsv);
     }
 
@@ -115,7 +115,7 @@ public final class ColorTest implements ClassTesting2<Color>,
 
     @Override
     public Color createJsonNodeMarshallingValue() {
-        return walkingkooka.color.RgbColor.fromArgb0(0x123456);
+        return RgbColor.fromArgb0(0x123456);
     }
 
     // ParseStringTesting...............................................................................................
