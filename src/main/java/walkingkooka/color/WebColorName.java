@@ -67,7 +67,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     private final static Map<String, WebColorName> NAME_CONSTANTS = Maps.sorted(WebColorName.CASE_SENSITIVITY.comparator());
 
     /**
-     * Allows lookup by RRGGBB value, used by {@link RgbColor#webColorName}.
+     * Allows lookup by RRGGBB value, used by {@link RgbColor#toWebColorName}.
      */
     final static Map<Integer, WebColorName> RRGGBB_CONSTANTS = Maps.sorted();
 

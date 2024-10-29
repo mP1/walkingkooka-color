@@ -24,6 +24,8 @@ import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -109,6 +111,29 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
                     rgb,
                     () -> color + " toRgb()");
         }
+    }
+
+    final void toWebNameAndCheck(final Color color) {
+        this.toWebNameAndCheck(
+                color,
+                Optional.empty()
+        );
+    }
+
+    final void toWebNameAndCheck(final Color color,
+                                 final WebColorName expected) {
+        this.toWebNameAndCheck(
+                color,
+                Optional.of(expected)
+        );
+    }
+
+    final void toWebNameAndCheck(final Color color,
+                                 final Optional<WebColorName> expected) {
+        this.checkEquals(
+                expected,
+                color.toWebColorName(),
+                () -> color + " web rgb name");
     }
 
     // mix..............................................................................................................

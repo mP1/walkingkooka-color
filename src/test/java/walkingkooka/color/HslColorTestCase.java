@@ -209,6 +209,13 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
         return Math.abs(expected.value - actual.value) < 5;
     }
 
+    @Test
+    public final void testToWebColorName() {
+        this.toWebNameAndCheck(
+                this.createColor()
+        );
+    }
+
     // mix..............................................................................................................
 
     final void mixAndCheck(final String color,
