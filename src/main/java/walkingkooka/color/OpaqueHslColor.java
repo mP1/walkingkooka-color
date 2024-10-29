@@ -59,6 +59,11 @@ final class OpaqueHslColor extends HslColor {
     // Object..........................................................................................................
 
     @Override
+    int hashCodeAlpha() {
+        return 0;
+    }
+
+    @Override
     boolean canBeEqual(final Object other) {
         return other instanceof OpaqueHslColor;
     }
