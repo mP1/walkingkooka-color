@@ -21,6 +21,7 @@ import walkingkooka.Cast;
 import walkingkooka.ToStringBuilder;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Holds the hue, saturation and value which describe a rgb.
@@ -202,6 +203,13 @@ public abstract class HsvColor extends Color {
     }
 
     abstract RgbColor toRgb0(final RgbColor color);
+
+    // WebColorName..........................................................................................................
+
+    @Override
+    public final Optional<WebColorName> toWebColorName() {
+        return Optional.empty();
+    }
 
     // mix.............................................................................................................
 

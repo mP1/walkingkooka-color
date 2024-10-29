@@ -38,6 +38,7 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallException;
 
 import java.math.MathContext;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -201,6 +202,13 @@ public abstract class Color implements HasText,
     public abstract HsvColor toHsv();
 
     public abstract RgbColor toRgb();
+
+    // WebColorName..........................................................................................................
+
+    /**
+     * Returns the {@link WebColorName} for this color if one exists and it is a {@link RgbColor}.
+     */
+    abstract public Optional<WebColorName> toWebColorName();
 
     // css..............................................................................................................
 

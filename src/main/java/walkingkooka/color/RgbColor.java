@@ -440,7 +440,8 @@ abstract public class RgbColor extends Color {
     /**
      * Returns a {@link WebColorName} for this rgb if one exists. Note that colors with alpha always returns nothing.
      */
-    public final Optional<WebColorName> webColorName() {
+    @Override
+    public final Optional<WebColorName> toWebColorName() {
         return Optional.ofNullable(WebColorName.RRGGBB_CONSTANTS.get(this.argb()));
     }
 

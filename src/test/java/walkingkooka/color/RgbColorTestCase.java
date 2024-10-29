@@ -25,8 +25,6 @@ import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -663,15 +661,17 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         this.toHslAndCheck(0x00BCDE, 189f, 0.871f, 0.435f);
     }
 
-    // webColorName.....................................................................................................
+    // toWebColorName...................................................................................................
 
     @Test
-    public final void testWebColorNameUnknown() {
+    public final void testToWebColorNameUnknown() {
         final byte component = 1;
-        this.webNameAndCheck(this.createColor(RgbColorComponent.red(component),
-                RgbColorComponent.green(component),
-                RgbColorComponent.blue(component)),
-                null);
+        this.toWebNameAndCheck(
+                this.createColor(
+                        RgbColorComponent.red(component),
+                        RgbColorComponent.green(component),
+                        RgbColorComponent.blue(component))
+        );
     }
 
     // HasJsonNode.......................................................................................................
@@ -718,12 +718,6 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
                     toString(actual),
                     label + " incorrect, failed to mix " + rgb + " with " + toString(mixed) + " amount=" + amount);
         }
-    }
-
-    final void webNameAndCheck(final RgbColor color, final WebColorName webColorName) {
-        this.checkEquals(Optional.ofNullable(webColorName),
-                color.webColorName(),
-                () -> color + " web rgb name");
     }
 
     static private String toString(final RgbColorComponent component) {

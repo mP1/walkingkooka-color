@@ -158,8 +158,10 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     }
 
     @Test
-    public void testWebNameCyan() {
-        this.webNameAndCheck(WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50)), null);
+    public void testToWebNameCyan() {
+        this.toWebNameAndCheck(
+                WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50))
+        );
     }
 
     @Test
