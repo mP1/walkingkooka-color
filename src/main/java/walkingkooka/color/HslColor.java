@@ -325,7 +325,7 @@ public abstract class HslColor extends Color {
     @Override
     public final HslColor invert() {
         return this.setHue(
-                (HueHslColorComponent) this.hue().invert()
+                this.hue().invert()
         ).setSaturation(
                 (SaturationHslColorComponent) this.saturation().invert()
         ).setLightness(
