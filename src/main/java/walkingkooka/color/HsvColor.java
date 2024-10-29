@@ -282,8 +282,15 @@ public abstract class HsvColor extends Color {
 
     @Override
     public final int hashCode() {
-        return Objects.hash(this.hue, this.saturation, this.value);
+        return Objects.hash(
+                this.hue,
+                this.saturation,
+                this.value,
+                this.hashCodeAlpha()
+        );
     }
+
+    abstract int hashCodeAlpha();
 
     @Override final boolean equals0(final Object other) {
         return this.equals1(Cast.to(other));

@@ -62,6 +62,11 @@ final class AlphaHsvColor extends HsvColor {
     // Object..........................................................................................................
 
     @Override
+    int hashCodeAlpha() {
+        return this.alpha.hashCode();
+    }
+
+    @Override
     boolean canBeEqual(final Object other) {
         return other instanceof AlphaHsvColor;
     }
