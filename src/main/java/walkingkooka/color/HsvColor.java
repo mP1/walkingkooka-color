@@ -300,10 +300,10 @@ public abstract class HsvColor extends Color {
         return this.hue.equals(other.hue) &&
                 this.saturation.equals(other.saturation) &&
                 this.value.equals(other.value) &&
-                this.equals2(other);
+                this.equalsAlpha(other);
     }
 
-    abstract boolean equals2(final HsvColor other);
+    abstract boolean equalsAlpha(final HsvColor other);
 
     @Override
     public final void buildToString(final ToStringBuilder builder) {

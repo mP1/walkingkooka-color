@@ -72,7 +72,7 @@ final class AlphaHsvColor extends HsvColor {
     }
 
     @Override
-    boolean equals2(final HsvColor other) {
+    boolean equalsAlpha(final HsvColor other) {
         return this.alpha.equals(other.alpha());
     }
 
