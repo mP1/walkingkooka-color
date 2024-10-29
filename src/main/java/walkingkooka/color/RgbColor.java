@@ -268,7 +268,7 @@ abstract public class RgbColor extends Color {
     /**
      * Factory that creates a new {@link RgbColor} with the new {@link RedRgbColorComponent}.
      */
-    RgbColor setRed(final RedRgbColorComponent red) {
+    final RgbColor setRed(final RedRgbColorComponent red) {
         return this.red.equals(red) ?
                 this :
                 this.replace(red, this.green, this.blue);
@@ -277,7 +277,7 @@ abstract public class RgbColor extends Color {
     /**
      * Factory that creates a new {@link RgbColor} with the new {@link GreenRgbColorComponent}.
      */
-    RgbColor setGreen(final GreenRgbColorComponent green) {
+    final RgbColor setGreen(final GreenRgbColorComponent green) {
         return this.green.equals(green) ?
                 this :
                 this.replace(this.red, green, this.blue);
@@ -286,20 +286,16 @@ abstract public class RgbColor extends Color {
     /**
      * Factory that creates a new {@link RgbColor} with the new {@link BlueRgbColorComponent}.
      */
-    RgbColor setBlue(final BlueRgbColorComponent blue) {
+    final RgbColor setBlue(final BlueRgbColorComponent blue) {
         return this.blue.equals(blue) ?
                 this :
                 this.replace(this.red, this.green, blue);
     }
 
     /**
-     * Factory that creates a new {@link RgbColor} with the new {@link AlphaRgbColorComponent}.
+     * Setter to replace the alpha component of this color.
      */
-    RgbColor setAlpha(final AlphaRgbColorComponent alpha) {
-        return this.alpha().equals(alpha) ?
-                this :
-                AlphaRgbColor.with(this.red, this.green, this.blue, alpha);
-    }
+    abstract RgbColor setAlpha(final AlphaRgbColorComponent alpha);
 
     /**
      * Factory called by the various setters that creates a new {@link RgbColor} with the given components.
@@ -309,8 +305,8 @@ abstract public class RgbColor extends Color {
                               final BlueRgbColorComponent blue);
 
     @Override
-    public RgbColor mix(final Color color,
-                        final float amount) {
+    public final RgbColor mix(final Color color,
+                              final float amount) {
         checkColor(color);
         checkAmount(amount);
 
@@ -381,7 +377,7 @@ abstract public class RgbColor extends Color {
     /**
      * Getter that returns only the {@link RedRgbColorComponent}
      */
-    public RedRgbColorComponent red() {
+    public final RedRgbColorComponent red() {
         return this.red;
     }
 
@@ -390,7 +386,7 @@ abstract public class RgbColor extends Color {
     /**
      * Getter that returns only the {@link GreenRgbColorComponent}
      */
-    public GreenRgbColorComponent green() {
+    public final GreenRgbColorComponent green() {
         return this.green;
     }
 
@@ -399,7 +395,7 @@ abstract public class RgbColor extends Color {
     /**
      * Getter that returns only the {@link BlueRgbColorComponent}
      */
-    public BlueRgbColorComponent blue() {
+    public final BlueRgbColorComponent blue() {
         return this.blue;
     }
 
