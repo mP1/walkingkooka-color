@@ -356,10 +356,10 @@ public abstract class HslColor extends Color {
         return this.hue.equals(other.hue) &&
                 this.saturation.equals(other.saturation) &&
                 this.lightness.equals(other.lightness) &&
-                this.equals2(other);
+                this.equalsAlpha(other);
     }
 
-    abstract boolean equals2(final HslColor other);
+    abstract boolean equalsAlpha(final HslColor other);
 
     @Override
     public final void buildToString(final ToStringBuilder builder) {
