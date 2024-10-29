@@ -69,7 +69,7 @@ final class OpaqueHsvColor extends HsvColor {
     }
 
     @Override
-    boolean equals2(final HsvColor other) {
+    boolean equalsAlpha(final HsvColor other) {
         return true; // no alpha component to compare.
     }
 
