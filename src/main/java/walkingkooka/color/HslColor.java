@@ -337,7 +337,12 @@ public abstract class HslColor extends Color {
 
     @Override
     public final int hashCode() {
-        return Objects.hash(this.hue, this.saturation, this.lightness);
+        return Objects.hash(
+                this.hue,
+                this.saturation,
+                this.lightness,
+                this.hashCodeAlpha()
+        );
     }
 
     abstract int hashCodeAlpha();
