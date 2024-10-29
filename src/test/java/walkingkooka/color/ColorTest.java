@@ -69,6 +69,13 @@ public final class ColorTest implements ClassTesting2<Color>,
                         walkingkooka.color.RgbColorComponent.blue((byte) 56)));
     }
 
+    @Test
+    public void testParseWebColorName() {
+        this.parseStringAndCheck("red",
+                Color.parse("#ff0000")
+        );
+    }
+
     // unmarshall.....................................................................................................
 
     @Test
