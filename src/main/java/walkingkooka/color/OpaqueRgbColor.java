@@ -90,6 +90,16 @@ final class OpaqueRgbColor extends RgbColor {
     }
 
     /**
+     * Factory that creates a new {@link RgbColor} with the new {@link AlphaRgbColorComponent}.
+     */
+    @Override
+    RgbColor setAlpha(final AlphaRgbColorComponent alpha) {
+        return this.alpha().equals(alpha) ?
+                this :
+                AlphaRgbColor.with(this.red, this.green, this.blue, alpha);
+    }
+
+    /**
      * Factory called by the various setters that creates a new {@link OpaqueRgbColor} with the given components.
      */
     @Override
