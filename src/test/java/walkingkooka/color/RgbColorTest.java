@@ -300,6 +300,14 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
         );
     }
 
+    @Test
+    public void testTextWhenRed() {
+        this.textAndCheck(
+                WebColorName.RED.color(),
+                "rgb(255, 0, 0)"
+        );
+    }
+
     // invert...........................................................................................................
 
     @Test
