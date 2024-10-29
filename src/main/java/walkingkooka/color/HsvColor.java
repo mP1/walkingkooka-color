@@ -157,7 +157,7 @@ public abstract class HsvColor extends Color {
      * <A>http://en.wikipedia.org/wiki/HSL_and_HSV</A>
      */
     @Override
-    public RgbColor toRgb() {
+    public final RgbColor toRgb() {
         final float value = this.value.value;
         final float chroma = this.saturation.value * value;
         final float q = this.hue.value / 60.0f;
@@ -206,8 +206,8 @@ public abstract class HsvColor extends Color {
     // mix.............................................................................................................
 
     @Override
-    public HsvColor mix(final Color color,
-                        final float amount) {
+    public final HsvColor mix(final Color color,
+                              final float amount) {
         checkColor(color);
         checkAmount(amount);
 
