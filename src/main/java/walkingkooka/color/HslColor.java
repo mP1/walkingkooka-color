@@ -261,8 +261,8 @@ public abstract class HslColor extends Color {
     // mix.............................................................................................................
 
     @Override
-    public HslColor mix(final Color color,
-                        final float amount) {
+    public final HslColor mix(final Color color,
+                              final float amount) {
         checkColor(color);
         checkAmount(amount);
 
@@ -336,9 +336,11 @@ public abstract class HslColor extends Color {
     // Object...........................................................................................................
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(this.hue, this.saturation, this.lightness);
     }
+
+    abstract int hashCodeAlpha();
 
     @Override
     boolean equals0(final Object other) {
