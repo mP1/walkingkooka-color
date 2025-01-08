@@ -57,8 +57,8 @@ abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken 
     @Override
     public final ParserToken setChildren(final List<ParserToken> children) {
         return ParserToken.leafSetChildren(
-                this,
-                children
+            this,
+            children
         );
     }
 }

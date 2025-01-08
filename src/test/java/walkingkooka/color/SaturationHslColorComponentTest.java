@@ -40,7 +40,7 @@ public final class SaturationHslColorComponentTest extends HslColorComponentTest
     public void testToStringOne() {
         this.toStringAndCheck(SaturationHslColorComponent.with(1.0f), "100%");
     }
-    
+
     @Override
     SaturationHslColorComponent createHslComponent(final float value) {
         return SaturationHslColorComponent.with(value);

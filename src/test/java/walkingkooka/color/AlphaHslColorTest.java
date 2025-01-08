@@ -42,16 +42,16 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
         final float alpha = 0.5f;
 
         final AlphaHslColor hsla = AlphaHslColor.withAlpha(HslColorComponent.hue(hue),
-                HslColorComponent.saturation(saturation),
-                HslColorComponent.lightness(value),
-                HslColorComponent.alpha(alpha));
+            HslColorComponent.saturation(saturation),
+            HslColorComponent.lightness(value),
+            HslColorComponent.alpha(alpha));
         final RgbColor expected = RgbColor.fromRgb0(rgb)
-                .set(RgbColorComponent.alpha(RgbColorComponent.toByte(alpha)));
+            .set(RgbColorComponent.alpha(RgbColorComponent.toByte(alpha)));
         final RgbColor actual = hsla.toRgb();
         if ((false == this.isEquals(expected.red, actual.red)) || //
-                (false == this.isEquals(expected.green, actual.green)) || //
-                (false == this.isEquals(expected.blue, actual.blue) ||
-                        (false == this.isEquals(expected.alpha(), actual.alpha())))) {
+            (false == this.isEquals(expected.green, actual.green)) || //
+            (false == this.isEquals(expected.blue, actual.blue) ||
+                (false == this.isEquals(expected.alpha(), actual.alpha())))) {
             this.checkEquals(expected, actual, "failed to convert " + hsla + " to a RgbColor");
         }
     }
@@ -59,10 +59,10 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
     @Test
     public void testParse() {
         this.parseStringAndCheck("hsla(359,100%,50%,25%)",
-                AlphaHslColor.withAlpha(HslColorComponent.hue(359),
-                        HslColorComponent.saturation(1.0f),
-                        HslColorComponent.lightness(0.5f),
-                        HslColorComponent.alpha(0.25f)));
+            AlphaHslColor.withAlpha(HslColorComponent.hue(359),
+                HslColorComponent.saturation(1.0f),
+                HslColorComponent.lightness(0.5f),
+                HslColorComponent.alpha(0.25f)));
     }
 
     // mix..............................................................................................................
@@ -70,40 +70,40 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
     @Test
     public void testMixHalf() {
         this.mixAndCheck(
-                "hsla(359,0%,0%,0%)",
-                "hsla(0,50%,50%,50%)",
-                0.5f,
-                "hsla(180,25%,25%,25%)"
+            "hsla(359,0%,0%,0%)",
+            "hsla(0,50%,50%,50%)",
+            0.5f,
+            "hsla(180,25%,25%,25%)"
         );
     }
 
     @Test
     public void testMixHalf2() {
         this.mixAndCheck(
-                "hsla(0,0%,0%,0%)",
-                "hsla(359,70%,50%,50%)",
-                0.5f,
-                "hsla(180,35%,25%,25%)"
+            "hsla(0,0%,0%,0%)",
+            "hsla(359,70%,50%,50%)",
+            0.5f,
+            "hsla(180,35%,25%,25%)"
         );
     }
 
     @Test
     public void testMixQuarter() {
         this.mixAndCheck(
-                "hsla(0,0%,0%,100%)",
-                "hsla(359,80%,20%,100%)",
-                0.25f,
-                "hsla(90,20%,5%,100%)"
+            "hsla(0,0%,0%,100%)",
+            "hsla(359,80%,20%,100%)",
+            0.25f,
+            "hsla(90,20%,5%,100%)"
         );
     }
 
     @Test
     public void testMixThreeQuarter() {
         this.mixAndCheck(
-                "hsla(0,0%,0%,100%)",
-                "hsla(359,100%,50%,0%)",
-                0.75f,
-                "hsla(269,75%,38%,25%)"
+            "hsla(0,0%,0%,100%)",
+            "hsla(359,100%,50%,0%)",
+            0.75f,
+            "hsla(269,75%,38%,25%)"
         );
     }
 
@@ -113,8 +113,8 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
     public void testText() {
         final String css = "hsla(359,100%,50%,25%)";
         this.textAndCheck(
-                Color.parse(css),
-                css
+            Color.parse(css),
+            css
         );
     }
 
@@ -123,7 +123,7 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
     @Test
     public void testToString() {
         this.toStringAndCheck(AlphaHslColor.withAlpha(HUE, SATURATION, LIGHTNESS, HslColorComponent.alpha(0.75f)),
-                "hsla(359,50%,25%,75%)");
+            "hsla(359,50%,25%,75%)");
     }
 
     @Test
@@ -132,7 +132,7 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
                 HslColorComponent.saturation(0),
                 HslColorComponent.lightness(0),
                 HslColorComponent.alpha(0)),
-                "hsla(0,0%,0%,0%)");
+            "hsla(0,0%,0%,0%)");
     }
 
     @Override

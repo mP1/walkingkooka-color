@@ -102,8 +102,8 @@ abstract public class HslColorComponentTestCase<C extends HslColorComponent> ext
                 continue;
             }
             this.checkEquals(methodName.equals(isMethodName),
-                    method.invoke(component),
-                    method + " returned");
+                method.invoke(component),
+                method + " returned");
         }
     }
 
@@ -113,8 +113,7 @@ abstract public class HslColorComponentTestCase<C extends HslColorComponent> ext
 
     abstract C createHslComponent(final float value);
 
-    @Override
-    final C createHslOrHsvComponent(final float value) {
+    @Override final C createHslOrHsvComponent(final float value) {
         return this.createHslComponent(value);
     }
 

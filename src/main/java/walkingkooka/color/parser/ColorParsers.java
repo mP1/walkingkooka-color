@@ -66,18 +66,18 @@ public final class ColorParsers implements PublicStaticHelper {
             final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
 
             predefined.put(EbnfIdentifierName.with("DEGREE_UNIT"), Parsers.string("deg", CaseSensitivity.SENSITIVE)
-                    .transform(ColorParsers::transformDegreeUnit));
+                .transform(ColorParsers::transformDegreeUnit));
             predefined.put(EbnfIdentifierName.with("NUMBER"), Parsers.doubleParser()
-                    .transform(ColorParsers::transformNumber));
+                .transform(ColorParsers::transformNumber));
 
             final TextCursor grammarFile = TextCursors.charSequence(new ColorParsersGrammarProvider().text());
 
             final Map<EbnfIdentifierName, Parser<ParserContext>> parsers = EbnfParserToken.grammarParser()
-                    .orFailIfCursorNotEmpty(ParserReporters.basic())
-                    .parse(grammarFile, EbnfParserContexts.basic())
-                    .orElseThrow(() -> new IllegalStateException("Unable to parse color parsers grammar file."))
-                    .cast(EbnfGrammarParserToken.class)
-                    .combinator(predefined, ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.INSTANCE);
+                .orFailIfCursorNotEmpty(ParserReporters.basic())
+                .parse(grammarFile, EbnfParserContexts.basic())
+                .orElseThrow(() -> new IllegalStateException("Unable to parse color parsers grammar file."))
+                .cast(EbnfGrammarParserToken.class)
+                .combinator(predefined, ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.INSTANCE);
 
             RGB_PARSER = parsers.get(EbnfIdentifierName.with("RGB_RGBA_FUNCTION"));
             HSL_PARSER = parsers.get(EbnfIdentifierName.with("HSL_HSLA_FUNCTION"));

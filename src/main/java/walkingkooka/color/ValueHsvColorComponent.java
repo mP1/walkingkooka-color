@@ -40,7 +40,7 @@ final public class ValueHsvColorComponent extends AlphaSaturationOrValueHsvColor
     @Override
     public ValueHsvColorComponent add(final float value) {
         return 0 == value ? this
-                : new ValueHsvColorComponent(HsvColorComponent.add(value, ValueHsvColorComponent.MIN, ValueHsvColorComponent.MAX));
+            : new ValueHsvColorComponent(HsvColorComponent.add(value, ValueHsvColorComponent.MIN, ValueHsvColorComponent.MAX));
     }
 
     @Override

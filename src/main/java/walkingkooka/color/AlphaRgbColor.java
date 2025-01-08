@@ -37,8 +37,8 @@ final class AlphaRgbColor extends RgbColor {
      */
     private AlphaRgbColor(final int argb) {
         super(RedRgbColorComponent.with(RgbColor.shiftRight(argb, RgbColor.RED_SHIFT)), //
-                GreenRgbColorComponent.with(RgbColor.shiftRight(argb, RgbColor.GREEN_SHIFT)), //
-                BlueRgbColorComponent.with(RgbColor.shiftRight(argb, RgbColor.BLUE_SHIFT)));
+            GreenRgbColorComponent.with(RgbColor.shiftRight(argb, RgbColor.GREEN_SHIFT)), //
+            BlueRgbColorComponent.with(RgbColor.shiftRight(argb, RgbColor.BLUE_SHIFT)));
         this.alpha = AlphaRgbColorComponent.with(RgbColor.shiftRight(argb, RgbColor.ALPHA_SHIFT));
         this.argb = argb;
     }
@@ -63,9 +63,9 @@ final class AlphaRgbColor extends RgbColor {
         super(red, green, blue);
         this.alpha = alpha;
         this.argb = (alpha.unsignedIntValue << RgbColor.ALPHA_SHIFT) | //
-                (red.unsignedIntValue << RgbColor.RED_SHIFT) | //
-                (green.unsignedIntValue << RgbColor.GREEN_SHIFT) | //
-                (blue.unsignedIntValue << RgbColor.BLUE_SHIFT);
+            (red.unsignedIntValue << RgbColor.RED_SHIFT) | //
+            (green.unsignedIntValue << RgbColor.GREEN_SHIFT) | //
+            (blue.unsignedIntValue << RgbColor.BLUE_SHIFT);
     }
 
     /**
@@ -92,9 +92,9 @@ final class AlphaRgbColor extends RgbColor {
     @Override
     RgbColor setAlpha(final AlphaRgbColorComponent alpha) {
         return this.alpha.equals(alpha) ? this//
-                : alpha == AlphaRgbColorComponent.OPAQUE ? //
-                OpaqueRgbColor.computeRgbAndCreate(this.red, this.green, this.blue) : //
-                new AlphaRgbColor(this.red, this.green, this.blue, alpha);
+            : alpha == AlphaRgbColorComponent.OPAQUE ? //
+            OpaqueRgbColor.computeRgbAndCreate(this.red, this.green, this.blue) : //
+            new AlphaRgbColor(this.red, this.green, this.blue, alpha);
     }
 
     /**
@@ -141,9 +141,9 @@ final class AlphaRgbColor extends RgbColor {
     @Override
     public java.awt.Color toAwtColor() {
         return new java.awt.Color(this.red.unsignedIntValue,
-                this.green.unsignedIntValue,
-                this.blue.unsignedIntValue,
-                this.alpha.unsignedIntValue);
+            this.green.unsignedIntValue,
+            this.blue.unsignedIntValue,
+            this.alpha.unsignedIntValue);
     }
 
     // text............................................................................................................
@@ -151,14 +151,14 @@ final class AlphaRgbColor extends RgbColor {
     @Override
     public String text() {
         return "rgba(" +
-                this.red.unsignedIntValue +
-                ", " +
-                this.green.unsignedIntValue +
-                ", " +
-                this.blue.unsignedIntValue +
-                ", " +
-                this.alpha.floatValue +
-                ')';
+            this.red.unsignedIntValue +
+            ", " +
+            this.green.unsignedIntValue +
+            ", " +
+            this.blue.unsignedIntValue +
+            ", " +
+            this.alpha.floatValue +
+            ')';
     }
 
     // Object..........................................................................................................

@@ -31,10 +31,10 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
-        HashCodeEqualsDefinedTesting2<C>,
-        JsonNodeMarshallingTesting<C>,
-        HasTextTesting,
-        ToStringTesting<C> {
+    HashCodeEqualsDefinedTesting2<C>,
+    JsonNodeMarshallingTesting<C>,
+    HasTextTesting,
+    ToStringTesting<C> {
 
     ColorTestCase() {
         super();
@@ -44,24 +44,24 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     public final void testIsHsl() {
         final C color = this.createColor();
         this.checkEquals(color instanceof HslColor,
-                color.isHsl(),
-                () -> "isHsl " + color);
+            color.isHsl(),
+            () -> "isHsl " + color);
     }
 
     @Test
     public final void testIsHsv() {
         final C color = this.createColor();
         this.checkEquals(color instanceof HsvColor,
-                color.isHsv(),
-                () -> "isHsv " + color);
+            color.isHsv(),
+            () -> "isHsv " + color);
     }
 
     @Test
     public final void testIsRgb() {
         final C color = this.createColor();
         this.checkEquals(color instanceof RgbColor,
-                color.isRgb(),
-                () -> "isRgb " + color);
+            color.isRgb(),
+            () -> "isRgb " + color);
     }
 
 
@@ -72,12 +72,12 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
 
         if (color instanceof HslColor) {
             assertSame(color,
-                    hsl,
-                    () -> color + " toHsl()");
+                hsl,
+                () -> color + " toHsl()");
         } else {
             assertNotSame(color,
-                    hsl,
-                    () -> color + " toHsl()");
+                hsl,
+                () -> color + " toHsl()");
         }
     }
 
@@ -88,12 +88,12 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
 
         if (color instanceof HsvColor) {
             assertSame(color,
-                    hsv,
-                    () -> color + " toHsv()");
+                hsv,
+                () -> color + " toHsv()");
         } else {
             assertNotSame(color,
-                    hsv,
-                    () -> color + " toHsv()");
+                hsv,
+                () -> color + " toHsv()");
         }
     }
 
@@ -104,36 +104,36 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
 
         if (color instanceof RgbColor) {
             assertSame(color,
-                    rgb,
-                    () -> color + " toRgb()");
+                rgb,
+                () -> color + " toRgb()");
         } else {
             assertNotSame(color,
-                    rgb,
-                    () -> color + " toRgb()");
+                rgb,
+                () -> color + " toRgb()");
         }
     }
 
     final void toWebNameAndCheck(final Color color) {
         this.toWebNameAndCheck(
-                color,
-                Optional.empty()
+            color,
+            Optional.empty()
         );
     }
 
     final void toWebNameAndCheck(final Color color,
                                  final WebColorName expected) {
         this.toWebNameAndCheck(
-                color,
-                Optional.of(expected)
+            color,
+            Optional.of(expected)
         );
     }
 
     final void toWebNameAndCheck(final Color color,
                                  final Optional<WebColorName> expected) {
         this.checkEquals(
-                expected,
-                color.toWebColorName(),
-                () -> color + " web rgb name");
+            expected,
+            color.toWebColorName(),
+            () -> color + " web rgb name");
     }
 
     // mix..............................................................................................................
@@ -141,36 +141,36 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     @Test
     public void testMixWithNullColorFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> this.createColor()
-                        .mix(
-                                null,
-                                0
-                        )
+            NullPointerException.class,
+            () -> this.createColor()
+                .mix(
+                    null,
+                    0
+                )
         );
     }
 
     @Test
     public void testMixWithAmountLessThanZeroFails() {
         assertThrows(
-                IllegalArgumentException.class,
-                () -> this.createColor()
-                        .mix(
-                                Color.BLACK,
-                                -0.01f
-                        )
+            IllegalArgumentException.class,
+            () -> this.createColor()
+                .mix(
+                    Color.BLACK,
+                    -0.01f
+                )
         );
     }
 
     @Test
     public void testMixWithAmountGreaterThanOneFails() {
         assertThrows(
-                IllegalArgumentException.class,
-                () -> this.createColor()
-                        .mix(
-                                Color.BLACK,
-                                1.01f
-                        )
+            IllegalArgumentException.class,
+            () -> this.createColor()
+                .mix(
+                    Color.BLACK,
+                    1.01f
+                )
         );
     }
 
@@ -179,26 +179,26 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         final C color = this.createColor();
 
         assertSame(
-                color,
-                color.mix(
-                        color.invert(),
-                        0
-                )
+            color,
+            color.mix(
+                color.invert(),
+                0
+            )
         );
     }
 
     @Test
     public void testMixZeroOne() {
         final Color color = this.createColor()
-                .invert();
+            .invert();
 
         assertSame(
-                color,
-                this.createColor()
-                        .mix(
-                                color,
-                                1.0f
-                        )
+            color,
+            this.createColor()
+                .mix(
+                    color,
+                    1.0f
+                )
         );
     }
 
@@ -208,12 +208,12 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
                            final Color expected) {
         // compare using toString because Hsl floats might be slightly different after mixing.
         this.checkEquals(
-                expected.toString(),
-                color.mix(
-                        other,
-                        amount
-                ).toString(),
-                color + " mix " + other + " " + amount
+            expected.toString(),
+            color.mix(
+                other,
+                amount
+            ).toString(),
+            color + " mix " + other + " " + amount
         );
     }
 
@@ -224,8 +224,8 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         final C color = this.createColor();
         final Color inverted = color.invert();
         this.checkNotEquals(
-                color,
-                inverted
+            color,
+            inverted
         );
     }
 
@@ -234,8 +234,8 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         final C color = this.createColor();
         final Color inverted = color.invert();
         this.checkEquals(
-                color.getClass(),
-                inverted.getClass()
+            color.getClass(),
+            inverted.getClass()
         );
     }
 
@@ -244,17 +244,17 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         final C color = this.createColor();
         final Color inverted = color.invert();
         this.invertAndCheck(
-                color,
-                inverted
+            color,
+            inverted
         );
     }
 
     final void invertAndCheck(final Color color,
                               final Color inverted) {
         this.checkEquals(
-                color,
-                inverted.invert(),
-                () -> color + " invert"
+            color,
+            inverted.invert(),
+            () -> color + " invert"
         );
     }
 

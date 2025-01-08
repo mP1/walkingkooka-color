@@ -40,7 +40,7 @@ final class ColorParsersColorFunctionFunctionParserTokenColorFunctionParserToken
 
     // ColorFunctionParserTokenVisitor..................................................................................
 
-    @Override 
+    @Override
     protected void visit(final ColorFunctionDegreesUnitSymbolParserToken token) {
         this.add(token);
     }

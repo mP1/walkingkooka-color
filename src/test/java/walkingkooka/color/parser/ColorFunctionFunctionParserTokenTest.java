@@ -108,14 +108,14 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     @Override
     public ColorFunctionFunctionParserToken createToken(final String text) {
         return this.createToken(text,
-                functionName("rgb"),
-                parenthesisOpen(),
-                number(1),
-                separator(),
-                number(2),
-                separator(),
-                number(3),
-                parenthesisClose());
+            functionName("rgb"),
+            parenthesisOpen(),
+            number(1),
+            separator(),
+            number(2),
+            separator(),
+            number(3),
+            parenthesisClose());
     }
 
     @Override
@@ -126,14 +126,14 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     @Override
     public ColorFunctionFunctionParserToken createDifferentToken() {
         return this.createToken("rgba(9,8,7)",
-                functionName("rgba"),
-                parenthesisOpen(),
-                number(9),
-                separator(),
-                number(8),
-                separator(),
-                number(7),
-                parenthesisClose());
+            functionName("rgba"),
+            parenthesisOpen(),
+            number(9),
+            separator(),
+            number(8),
+            separator(),
+            number(7),
+            parenthesisClose());
     }
 
     private ColorFunctionFunctionParserToken createToken(final String text, final ColorFunctionParserToken... tokens) {

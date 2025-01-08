@@ -48,9 +48,9 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testWithRgbAndArgbAndValue() {
         final RgbColor rgb = RgbColor.with(
-                RgbColorComponent.red((byte) 0x80),
-                RgbColorComponent.green((byte) 0x81),
-                RgbColorComponent.blue((byte) 0x82)
+            RgbColorComponent.red((byte) 0x80),
+            RgbColorComponent.green((byte) 0x81),
+            RgbColorComponent.blue((byte) 0x82)
         ).set(RgbColorComponent.alpha((byte) 0x84));
 
         this.checkEquals(0x808182, rgb.rgb(), "rgb");
@@ -91,8 +91,8 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testInvert2() {
         this.invertAndCheck(
-                Color.fromArgb(0xff010203),
-                Color.fromArgb(0xfffefdfc)
+            Color.fromArgb(0xff010203),
+            Color.fromArgb(0xfffefdfc)
         );
     }
 
@@ -101,40 +101,40 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testMixHalf() {
         this.mixAndCheck(
-                "#00000000",
-                "#ffffffff",
-                0.5f,
-                "#80808080"
+            "#00000000",
+            "#ffffffff",
+            0.5f,
+            "#80808080"
         );
     }
 
     @Test
     public void testMixHalf2() {
         this.mixAndCheck(
-                "#01234567",
-                "#ffffffff",
-                0.5f,
-                "#8091a2b3"
+            "#01234567",
+            "#ffffffff",
+            0.5f,
+            "#8091a2b3"
         );
     }
 
     @Test
     public void testMixQuarter() {
         this.mixAndCheck(
-                "#00000000",
-                "#ffffffff",
-                0.25f,
-                "#40404040"
+            "#00000000",
+            "#ffffffff",
+            0.25f,
+            "#40404040"
         );
     }
 
     @Test
     public void testMixThreeQuarter() {
         this.mixAndCheck(
-                "#00000000",
-                "#ffffffff",
-                0.75f,
-                "#bfbfbfbf"
+            "#00000000",
+            "#ffffffff",
+            0.75f,
+            "#bfbfbfbf"
         );
     }
 
@@ -152,15 +152,15 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testText() {
         this.textAndCheck(
-                Color.parse("#12345681"),
-                "rgba(18, 52, 86, 0.5019608)"
+            Color.parse("#12345681"),
+            "rgba(18, 52, 86, 0.5019608)"
         );
     }
 
     @Test
     public void testToWebNameCyan() {
         this.toWebNameAndCheck(
-                WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50))
+            WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50))
         );
     }
 

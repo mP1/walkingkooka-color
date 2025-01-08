@@ -77,7 +77,7 @@ public abstract class ColorFunctionParserToken implements ParserToken {
     public static ColorFunctionParenthesisCloseSymbolParserToken parenthesisCloseSymbol(final String value, final String text) {
         return ColorFunctionParenthesisCloseSymbolParserToken.with(value, text);
     }
-    
+
     /**
      * {@see ColorFunctionParenthesisOpenSymbolParserToken}
      */
@@ -227,7 +227,7 @@ public abstract class ColorFunctionParserToken implements ParserToken {
     abstract ValueHsvColorComponent hsvValue();
 
     abstract AlphaHsvColorComponent hsvAlpha();
-    
+
     // Object...........................................................................................................
 
     @Override

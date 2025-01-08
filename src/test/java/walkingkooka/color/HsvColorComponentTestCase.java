@@ -90,8 +90,7 @@ abstract public class HsvColorComponentTestCase<C extends HsvColorComponent> ext
 
     abstract C createHsvComponent(float value);
 
-    @Override
-    final C createHslOrHsvComponent(final float value) {
+    @Override final C createHslOrHsvComponent(final float value) {
         return this.createHsvComponent(value);
     }
 

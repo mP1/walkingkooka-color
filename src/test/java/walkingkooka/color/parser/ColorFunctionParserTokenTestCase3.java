@@ -30,9 +30,9 @@ import java.util.function.Predicate;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionParserToken> extends ColorFunctionParserTokenTestCase<T>
-        implements ParserTokenTesting<T>,
-        HashCodeEqualsDefinedTesting2<T>,
-        IsMethodTesting<T> {
+    implements ParserTokenTesting<T>,
+    HashCodeEqualsDefinedTesting2<T>,
+    IsMethodTesting<T> {
 
     ColorFunctionParserTokenTestCase3() {
         super();
@@ -41,9 +41,9 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
     @Test
     public final void testPublicStaticFactoryMethod() {
         PublicStaticFactoryTesting.checkFactoryMethods(ColorFunctionParserToken.class,
-                "ColorFunction",
-                ParserToken.class.getSimpleName(),
-                this.type());
+            "ColorFunction",
+            ParserToken.class.getSimpleName(),
+            this.type());
     }
 
     @Test
@@ -77,11 +77,11 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
     @Override
     public final Predicate<String> isMethodIgnoreMethodFilter() {
         return (m) -> m.equals("isLeaf") ||
-                m.equals("isNoise") ||
-                m.equals("isParent") ||
-                m.equals("isSymbol") ||
-                m.equals("isEmpty") ||
-                m.equals("isNotEmpty"); // skip isNoise
+            m.equals("isNoise") ||
+            m.equals("isParent") ||
+            m.equals("isSymbol") ||
+            m.equals("isEmpty") ||
+            m.equals("isNotEmpty"); // skip isNoise
     }
 
     @Override

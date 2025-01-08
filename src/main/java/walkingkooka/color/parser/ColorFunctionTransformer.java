@@ -34,10 +34,10 @@ enum ColorFunctionTransformer {
                     final ColorFunctionParserToken third,
                     final Optional<ColorFunctionParserToken> alpha) {
             final RgbColor color = Color.rgb(first.colorRed(),
-                    second.colorGreen(),
-                    third.colorBlue());
+                second.colorGreen(),
+                third.colorBlue());
             return alpha.map(a -> color.set(a.colorAlpha()))
-                    .orElse(color);
+                .orElse(color);
 
         }
     },
@@ -48,10 +48,10 @@ enum ColorFunctionTransformer {
                     final ColorFunctionParserToken third,
                     final Optional<ColorFunctionParserToken> alpha) {
             final HslColor hsl = Color.hsl(first.hslHue(),
-                    second.hslSaturation(),
-                    third.hslLightness());
+                second.hslSaturation(),
+                third.hslLightness());
             return alpha.map(a -> hsl.set(a.hslAlpha()))
-                    .orElse(hsl);
+                .orElse(hsl);
 
         }
     },
@@ -62,10 +62,10 @@ enum ColorFunctionTransformer {
                     final ColorFunctionParserToken third,
                     final Optional<ColorFunctionParserToken> alpha) {
             final HsvColor hsv = Color.hsv(first.hsvHue(),
-                    second.hsvSaturation(),
-                    third.hsvValue());
+                second.hsvSaturation(),
+                third.hsvValue());
             return alpha.map(a -> hsv.set(a.hsvAlpha()))
-                    .orElse(hsv);
+                .orElse(hsv);
 
         }
     };
@@ -84,7 +84,7 @@ enum ColorFunctionTransformer {
     static ColorFunctionTransformer functionName(final ColorFunctionFunctionNameParserToken functionName) {
         ColorFunctionTransformer transformer;
 
-        switch(functionName.value()) {
+        switch (functionName.value()) {
             case "rgb":
             case "rgba":
                 transformer = ColorFunctionTransformer.RGB;

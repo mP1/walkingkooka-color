@@ -113,10 +113,10 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
                                     final int blue,
                                     final int alpha) {
         this.parseStringAndCheck(text,
-                RgbColor.with(RedRgbColorComponent.with((byte) red),
-                        GreenRgbColorComponent.with((byte) green),
-                        BlueRgbColorComponent.with((byte) blue))
-                        .set(AlphaRgbColorComponent.with((byte) alpha)));
+            RgbColor.with(RedRgbColorComponent.with((byte) red),
+                    GreenRgbColorComponent.with((byte) green),
+                    BlueRgbColorComponent.with((byte) blue))
+                .set(AlphaRgbColorComponent.with((byte) alpha)));
     }
 
     // rgb(1,2,3).......................................................................................................
@@ -153,8 +153,8 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     private void parseRgbAndCheck2(final String text, final int red, final int green, final int blue) {
         this.parseStringAndCheck(text, RgbColor.with(RedRgbColorComponent.with((byte) red),
-                GreenRgbColorComponent.with((byte) green),
-                BlueRgbColorComponent.with((byte) blue)));
+            GreenRgbColorComponent.with((byte) green),
+            BlueRgbColorComponent.with((byte) blue)));
     }
 
     // #123456..........................................................................................................
@@ -295,16 +295,16 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     @Test
     public void testText() {
         this.textAndCheck(
-                Color.parse("#00FF80"),
-                "rgb(0, 255, 128)"
+            Color.parse("#00FF80"),
+            "rgb(0, 255, 128)"
         );
     }
 
     @Test
     public void testTextWhenRed() {
         this.textAndCheck(
-                WebColorName.RED.color(),
-                "rgb(255, 0, 0)"
+            WebColorName.RED.color(),
+            "rgb(255, 0, 0)"
         );
     }
 
@@ -313,8 +313,8 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     @Test
     public void testInvertRed() {
         this.checkEquals(
-                Color.parse("#ff0000").invert(),
-                Color.parse("#00ffff")
+            Color.parse("#ff0000").invert(),
+            Color.parse("#00ffff")
         );
     }
 
@@ -323,9 +323,9 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     @Test
     public void testJsonTypeName() {
         this.checkEquals(Optional.of(
-                        JsonNode.string("rgb")
-                ),
-                JsonNodeMarshallContexts.basic().typeName(RgbColor.class));
+                JsonNode.string("rgb")
+            ),
+            JsonNodeMarshallContexts.basic().typeName(RgbColor.class));
     }
 
     // factory...... ...................................................................................................
@@ -333,8 +333,8 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     @Override
     RgbColor createColor() {
         return RgbColor.with(RgbColorComponent.red((byte) 0x1),
-                RgbColorComponent.green((byte) 0x2),
-                RgbColorComponent.blue((byte) 0x3));
+            RgbColorComponent.green((byte) 0x2),
+            RgbColorComponent.blue((byte) 0x3));
     }
 
     // ClassTesting ...................................................................................................
@@ -353,7 +353,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     @Override
     public RgbColor unmarshall(final JsonNode jsonNode,
-                                 final JsonNodeUnmarshallContext context) {
+                               final JsonNodeUnmarshallContext context) {
         return RgbColor.unmarshallRgb(jsonNode, context);
     }
 

@@ -40,8 +40,8 @@ final public class SaturationHslColorComponent extends AlphaLightnessOrSaturatio
     @Override
     public SaturationHslColorComponent add(final float value) {
         return 0 == value ? this
-                : new SaturationHslColorComponent(
-                HslColorComponent.add(value, SaturationHslColorComponent.MIN, SaturationHslColorComponent.MAX));
+            : new SaturationHslColorComponent(
+            HslColorComponent.add(value, SaturationHslColorComponent.MIN, SaturationHslColorComponent.MAX));
     }
 
     @Override

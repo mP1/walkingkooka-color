@@ -46,9 +46,9 @@ final class OpaqueRgbColor extends RgbColor {
     static OpaqueRgbColor computeRgbAndCreate(final RedRgbColorComponent red, final GreenRgbColorComponent green,
                                               final BlueRgbColorComponent blue) {
         return OpaqueRgbColor.with(red, green, blue, //
-                (red.unsignedIntValue << RgbColor.RED_SHIFT) | // red
-                        (green.unsignedIntValue << RgbColor.GREEN_SHIFT) | // green
-                        (blue.unsignedIntValue << RgbColor.BLUE_SHIFT)); // blue
+            (red.unsignedIntValue << RgbColor.RED_SHIFT) | // red
+                (green.unsignedIntValue << RgbColor.GREEN_SHIFT) | // green
+                (blue.unsignedIntValue << RgbColor.BLUE_SHIFT)); // blue
     }
 
     /**
@@ -95,8 +95,8 @@ final class OpaqueRgbColor extends RgbColor {
     @Override
     RgbColor setAlpha(final AlphaRgbColorComponent alpha) {
         return this.alpha().equals(alpha) ?
-                this :
-                AlphaRgbColor.with(this.red, this.green, this.blue, alpha);
+            this :
+            AlphaRgbColor.with(this.red, this.green, this.blue, alpha);
     }
 
     /**
@@ -155,12 +155,12 @@ final class OpaqueRgbColor extends RgbColor {
     @Override
     public String text() {
         return "rgb(" +
-                this.red.unsignedIntValue +
-                ", " +
-                this.green.unsignedIntValue +
-                ", " +
-                this.blue.unsignedIntValue +
-                ')';
+            this.red.unsignedIntValue +
+            ", " +
+            this.green.unsignedIntValue +
+            ", " +
+            this.blue.unsignedIntValue +
+            ')';
     }
 
     // Object..........................................................................................................
@@ -191,8 +191,8 @@ final class OpaqueRgbColor extends RgbColor {
     }
 
     @Override
-    void alphaComponentToString( final StringBuilder b,
-                                 final RgbColorString format) {
+    void alphaComponentToString(final StringBuilder b,
+                                final RgbColorString format) {
         // no alpha component.
     }
 }

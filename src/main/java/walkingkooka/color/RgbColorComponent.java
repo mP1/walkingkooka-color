@@ -30,7 +30,7 @@ abstract public class RgbColorComponent extends ColorComponent {
     static <C extends RgbColorComponent> C[] createConstants(final C[] constants,
                                                              final IntFunction<C> factory) {
         IntStream.rangeClosed(0, 255)
-                .forEach(i -> constants[i] = factory.apply(i));
+            .forEach(i -> constants[i] = factory.apply(i));
         return constants;
     }
 
@@ -85,8 +85,8 @@ abstract public class RgbColorComponent extends ColorComponent {
     static byte addUnsignedSaturated(final int value, final int value2) {
         final int sum = value + value2;
         return (byte) (sum > MAX_VALUE ?
-                MAX_VALUE :
-                Math.max(sum, 0));
+            MAX_VALUE :
+            Math.max(sum, 0));
     }
 
     /**
@@ -133,8 +133,8 @@ abstract public class RgbColorComponent extends ColorComponent {
 
         // if components are equal do not bother mixing and updating component.
         return 0 != difference ?
-                this.setComponent(color, from + Math.round(difference * amount)) :
-                color;
+            this.setComponent(color, from + Math.round(difference * amount)) :
+            color;
     }
 
     /**
@@ -201,21 +201,18 @@ abstract public class RgbColorComponent extends ColorComponent {
 
     // HashCodeEqualsDefined
 
-    @Override
-    final public int hashCode() {
+    @Override final public int hashCode() {
         return this.value;
     }
 
-    @Override
-    final public boolean equals(final Object other) {
+    @Override final public boolean equals(final Object other) {
         return this == other;
     }
 
     /**
      * Returns the value in hex form.
      */
-    @Override
-    final public String toString() {
+    @Override final public String toString() {
         return this.toHexString();
     }
 
@@ -243,7 +240,7 @@ abstract public class RgbColorComponent extends ColorComponent {
     }
 
     // RgbColorString................................................................................
-    
+
     /**
      * Formats the value as a decimal between 0 and 255.
      */
@@ -255,8 +252,8 @@ abstract public class RgbColorComponent extends ColorComponent {
      * Prebuilt cache of {@link String} which may be looked up using an unsigned byte value.
      */
     private final static String[] TO_DECIMAL_STRING = IntStream.rangeClosed(0, MAX_VALUE)
-            .mapToObj(RgbColorComponent::toDecimalString)
-            .toArray(String[]::new);
+        .mapToObj(RgbColorComponent::toDecimalString)
+        .toArray(String[]::new);
 
     private static String toDecimalString(final int value) {
         return String.valueOf(value);
@@ -273,8 +270,8 @@ abstract public class RgbColorComponent extends ColorComponent {
      * Prebuilt cache of {@link String} which may be looked up using an unsigned byte value.
      */
     private final static String[] TO_PERCENTAGE_STRING = IntStream.rangeClosed(0, MAX_VALUE)
-            .mapToObj(RgbColorComponent::toPercentageString)
-            .toArray(String[]::new);
+        .mapToObj(RgbColorComponent::toPercentageString)
+        .toArray(String[]::new);
 
     private static String toPercentageString(final int value) {
         return String.valueOf(Math.round(100f * value / MAX_VALUE)) + '%';

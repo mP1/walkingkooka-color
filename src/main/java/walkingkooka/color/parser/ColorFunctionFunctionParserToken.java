@@ -47,7 +47,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
         Objects.requireNonNull(value, "tokens");
 
         return new ColorFunctionFunctionParserToken(Lists.immutable(value),
-                Objects.requireNonNull(text, "text"));
+            Objects.requireNonNull(text, "text"));
     }
 
     private ColorFunctionFunctionParserToken(final List<ParserToken> value,
@@ -80,9 +80,9 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     @Override
     public ColorFunctionFunctionParserToken setChildren(final List<ParserToken> children) {
         return ParserToken.parentSetChildren(
-                this,
-                children,
-                ColorFunctionFunctionParserToken::new
+            this,
+            children,
+            ColorFunctionFunctionParserToken::new
         );
     }
 

@@ -15,16 +15,16 @@ public class TestGwtTest extends GWTTestCase {
 
     public void testAssertEquals() {
         assertEquals(
-                1,
-                1
+            1,
+            1
         );
     }
 
     public void testParseRgbThreeValuesCsv() {
         assertEquals(
-                "parse \"rgb(1,2,3)\"",
-                Color.fromRgb(0x10203),
-                Color.parse("rgb(1,2,3)")
+            "parse \"rgb(1,2,3)\"",
+            Color.fromRgb(0x10203),
+            Color.parse("rgb(1,2,3)")
         );
     }
 }

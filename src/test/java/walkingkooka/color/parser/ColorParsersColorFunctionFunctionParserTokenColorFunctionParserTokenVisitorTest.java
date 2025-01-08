@@ -46,8 +46,8 @@ public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionPars
         final String text = ParserToken.text(tokens);
 
         this.checkEquals(ColorFunctionParserToken.function(tokens, text),
-                ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor.transform(ParserTokens.sequence(tokens, text), ParserContexts.fake()),
-                () -> "transform " + tokens);
+            ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor.transform(ParserTokens.sequence(tokens, text), ParserContexts.fake()),
+            () -> "transform " + tokens);
     }
 
     @Test
@@ -75,8 +75,8 @@ public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionPars
         final String text = ParserToken.text(tokens);
 
         this.checkEquals(ColorFunctionParserToken.function(tokens, text),
-                ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor.transform(ParserTokens.sequence(tokens, text), ParserContexts.fake()),
-                () -> "transform " + tokens);
+            ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor.transform(ParserTokens.sequence(tokens, text), ParserContexts.fake()),
+            () -> "transform " + tokens);
     }
 
     private ColorFunctionParserToken functionName(final String name) {

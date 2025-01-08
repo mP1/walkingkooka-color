@@ -29,7 +29,7 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
                       final float max) {
         if (value < min || value > max) {
             throw new IllegalArgumentException(
-                    "value not between " + min + " and " + max + "=" + value);
+                "value not between " + min + " and " + max + "=" + value);
         }
     }
 
@@ -55,16 +55,14 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
 
     // Object..........................................................................................................
 
-    @Override
-    final public int hashCode() {
+    @Override final public int hashCode() {
         return Float.hashCode(this.value);
     }
 
-    @Override
-    final public boolean equals(final Object other) {
+    @Override final public boolean equals(final Object other) {
         return this == other ||
-                this.canBeEqual(other) &&
-                        this.equals0(Cast.to(other));
+            this.canBeEqual(other) &&
+                this.equals0(Cast.to(other));
     }
 
     abstract boolean canBeEqual(Object other);

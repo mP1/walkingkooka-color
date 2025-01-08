@@ -67,8 +67,8 @@ public abstract class HsvColor extends Color {
      */
     final HsvColor setHue(final HueHsvColorComponent hue) {
         return this.hue.equals(hue) ?
-                this :
-                this.replace(hue, this.saturation, this.value);
+            this :
+            this.replace(hue, this.saturation, this.value);
     }
 
     /**
@@ -76,8 +76,8 @@ public abstract class HsvColor extends Color {
      */
     final HsvColor setSaturation(final SaturationHsvColorComponent saturation) {
         return this.saturation.equals(saturation) ?
-                this :
-                this.replace(this.hue, saturation, this.value);
+            this :
+            this.replace(this.hue, saturation, this.value);
     }
 
     /**
@@ -86,8 +86,8 @@ public abstract class HsvColor extends Color {
     final HsvColor setValue(final ValueHsvColorComponent value) {
 
         return this.value.equals(value) ?
-                this :
-                this.replace(this.hue, this.saturation, value);
+            this :
+            this.replace(this.hue, this.saturation, value);
     }
 
     /**
@@ -96,8 +96,8 @@ public abstract class HsvColor extends Color {
     final HsvColor setAlpha(final AlphaHsvColorComponent alpha) {
 
         return this.alpha().equals(alpha) ?
-                this :
-                AlphaHsvColor.withAlpha(this.hue, this.saturation, this.value, alpha);
+            this :
+            AlphaHsvColor.withAlpha(this.hue, this.saturation, this.value, alpha);
     }
 
     /**
@@ -220,49 +220,49 @@ public abstract class HsvColor extends Color {
         checkAmount(amount);
 
         return isMixSmall(amount) ? //
-                this : // amount of new component is too small ignore
-                isMixLarge(amount) ? // amount results in replace.
-                        color.toHsv() :
-                        mixHsv(
-                                color.toHsv(),
-                                amount
-                        );
+            this : // amount of new component is too small ignore
+            isMixLarge(amount) ? // amount results in replace.
+                color.toHsv() :
+                mixHsv(
+                    color.toHsv(),
+                    amount
+                );
     }
 
     private HsvColor mixHsv(final HsvColor color,
                             final float amount) {
         return this.setHue(
-                HsvColorComponent.hue(
-                        mixFloatValue(
-                                this.hue().value,
-                                color.hue().value,
-                                amount
-                        )
+            HsvColorComponent.hue(
+                mixFloatValue(
+                    this.hue().value,
+                    color.hue().value,
+                    amount
                 )
+            )
         ).setSaturation(
-                HsvColorComponent.saturation(
-                        mixFloatValue(
-                                this.saturation().value,
-                                color.saturation().value,
-                                amount
-                        )
+            HsvColorComponent.saturation(
+                mixFloatValue(
+                    this.saturation().value,
+                    color.saturation().value,
+                    amount
                 )
+            )
         ).setValue(
-                HsvColorComponent.value(
-                        mixFloatValue(
-                                this.value().value,
-                                color.value().value,
-                                amount
-                        )
+            HsvColorComponent.value(
+                mixFloatValue(
+                    this.value().value,
+                    color.value().value,
+                    amount
                 )
+            )
         ).setAlpha(
-                HsvColorComponent.alpha(
-                        mixFloatValue(
-                                this.alpha().value,
-                                color.alpha().value,
-                                amount
-                        )
+            HsvColorComponent.alpha(
+                mixFloatValue(
+                    this.alpha().value,
+                    color.alpha().value,
+                    amount
                 )
+            )
         );
     }
 
@@ -278,11 +278,11 @@ public abstract class HsvColor extends Color {
     @Override
     public final HsvColor invert() {
         return this.setHue(
-                this.hue().invert()
+            this.hue().invert()
         ).setSaturation(
-                (SaturationHsvColorComponent) this.saturation().invert()
+            (SaturationHsvColorComponent) this.saturation().invert()
         ).setValue(
-                (ValueHsvColorComponent) this.value().invert()
+            (ValueHsvColorComponent) this.value().invert()
         );
     }
 
@@ -291,10 +291,10 @@ public abstract class HsvColor extends Color {
     @Override
     public final int hashCode() {
         return Objects.hash(
-                this.hue,
-                this.saturation,
-                this.value,
-                this.hashCodeAlpha()
+            this.hue,
+            this.saturation,
+            this.value,
+            this.hashCodeAlpha()
         );
     }
 
@@ -306,9 +306,9 @@ public abstract class HsvColor extends Color {
 
     private boolean equals1(final HsvColor other) {
         return this.hue.equals(other.hue) &&
-                this.saturation.equals(other.saturation) &&
-                this.value.equals(other.value) &&
-                this.equalsAlpha(other);
+            this.saturation.equals(other.saturation) &&
+            this.value.equals(other.value) &&
+            this.equalsAlpha(other);
     }
 
     abstract boolean equalsAlpha(final HsvColor other);
@@ -316,10 +316,10 @@ public abstract class HsvColor extends Color {
     @Override
     public final void buildToString(final ToStringBuilder builder) {
         builder.separator(",")
-                .append(this.functionName())
-                .value(this.hue)
-                .value(this.saturation)
-                .value(this.value);
+            .append(this.functionName())
+            .value(this.hue)
+            .value(this.saturation)
+            .value(this.value);
         this.buildToStringAlpha(builder);
         builder.append(')');
     }

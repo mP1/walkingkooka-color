@@ -82,7 +82,7 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
     }
 
     private byte byteValue() {
-        return (byte)Math.round(this.value() * RgbColorComponent.MAX_VALUE / 100);
+        return (byte) Math.round(this.value() * RgbColorComponent.MAX_VALUE / 100);
     }
 
     @Override

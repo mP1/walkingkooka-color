@@ -65,9 +65,9 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Test
     public void testWithRgbAndArgbAndValue() {
         final RgbColor rgb = OpaqueRgbColor.withOpaque(
-                RedRgbColorComponent.with((byte) 0x80),
-                GreenRgbColorComponent.with((byte) 0x81),
-                BlueRgbColorComponent.with((byte) 0x82)
+            RedRgbColorComponent.with((byte) 0x80),
+            GreenRgbColorComponent.with((byte) 0x81),
+            BlueRgbColorComponent.with((byte) 0x82)
         );
         this.checkEquals(0x808182, rgb.rgb(), "rgb");
         this.checkEquals(0xFF808182, rgb.argb(), "argb");
@@ -99,40 +99,40 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Test
     public void testMixHalf() {
         this.mixAndCheck(
-                "#000000",
-                "#ffffff",
-                0.5f,
-                "#808080"
+            "#000000",
+            "#ffffff",
+            0.5f,
+            "#808080"
         );
     }
 
     @Test
     public void testMixHalf2() {
         this.mixAndCheck(
-                "#012345",
-                "#ffffff",
-                0.5f,
-                "#8091a2"
+            "#012345",
+            "#ffffff",
+            0.5f,
+            "#8091a2"
         );
     }
 
     @Test
     public void testMixQuarter() {
         this.mixAndCheck(
-                "#000000",
-                "#ffffff",
-                0.25f,
-                "#404040"
+            "#000000",
+            "#ffffff",
+            0.25f,
+            "#404040"
         );
     }
 
     @Test
     public void testMixThreeQuarter() {
         this.mixAndCheck(
-                "#000000",
-                "#ffffff",
-                0.75f,
-                "#bfbfbf"
+            "#000000",
+            "#ffffff",
+            0.75f,
+            "#bfbfbf"
         );
     }
 
@@ -146,10 +146,10 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Test
     public void testWebNameConstants() {
         WebColorName.RRGGBB_CONSTANTS.values()
-                .forEach(n -> {
-                    final RgbColor color = n.color();
-                    this.toWebNameAndCheck(color, n);
-                });
+            .forEach(n -> {
+                final RgbColor color = n.color();
+                this.toWebNameAndCheck(color, n);
+            });
     }
 
     // HasJsonNode............................................................................................
@@ -157,13 +157,13 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Test
     public void testJsonNodeUnmarshallString() {
         this.unmarshallAndCheck(JsonNode.string("#123456"),
-                Cast.to(RgbColor.fromRgb0(0x123456)));
+            Cast.to(RgbColor.fromRgb0(0x123456)));
     }
 
     @Test
     public void testJsonNodeMarshall() {
         this.marshallAndCheck(RgbColor.fromRgb0(0x123456),
-                JsonNode.string("#123456"));
+            JsonNode.string("#123456"));
     }
 
     // Object............................................................................................

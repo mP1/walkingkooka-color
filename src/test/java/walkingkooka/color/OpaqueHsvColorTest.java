@@ -57,12 +57,12 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
                             final float value,
                             final int rgb) {
         final OpaqueHsvColor hsv = OpaqueHsvColor.withOpaque(HsvColorComponent.hue(hue), HsvColorComponent.saturation(saturation),
-                HsvColorComponent.value(value));
+            HsvColorComponent.value(value));
         final RgbColor expected = RgbColor.fromRgb0(rgb);
         final RgbColor actual = hsv.toRgb();
         if ((false == this.isEquals(expected.red, actual.red)) || //
-                (false == this.isEquals(expected.green, actual.green)) || //
-                (false == this.isEquals(expected.blue, actual.blue))) {
+            (false == this.isEquals(expected.green, actual.green)) || //
+            (false == this.isEquals(expected.blue, actual.blue))) {
             this.checkEquals(expected, actual, "failed to convert " + hsv + " to a RgbColor");
         }
     }
@@ -70,63 +70,63 @@ public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
     @Test
     public void testParse() {
         this.parseStringAndCheck("hsv(359,100%,50%)",
-                OpaqueHsvColor.withOpaque(HsvColorComponent.hue(359),
-                        HsvColorComponent.saturation(1.0f),
-                        HsvColorComponent.value(0.5f)));
+            OpaqueHsvColor.withOpaque(HsvColorComponent.hue(359),
+                HsvColorComponent.saturation(1.0f),
+                HsvColorComponent.value(0.5f)));
     }
 
     @Test
     public void testMixHalf() {
         this.mixAndCheck(
-                "hsv(359,0%,0%)",
-                "hsv(0,50%,50%)",
-                0.5f,
-                "hsv(180,25%,25%)"
+            "hsv(359,0%,0%)",
+            "hsv(0,50%,50%)",
+            0.5f,
+            "hsv(180,25%,25%)"
         );
     }
 
     @Test
     public void testMixHalf2() {
         this.mixAndCheck(
-                "hsv(0,0%,0%)",
-                "hsv(359,70%,50%)",
-                0.5f,
-                "hsv(180,35%,25%)"
+            "hsv(0,0%,0%)",
+            "hsv(359,70%,50%)",
+            0.5f,
+            "hsv(180,35%,25%)"
         );
     }
 
     @Test
     public void testMixQuarter() {
         this.mixAndCheck(
-                "hsv(0,0%,0%)",
-                "hsv(359,80%,20%)",
-                0.25f,
-                "hsv(90,20%,5%)"
+            "hsv(0,0%,0%)",
+            "hsv(359,80%,20%)",
+            0.25f,
+            "hsv(90,20%,5%)"
         );
     }
 
     @Test
     public void testMixThreeQuarter() {
         this.mixAndCheck(
-                "hsv(0,0%,0%)",
-                "hsv(359,100%,50%)",
-                0.75f,
-                "hsv(269,75%,38%)"
+            "hsv(0,0%,0%)",
+            "hsv(359,100%,50%)",
+            0.75f,
+            "hsv(269,75%,38%)"
         );
     }
-    
+
     // toString.........................................................................................................
 
     @Test
     public void testToString() {
         this.toStringAndCheck(OpaqueHsvColor.withOpaque(HUE, SATURATION, VALUE),
-                "hsv(359,50%,25%)");
+            "hsv(359,50%,25%)");
     }
 
     @Test
     public void testToStringZeroes() {
         this.toStringAndCheck(OpaqueHsvColor.withOpaque(HsvColorComponent.hue(0), HsvColorComponent.saturation(0), HsvColorComponent.value(0)),
-                "hsv(0,0%,0%)");
+            "hsv(0,0%,0%)");
     }
 
     @Override

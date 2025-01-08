@@ -212,7 +212,7 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
     @Test
     public final void testToWebColorName() {
         this.toWebNameAndCheck(
-                this.createColor()
+            this.createColor()
         );
     }
 
@@ -223,10 +223,10 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
                            final float amount,
                            final String expected) {
         this.mixAndCheck(
-                Color.parseHsv(color),
-                Color.parse(other),
-                amount,
-                Color.parseHsv(expected)
+            Color.parseHsv(color),
+            Color.parse(other),
+            amount,
+            Color.parseHsv(expected)
         );
     }
 
@@ -235,8 +235,8 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
     @Test
     public void testTextFails() {
         assertThrows(
-                UnsupportedOperationException.class,
-                () -> this.createHsv().text()
+            UnsupportedOperationException.class,
+            () -> this.createHsv().text()
         );
     }
 
@@ -257,8 +257,7 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
         this.checkNotEquals(HsvColor.with(HUE, SATURATION, ValueHsvColorComponent.with(0.99f)));
     }
 
-    @Override
-    final HsvColor createColor() {
+    @Override final HsvColor createColor() {
         return this.createHsv();
     }
 
@@ -290,7 +289,7 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
 
     @Override
     public final HsvColor unmarshall(final JsonNode from,
-                                       final JsonNodeUnmarshallContext context) {
+                                     final JsonNodeUnmarshallContext context) {
         return HsvColor.unmarshallHsv(from, context);
     }
 }

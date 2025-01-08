@@ -42,77 +42,77 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     @Test
     public void testHslNumberNumberNumber() {
         this.colorCheck("hsl",
-                hsl(359, 0.25f, 0.5f),
-                number(359),
-                number(0.25),
-                number(0.5));
+            hsl(359, 0.25f, 0.5f),
+            number(359),
+            number(0.25),
+            number(0.5));
     }
 
     @Test
     public void testHslNumberNumberNumberNumber() {
         this.colorCheck("hsl",
-                hsl(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                number(0.25),
-                number(0.5),
-                number(0.75));
+            hsl(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            number(0.25),
+            number(0.5),
+            number(0.75));
     }
 
     @Test
     public void testHslNumberNumberNumberNumber2() {
         this.colorCheck("hsl",
-                hsl(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                number(0.25),
-                number(0.5),
-                number(0.75));
+            hsl(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            number(0.25),
+            number(0.5),
+            number(0.75));
     }
 
     @Test
     public void testHslNumberNumberNumberPercentage() {
         this.colorCheck("hsl",
-                hsl(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                number(0.25),
-                number(0.5),
-                percentage(75));
+            hsl(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            number(0.25),
+            number(0.5),
+            percentage(75));
     }
 
     @Test
     public void testHslPercentagePercentagePercentagePercentage() {
         this.colorCheck("hsl",
-                hsl(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                percentage(25),
-                percentage(50),
-                percentage(75));
+            hsl(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            percentage(25),
+            percentage(50),
+            percentage(75));
     }
 
     @Test
     public void testHslPercentagePercentagePercentagePercentage2() {
         this.colorCheck("hsl",
-                hsl(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                percentage(25),
-                percentage(50),
-                percentage(75));
+            hsl(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            percentage(25),
+            percentage(50),
+            percentage(75));
     }
 
     @Test
     public void testHslaNumberNumberNumber() {
         this.colorCheck("hsla",
-                hsl(359, 0.25f, 0.5f),
-                number(359),
-                number(0.25),
-                number(0.5));
+            hsl(359, 0.25f, 0.5f),
+            number(359),
+            number(0.25),
+            number(0.5));
     }
 
     private HslColor hsl(final float hue,
                          final float saturation,
                          final float lightness) {
         return Color.hsl(HslColorComponent.hue(hue),
-                HslColorComponent.saturation(saturation),
-                HslColorComponent.lightness(lightness));
+            HslColorComponent.saturation(saturation),
+            HslColorComponent.lightness(lightness));
     }
 
     private HslColor hsl(final float hue,
@@ -127,77 +127,77 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     @Test
     public void testHsvNumberNumberNumber() {
         this.colorCheck("hsv",
-                hsv(359, 0.25f, 0.5f),
-                number(359),
-                number(0.25),
-                number(0.5));
+            hsv(359, 0.25f, 0.5f),
+            number(359),
+            number(0.25),
+            number(0.5));
     }
 
     @Test
     public void testHsvNumberNumberNumberNumber() {
         this.colorCheck("hsv",
-                hsv(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                number(0.25),
-                number(0.5),
-                number(0.75));
+            hsv(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            number(0.25),
+            number(0.5),
+            number(0.75));
     }
 
     @Test
     public void testHsvNumberNumberNumberNumber2() {
         this.colorCheck("hsv",
-                hsv(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                number(0.25),
-                number(0.5),
-                number(0.75));
+            hsv(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            number(0.25),
+            number(0.5),
+            number(0.75));
     }
 
     @Test
     public void testHsvNumberNumberNumberPercentage() {
         this.colorCheck("hsv",
-                hsv(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                number(0.25),
-                number(0.5),
-                percentage(75));
+            hsv(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            number(0.25),
+            number(0.5),
+            percentage(75));
     }
 
     @Test
     public void testHsvPercentagePercentagePercentagePercentage() {
         this.colorCheck("hsv",
-                hsv(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                percentage(25),
-                percentage(50),
-                percentage(75));
+            hsv(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            percentage(25),
+            percentage(50),
+            percentage(75));
     }
 
     @Test
     public void testHsvPercentagePercentagePercentagePercentage2() {
         this.colorCheck("hsv",
-                hsv(359, 0.25f, 0.5f, 0.75f),
-                number(359),
-                percentage(25),
-                percentage(50),
-                percentage(75));
+            hsv(359, 0.25f, 0.5f, 0.75f),
+            number(359),
+            percentage(25),
+            percentage(50),
+            percentage(75));
     }
 
     @Test
     public void testHsvaNumberNumberNumber() {
         this.colorCheck("hsva",
-                hsv(359, 0.25f, 0.5f),
-                number(359),
-                number(0.25),
-                number(0.5));
+            hsv(359, 0.25f, 0.5f),
+            number(359),
+            number(0.25),
+            number(0.5));
     }
 
     private HsvColor hsv(final float hue,
                          final float saturation,
                          final float value) {
         return Color.hsv(HsvColorComponent.hue(hue),
-                HsvColorComponent.saturation(saturation),
-                HsvColorComponent.value(value));
+            HsvColorComponent.saturation(saturation),
+            HsvColorComponent.value(value));
     }
 
     private HsvColor hsv(final float hue,
@@ -212,59 +212,59 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     @Test
     public void testRgb() {
         this.colorCheck("rgb",
-                RgbColor.parseRgb("#123456"),
-                number(0x12),
-                number(0x34),
-                number(0x56));
+            RgbColor.parseRgb("#123456"),
+            number(0x12),
+            number(0x34),
+            number(0x56));
     }
 
     @Test
     public void testRgbWithAlpha() {
         this.colorCheck("rgb",
-                RgbColor.parseRgb("#1234567f"),
-                number(0x12),
-                number(0x34),
-                number(0x56),
-                number(0x7f));
+            RgbColor.parseRgb("#1234567f"),
+            number(0x12),
+            number(0x34),
+            number(0x56),
+            number(0x7f));
     }
 
     @Test
     public void testRgbWithAlphaPercentage() {
         this.colorCheck("rgb",
-                RgbColor.parseRgb("#12345680"),
-                number(0x12),
-                number(0x34),
-                number(0x56),
-                percentage(50));
+            RgbColor.parseRgb("#12345680"),
+            number(0x12),
+            number(0x34),
+            number(0x56),
+            percentage(50));
     }
 
     @Test
     public void testRgba() {
         this.colorCheck("rgba",
-                RgbColor.parseRgb("#123456"),
-                number(0x12),
-                number(0x34),
-                number(0x56));
+            RgbColor.parseRgb("#123456"),
+            number(0x12),
+            number(0x34),
+            number(0x56));
     }
 
     @Test
     public void testRgbaWithAlpha() {
         this.colorCheck("rgba",
-                RgbColor.parseRgb("#1234567f"),
-                number(0x12),
-                number(0x34),
-                number(0x56),
-                number(0x7f));
+            RgbColor.parseRgb("#1234567f"),
+            number(0x12),
+            number(0x34),
+            number(0x56),
+            number(0x7f));
     }
 
     @Test
     public void testRgbaWithAlphaPercentage() {
         this.colorCheck("rgba",
-                RgbColor.parseRgb("#12345680"),
-                number(0x12),
-                number(0x34),
-                number(0x56),
-                percentage(50));
+            RgbColor.parseRgb("#12345680"),
+            number(0x12),
+            number(0x34),
+            number(0x56),
+            percentage(50));
     }
 
     private ColorFunctionParserToken number(final double value) {
@@ -279,13 +279,13 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
                             final Color color,
                             final ColorFunctionParserToken... values) {
         this.checkEquals(color,
-                ColorFunctionTransformer.functionName(ColorFunctionFunctionNameParserToken.with(name, name))
-                        .color(
-                                values[0],
-                                values[1],
-                                values[2],
-                                Optional.ofNullable(values.length == 4 ? values[3] : null)),
-                () -> name + " " + color);
+            ColorFunctionTransformer.functionName(ColorFunctionFunctionNameParserToken.with(name, name))
+                .color(
+                    values[0],
+                    values[1],
+                    values[2],
+                    Optional.ofNullable(values.length == 4 ? values[3] : null)),
+            () -> name + " " + color);
     }
 
     // ClassTesting.....................................................................................................
