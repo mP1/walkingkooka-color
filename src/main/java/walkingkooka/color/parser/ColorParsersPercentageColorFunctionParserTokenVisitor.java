@@ -46,8 +46,8 @@ final class ColorParsersPercentageColorFunctionParserTokenVisitor extends ColorF
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .label("percentage")
-                .value(this.value)
-                .build();
+            .label("percentage")
+            .value(this.value)
+            .build();
     }
 }

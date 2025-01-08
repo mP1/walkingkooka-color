@@ -42,16 +42,16 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
         final float alpha = 0.0f;
 
         final AlphaHsvColor hsva = AlphaHsvColor.withAlpha(HsvColorComponent.hue(hue),
-                HsvColorComponent.saturation(saturation),
-                HsvColorComponent.value(value),
-                HsvColorComponent.alpha(alpha));
+            HsvColorComponent.saturation(saturation),
+            HsvColorComponent.value(value),
+            HsvColorComponent.alpha(alpha));
         final RgbColor expected = RgbColor.fromRgb0(rgb)
-                .set(RgbColorComponent.alpha(RgbColorComponent.toByte(alpha)));
+            .set(RgbColorComponent.alpha(RgbColorComponent.toByte(alpha)));
         final RgbColor actual = hsva.toRgb();
         if ((false == this.isEquals(expected.red, actual.red)) || //
-                (false == this.isEquals(expected.green, actual.green)) || //
-                (false == this.isEquals(expected.blue, actual.blue) ||
-                        (false == this.isEquals(expected.alpha(), actual.alpha())))) {
+            (false == this.isEquals(expected.green, actual.green)) || //
+            (false == this.isEquals(expected.blue, actual.blue) ||
+                (false == this.isEquals(expected.alpha(), actual.alpha())))) {
             this.checkEquals(expected, actual, "failed to convert " + hsva + " to a RgbColor");
         }
     }
@@ -59,10 +59,10 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
     @Test
     public void testParse() {
         this.parseStringAndCheck("hsva(359,100%,50%,25%)",
-                AlphaHsvColor.withAlpha(HsvColorComponent.hue(359),
-                        HsvColorComponent.saturation(1.0f),
-                        HsvColorComponent.value(0.5f),
-                        HsvColorComponent.alpha(0.25f)));
+            AlphaHsvColor.withAlpha(HsvColorComponent.hue(359),
+                HsvColorComponent.saturation(1.0f),
+                HsvColorComponent.value(0.5f),
+                HsvColorComponent.alpha(0.25f)));
     }
 
     // mix..............................................................................................................
@@ -70,49 +70,49 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
     @Test
     public void testMixHalf() {
         this.mixAndCheck(
-                "hsva(359,0%,0%,0%)",
-                "hsva(0,50%,50%,50%)",
-                0.5f,
-                "hsva(180,25%,25%,25%)"
+            "hsva(359,0%,0%,0%)",
+            "hsva(0,50%,50%,50%)",
+            0.5f,
+            "hsva(180,25%,25%,25%)"
         );
     }
 
     @Test
     public void testMixHalf2() {
         this.mixAndCheck(
-                "hsva(0,0%,0%,0%)",
-                "hsva(359,70%,50%,50%)",
-                0.5f,
-                "hsva(180,35%,25%,25%)"
+            "hsva(0,0%,0%,0%)",
+            "hsva(359,70%,50%,50%)",
+            0.5f,
+            "hsva(180,35%,25%,25%)"
         );
     }
 
     @Test
     public void testMixQuarter() {
         this.mixAndCheck(
-                "hsva(0,0%,0%,100%)",
-                "hsva(359,80%,20%,100%)",
-                0.25f,
-                "hsva(90,20%,5%,100%)"
+            "hsva(0,0%,0%,100%)",
+            "hsva(359,80%,20%,100%)",
+            0.25f,
+            "hsva(90,20%,5%,100%)"
         );
     }
 
     @Test
     public void testMixThreeQuarter() {
         this.mixAndCheck(
-                "hsva(0,0%,0%,100%)",
-                "hsva(359,100%,50%,0%)",
-                0.75f,
-                "hsva(269,75%,38%,25%)"
+            "hsva(0,0%,0%,100%)",
+            "hsva(359,100%,50%,0%)",
+            0.75f,
+            "hsva(269,75%,38%,25%)"
         );
     }
 
     // toString........................................................................................................
-    
+
     @Test
     public void testToString() {
         this.toStringAndCheck(AlphaHsvColor.withAlpha(HUE, SATURATION, VALUE, HsvColorComponent.alpha(0.75f)),
-                "hsva(359,50%,25%,75%)");
+            "hsva(359,50%,25%,75%)");
     }
 
     @Test
@@ -121,7 +121,7 @@ public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
                 HsvColorComponent.saturation(0),
                 HsvColorComponent.value(0),
                 HsvColorComponent.alpha(0)),
-                "hsva(0,0%,0%,0%)");
+            "hsva(0,0%,0%,0%)");
     }
 
     @Override

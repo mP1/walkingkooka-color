@@ -201,7 +201,7 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
         final RgbColor expected = RgbColor.fromRgb0(rgb);
         final RgbColor actual = hsv.toRgb();
         if ((false == this.isEquals(expected.red, actual.red)) || (false == this.isEquals(expected.green, actual.green))
-                || (false == this.isEquals(expected.blue, actual.blue))) {
+            || (false == this.isEquals(expected.blue, actual.blue))) {
             this.checkEquals(expected, actual, () -> "failed to convert " + hsv + " to a RgbColor");
         }
     }
@@ -228,15 +228,15 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
     @Test
     public void testParse() {
         this.parseStringAndCheck("hsv(359,100%,50%)",
-                HsvColor.with(HsvColorComponent.hue(359),
-                        HsvColorComponent.saturation(1.0f),
-                        HsvColorComponent.value(0.5f)));
+            HsvColor.with(HsvColorComponent.hue(359),
+                HsvColorComponent.saturation(1.0f),
+                HsvColorComponent.value(0.5f)));
     }
 
     @Test
     public void testToString() {
         this.toStringAndCheck(HsvColor.with(HUE, SATURATION, VALUE),
-                "hsv(359,25%,50%)");
+            "hsv(359,25%,50%)");
     }
 
     @Test
@@ -244,7 +244,7 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
         this.toStringAndCheck(HsvColor.with(HsvColorComponent.hue(0),
                 HsvColorComponent.saturation(0),
                 HsvColorComponent.value(0)),
-                "hsv(0,0%,0%)");
+            "hsv(0,0%,0%)");
     }
 
     @Override
@@ -268,7 +268,7 @@ public final class HsvColorTest extends ColorTestCase<HsvColor> implements Parse
 
     @Override
     public HsvColor unmarshall(final JsonNode from,
-                                 final JsonNodeUnmarshallContext context) {
+                               final JsonNodeUnmarshallContext context) {
         return HsvColor.unmarshallHsv(from, context);
     }
 

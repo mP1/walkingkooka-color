@@ -30,8 +30,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase<C>
-        implements JsonNodeMarshallingTesting<C>,
-        TypeNameTesting<C> {
+    implements JsonNodeMarshallingTesting<C>,
+    TypeNameTesting<C> {
 
     RgbColorTestCase() {
         super();
@@ -119,10 +119,10 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         final BlueRgbColorComponent different = RgbColorComponent.blue((byte) 0xFF);
 
         this.check(color.set(different),
-                RED,
-                GREEN,
-                different,
-                color.alpha());
+            RED,
+            GREEN,
+            different,
+            color.alpha());
         this.check(color, RED, GREEN, BLUE, color.alpha());
     }
 
@@ -135,10 +135,10 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         final AlphaRgbColorComponent different = AlphaRgbColorComponent.with((byte) 0xFF);
 
         this.check(color.set(different),
-                RED,
-                GREEN,
-                BLUE,
-                different);
+            RED,
+            GREEN,
+            BLUE,
+            different);
         this.check(color, RED, GREEN, BLUE, color.alpha());
     }
 
@@ -146,26 +146,26 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     public final void testSetRedGreenBlue() {
         final byte zero = 0;
         final C color = this.createColor(RgbColorComponent.red(zero),
-                RgbColorComponent.green(zero),
-                RgbColorComponent.blue(zero));
+            RgbColorComponent.green(zero),
+            RgbColorComponent.blue(zero));
         this.check(color.set(RED).set(BLUE).setGreen(GREEN),
-                RED,
-                GREEN,
-                BLUE,
-                color.alpha());
+            RED,
+            GREEN,
+            BLUE,
+            color.alpha());
     }
 
     @Test
     public final void testSetRedGreenBlueAlpha() {
         final byte zero = 0;
         final C color = this.createColor(RgbColorComponent.red(zero), RgbColorComponent.green(zero),
-                RgbColorComponent.blue(zero));
+            RgbColorComponent.blue(zero));
         this.check(color.set(RED).set(BLUE).setGreen(GREEN)
-                        .setAlpha(ALPHA),
-                RED,
-                GREEN,
-                BLUE,
-                ALPHA);
+                .setAlpha(ALPHA),
+            RED,
+            GREEN,
+            BLUE,
+            ALPHA);
     }
 
     private void check(final RgbColor color,
@@ -186,10 +186,10 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
                            final float amount,
                            final String expected) {
         this.mixAndCheck(
-                Color.parseRgb(color),
-                Color.parse(other),
-                amount,
-                Color.parseRgb(expected)
+            Color.parseRgb(color),
+            Color.parse(other),
+            amount,
+            Color.parseRgb(expected)
         );
     }
 
@@ -198,27 +198,27 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     @Test
     public void testMixComponentNullComponentFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> this.createColor().mix(
-                        (RgbColorComponent) null,
-                        1.0f
-                )
+            NullPointerException.class,
+            () -> this.createColor().mix(
+                (RgbColorComponent) null,
+                1.0f
+            )
         );
     }
 
     @Test
     public void testMixComponentInvalidAmountBelowZeroFails() {
         assertThrows(
-                IllegalArgumentException.class,
-                () -> this.createColor().mix(RED, -0.1f)
+            IllegalArgumentException.class,
+            () -> this.createColor().mix(RED, -0.1f)
         );
     }
 
     @Test
     public void testMixComponentInvalidAmountAboveOneFails() {
         assertThrows(
-                IllegalArgumentException.class,
-                () -> this.createColor().mix(RED, +1.1f)
+            IllegalArgumentException.class,
+            () -> this.createColor().mix(RED, +1.1f)
         );
     }
 
@@ -245,33 +245,33 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     @Test
     public final void testMixComponentRed1() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(FROM_COMPONENT)), //
-                RgbColorComponent.red(TO_COMPONENT),//
-                AMOUNT, //
-                RgbColorComponent.red(MIXED_COMPONENT));
+            RgbColorComponent.red(TO_COMPONENT),//
+            AMOUNT, //
+            RgbColorComponent.red(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentRed2() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(TO_COMPONENT)), //
-                RgbColorComponent.red(FROM_COMPONENT),//
-                REVERSE_AMOUNT, //
-                RgbColorComponent.red(MIXED_COMPONENT));
+            RgbColorComponent.red(FROM_COMPONENT),//
+            REVERSE_AMOUNT, //
+            RgbColorComponent.red(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentRed3() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(FROM_COMPONENT2)), //
-                RgbColorComponent.red(TO_COMPONENT2),//
-                AMOUNT, //
-                RgbColorComponent.red(MIXED_COMPONENT2));
+            RgbColorComponent.red(TO_COMPONENT2),//
+            AMOUNT, //
+            RgbColorComponent.red(MIXED_COMPONENT2));
     }
 
     @Test
     public final void testMixComponentRed4() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.red(TO_COMPONENT2)), //
-                RgbColorComponent.red(FROM_COMPONENT2),//
-                REVERSE_AMOUNT, //
-                RgbColorComponent.red(MIXED_COMPONENT2));
+            RgbColorComponent.red(FROM_COMPONENT2),//
+            REVERSE_AMOUNT, //
+            RgbColorComponent.red(MIXED_COMPONENT2));
     }
 
     // mix green
@@ -297,33 +297,33 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     @Test
     public final void testMixComponentGreen1() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(FROM_COMPONENT)), //
-                RgbColorComponent.green(TO_COMPONENT),//
-                AMOUNT, //
-                RgbColorComponent.green(MIXED_COMPONENT));
+            RgbColorComponent.green(TO_COMPONENT),//
+            AMOUNT, //
+            RgbColorComponent.green(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentGreen2() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(TO_COMPONENT)), //
-                RgbColorComponent.green(FROM_COMPONENT),//
-                REVERSE_AMOUNT, //
-                RgbColorComponent.green(MIXED_COMPONENT));
+            RgbColorComponent.green(FROM_COMPONENT),//
+            REVERSE_AMOUNT, //
+            RgbColorComponent.green(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentGreen3() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(FROM_COMPONENT2)), //
-                RgbColorComponent.green(TO_COMPONENT2),//
-                AMOUNT, //
-                RgbColorComponent.green(MIXED_COMPONENT2));
+            RgbColorComponent.green(TO_COMPONENT2),//
+            AMOUNT, //
+            RgbColorComponent.green(MIXED_COMPONENT2));
     }
 
     @Test
     public final void testMixComponentGreen4() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.green(TO_COMPONENT2)), //
-                RgbColorComponent.green(FROM_COMPONENT2),//
-                REVERSE_AMOUNT, //
-                RgbColorComponent.green(MIXED_COMPONENT2));
+            RgbColorComponent.green(FROM_COMPONENT2),//
+            REVERSE_AMOUNT, //
+            RgbColorComponent.green(MIXED_COMPONENT2));
     }
 
     // mix blue
@@ -354,33 +354,33 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     @Test
     public final void testMixComponentBlue1() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(FROM_COMPONENT)), //
-                RgbColorComponent.blue(TO_COMPONENT),//
-                AMOUNT, //
-                RgbColorComponent.blue(MIXED_COMPONENT));
+            RgbColorComponent.blue(TO_COMPONENT),//
+            AMOUNT, //
+            RgbColorComponent.blue(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentBlue2() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(TO_COMPONENT)), //
-                RgbColorComponent.blue(FROM_COMPONENT),//
-                REVERSE_AMOUNT, //
-                RgbColorComponent.blue(MIXED_COMPONENT));
+            RgbColorComponent.blue(FROM_COMPONENT),//
+            REVERSE_AMOUNT, //
+            RgbColorComponent.blue(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentBlue3() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(FROM_COMPONENT2)), //
-                RgbColorComponent.blue(TO_COMPONENT2),//
-                AMOUNT, //
-                RgbColorComponent.blue(MIXED_COMPONENT2));
+            RgbColorComponent.blue(TO_COMPONENT2),//
+            AMOUNT, //
+            RgbColorComponent.blue(MIXED_COMPONENT2));
     }
 
     @Test
     public final void testMixComponentBlue4() {
         this.mixComponentAndCheck(this.createColor().set(RgbColorComponent.blue(TO_COMPONENT2)), //
-                RgbColorComponent.blue(FROM_COMPONENT2),//
-                REVERSE_AMOUNT, //
-                RgbColorComponent.blue(MIXED_COMPONENT2));
+            RgbColorComponent.blue(FROM_COMPONENT2),//
+            REVERSE_AMOUNT, //
+            RgbColorComponent.blue(MIXED_COMPONENT2));
     }
 
     // mix alpha
@@ -405,33 +405,33 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     @Test
     public final void testMixComponentAlpha1() {
         this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(FROM_COMPONENT)), //
-                AlphaRgbColorComponent.with(TO_COMPONENT),//
-                AMOUNT, //
-                AlphaRgbColorComponent.with(MIXED_COMPONENT));
+            AlphaRgbColorComponent.with(TO_COMPONENT),//
+            AMOUNT, //
+            AlphaRgbColorComponent.with(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentAlpha2() {
         this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(TO_COMPONENT)), //
-                AlphaRgbColorComponent.with(FROM_COMPONENT),//
-                REVERSE_AMOUNT, //
-                AlphaRgbColorComponent.with(MIXED_COMPONENT));
+            AlphaRgbColorComponent.with(FROM_COMPONENT),//
+            REVERSE_AMOUNT, //
+            AlphaRgbColorComponent.with(MIXED_COMPONENT));
     }
 
     @Test
     public final void testMixComponentAlpha3() {
         this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(FROM_COMPONENT2)), //
-                AlphaRgbColorComponent.with(TO_COMPONENT2),//
-                AMOUNT, //
-                AlphaRgbColorComponent.with(MIXED_COMPONENT2));
+            AlphaRgbColorComponent.with(TO_COMPONENT2),//
+            AMOUNT, //
+            AlphaRgbColorComponent.with(MIXED_COMPONENT2));
     }
 
     @Test
     public final void testMixComponentAlpha4() {
         this.mixComponentAndCheck(this.createColor().set(AlphaRgbColorComponent.with(TO_COMPONENT2)), //
-                AlphaRgbColorComponent.with(FROM_COMPONENT2),//
-                REVERSE_AMOUNT, //
-                AlphaRgbColorComponent.with(MIXED_COMPONENT2));
+            AlphaRgbColorComponent.with(FROM_COMPONENT2),//
+            REVERSE_AMOUNT, //
+            AlphaRgbColorComponent.with(MIXED_COMPONENT2));
     }
 
     final void mixComponentAndCheckSame(final RgbColorComponent mixed, final float amount) {
@@ -444,10 +444,10 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         final RgbColor result = rgb.mix(mixed, amount);
         if (rgb != result) {
             assertSame(
-                    rgb,
-                    result,
-                    "mixing " + rgb + " with " + toString(mixed) + " amount=" + amount
-                            + " did not return the original rgb");
+                rgb,
+                result,
+                "mixing " + rgb + " with " + toString(mixed) + " amount=" + amount
+                    + " did not return the original rgb");
         }
     }
 
@@ -667,10 +667,10 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     public final void testToWebColorNameUnknown() {
         final byte component = 1;
         this.toWebNameAndCheck(
-                this.createColor(
-                        RgbColorComponent.red(component),
-                        RgbColorComponent.green(component),
-                        RgbColorComponent.blue(component))
+            this.createColor(
+                RgbColorComponent.red(component),
+                RgbColorComponent.green(component),
+                RgbColorComponent.blue(component))
         );
     }
 
@@ -698,8 +698,7 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     // helpers..........................................................................................................
 
-    @Override
-    final C createColor() {
+    @Override final C createColor() {
         return this.createColor(RED, GREEN, BLUE);
     }
 
@@ -714,9 +713,9 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
                                 final RgbColorComponent mixed, final float amount) {
         if (expected != actual) {
             this.checkNotEquals(
-                    toString(expected),
-                    toString(actual),
-                    label + " incorrect, failed to mix " + rgb + " with " + toString(mixed) + " amount=" + amount);
+                toString(expected),
+                toString(actual),
+                label + " incorrect, failed to mix " + rgb + " with " + toString(mixed) + " amount=" + amount);
         }
     }
 
@@ -732,14 +731,14 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     final void toHslAndCheck(final RgbColor rgb, final float hue, final float saturation, final float lightness) {
         this.toHslAndCheck(rgb,
-                HslColor.with(HslColorComponent.hue(hue), HslColorComponent.saturation(saturation), HslColorComponent.lightness(lightness)));
+            HslColor.with(HslColorComponent.hue(hue), HslColorComponent.saturation(saturation), HslColorComponent.lightness(lightness)));
     }
 
     final void toHslAndCheck(final RgbColor rgb, final HslColor hsl) {
         final HslColor result = rgb.toHsl();
         if ((false == this.isEqual(hsl.hue(), result.hue(), 0.9f)) || //
-                (false == this.isEqual(hsl.saturation(), result.saturation(), 0.13f)) || //
-                (false == this.isEqual(hsl.lightness(), result.lightness(), 0.05f))) {
+            (false == this.isEqual(hsl.saturation(), result.saturation(), 0.13f)) || //
+            (false == this.isEqual(hsl.lightness(), result.lightness(), 0.05f))) {
             this.checkNotEquals("failed to convert " + rgb + " to hsl", hsl.toString(), result.toString());
         }
     }
@@ -758,14 +757,14 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     final void toHsvAndCheck(final RgbColor rgb, final float hue, final float saturation, final float value) {
         this.toHsvAndCheck(rgb,
-                HsvColor.with(HsvColorComponent.hue(hue), HsvColorComponent.saturation(saturation), HsvColorComponent.value(value)));
+            HsvColor.with(HsvColorComponent.hue(hue), HsvColorComponent.saturation(saturation), HsvColorComponent.value(value)));
     }
 
     final void toHsvAndCheck(final RgbColor rgb, final HsvColor hsv) {
         final HsvColor result = rgb.toHsv();
         if ((false == this.isEqual(hsv.hue(), result.hue(), 0.5f)) || //
-                (false == this.isEqual(hsv.saturation(), result.saturation(), 0.01f)) || //
-                (false == this.isEqual(hsv.value(), result.value(), 0.01f))) {
+            (false == this.isEqual(hsv.saturation(), result.saturation(), 0.01f)) || //
+            (false == this.isEqual(hsv.value(), result.value(), 0.01f))) {
             this.checkNotEquals("failed to convert " + rgb + " to hsv", hsv.toString(), result.toString());
         }
     }
@@ -777,8 +776,8 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     }
 
     private boolean isAlmostEquals(final float value,
-                                  final float test,
-                                  final float epsilon) {
+                                   final float test,
+                                   final float epsilon) {
         return value + epsilon >= test && value - epsilon <= test;
     }
 
@@ -805,7 +804,7 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
 
     @Override
     public final C unmarshall(final JsonNode from,
-                                final JsonNodeUnmarshallContext context) {
+                              final JsonNodeUnmarshallContext context) {
         return Cast.to(RgbColor.unmarshallRgb(from, context));
     }
 }

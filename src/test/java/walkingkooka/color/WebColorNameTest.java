@@ -35,12 +35,12 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
     @Test
     public void testConstants() {
         this.checkEquals(Lists.empty(),
-                Arrays.stream(WebColorName.class.getDeclaredFields())
-                        .filter(FieldAttributes.STATIC::is)
-                        .filter(f -> f.getType() == WebColorName.class)
-                        .filter(WebColorNameTest::constantNotCached)
-                        .collect(Collectors.toList()),
-                "");
+            Arrays.stream(WebColorName.class.getDeclaredFields())
+                .filter(FieldAttributes.STATIC::is)
+                .filter(f -> f.getType() == WebColorName.class)
+                .filter(WebColorNameTest::constantNotCached)
+                .collect(Collectors.toList()),
+            "");
     }
 
     private static boolean constantNotCached(final Field field) {
@@ -86,12 +86,12 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
         final Optional<WebColorName> webColorName = WebColorName.with(name);
 
         this.checkEquals(color,
-                webColorName.map(WebColorName::color).orElse(null),
-                () -> "name " + CharSequences.quoteAndEscape(name));
+            webColorName.map(WebColorName::color).orElse(null),
+            () -> "name " + CharSequences.quoteAndEscape(name));
 
         webColorName.ifPresent(colorName -> this.checkEquals(colorName,
-                WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
-                () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name)));
+            WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
+            () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name)));
     }
 
     @Override
@@ -144,15 +144,15 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
     @Override
     public String possibleValidChars(final int position) {
         return 0 == position ?
-                ASCII_LETTERS :
-                ASCII_LETTERS_DIGITS + "-.";
+            ASCII_LETTERS :
+            ASCII_LETTERS_DIGITS + "-.";
     }
 
     @Override
     public String possibleInvalidChars(final int position) {
         return 0 == position ?
-                CONTROL + ASCII_DIGITS :
-                CONTROL;
+            CONTROL + ASCII_DIGITS :
+            CONTROL;
     }
 
     @Override

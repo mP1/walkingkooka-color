@@ -201,7 +201,7 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
         final RgbColor expected = RgbColor.fromRgb0(rgb);
         final RgbColor actual = hsl.toRgb();
         if ((false == this.isEquals(expected.red, actual.red)) || (false == this.isEquals(expected.green, actual.green))
-                || (false == this.isEquals(expected.blue, actual.blue))) {
+            || (false == this.isEquals(expected.blue, actual.blue))) {
             this.checkEquals(expected, actual, () -> "failed to convert " + hsl + " to a RgbColor");
         }
     }
@@ -228,15 +228,15 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
     @Test
     public void testParse() {
         this.parseStringAndCheck("hsl(359,100%,50%)",
-                HslColor.with(HslColorComponent.hue(359),
-                        HslColorComponent.saturation(1.0f),
-                        HslColorComponent.lightness(0.5f)));
+            HslColor.with(HslColorComponent.hue(359),
+                HslColorComponent.saturation(1.0f),
+                HslColorComponent.lightness(0.5f)));
     }
 
     @Test
     public void testToString() {
         this.toStringAndCheck(HslColor.with(HUE, SATURATION, LIGHTNESS),
-                "hsl(359,25%,50%)");
+            "hsl(359,25%,50%)");
     }
 
     @Test
@@ -244,7 +244,7 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
         this.toStringAndCheck(HslColor.with(HslColorComponent.hue(0),
                 HslColorComponent.saturation(0),
                 HslColorComponent.lightness(0)),
-                "hsl(0,0%,0%)");
+            "hsl(0,0%,0%)");
     }
 
     @Override
@@ -268,7 +268,7 @@ public final class HslColorTest extends ColorTestCase<HslColor> implements Parse
 
     @Override
     public HslColor unmarshall(final JsonNode from,
-                                 final JsonNodeUnmarshallContext context) {
+                               final JsonNodeUnmarshallContext context) {
         return HslColor.unmarshallHsl(from, context);
     }
 

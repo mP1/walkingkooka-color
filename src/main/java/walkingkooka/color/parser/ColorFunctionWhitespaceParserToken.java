@@ -23,8 +23,8 @@ public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbo
 
     static ColorFunctionWhitespaceParserToken with(final String value, final String text) {
         return new ColorFunctionWhitespaceParserToken(
-                checkValue(value),
-                CharSequences.failIfNullOrEmpty(text, "text")
+            checkValue(value),
+            CharSequences.failIfNullOrEmpty(text, "text")
         );
     }
 

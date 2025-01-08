@@ -212,7 +212,7 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
     @Test
     public final void testToWebColorName() {
         this.toWebNameAndCheck(
-                this.createColor()
+            this.createColor()
         );
     }
 
@@ -223,10 +223,10 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
                            final float amount,
                            final String expected) {
         this.mixAndCheck(
-                Color.parseHsl(color),
-                Color.parse(other),
-                amount,
-                Color.parseHsl(expected)
+            Color.parseHsl(color),
+            Color.parse(other),
+            amount,
+            Color.parseHsl(expected)
         );
     }
 
@@ -247,8 +247,7 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
         this.checkNotEquals(HslColor.with(HUE, SATURATION, LightnessHslColorComponent.with(0.99f)));
     }
 
-    @Override
-    final HslColor createColor() {
+    @Override final HslColor createColor() {
         return this.createHsl();
     }
 
@@ -280,7 +279,7 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
 
     @Override
     public final HslColor unmarshall(final JsonNode from,
-                                       final JsonNodeUnmarshallContext context) {
+                                     final JsonNodeUnmarshallContext context) {
         return HslColor.unmarshallHsl(from, context);
     }
 }

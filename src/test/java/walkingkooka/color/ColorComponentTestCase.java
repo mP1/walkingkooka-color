@@ -25,10 +25,10 @@ import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.TypeNameTesting;
 
 public abstract class ColorComponentTestCase<C extends ColorComponent> implements ClassTesting2<C>,
-        HashCodeEqualsDefinedTesting2<C>,
-        IsMethodTesting<C>,
-        ToStringTesting<C>,
-        TypeNameTesting<C> {
+    HashCodeEqualsDefinedTesting2<C>,
+    IsMethodTesting<C>,
+    ToStringTesting<C>,
+    TypeNameTesting<C> {
 
     ColorComponentTestCase() {
         super();

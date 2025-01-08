@@ -40,7 +40,7 @@ final public class LightnessHslColorComponent extends AlphaLightnessOrSaturation
     @Override
     public LightnessHslColorComponent add(final float value) {
         return 0 == value ? this
-                : new LightnessHslColorComponent(HslColorComponent.add(value, LightnessHslColorComponent.MIN, LightnessHslColorComponent.MAX));
+            : new LightnessHslColorComponent(HslColorComponent.add(value, LightnessHslColorComponent.MIN, LightnessHslColorComponent.MAX));
     }
 
     @Override

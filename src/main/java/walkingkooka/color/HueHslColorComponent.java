@@ -81,7 +81,7 @@ final public class HueHslColorComponent extends HslColorComponent {
     @Override
     public HueHslColorComponent invert() {
         return this.setValue(
-                MAX - this.value()
+            MAX - this.value()
         );
     }
 

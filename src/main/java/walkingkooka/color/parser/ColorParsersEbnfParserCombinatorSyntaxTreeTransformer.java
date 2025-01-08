@@ -66,20 +66,20 @@ final class ColorParsersEbnfParserCombinatorSyntaxTreeTransformer implements Ebn
     public Parser<ParserContext> identifier(final EbnfIdentifierParserToken token, final Parser<ParserContext> parser) {
         EbnfIdentifierName name = token.value();
         return PARENTHESIS_CLOSE.equals(name) ?
-                        parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformParenthesisClose) :
-                        PARENTHESIS_OPEN.equals(name) ?
-                                parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformParenthesisOpen) :
-                                PERCENTAGE.equals(name) ?
-                                        parser.transform(ColorParsersPercentageColorFunctionParserTokenVisitor::transform) :
-                                        RGB_RGBA.equals(name) || HSL_HSLA.equals(name) || HSV_HSVA.equals(name) ?
-                                                parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformFunctionName) :
-                                                RGB_RGBA_FUNCTION.equals(name) || HSL_HSLA_FUNCTION.equals(name) || HSV_HSVA_FUNCTION.equals(name) ?
-                                                        parser.transform(ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor::transform) :
-                                                        SEPARATOR.equals(name) ?
-                                                                parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformSeparator) :
-                                                                WHITESPACE.equals(name) ?
-                                                                        parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformWhitespace) :
-                parser;
+            parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformParenthesisClose) :
+            PARENTHESIS_OPEN.equals(name) ?
+                parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformParenthesisOpen) :
+                PERCENTAGE.equals(name) ?
+                    parser.transform(ColorParsersPercentageColorFunctionParserTokenVisitor::transform) :
+                    RGB_RGBA.equals(name) || HSL_HSLA.equals(name) || HSV_HSVA.equals(name) ?
+                        parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformFunctionName) :
+                        RGB_RGBA_FUNCTION.equals(name) || HSL_HSLA_FUNCTION.equals(name) || HSV_HSVA_FUNCTION.equals(name) ?
+                            parser.transform(ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor::transform) :
+                            SEPARATOR.equals(name) ?
+                                parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformSeparator) :
+                                WHITESPACE.equals(name) ?
+                                    parser.transform(ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformWhitespace) :
+                                    parser;
     }
 
     private final static EbnfIdentifierName PARENTHESIS_CLOSE = EbnfIdentifierName.with("PARENTHESIS_CLOSE");

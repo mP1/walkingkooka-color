@@ -26,7 +26,7 @@ final public class AlphaHsvColorComponent extends AlphaSaturationOrValueHsvColor
      * An opaque alpha component returned by {@link OpaqueHsvColor#alpha()}.
      */
     final static AlphaHsvColorComponent OPAQUE = AlphaHsvColorComponent.with(MAX);
-    
+
     /**
      * Factory that creates a new {@link AlphaHsvColorComponent}
      */
@@ -45,7 +45,7 @@ final public class AlphaHsvColorComponent extends AlphaSaturationOrValueHsvColor
     @Override
     public AlphaHsvColorComponent add(final float value) {
         return 0 == value ? this
-                : new AlphaHsvColorComponent(HsvColorComponent.add(value, AlphaHsvColorComponent.MIN, AlphaHsvColorComponent.MAX));
+            : new AlphaHsvColorComponent(HsvColorComponent.add(value, AlphaHsvColorComponent.MIN, AlphaHsvColorComponent.MAX));
     }
 
     @Override

@@ -40,7 +40,7 @@ public final class ValueHsvColorComponentTest extends HsvColorComponentTestCase<
     public void testToStringOne() {
         this.toStringAndCheck(ValueHsvColorComponent.with(1.0f), "100%");
     }
-    
+
     @Override
     ValueHsvColorComponent createHsvComponent(final float value) {
         return ValueHsvColorComponent.with(value);

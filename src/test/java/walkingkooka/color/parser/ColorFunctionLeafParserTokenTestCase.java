@@ -22,8 +22,8 @@ import walkingkooka.reflect.IsMethodTesting;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
 public abstract class ColorFunctionLeafParserTokenTestCase<T extends ColorFunctionLeafParserToken<?>> extends ColorFunctionParserTokenTestCase3<T>
-        implements ParserTokenTesting<T>,
-        IsMethodTesting<T> {
+    implements ParserTokenTesting<T>,
+    IsMethodTesting<T> {
 
     ColorFunctionLeafParserTokenTestCase() {
         super();

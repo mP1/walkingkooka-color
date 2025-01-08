@@ -58,11 +58,11 @@ abstract public class RgbColor extends Color {
 
     private static RgbColor parseRgbFunction(final String text) {
         return parseColorParserToken(text, RGB_FUNCTION_PARSER)
-                .toRgb();
+            .toRgb();
     }
 
     private final static Parser<ParserContext> RGB_FUNCTION_PARSER = ColorParsers.rgb()
-            .orReport(ParserReporters.basic());
+        .orReport(ParserReporters.basic());
 
     // parseWebColorName................................................................................................
 
@@ -71,8 +71,8 @@ abstract public class RgbColor extends Color {
      */
     private static RgbColor parseWebColorName(final String name) {
         return WebColorName.with(name)
-                .map(WebColorName::color)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown rgb name " + CharSequences.quoteAndEscape(name)));
+            .map(WebColorName::color)
+            .orElseThrow(() -> new IllegalArgumentException("Unknown rgb name " + CharSequences.quoteAndEscape(name)));
     }
 
     /**
@@ -107,8 +107,8 @@ abstract public class RgbColor extends Color {
     private static RgbColor parseRgb3Hex(final String text) {
         final int value = parseHashHexDigits(text);
         return fromRgb0((value & 0xF00) * 0x1100 +
-                (value & 0xF0) * 0x110 +
-                (value & 0xF) * 0x11);
+            (value & 0xF0) * 0x110 +
+            (value & 0xF) * 0x11);
     }
 
     /**
@@ -123,9 +123,9 @@ abstract public class RgbColor extends Color {
         final int alpha = (value & 0xf) * 0x11;
 
         return fromArgb0((alpha << 24) +
-                (red << 16) +
-                (green << 8) +
-                blue);
+            (red << 16) +
+            (green << 8) +
+            blue);
     }
 
     /**
@@ -144,19 +144,19 @@ abstract public class RgbColor extends Color {
 
         final int red = (value >> 24) & 0xff;
         final int green = (value >> 16) & 0xff;
-        final int blue = (value >>8) & 0xff;
+        final int blue = (value >> 8) & 0xff;
         final int alpha = value & 0xff;
 
         return fromArgb0((alpha << 24) +
-                (red << 16) +
-                (green << 8) +
-                blue);
+            (red << 16) +
+            (green << 8) +
+            blue);
     }
 
     private static int parseHashHexDigits(final String text) {
         try {
             // Integer.parseInt will fail when parsing 8 hex digits...
-            return (int)Long.parseLong(text.substring(1), 16);
+            return (int) Long.parseLong(text.substring(1), 16);
         } catch (final NumberFormatException cause) {
             throw new IllegalArgumentException("Invalid rgb " + CharSequences.quote(text), cause);
         }
@@ -171,10 +171,10 @@ abstract public class RgbColor extends Color {
         }
 
         return OpaqueRgbColor.with( //
-                RgbColorComponent.red(RgbColor.shiftRight(rgb, RgbColor.RED_SHIFT)), //
-                RgbColorComponent.green(RgbColor.shiftRight(rgb, RgbColor.GREEN_SHIFT)), //
-                RgbColorComponent.blue(RgbColor.shiftRight(rgb, RgbColor.BLUE_SHIFT)), //
-                rgb & RgbColor.WITHOUT_ALPHA);
+            RgbColorComponent.red(RgbColor.shiftRight(rgb, RgbColor.RED_SHIFT)), //
+            RgbColorComponent.green(RgbColor.shiftRight(rgb, RgbColor.GREEN_SHIFT)), //
+            RgbColorComponent.blue(RgbColor.shiftRight(rgb, RgbColor.BLUE_SHIFT)), //
+            rgb & RgbColor.WITHOUT_ALPHA);
     }
 
     private final static int WITHOUT_ALPHA = 0x00FFFFFF;
@@ -184,8 +184,8 @@ abstract public class RgbColor extends Color {
      */
     static RgbColor fromArgb0(final int argb) {
         return (argb & RgbColor.ALPHA_MASK) == RgbColor.ALPHA_MASK ?
-                RgbColor.fromRgb0(WITHOUT_ALPHA & argb) :
-                AlphaRgbColor.createAlphaColorFromArgb(argb);
+            RgbColor.fromRgb0(WITHOUT_ALPHA & argb) :
+            AlphaRgbColor.createAlphaColorFromArgb(argb);
     }
 
     /**
@@ -235,9 +235,9 @@ abstract public class RgbColor extends Color {
      */
     static RgbColor with(final float red, final float green, final float blue) {
         return RgbColor.with( //
-                RedRgbColorComponent.with(RgbColorComponent.toByte(red)), //
-                GreenRgbColorComponent.with(RgbColorComponent.toByte(green)), //
-                BlueRgbColorComponent.with(RgbColorComponent.toByte(blue))//
+            RedRgbColorComponent.with(RgbColorComponent.toByte(red)), //
+            GreenRgbColorComponent.with(RgbColorComponent.toByte(green)), //
+            BlueRgbColorComponent.with(RgbColorComponent.toByte(blue))//
         );
     }
 
@@ -270,8 +270,8 @@ abstract public class RgbColor extends Color {
      */
     final RgbColor setRed(final RedRgbColorComponent red) {
         return this.red.equals(red) ?
-                this :
-                this.replace(red, this.green, this.blue);
+            this :
+            this.replace(red, this.green, this.blue);
     }
 
     /**
@@ -279,8 +279,8 @@ abstract public class RgbColor extends Color {
      */
     final RgbColor setGreen(final GreenRgbColorComponent green) {
         return this.green.equals(green) ?
-                this :
-                this.replace(this.red, green, this.blue);
+            this :
+            this.replace(this.red, green, this.blue);
     }
 
     /**
@@ -288,8 +288,8 @@ abstract public class RgbColor extends Color {
      */
     final RgbColor setBlue(final BlueRgbColorComponent blue) {
         return this.blue.equals(blue) ?
-                this :
-                this.replace(this.red, this.green, blue);
+            this :
+            this.replace(this.red, this.green, blue);
     }
 
     /**
@@ -311,49 +311,49 @@ abstract public class RgbColor extends Color {
         checkAmount(amount);
 
         return isMixSmall(amount) ? //
-                this : // amount of new component is too small ignore
-                isMixLarge(amount) ? // amount results in replace.
-                        color.toRgb() :
-                        mixRgb(
-                                color.toRgb(),
-                                amount
-                        );
+            this : // amount of new component is too small ignore
+            isMixLarge(amount) ? // amount results in replace.
+                color.toRgb() :
+                mixRgb(
+                    color.toRgb(),
+                    amount
+                );
     }
 
     private RgbColor mixRgb(final RgbColor color,
                             final float amount) {
         return this.setRed(
-                RgbColorComponent.red(
-                        mixIntValue(
-                                this.red().value,
-                                color.red().value,
-                                amount
-                        )
+            RgbColorComponent.red(
+                mixIntValue(
+                    this.red().value,
+                    color.red().value,
+                    amount
                 )
+            )
         ).setGreen(
-                RgbColorComponent.green(
-                        mixIntValue(
-                                this.green().value,
-                                color.green().value,
-                                amount
-                        )
+            RgbColorComponent.green(
+                mixIntValue(
+                    this.green().value,
+                    color.green().value,
+                    amount
                 )
+            )
         ).setBlue(
-                RgbColorComponent.blue(
-                        mixIntValue(
-                                this.blue().value,
-                                color.blue().value,
-                                amount
-                        )
+            RgbColorComponent.blue(
+                mixIntValue(
+                    this.blue().value,
+                    color.blue().value,
+                    amount
                 )
+            )
         ).setAlpha(
-                RgbColorComponent.alpha(
-                        mixIntValue(
-                                this.alpha().value,
-                                color.alpha().value,
-                                amount
-                        )
+            RgbColorComponent.alpha(
+                mixIntValue(
+                    this.alpha().value,
+                    color.alpha().value,
+                    amount
                 )
+            )
         );
     }
 
@@ -366,10 +366,10 @@ abstract public class RgbColor extends Color {
         checkAmount(amount);
 
         return isMixSmall(amount) ? //
-                this : // amount of new component is too small ignore
-                isMixLarge(amount) ? // amount results in replace.
-                        component.setComponent(this) : //
-                        component.mix(this, amount); // mix
+            this : // amount of new component is too small ignore
+            isMixLarge(amount) ? // amount results in replace.
+                component.setComponent(this) : //
+                component.mix(this, amount); // mix
     }
 
     // getters
@@ -524,9 +524,9 @@ abstract public class RgbColor extends Color {
         }
 
         return HslColor.with(//
-                HslColorComponent.hue(Math.abs(hue * HueHslColorComponent.MAX)), //
-                HslColorComponent.saturation(saturation), //
-                HslColorComponent.lightness(lightness));
+            HslColorComponent.hue(Math.abs(hue * HueHslColorComponent.MAX)), //
+            HslColorComponent.saturation(saturation), //
+            HslColorComponent.lightness(lightness));
     }
 
     /**
@@ -570,9 +570,9 @@ abstract public class RgbColor extends Color {
         }
 
         return HsvColor.with(
-                HsvColorComponent.hue(hue),
-                HsvColorComponent.saturation(saturation),
-                HsvColorComponent.value(max)
+            HsvColorComponent.hue(hue),
+            HsvColorComponent.saturation(saturation),
+            HsvColorComponent.value(max)
         );
     }
 
@@ -586,11 +586,11 @@ abstract public class RgbColor extends Color {
     @Override
     public final RgbColor invert() {
         return this.setRed(
-                (RedRgbColorComponent) this.red().invert()
+            (RedRgbColorComponent) this.red().invert()
         ).setGreen(
-                (GreenRgbColorComponent) this.green().invert()
+            (GreenRgbColorComponent) this.green().invert()
         ).setBlue(
-                (BlueRgbColorComponent) this.blue().invert()
+            (BlueRgbColorComponent) this.blue().invert()
         );
     }
 
@@ -606,8 +606,7 @@ abstract public class RgbColor extends Color {
     /**
      * {@link RgbColor colors} are equal if their values are the same.
      */
-    @Override
-    final boolean equals0(final Object other) {
+    @Override final boolean equals0(final Object other) {
         return this.equals1(Cast.to(other));
     }
 
@@ -615,8 +614,7 @@ abstract public class RgbColor extends Color {
         return this.value() == other.value();
     }
 
-    @Override
-    final public void buildToString(final ToStringBuilder builder) {
+    @Override final public void buildToString(final ToStringBuilder builder) {
         builder.disable(ToStringBuilderOption.ESCAPE);
         builder.disable(ToStringBuilderOption.QUOTE);
         builder.disable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE);

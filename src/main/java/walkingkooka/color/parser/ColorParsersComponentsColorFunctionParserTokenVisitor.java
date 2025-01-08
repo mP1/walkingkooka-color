@@ -38,17 +38,16 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
         final List<ColorFunctionParserToken> values = visitor.values;
 
         return visitor.transformer.color(values.get(0).cast(ColorFunctionParserToken.class),
-                values.get(1).cast(ColorFunctionParserToken.class),
-                values.get(2).cast(ColorFunctionParserToken.class),
-                Optional.ofNullable(values.size() == 4 ?
-                        values.get(3).cast(ColorFunctionParserToken.class) :
-                        null));
+            values.get(1).cast(ColorFunctionParserToken.class),
+            values.get(2).cast(ColorFunctionParserToken.class),
+            Optional.ofNullable(values.size() == 4 ?
+                values.get(3).cast(ColorFunctionParserToken.class) :
+                null));
     }
 
     ColorParsersComponentsColorFunctionParserTokenVisitor() {
         super();
     }
-
 
 
     // ColorFunctionParserTokenVisitor..................................................................................
@@ -58,7 +57,7 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
         this.functionName = token;
 
         ColorFunctionTransformer transformer;
-        switch(token.value()) {
+        switch (token.value()) {
             case "rgb":
             case "rgba":
                 transformer = ColorFunctionTransformer.RGB;
@@ -96,12 +95,12 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .label("functionName")
-                .value(this.functionName)
-                .label("transformer")
-                .value(this.transformer)
-                .label("values")
-                .value(this.values)
-                .build();
+            .label("functionName")
+            .value(this.functionName)
+            .label("transformer")
+            .value(this.transformer)
+            .label("values")
+            .value(this.values)
+            .build();
     }
 }

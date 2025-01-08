@@ -45,22 +45,22 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Test
     public void testParseHslIncompleteFails() {
         this.parseFails(ColorParsers.hsl(),
-                "hsl(359",
-                ParserReporterException.class);
+            "hsl(359",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHslNumberCommaNumberCommaPercentageFails() {
         this.parseFails(ColorParsers.hsl(),
-                "hsl(359,50,10%)",
-                ParserReporterException.class);
+            "hsl(359,50,10%)",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHslNumberCommaPercentageCommaNumberFails() {
         this.parseFails(ColorParsers.hsl(),
-                "hsl(359,50%,10)",
-                ParserReporterException.class);
+            "hsl(359,50%,10)",
+            ParserReporterException.class);
     }
 
     @Test
@@ -103,10 +103,10 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                   final float saturation,
                                   final float lightness) {
         this.parseAndCheck(ColorParsers.hsl(),
-                text,
-                Color.hsl(HslColorComponent.hue(hue),
-                        HslColorComponent.saturation(saturation),
-                        HslColorComponent.lightness(lightness)));
+            text,
+            Color.hsl(HslColorComponent.hue(hue),
+                HslColorComponent.saturation(saturation),
+                HslColorComponent.lightness(lightness)));
     }
 
     // hsl(359,1.0,1.0).................................................................................................
@@ -114,22 +114,22 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Test
     public void testParseHslaIncompleteFails() {
         this.parseFails(ColorParsers.hsl(),
-                "hsl(359",
-                ParserReporterException.class);
+            "hsl(359",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHslaNumberCommaNumberCommaPercentageFails() {
         this.parseFails(ColorParsers.hsl(),
-                "hsl(359,50,10%)",
-                ParserReporterException.class);
+            "hsl(359,50,10%)",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHslaNumberCommaPercentageCommaNumberFails() {
         this.parseFails(ColorParsers.hsl(),
-                "hsl(359,50%,10)",
-                ParserReporterException.class);
+            "hsl(359,50%,10)",
+            ParserReporterException.class);
     }
 
     @Test
@@ -178,11 +178,11 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                   final float lightness,
                                   final float alpha) {
         this.parseAndCheck(ColorParsers.hsl(),
-                text,
-                Color.hsl(HslColorComponent.hue(hue),
-                        HslColorComponent.saturation(saturation),
-                        HslColorComponent.lightness(lightness))
-                        .set(HslColorComponent.alpha(alpha)));
+            text,
+            Color.hsl(HslColorComponent.hue(hue),
+                    HslColorComponent.saturation(saturation),
+                    HslColorComponent.lightness(lightness))
+                .set(HslColorComponent.alpha(alpha)));
     }
 
 
@@ -191,22 +191,22 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Test
     public void testParseHsvIncompleteFails() {
         this.parseFails(ColorParsers.hsv(),
-                "hsv(359",
-                ParserReporterException.class);
+            "hsv(359",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHsvNumberCommaNumberCommaPercentageFails() {
         this.parseFails(ColorParsers.hsv(),
-                "hsv(359,50,10%)",
-                ParserReporterException.class);
+            "hsv(359,50,10%)",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHsvNumberCommaPercentageCommaNumberFails() {
         this.parseFails(ColorParsers.hsv(),
-                "hsv(359,50%,10)",
-                ParserReporterException.class);
+            "hsv(359,50%,10)",
+            ParserReporterException.class);
     }
 
     @Test
@@ -249,10 +249,10 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                   final float saturation,
                                   final float value) {
         this.parseAndCheck(ColorParsers.hsv(),
-                text,
-                Color.hsv(HsvColorComponent.hue(hue),
-                        HsvColorComponent.saturation(saturation),
-                        HsvColorComponent.value(value)));
+            text,
+            Color.hsv(HsvColorComponent.hue(hue),
+                HsvColorComponent.saturation(saturation),
+                HsvColorComponent.value(value)));
     }
 
     // hsv(359,1.0,1.0).................................................................................................
@@ -260,15 +260,15 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Test
     public void testParseHsvaIncompleteFails() {
         this.parseFails(ColorParsers.hsv(),
-                "hsv(359",
-                ParserReporterException.class);
+            "hsv(359",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseHsvaNumberCommaNumberCommaPercentageFails() {
         this.parseFails(ColorParsers.hsv(),
-                "hsv(359,50,10%)",
-                ParserReporterException.class);
+            "hsv(359,50,10%)",
+            ParserReporterException.class);
     }
 
     @Test
@@ -317,11 +317,11 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                    final float value,
                                    final float alpha) {
         this.parseAndCheck(ColorParsers.hsv(),
-                text,
-                Color.hsv(HsvColorComponent.hue(hue),
-                        HsvColorComponent.saturation(saturation),
-                        HsvColorComponent.value(value))
-                        .set(HsvColorComponent.alpha(alpha)));
+            text,
+            Color.hsv(HsvColorComponent.hue(hue),
+                    HsvColorComponent.saturation(saturation),
+                    HsvColorComponent.value(value))
+                .set(HsvColorComponent.alpha(alpha)));
     }
 
     // rgba(1,2,3).......................................................................................................
@@ -329,22 +329,22 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Test
     public void testParseRgbaIncompleteFails() {
         this.parseFails(ColorParsers.rgb(),
-                "rgba(1",
-                ParserReporterException.class);
+            "rgba(1",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseRgbaMissingParensRightFails() {
         this.parseFails(ColorParsers.rgb(),
-                "rgba(1,2,3,0.5",
-                ParserReporterException.class);
+            "rgba(1,2,3,0.5",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseRgbaNumberCommaPercentageCommaNumberCommaNumberFails() {
         this.parseFails(ColorParsers.rgb(),
-                "rgba(1,100%,3,0.5)",
-                ParserReporterException.class);
+            "rgba(1,100%,3,0.5)",
+            ParserReporterException.class);
     }
 
     @Test
@@ -393,13 +393,13 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                                    final int blue,
                                    final int alpha) {
         this.parseAndCheck(
-                ColorParsers.rgb(),
-                text,
-                Color.rgb(
-                        RgbColorComponent.red((byte) red),
-                        RgbColorComponent.green((byte) green),
-                        RgbColorComponent.blue((byte) blue))
-                        .set(RgbColorComponent.alpha((byte) alpha)));
+            ColorParsers.rgb(),
+            text,
+            Color.rgb(
+                    RgbColorComponent.red((byte) red),
+                    RgbColorComponent.green((byte) green),
+                    RgbColorComponent.blue((byte) blue))
+                .set(RgbColorComponent.alpha((byte) alpha)));
     }
 
     // rgb(1,2,3).......................................................................................................
@@ -407,22 +407,22 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Test
     public void testParseRgbIncompleteFails() {
         this.parseFails(ColorParsers.rgb(),
-                "rgb(1",
-                ParserReporterException.class);
+            "rgb(1",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseRgbMissingParensRightFails() {
         this.parseFails(ColorParsers.rgb(),
-                "rgb(1,2,3",
-                ParserReporterException.class);
+            "rgb(1,2,3",
+            ParserReporterException.class);
     }
 
     @Test
     public void testParseRgbNumberCommaPercentageCommaNumberFails() {
         this.parseFails(ColorParsers.rgb(),
-                "rgb(1,2%,3)",
-                ParserReporterException.class);
+            "rgb(1,2%,3)",
+            ParserReporterException.class);
     }
 
     @Test
@@ -462,10 +462,10 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     private void parseRgbAndCheck(final String text, final int red, final int green, final int blue) {
         this.parseAndCheck(ColorParsers.rgb(),
-                text,
-                Color.rgb(RgbColorComponent.red((byte) red),
-                        RgbColorComponent.green((byte) green),
-                        RgbColorComponent.blue((byte) blue)));
+            text,
+            Color.rgb(RgbColorComponent.red((byte) red),
+                RgbColorComponent.green((byte) green),
+                RgbColorComponent.blue((byte) blue)));
     }
 
     // helpers..........................................................................................................
@@ -474,19 +474,19 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
                             final String text,
                             final Class<? extends Throwable> thrown) {
         assertThrows(thrown, () -> parser.orReport(ParserReporters.basic())
-                .parse(TextCursors.charSequence(text), parserContext()));
+            .parse(TextCursors.charSequence(text), parserContext()));
     }
 
     private void parseAndCheck(final Parser<ParserContext> parser,
                                final String text,
                                final Color value) {
         this.checkEquals(value,
-                parser.orReport(ParserReporters.basic())
-                        .parse(TextCursors.charSequence(text),
-                                this.parserContext())
-                        .map(t -> ((ColorFunctionFunctionParserToken) t).toColorHslOrHsv())
-                        .orElseThrow(AssertionError::new),
-                () -> "parse " + CharSequences.quoteAndEscape(text));
+            parser.orReport(ParserReporters.basic())
+                .parse(TextCursors.charSequence(text),
+                    this.parserContext())
+                .map(t -> ((ColorFunctionFunctionParserToken) t).toColorHslOrHsv())
+                .orElseThrow(AssertionError::new),
+            () -> "parse " + CharSequences.quoteAndEscape(text));
     }
 
     private ParserContext parserContext() {

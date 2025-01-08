@@ -46,7 +46,7 @@ import java.util.function.Function;
  * Base class for all rgb like value classes.
  */
 public abstract class Color implements HasText,
-        UsesToStringBuilder {
+    UsesToStringBuilder {
 
     /**
      * A constant holding black
@@ -149,36 +149,36 @@ public abstract class Color implements HasText,
     static Color parseColorParserToken(final String text,
                                        final Parser<ParserContext> parser) {
         return parser.parseText(
-                        text,
-                        PARSER_CONTEXT
-                ).cast(ColorFunctionFunctionParserToken.class)
-                .toColorHslOrHsv();
+                text,
+                PARSER_CONTEXT
+            ).cast(ColorFunctionFunctionParserToken.class)
+            .toColorHslOrHsv();
     }
 
     private final static ParserContext PARSER_CONTEXT = ParserContexts.basic(
-            DateTimeContexts.fake(),
-            DecimalNumberContexts.american(MathContext.DECIMAL32)
+        DateTimeContexts.fake(),
+        DecimalNumberContexts.american(MathContext.DECIMAL32)
     );
 
     // parseRgb hsl(359,100%,100%) / hsla(359,100%,100%)..............................................................
 
     public static HslColor parseHsl(final String text) {
         return parseColorParserToken(text, HSL_FUNCTION_PARSER)
-                .toHsl();
+            .toHsl();
     }
 
     private final static Parser<ParserContext> HSL_FUNCTION_PARSER = ColorParsers.hsl()
-            .orReport(ParserReporters.basic());
+        .orReport(ParserReporters.basic());
 
     // parse hsv(359,100%,100%)..............................................................................................
 
     public static HsvColor parseHsv(final String text) {
         return parseColorParserToken(text, HSV_FUNCTION_PARSER)
-                .toHsv();
+            .toHsv();
     }
 
     private final static Parser<ParserContext> HSV_FUNCTION_PARSER = ColorParsers.hsv()
-            .orReport(ParserReporters.basic());
+        .orReport(ParserReporters.basic());
 
 
     Color() {
@@ -256,9 +256,9 @@ public abstract class Color implements HasText,
         final int difference = RgbColorComponent.mask(value) - RgbColorComponent.mask(otherValue);
 
         return (byte)
-                RgbColorComponent.mask(
-                        Math.round(value - difference * amount)
-                );
+            RgbColorComponent.mask(
+                Math.round(value - difference * amount)
+            );
     }
 
     /**
@@ -268,10 +268,10 @@ public abstract class Color implements HasText,
                                final float otherValue,
                                final float amount) {
         return value -
-                (
-                        (value - otherValue)
-                                * amount
-                );
+            (
+                (value - otherValue)
+                    * amount
+            );
     }
 
     // css..............................................................................................................
@@ -346,57 +346,57 @@ public abstract class Color implements HasText,
     static {
         //noinspection unchecked
         register(
-                "rgb-hsl-hsv",
-                Color::unmarshall,
-                Color.class
+            "rgb-hsl-hsv",
+            Color::unmarshall,
+            Color.class
         );
 
         //noinspection unchecked
         register(
-                Color::unmarshallRgb,
-                RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class
+            Color::unmarshallRgb,
+            RgbColor.class, AlphaRgbColor.class, OpaqueRgbColor.class
         );
 
         //noinspection unchecked
         register(
-                Color::unmarshallHsl,
-                HslColor.class, AlphaHslColor.class, OpaqueHslColor.class
+            Color::unmarshallHsl,
+            HslColor.class, AlphaHslColor.class, OpaqueHslColor.class
         );
 
         //noinspection unchecked
         register(
-                Color::unmarshallHsv,
-                HsvColor.class, AlphaHsvColor.class, OpaqueHsvColor.class
+            Color::unmarshallHsv,
+            HsvColor.class, AlphaHsvColor.class, OpaqueHsvColor.class
         );
     }
 
     @SafeVarargs
     private static <T extends Color> void register(
-            final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
-            final Class<T> type,
-            final Class<? extends T>... types) {
+        final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
+        final Class<T> type,
+        final Class<? extends T>... types) {
         register(
-                CharSequences.subSequence(
-                        JsonNodeContext.computeTypeName(type), 0,  -"color-".length()
-                ).toString(), // drop the leading "color-".
-                unmarshaller,
-                type,
-                types
+            CharSequences.subSequence(
+                JsonNodeContext.computeTypeName(type), 0, -"color-".length()
+            ).toString(), // drop the leading "color-".
+            unmarshaller,
+            type,
+            types
         );
     }
 
     @SafeVarargs
     private static <T extends Color> void register(
-            final String typeName,
-            final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
-            final Class<T> type,
-            final Class<? extends T>... types) {
+        final String typeName,
+        final BiFunction<JsonNode, JsonNodeUnmarshallContext, T> unmarshaller,
+        final Class<T> type,
+        final Class<? extends T>... types) {
         JsonNodeContext.register(
-                typeName,
-                unmarshaller,
-                Color::marshall,
-                type,
-                types
+            typeName,
+            unmarshaller,
+            Color::marshall,
+            type,
+            types
         );
     }
 
@@ -405,11 +405,10 @@ public abstract class Color implements HasText,
     @Override
     abstract public int hashCode();
 
-    @Override
-    final public boolean equals(final Object other) {
+    @Override final public boolean equals(final Object other) {
         return this == other ||
-                this.canBeEqual(other) &&
-                        this.equals0(Cast.to(other));
+            this.canBeEqual(other) &&
+                this.equals0(Cast.to(other));
     }
 
     abstract boolean canBeEqual(final Object other);

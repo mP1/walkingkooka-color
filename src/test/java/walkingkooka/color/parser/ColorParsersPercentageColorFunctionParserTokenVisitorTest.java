@@ -36,8 +36,8 @@ public final class ColorParsersPercentageColorFunctionParserTokenVisitorTest ext
         final SequenceParserToken sequence = ParserTokens.sequence(tokens, ParserToken.text(tokens));
 
         this.checkEquals(ColorFunctionParserToken.percentage(150d, "150%"),
-                ColorParsersPercentageColorFunctionParserTokenVisitor.transform(sequence, ParserContexts.fake()),
-                () -> "transform " + sequence);
+            ColorParsersPercentageColorFunctionParserTokenVisitor.transform(sequence, ParserContexts.fake()),
+            () -> "transform " + sequence);
     }
 
     @Test

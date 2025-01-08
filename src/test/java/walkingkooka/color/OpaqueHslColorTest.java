@@ -57,12 +57,12 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
                             final float value,
                             final int rgb) {
         final OpaqueHslColor hsl = OpaqueHslColor.withOpaque(HslColorComponent.hue(hue), HslColorComponent.saturation(saturation),
-                HslColorComponent.lightness(value));
+            HslColorComponent.lightness(value));
         final RgbColor expected = RgbColor.fromRgb0(rgb);
         final RgbColor actual = hsl.toRgb();
         if ((false == this.isEquals(expected.red, actual.red)) || //
-                (false == this.isEquals(expected.green, actual.green)) || //
-                (false == this.isEquals(expected.blue, actual.blue))) {
+            (false == this.isEquals(expected.green, actual.green)) || //
+            (false == this.isEquals(expected.blue, actual.blue))) {
             this.checkEquals(expected, actual, "failed to convert " + hsl + " to a RgbColor");
         }
     }
@@ -70,9 +70,9 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
     @Test
     public void testParse() {
         this.parseStringAndCheck("hsl(359,100%,50%)",
-                OpaqueHslColor.withOpaque(HslColorComponent.hue(359),
-                        HslColorComponent.saturation(1.0f),
-                        HslColorComponent.lightness(0.5f)));
+            OpaqueHslColor.withOpaque(HslColorComponent.hue(359),
+                HslColorComponent.saturation(1.0f),
+                HslColorComponent.lightness(0.5f)));
     }
 
     // text............................................................................................................
@@ -81,8 +81,8 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
     public void testText() {
         final String css = "hsl(359,50%,25%)";
         this.textAndCheck(
-                Color.parse(css),
-                css
+            Color.parse(css),
+            css
         );
     }
 
@@ -91,40 +91,40 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
     @Test
     public void testMixHalf() {
         this.mixAndCheck(
-                "hsl(359,0%,0%)",
-                "hsl(0,50%,50%)",
-                0.5f,
-                "hsl(180,25%,25%)"
+            "hsl(359,0%,0%)",
+            "hsl(0,50%,50%)",
+            0.5f,
+            "hsl(180,25%,25%)"
         );
     }
 
     @Test
     public void testMixHalf2() {
         this.mixAndCheck(
-                "hsl(0,0%,0%)",
-                "hsl(359,70%,50%)",
-                0.5f,
-                "hsl(180,35%,25%)"
+            "hsl(0,0%,0%)",
+            "hsl(359,70%,50%)",
+            0.5f,
+            "hsl(180,35%,25%)"
         );
     }
 
     @Test
     public void testMixQuarter() {
         this.mixAndCheck(
-                "hsl(0,0%,0%)",
-                "hsl(359,80%,20%)",
-                0.25f,
-                "hsl(90,20%,5%)"
+            "hsl(0,0%,0%)",
+            "hsl(359,80%,20%)",
+            0.25f,
+            "hsl(90,20%,5%)"
         );
     }
 
     @Test
     public void testMixThreeQuarter() {
         this.mixAndCheck(
-                "hsl(0,0%,0%)",
-                "hsl(359,100%,50%)",
-                0.75f,
-                "hsl(269,75%,38%)"
+            "hsl(0,0%,0%)",
+            "hsl(359,100%,50%)",
+            0.75f,
+            "hsl(269,75%,38%)"
         );
     }
 
@@ -133,13 +133,13 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
     @Test
     public void testToString() {
         this.toStringAndCheck(OpaqueHslColor.withOpaque(HUE, SATURATION, LIGHTNESS),
-                "hsl(359,50%,25%)");
+            "hsl(359,50%,25%)");
     }
 
     @Test
     public void testToStringZeroes() {
         this.toStringAndCheck(OpaqueHslColor.withOpaque(HslColorComponent.hue(0), HslColorComponent.saturation(0), HslColorComponent.lightness(0)),
-                "hsl(0,0%,0%)");
+            "hsl(0,0%,0%)");
     }
 
     @Override

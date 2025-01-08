@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
 public abstract class ColorFunctionNonSymbolParserTokenTestCase<T extends ColorFunctionNonSymbolParserToken<V>, V> extends ColorFunctionLeafParserTokenTestCase<T>
-        implements ParserTokenTesting<T> {
+    implements ParserTokenTesting<T> {
 
     ColorFunctionNonSymbolParserTokenTestCase() {
         super();

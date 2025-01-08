@@ -69,8 +69,8 @@ public abstract class HslColor extends Color {
      */
     final HslColor setHue(final HueHslColorComponent hue) {
         return this.hue.equals(hue) ?
-                this :
-                this.replace(hue, this.saturation, this.lightness);
+            this :
+            this.replace(hue, this.saturation, this.lightness);
     }
 
     /**
@@ -78,8 +78,8 @@ public abstract class HslColor extends Color {
      */
     final HslColor setSaturation(final SaturationHslColorComponent saturation) {
         return this.saturation.equals(saturation) ?
-                this :
-                this.replace(this.hue, saturation, this.lightness);
+            this :
+            this.replace(this.hue, saturation, this.lightness);
     }
 
     /**
@@ -87,8 +87,8 @@ public abstract class HslColor extends Color {
      */
     final HslColor setLightness(final LightnessHslColorComponent lightness) {
         return this.lightness.equals(lightness) ?
-                this :
-                this.replace(this.hue, this.saturation, lightness);
+            this :
+            this.replace(this.hue, this.saturation, lightness);
     }
 
     /**
@@ -96,11 +96,11 @@ public abstract class HslColor extends Color {
      */
     final HslColor setAlpha(final AlphaHslColorComponent alpha) {
         return this.alpha().equals(alpha) ?
-                this :
-                AlphaHslColor.withAlpha(this.hue,
-                        this.saturation,
-                        this.lightness,
-                        alpha);
+            this :
+            AlphaHslColor.withAlpha(this.hue,
+                this.saturation,
+                this.lightness,
+                alpha);
     }
 
     /**
@@ -207,7 +207,7 @@ public abstract class HslColor extends Color {
             blue = lightness;
         } else {
             final float q = lightness < 0.5f ? lightness * (1 + saturation)
-                    : (lightness + saturation) - (lightness * saturation);
+                : (lightness + saturation) - (lightness * saturation);
             final float p = (2 * lightness) - q;
 
             final float hue = this.hue.value / HueHslColorComponent.MAX; // now within 0..1
@@ -275,49 +275,49 @@ public abstract class HslColor extends Color {
         checkAmount(amount);
 
         return isMixSmall(amount) ? //
-                this : // amount of new component is too small ignore
-                isMixLarge(amount) ? // amount results in replace.
-                        color.toHsl() :
-                        mixHsl(
-                                color.toHsl(),
-                                amount
-                        );
+            this : // amount of new component is too small ignore
+            isMixLarge(amount) ? // amount results in replace.
+                color.toHsl() :
+                mixHsl(
+                    color.toHsl(),
+                    amount
+                );
     }
 
     private HslColor mixHsl(final HslColor color,
                             final float amount) {
         return this.setHue(
-                HslColorComponent.hue(
-                        mixFloatValue(
-                                this.hue().value,
-                                color.hue().value,
-                                amount
-                        )
+            HslColorComponent.hue(
+                mixFloatValue(
+                    this.hue().value,
+                    color.hue().value,
+                    amount
                 )
+            )
         ).setSaturation(
-                HslColorComponent.saturation(
-                        mixFloatValue(
-                                this.saturation().value,
-                                color.saturation().value,
-                                amount
-                        )
+            HslColorComponent.saturation(
+                mixFloatValue(
+                    this.saturation().value,
+                    color.saturation().value,
+                    amount
                 )
+            )
         ).setLightness(
-                HslColorComponent.lightness(
-                        mixFloatValue(
-                                this.lightness().value,
-                                color.lightness().value,
-                                amount
-                        )
+            HslColorComponent.lightness(
+                mixFloatValue(
+                    this.lightness().value,
+                    color.lightness().value,
+                    amount
                 )
+            )
         ).setAlpha(
-                HslColorComponent.alpha(
-                        mixFloatValue(
-                                this.alpha().value,
-                                color.alpha().value,
-                                amount
-                        )
+            HslColorComponent.alpha(
+                mixFloatValue(
+                    this.alpha().value,
+                    color.alpha().value,
+                    amount
                 )
+            )
         );
     }
 
@@ -333,11 +333,11 @@ public abstract class HslColor extends Color {
     @Override
     public final HslColor invert() {
         return this.setHue(
-                this.hue().invert()
+            this.hue().invert()
         ).setSaturation(
-                (SaturationHslColorComponent) this.saturation().invert()
+            (SaturationHslColorComponent) this.saturation().invert()
         ).setLightness(
-                (LightnessHslColorComponent) this.lightness().invert()
+            (LightnessHslColorComponent) this.lightness().invert()
         );
     }
 
@@ -346,10 +346,10 @@ public abstract class HslColor extends Color {
     @Override
     public final int hashCode() {
         return Objects.hash(
-                this.hue,
-                this.saturation,
-                this.lightness,
-                this.hashCodeAlpha()
+            this.hue,
+            this.saturation,
+            this.lightness,
+            this.hashCodeAlpha()
         );
     }
 
@@ -362,9 +362,9 @@ public abstract class HslColor extends Color {
 
     private boolean equals1(final HslColor other) {
         return this.hue.equals(other.hue) &&
-                this.saturation.equals(other.saturation) &&
-                this.lightness.equals(other.lightness) &&
-                this.equalsAlpha(other);
+            this.saturation.equals(other.saturation) &&
+            this.lightness.equals(other.lightness) &&
+            this.equalsAlpha(other);
     }
 
     abstract boolean equalsAlpha(final HslColor other);
@@ -372,10 +372,10 @@ public abstract class HslColor extends Color {
     @Override
     public final void buildToString(final ToStringBuilder builder) {
         builder.separator(",")
-                .append(this.functionName())
-                .value(this.hue)
-                .value(this.saturation)
-                .value(this.lightness);
+            .append(this.functionName())
+            .value(this.hue)
+            .value(this.saturation)
+            .value(this.lightness);
         this.buildToStringAlpha(builder);
         builder.append(')');
     }
