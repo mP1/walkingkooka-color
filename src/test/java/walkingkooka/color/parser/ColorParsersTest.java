@@ -30,7 +30,6 @@ import walkingkooka.text.cursor.TextCursors;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
-import walkingkooka.text.cursor.parser.ParserReporterException;
 import walkingkooka.text.cursor.parser.ParserReporters;
 
 import java.lang.reflect.Method;
@@ -44,23 +43,29 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     @Test
     public void testParseHslIncompleteFails() {
-        this.parseFails(ColorParsers.hsl(),
+        this.parseFails(
+            ColorParsers.hsl(),
             "hsl(359",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsl(359\" expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHslNumberCommaNumberCommaPercentageFails() {
-        this.parseFails(ColorParsers.hsl(),
+        this.parseFails(
+            ColorParsers.hsl(),
             "hsl(359,50,10%)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsl(359,50,10%)\" expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHslNumberCommaPercentageCommaNumberFails() {
-        this.parseFails(ColorParsers.hsl(),
+        this.parseFails(
+            ColorParsers.hsl(),
             "hsl(359,50%,10)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsl(359,50%,10)\" expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
@@ -113,23 +118,29 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     @Test
     public void testParseHslaIncompleteFails() {
-        this.parseFails(ColorParsers.hsl(),
+        this.parseFails(
+            ColorParsers.hsl(),
             "hsl(359",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsl(359\" expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHslaNumberCommaNumberCommaPercentageFails() {
-        this.parseFails(ColorParsers.hsl(),
+        this.parseFails(
+            ColorParsers.hsl(),
             "hsl(359,50,10%)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsl(359,50,10%)\" expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHslaNumberCommaPercentageCommaNumberFails() {
-        this.parseFails(ColorParsers.hsl(),
+        this.parseFails(
+            ColorParsers.hsl(),
             "hsl(359,50%,10)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsl(359,50%,10)\" expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
@@ -190,23 +201,29 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     @Test
     public void testParseHsvIncompleteFails() {
-        this.parseFails(ColorParsers.hsv(),
+        this.parseFails(
+            ColorParsers.hsv(),
             "hsv(359",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsv(359\" expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHsvNumberCommaNumberCommaPercentageFails() {
-        this.parseFails(ColorParsers.hsv(),
+        this.parseFails(
+            ColorParsers.hsv(),
             "hsv(359,50,10%)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsv(359,50,10%)\" expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHsvNumberCommaPercentageCommaNumberFails() {
-        this.parseFails(ColorParsers.hsv(),
+        this.parseFails(
+            ColorParsers.hsv(),
             "hsv(359,50%,10)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsv(359,50%,10)\" expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
@@ -259,16 +276,20 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     @Test
     public void testParseHsvaIncompleteFails() {
-        this.parseFails(ColorParsers.hsv(),
+        this.parseFails(
+            ColorParsers.hsv(),
             "hsv(359",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsv(359\" expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseHsvaNumberCommaNumberCommaPercentageFails() {
-        this.parseFails(ColorParsers.hsv(),
+        this.parseFails(
+            ColorParsers.hsv(),
             "hsv(359,50,10%)",
-            ParserReporterException.class);
+            "Invalid character 'h' at (1,1) \"hsv(359,50,10%)\" expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
@@ -328,23 +349,29 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     @Test
     public void testParseRgbaIncompleteFails() {
-        this.parseFails(ColorParsers.rgb(),
+        this.parseFails(
+            ColorParsers.rgb(),
             "rgba(1",
-            ParserReporterException.class);
+            "Invalid character 'r' at (1,1) \"rgba(1\" expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseRgbaMissingParensRightFails() {
-        this.parseFails(ColorParsers.rgb(),
+        this.parseFails(
+            ColorParsers.rgb(),
             "rgba(1,2,3,0.5",
-            ParserReporterException.class);
+            "Invalid character 'r' at (1,1) \"rgba(1,2,3,0.5\" expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseRgbaNumberCommaPercentageCommaNumberCommaNumberFails() {
-        this.parseFails(ColorParsers.rgb(),
+        this.parseFails(
+            ColorParsers.rgb(),
             "rgba(1,100%,3,0.5)",
-            ParserReporterException.class);
+            "Invalid character 'r' at (1,1) \"rgba(1,100%,3,0.5)\" expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
@@ -406,23 +433,29 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     @Test
     public void testParseRgbIncompleteFails() {
-        this.parseFails(ColorParsers.rgb(),
+        this.parseFails(
+            ColorParsers.rgb(),
             "rgb(1",
-            ParserReporterException.class);
+            "Invalid character 'r' at (1,1) \"rgb(1\" expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseRgbMissingParensRightFails() {
-        this.parseFails(ColorParsers.rgb(),
+        this.parseFails(
+            ColorParsers.rgb(),
             "rgb(1,2,3",
-            ParserReporterException.class);
+            "Invalid character 'r' at (1,1) \"rgb(1,2,3\" expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
     public void testParseRgbNumberCommaPercentageCommaNumberFails() {
-        this.parseFails(ColorParsers.rgb(),
+        this.parseFails(
+            ColorParsers.rgb(),
             "rgb(1,2%,3)",
-            ParserReporterException.class);
+            "Invalid character 'r' at (1,1) \"rgb(1,2%,3)\" expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+        );
     }
 
     @Test
@@ -472,9 +505,18 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     private void parseFails(final Parser<ParserContext> parser,
                             final String text,
-                            final Class<? extends Throwable> thrown) {
-        assertThrows(thrown, () -> parser.orReport(ParserReporters.basic())
-            .parse(TextCursors.charSequence(text), parserContext()));
+                            final String expected) {
+        final Throwable thrown = assertThrows(
+            RuntimeException.class,
+            () -> parser.orReport(ParserReporters.basic())
+                .parse(TextCursors.charSequence(text), parserContext())
+        );
+
+        this.checkEquals(
+            expected,
+            thrown.getMessage(),
+            "message"
+        );
     }
 
     private void parseAndCheck(final Parser<ParserContext> parser,
