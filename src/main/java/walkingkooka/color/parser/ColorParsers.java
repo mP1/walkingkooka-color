@@ -65,10 +65,18 @@ public final class ColorParsers implements PublicStaticHelper {
         try {
             final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
 
-            predefined.put(EbnfIdentifierName.with("DEGREE_UNIT"), Parsers.string("deg", CaseSensitivity.SENSITIVE)
-                .transform(ColorParsers::transformDegreeUnit));
-            predefined.put(EbnfIdentifierName.with("NUMBER"), Parsers.doubleParser()
-                .transform(ColorParsers::transformNumber));
+            predefined.put(
+                EbnfIdentifierName.with("DEGREE_UNIT"),
+                Parsers.string("deg", CaseSensitivity.SENSITIVE)
+                    .transform(ColorParsers::transformDegreeUnit)
+                    .setToString("deg")
+            );
+            predefined.put(
+                EbnfIdentifierName.with("NUMBER"),
+                Parsers.doubleParser()
+                    .transform(ColorParsers::transformNumber)
+                    .setToString("NUMBER")
+            );
 
             final TextCursor grammarFile = TextCursors.charSequence(new ColorParsersGrammarProvider().text());
 

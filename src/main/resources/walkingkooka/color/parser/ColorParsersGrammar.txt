@@ -1,11 +1,14 @@
-(* rgb ...............................................................................................................*)
-RGB_RGBA_FUNCTION    = RGB_RGBA,
-                       PARENTHESIS_OPEN,
-                       [WHITESPACE],
-                       ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ),
-                       [WHITESPACE],
-                       PARENTHESIS_CLOSE;
+(* common ............................................................................................................*)
 
+PARENTHESIS_CLOSE = ")";
+PARENTHESIS_OPEN  = "(";
+SEPARATOR         = ",";
+WHITESPACE        = " ";
+
+PERCENTAGE        = NUMBER, "%";
+ALPHA             = PERCENTAGE | NUMBER;
+
+(* rgb ...............................................................................................................*)
 RGB_RGBA             = "rgba" | "rgb";
 
 RGB_ARGUMENTS_PERCENTAGE_COMMA      = PERCENTAGE, [WHITESPACE], SEPARATOR, [WHITESPACE],
@@ -28,27 +31,16 @@ RGB_ARGUMENTS_NUMBER_WHITESPACE     = NUMBER, WHITESPACE,
                                       NUMBER,
                                       [ [WHITESPACE], "/", [WHITESPACE], ALPHA ];
 
-(* hsl ...............................................................................................................*)
-HSL_HSLA_FUNCTION = HSL_HSLA,
-                    PARENTHESIS_OPEN,
-                    [WHITESPACE],
-                    ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ),
-                    [WHITESPACE],
-                    PARENTHESIS_CLOSE;
-
-HSL_HSLA          = "hsla" | "hsl";
-
-(* hsv ...............................................................................................................*)
-HSV_HSVA_FUNCTION = HSV_HSVA,
-                    PARENTHESIS_OPEN,
-                    [WHITESPACE],
-                    ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ),
-                    [WHITESPACE],
-                    PARENTHESIS_CLOSE;
-
-HSV_HSVA          = "hsva" | "hsv";
+RGB_RGBA_FUNCTION                   = RGB_RGBA,
+                                      PARENTHESIS_OPEN,
+                                      [WHITESPACE],
+                                      ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ),
+                                      [WHITESPACE],
+                                      PARENTHESIS_CLOSE;
 
 (* hsl/hsv common ....................................................................................................*)
+HUE                                     = ( NUMBER, DEGREE_UNIT ) |
+                                          NUMBER;
 
 HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA      = HUE, [WHITESPACE], SEPARATOR, [WHITESPACE],
                                           PERCENTAGE, [WHITESPACE], SEPARATOR, [WHITESPACE],
@@ -70,15 +62,22 @@ HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE     = HUE, WHITESPACE,
                                           NUMBER,
                                           [ [WHITESPACE], "/", [WHITESPACE], ALPHA ];
 
-HUE                                     = ( NUMBER, DEGREE_UNIT ) |
-                                          NUMBER;
+(* hsl ...............................................................................................................*)
+HSL_HSLA          = "hsla" | "hsl";
 
-(* common ............................................................................................................*)
+HSL_HSLA_FUNCTION = HSL_HSLA,
+                    PARENTHESIS_OPEN,
+                    [WHITESPACE],
+                    ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ),
+                    [WHITESPACE],
+                    PARENTHESIS_CLOSE;
 
-PARENTHESIS_CLOSE = ")";
-PARENTHESIS_OPEN  = "(";
-SEPARATOR         = ",";
-WHITESPACE        = " ";
+(* hsv ...............................................................................................................*)
+HSV_HSVA          = "hsva" | "hsv";
 
-PERCENTAGE        = NUMBER, "%";
-ALPHA             = PERCENTAGE | NUMBER;
+HSV_HSVA_FUNCTION = HSV_HSVA,
+                    PARENTHESIS_OPEN,
+                    [WHITESPACE],
+                    ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ),
+                    [WHITESPACE],
+                    PARENTHESIS_CLOSE;
