@@ -46,7 +46,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsl(),
             "hsl(359",
-            "Invalid character 'h' at (1,1) expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsla\" | \"hsl\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -55,7 +55,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsl(),
             "hsl(359,50,10%)",
-            "Invalid character 'h' at (1,1) expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsla\" | \"hsl\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -64,7 +64,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsl(),
             "hsl(359,50%,10)",
-            "Invalid character 'h' at (1,1) expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsla\" | \"hsl\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -123,7 +123,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsl(),
             "hsl(359",
-            "Invalid character 'h' at (1,1) expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsla\" | \"hsl\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -132,7 +132,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsl(),
             "hsl(359,50,10%)",
-            "Invalid character 'h' at (1,1) expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsla\" | \"hsl\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -141,7 +141,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsl(),
             "hsl(359,50%,10)",
-            "Invalid character 'h' at (1,1) expected HSL_HSLA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsla\" | \"hsl\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -256,7 +256,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsv(),
             "hsv(359",
-            "Invalid character 'h' at (1,1) expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsva\" | \"hsv\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -265,7 +265,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsv(),
             "hsv(359,50,10%)",
-            "Invalid character 'h' at (1,1) expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsva\" | \"hsv\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -274,7 +274,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsv(),
             "hsv(359,50%,10)",
-            "Invalid character 'h' at (1,1) expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsva\" | \"hsv\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -369,7 +369,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsv(),
             "hsv(359",
-            "Invalid character 'h' at (1,1) expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsva\" | \"hsv\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -378,7 +378,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.hsv(),
             "hsv(359,50,10%)",
-            "Invalid character 'h' at (1,1) expected HSV_HSVA, PARENTHESIS_OPEN, [WHITESPACE], ( HSL_HSV_ARGUMENTS_PERCENTAGE_COMMA | HSL_HSV_ARGUMENTS_PERCENTAGE_WHITESPACE | HSL_HSV_ARGUMENTS_NUMBER_COMMA | HSL_HSV_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'h' at (1,1) expected ((\"hsva\" | \"hsv\"), \"(\", [\" \"], ((((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (((NUMBER, deg) | NUMBER), \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -493,7 +493,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.rgb(),
             "rgba(1",
-            "Invalid character 'r' at (1,1) expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'r' at (1,1) expected ((\"rgba\" | \"rgb\"), \"(\", [\" \"], (((NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | ((NUMBER, \"%\"), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -502,7 +502,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.rgb(),
             "rgba(1,2,3,0.5",
-            "Invalid character 'r' at (1,1) expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'r' at (1,1) expected ((\"rgba\" | \"rgb\"), \"(\", [\" \"], (((NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | ((NUMBER, \"%\"), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -511,7 +511,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.rgb(),
             "rgba(1,100%,3,0.5)",
-            "Invalid character 'r' at (1,1) expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'r' at (1,1) expected ((\"rgba\" | \"rgb\"), \"(\", [\" \"], (((NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | ((NUMBER, \"%\"), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -626,7 +626,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.rgb(),
             "rgb(1",
-            "Invalid character 'r' at (1,1) expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'r' at (1,1) expected ((\"rgba\" | \"rgb\"), \"(\", [\" \"], (((NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | ((NUMBER, \"%\"), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -635,7 +635,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.rgb(),
             "rgb(1,2,3",
-            "Invalid character 'r' at (1,1) expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'r' at (1,1) expected ((\"rgba\" | \"rgb\"), \"(\", [\" \"], (((NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | ((NUMBER, \"%\"), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
@@ -644,7 +644,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
         this.parseFails(
             ColorParsers.rgb(),
             "rgb(1,2%,3)",
-            "Invalid character 'r' at (1,1) expected RGB_RGBA, PARENTHESIS_OPEN, [WHITESPACE], ( RGB_ARGUMENTS_PERCENTAGE_COMMA | RGB_ARGUMENTS_PERCENTAGE_WHITESPACE | RGB_ARGUMENTS_NUMBER_COMMA | RGB_ARGUMENTS_NUMBER_WHITESPACE ), [WHITESPACE], PARENTHESIS_CLOSE"
+            "Invalid character 'r' at (1,1) expected ((\"rgba\" | \"rgb\"), \"(\", [\" \"], (((NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [\" \"], \",\", [\" \"], (NUMBER, \"%\"), [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | ((NUMBER, \"%\"), \" \", (NUMBER, \"%\"), \" \", (NUMBER, \"%\"), [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, [\" \"], \",\", [\" \"], NUMBER, [\" \"], \",\", [\" \"], NUMBER, [([\" \"], \",\", [\" \"], ((NUMBER, \"%\") | NUMBER))]) | (NUMBER, \" \", NUMBER, \" \", NUMBER, [([\" \"], \"/\", [\" \"], ((NUMBER, \"%\") | NUMBER))])), [\" \"], \")\")"
         );
     }
 
