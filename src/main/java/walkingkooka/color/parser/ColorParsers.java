@@ -36,6 +36,9 @@ import walkingkooka.text.cursor.parser.ebnf.EbnfParserContexts;
 import walkingkooka.text.cursor.parser.ebnf.EbnfParserToken;
 
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * A collection of factory methods to create parsers.
@@ -62,6 +65,8 @@ public final class ColorParsers implements PublicStaticHelper {
      * Loads the grammar, picks parsers sets some {@link Parser} constants.
      */
     static {
+        final String filename = "\"" + ColorParsers.class.getSimpleName() + "Grammar.txt\"";
+
         try {
             final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
 
@@ -80,20 +85,32 @@ public final class ColorParsers implements PublicStaticHelper {
 
             final TextCursor grammarFile = TextCursors.charSequence(new ColorParsersGrammarProvider().text());
 
-            final Map<EbnfIdentifierName, Parser<ParserContext>> parsers = EbnfParserToken.grammarParser()
+            final Function<EbnfIdentifierName, Optional<Parser<ParserContext>>> parsers = EbnfParserToken.grammarParser()
                 .orFailIfCursorNotEmpty(ParserReporters.basic())
                 .parse(grammarFile, EbnfParserContexts.basic())
-                .orElseThrow(() -> new IllegalStateException("Unable to parse color parsers grammar file."))
+                .orElseThrow(() -> new IllegalStateException("Unable to read color grammar file " + filename))
                 .cast(EbnfGrammarParserToken.class)
-                .combinator(predefined, ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.INSTANCE);
+                .combinator(
+                    (n) -> Optional.ofNullable(
+                        predefined.get(n)
+                    ),
+                    ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.create()
+                );
 
-            RGB_PARSER = parsers.get(EbnfIdentifierName.with("RGB_RGBA_FUNCTION"));
-            HSL_PARSER = parsers.get(EbnfIdentifierName.with("HSL_HSLA_FUNCTION"));
-            HSV_PARSER = parsers.get(EbnfIdentifierName.with("HSV_HSVA_FUNCTION"));
+            final EbnfIdentifierName rgb = EbnfIdentifierName.with("RGB_RGBA_FUNCTION");
+            final EbnfIdentifierName hsl = EbnfIdentifierName.with("HSL_HSLA_FUNCTION");
+            final EbnfIdentifierName hsv = EbnfIdentifierName.with("HSV_HSVA_FUNCTION");
+
+            RGB_PARSER = parsers.apply(rgb)
+                .orElseThrow(missingParser(rgb, filename));
+            HSL_PARSER = parsers.apply(hsl)
+                .orElseThrow(missingParser(hsl, filename));
+            HSV_PARSER = parsers.apply(hsv)
+                .orElseThrow(missingParser(hsv, filename));
         } catch (final RuntimeException rethrow) {
             throw rethrow;
         } catch (final Exception cause) {
-            throw new ParserException("Failed to load grammar and fetch parsers, message: " + cause.getMessage(), cause);
+            throw new ParserException("Failed to load parsers from " + filename + ", message: " + cause.getMessage(), cause);
         }
     }
 
@@ -105,6 +122,11 @@ public final class ColorParsers implements PublicStaticHelper {
     private static ParserToken transformNumber(final ParserToken token, ParserContext context) {
         final DoubleParserToken doubleParserToken = Cast.to(token);
         return ColorFunctionParserToken.number(doubleParserToken.value(), doubleParserToken.text());
+    }
+
+    private static Supplier<IllegalStateException> missingParser(final EbnfIdentifierName name,
+                                                                 final String filename) {
+        return () -> new IllegalStateException("Missing parser " + name + " from " + filename);
     }
 
     // hsl..............................................................................................................
