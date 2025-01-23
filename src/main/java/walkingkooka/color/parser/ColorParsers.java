@@ -23,7 +23,6 @@ import walkingkooka.text.CaseSensitivity;
 import walkingkooka.text.cursor.parser.DoubleParserToken;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
-import walkingkooka.text.cursor.parser.ParserException;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.Parsers;
 import walkingkooka.text.cursor.parser.StringParserToken;
@@ -61,46 +60,40 @@ public final class ColorParsers implements PublicStaticHelper {
     static {
         final String filename = ColorParsers.class.getSimpleName() + "Grammar.txt";
 
-        try {
-            final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
+        final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
 
-            predefined.put(
-                EbnfIdentifierName.with("DEGREE_UNIT"),
-                Parsers.string("deg", CaseSensitivity.SENSITIVE)
-                    .transform(ColorParsers::transformDegreeUnit)
-                    .setToString("deg")
-            );
-            predefined.put(
-                EbnfIdentifierName.with("NUMBER"),
-                Parsers.doubleParser()
-                    .transform(ColorParsers::transformNumber)
-                    .setToString("NUMBER")
-            );
+        predefined.put(
+            EbnfIdentifierName.with("DEGREE_UNIT"),
+            Parsers.string("deg", CaseSensitivity.SENSITIVE)
+                .transform(ColorParsers::transformDegreeUnit)
+                .setToString("deg")
+        );
+        predefined.put(
+            EbnfIdentifierName.with("NUMBER"),
+            Parsers.doubleParser()
+                .transform(ColorParsers::transformNumber)
+                .setToString("NUMBER")
+        );
 
-            final Function<EbnfIdentifierName, Parser<ParserContext>> parsers = EbnfParserToken.parseFile(
-                new ColorParsersGrammarProvider()
-                    .text(),
-                filename
-            ).combinatorForFile(
-                    (n) -> Optional.ofNullable(
-                        predefined.get(n)
-                    ),
-                ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.create(),
-                filename
-                );
+        final Function<EbnfIdentifierName, Parser<ParserContext>> parsers = EbnfParserToken.parseFile(
+            new ColorParsersGrammarProvider()
+                .text(),
+            filename
+        ).combinatorForFile(
+            (n) -> Optional.ofNullable(
+                predefined.get(n)
+            ),
+            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.create(),
+            filename
+        );
 
-            final EbnfIdentifierName rgb = EbnfIdentifierName.with("RGB_RGBA_FUNCTION");
-            final EbnfIdentifierName hsl = EbnfIdentifierName.with("HSL_HSLA_FUNCTION");
-            final EbnfIdentifierName hsv = EbnfIdentifierName.with("HSV_HSVA_FUNCTION");
+        final EbnfIdentifierName rgb = EbnfIdentifierName.with("RGB_RGBA_FUNCTION");
+        final EbnfIdentifierName hsl = EbnfIdentifierName.with("HSL_HSLA_FUNCTION");
+        final EbnfIdentifierName hsv = EbnfIdentifierName.with("HSV_HSVA_FUNCTION");
 
-            RGB_PARSER = parsers.apply(rgb);
-            HSL_PARSER = parsers.apply(hsl);
-            HSV_PARSER = parsers.apply(hsv);
-        } catch (final RuntimeException rethrow) {
-            throw rethrow;
-        } catch (final Exception cause) {
-            throw new ParserException("Failed to load parsers from " + filename + ", message: " + cause.getMessage(), cause);
-        }
+        RGB_PARSER = parsers.apply(rgb);
+        HSL_PARSER = parsers.apply(hsl);
+        HSV_PARSER = parsers.apply(hsv);
     }
 
     private static ParserToken transformDegreeUnit(final ParserToken token, ParserContext context) {
