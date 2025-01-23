@@ -34,29 +34,29 @@ import walkingkooka.text.cursor.parser.ebnf.EbnfRangeParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfRepeatedParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfRuleParserToken;
 import walkingkooka.text.cursor.parser.ebnf.EbnfTerminalParserToken;
-import walkingkooka.text.cursor.parser.ebnf.combinator.EbnfParserCombinatorSyntaxTreeTransformer;
+import walkingkooka.text.cursor.parser.ebnf.combinator.EbnfParserCombinatorGrammarTransformer;
 
 import java.util.Map;
 import java.util.function.BiFunction;
 
-final class ColorParsersEbnfParserCombinatorSyntaxTreeTransformer implements EbnfParserCombinatorSyntaxTreeTransformer<ParserContext> {
+final class ColorParsersEbnfParserCombinatorGrammarTransformer implements EbnfParserCombinatorGrammarTransformer<ParserContext> {
 
-    static ColorParsersEbnfParserCombinatorSyntaxTreeTransformer create() {
-        return new ColorParsersEbnfParserCombinatorSyntaxTreeTransformer();
+    static ColorParsersEbnfParserCombinatorGrammarTransformer create() {
+        return new ColorParsersEbnfParserCombinatorGrammarTransformer();
     }
 
-    private ColorParsersEbnfParserCombinatorSyntaxTreeTransformer() {
+    private ColorParsersEbnfParserCombinatorGrammarTransformer() {
         super();
 
         final Map<EbnfIdentifierName, BiFunction<ParserToken, ParserContext, ParserToken>> identifierToTransformer = Maps.sorted();
 
         identifierToTransformer.put(
             PARENTHESIS_OPEN,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformParenthesisOpen
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformParenthesisOpen
         );
         identifierToTransformer.put(
             PARENTHESIS_CLOSE,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformParenthesisClose
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformParenthesisClose
         );
         identifierToTransformer.put(
             PERCENTAGE,
@@ -64,15 +64,15 @@ final class ColorParsersEbnfParserCombinatorSyntaxTreeTransformer implements Ebn
         );
         identifierToTransformer.put(
             RGB_RGBA,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformFunctionName
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformFunctionName
         );
         identifierToTransformer.put(
             HSL_HSLA,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformFunctionName
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformFunctionName
         );
         identifierToTransformer.put(
             HSV_HSVA,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformFunctionName
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformFunctionName
         );
 
         identifierToTransformer.put(
@@ -90,12 +90,12 @@ final class ColorParsersEbnfParserCombinatorSyntaxTreeTransformer implements Ebn
 
         identifierToTransformer.put(
             SEPARATOR,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformSeparator
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformSeparator
         );
 
         identifierToTransformer.put(
             WHITESPACE,
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer::transformWhitespace
+            ColorParsersEbnfParserCombinatorGrammarTransformer::transformWhitespace
         );
 
         this.identifierToTransformer = identifierToTransformer;
