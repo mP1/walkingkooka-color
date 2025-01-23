@@ -52,47 +52,70 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
         }
     }
 
+    // with.............................................................................................................
+
     @Test
     public void testEmptyFails() {
         // nop
     }
 
     @Test
-    public void testUnknownName() {
-        this.colorAndCheck("unknown", null);
+    public void testWithUnknownName() {
+        this.withAndCheck(
+            "unknown",
+            null
+        );
     }
 
     @Test
-    public void testBlack() {
-        this.colorAndCheck("black", RgbColor.BLACK);
+    public void testWithBlack() {
+        this.withAndCheck("black", RgbColor.BLACK);
     }
 
     @Test
-    public void testBlackUpperCase() {
-        this.colorAndCheck("BLACK", RgbColor.BLACK);
+    public void testWithBlackUpperCase() {
+        this.withAndCheck(
+            "BLACK",
+            RgbColor.BLACK
+        );
     }
 
     @Test
-    public void testSilver() {
-        this.colorAndCheck("silver", RgbColor.fromRgb0(0xc0c0c0));
+    public void testWithSilver() {
+        this.withAndCheck(
+            "silver",
+            RgbColor.fromRgb0(0xc0c0c0)
+        );
     }
 
     @Test
-    public void testTransparent() {
-        this.colorAndCheck("transparent", RgbColor.parseRgb("#00000000"));
+    public void testWithTransparent() {
+        this.withAndCheck(
+            "transparent",
+            RgbColor.parseRgb("#00000000")
+        );
     }
 
-    private void colorAndCheck(final String name, final RgbColor color) {
+    private void withAndCheck(final String name,
+                              final RgbColor color) {
         final Optional<WebColorName> webColorName = WebColorName.with(name);
 
-        this.checkEquals(color,
-            webColorName.map(WebColorName::color).orElse(null),
-            () -> "name " + CharSequences.quoteAndEscape(name));
+        this.checkEquals(
+            color,
+            webColorName.map(WebColorName::color)
+                .orElse(null),
+            () -> "name " + CharSequences.quoteAndEscape(name)
+        );
 
-        webColorName.ifPresent(colorName -> this.checkEquals(colorName,
-            WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
-            () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name)));
+        webColorName.ifPresent(
+            colorName -> this.checkEquals(
+                colorName,
+                WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
+                () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name))
+        );
     }
+
+    // name.............................................................................................................
 
     @Override
     public void testCompareDifferentCase() {
@@ -154,6 +177,8 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
             CONTROL + ASCII_DIGITS :
             CONTROL;
     }
+
+    // class............................................................................................................
 
     @Override
     public Class<WebColorName> type() {
