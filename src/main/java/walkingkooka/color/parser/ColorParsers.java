@@ -79,7 +79,7 @@ public final class ColorParsers implements PublicStaticHelper {
             (n) -> Optional.ofNullable(
                 predefined.get(n)
             ),
-            ColorParsersEbnfParserCombinatorSyntaxTreeTransformer.create(),
+            ColorParsersEbnfParserCombinatorGrammarTransformer.create(),
             filename
         );
 
