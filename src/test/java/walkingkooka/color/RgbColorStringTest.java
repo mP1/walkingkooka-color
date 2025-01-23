@@ -27,111 +27,142 @@ public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
 
     @Test
     public void testToStringNullFails() {
-        assertThrows(NullPointerException.class, () -> RgbColorString.RGB_DECIMAL.toString(null));
+        assertThrows(
+            NullPointerException.class,
+            () -> RgbColorString.RGB_DECIMAL.toString(null)
+        );
     }
 
     // hash..........................................................................................................
 
     @Test
-    public void testHashOpaqueColor() {
-        this.toStringAndCheck(RgbColorString.HASH,
+    public void testToStringHashOpaqueColor() {
+        this.toStringAndCheck(
+            RgbColorString.HASH,
             RgbColor.fromRgb0(0x12345),
-            "#012345");
+            "#012345"
+        );
     }
 
     @Test
-    public void testHashAlphaColor() {
-        this.toStringAndCheck(RgbColorString.HASH,
+    public void testToStringHashAlphaColor() {
+        this.toStringAndCheck(
+            RgbColorString.HASH,
             RgbColor.fromRgb0(0x12345).set(RgbColorComponent.alpha((byte) 0xfe)),
-            "#012345fe");
+            "#012345fe"
+        );
     }
 
     // decimal..........................................................................................................
 
     @Test
-    public void testRgbFunctionDecimalOpaqueColor() {
-        this.toStringAndCheck(RgbColorString.RGB_DECIMAL,
+    public void testToStringRgbFunctionDecimalOpaqueColor() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_DECIMAL,
             RgbColor.fromRgb0(0),
-            "rgb(0,0,0)");
+            "rgb(0,0,0)"
+        );
     }
 
     @Test
-    public void testRgbFunctionDecimalOpaqueColor2() {
-        this.toStringAndCheck(RgbColorString.RGB_DECIMAL,
+    public void testToStringRgbFunctionDecimalOpaqueColor2() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_DECIMAL,
             RgbColor.fromRgb0(0xFFFEFD),
-            "rgb(255,254,253)");
+            "rgb(255,254,253)"
+        );
     }
 
     @Test
-    public void testRgbFunctionDecimalOpaqueColor3() {
-        this.toStringAndCheck(RgbColorString.RGB_DECIMAL,
+    public void testToStringRgbFunctionDecimalOpaqueColor3() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_DECIMAL,
             RgbColor.fromRgb0(0x010203),
-            "rgb(1,2,3)");
+            "rgb(1,2,3)"
+        );
     }
 
     @Test
-    public void testRgbFunctionDecimalAlphaColor() {
-        this.toStringAndCheck(RgbColorString.RGB_DECIMAL,
+    public void testToStringRgbFunctionDecimalAlphaColor() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_DECIMAL,
             RgbColor.fromRgb0(0).set(RgbColorComponent.alpha((byte) 0)),
-            "rgba(0,0,0,0)");
+            "rgba(0,0,0,0)"
+        );
     }
 
     @Test
-    public void testRgbFunctionDecimalAlphaColor2() {
-        this.toStringAndCheck(RgbColorString.RGB_DECIMAL,
+    public void testToStringRgbFunctionDecimalAlphaColor2() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_DECIMAL,
             RgbColor.fromRgb0(0xFFFEFD).set(RgbColorComponent.alpha((byte) 0xfc)),
-            "rgba(255,254,253,252)");
+            "rgba(255,254,253,252)"
+        );
     }
 
     @Test
-    public void testRgbFunctionDecimalAlphaColor3() {
-        this.toStringAndCheck(RgbColorString.RGB_DECIMAL,
+    public void testToStringRgbFunctionDecimalAlphaColor3() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_DECIMAL,
             RgbColor.fromRgb0(0x010203).set(RgbColorComponent.alpha((byte) 4)),
-            "rgba(1,2,3,4)");
+            "rgba(1,2,3,4)"
+        );
     }
 
-    // percentage..........................................................................................................
+    // percentage.......................................................................................................
 
     @Test
-    public void testRgbFunctionPercentageOpaqueColor() {
-        this.toStringAndCheck(RgbColorString.RGB_PERCENTAGE,
+    public void testToStringRgbFunctionPercentageOpaqueColor() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_PERCENTAGE,
             RgbColor.fromRgb0(0),
-            "rgb(0%,0%,0%)");
+            "rgb(0%,0%,0%)"
+        );
     }
 
     @Test
-    public void testRgbFunctionPercentageOpaqueColor2() {
-        this.toStringAndCheck(RgbColorString.RGB_PERCENTAGE,
+    public void testToStringRgbFunctionPercentageOpaqueColor2() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_PERCENTAGE,
             RgbColor.fromRgb0(0xFFFEFD),
-            "rgb(100%,100%,99%)");
+            "rgb(100%,100%,99%)"
+        );
     }
 
     @Test
-    public void testRgbFunctionPercentageOpaqueColor3() {
-        this.toStringAndCheck(RgbColorString.RGB_PERCENTAGE,
+    public void testToStringRgbFunctionPercentageOpaqueColor3() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_PERCENTAGE,
             RgbColor.fromRgb0(0x010203),
-            "rgb(0%,1%,1%)");
+            "rgb(0%,1%,1%)"
+        );
     }
 
     @Test
-    public void testRgbFunctionPercentageAlphaColor() {
-        this.toStringAndCheck(RgbColorString.RGB_PERCENTAGE,
+    public void testToStringRgbFunctionPercentageAlphaColor() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_PERCENTAGE,
             RgbColor.fromRgb0(0).set(RgbColorComponent.alpha((byte) 0)),
-            "rgba(0%,0%,0%,0%)");
+            "rgba(0%,0%,0%,0%)"
+        );
     }
 
     @Test
-    public void testRgbFunctionPercentageAlphaColor2() {
-        this.toStringAndCheck(RgbColorString.RGB_PERCENTAGE,
+    public void testToStringRgbFunctionPercentageAlphaColor2() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_PERCENTAGE,
             RgbColor.fromRgb0(0xFFFEFD).set(RgbColorComponent.alpha((byte) 0xfc)),
-            "rgba(100%,100%,99%,99%)");
+            "rgba(100%,100%,99%,99%)"
+        );
     }
 
     @Test
-    public void testRgbFunctionPercentageAlphaColor3() {
-        this.toStringAndCheck(RgbColorString.RGB_PERCENTAGE,
+    public void testToStringRgbFunctionPercentageAlphaColor3() {
+        this.toStringAndCheck(
+            RgbColorString.RGB_PERCENTAGE,
             RgbColor.fromRgb0(0x010203).set(RgbColorComponent.alpha((byte) 4)),
-            "rgba(0%,1%,1%,2%)");
+            "rgba(0%,1%,1%,2%)"
+        );
     }
 
     // helper..........................................................................................................
@@ -139,12 +170,14 @@ public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
     private void toStringAndCheck(final RgbColorString format,
                                   final RgbColor color,
                                   final String toString) {
-        this.checkEquals(toString,
+        this.checkEquals(
+            toString,
             format.toString(color),
-            () -> "format " + format + " rgb=" + color);
+            () -> "format " + format + " rgb=" + color
+        );
     }
 
-    // ClassTesting....................................................................................................
+    // ClassTesting.....................................................................................................
 
     @Override
     public Class<RgbColorString> type() {
