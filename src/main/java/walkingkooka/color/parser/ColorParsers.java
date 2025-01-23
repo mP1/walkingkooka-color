@@ -58,22 +58,18 @@ public final class ColorParsers implements PublicStaticHelper {
      * Loads the grammar, picks parsers sets some {@link Parser} constants.
      */
     static {
-        final String filename = ColorParsers.class.getSimpleName() + "Grammar.txt";
-
-        final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.sorted();
-
-        predefined.put(
+        final Map<EbnfIdentifierName, Parser<ParserContext>> predefined = Maps.of(
             EbnfIdentifierName.with("DEGREE_UNIT"),
             Parsers.string("deg", CaseSensitivity.SENSITIVE)
                 .transform(ColorParsers::transformDegreeUnit)
-                .setToString("deg")
-        );
-        predefined.put(
+                .setToString("deg"),
             EbnfIdentifierName.with("NUMBER"),
             Parsers.doubleParser()
                 .transform(ColorParsers::transformNumber)
                 .setToString("NUMBER")
         );
+
+        final String filename = ColorParsers.class.getSimpleName() + "Grammar.txt";
 
         final Function<EbnfIdentifierName, Parser<ParserContext>> parsers = EbnfParserToken.parseFile(
             new ColorParsersGrammarProvider()
@@ -87,23 +83,27 @@ public final class ColorParsers implements PublicStaticHelper {
             filename
         );
 
-        final EbnfIdentifierName rgb = EbnfIdentifierName.with("RGB_RGBA_FUNCTION");
-        final EbnfIdentifierName hsl = EbnfIdentifierName.with("HSL_HSLA_FUNCTION");
-        final EbnfIdentifierName hsv = EbnfIdentifierName.with("HSV_HSVA_FUNCTION");
-
-        RGB_PARSER = parsers.apply(rgb);
-        HSL_PARSER = parsers.apply(hsl);
-        HSV_PARSER = parsers.apply(hsv);
+        RGB_PARSER = parsers.apply(EbnfIdentifierName.with("RGB_RGBA_FUNCTION"));
+        HSL_PARSER = parsers.apply(EbnfIdentifierName.with("HSL_HSLA_FUNCTION"));
+        HSV_PARSER = parsers.apply(EbnfIdentifierName.with("HSV_HSVA_FUNCTION"));
     }
 
-    private static ParserToken transformDegreeUnit(final ParserToken token, ParserContext context) {
+    private static ParserToken transformDegreeUnit(final ParserToken token,
+                                                   ParserContext context) {
         final StringParserToken stringParserToken = Cast.to(token);
-        return ColorFunctionParserToken.degreesUnitSymbol(stringParserToken.value(), token.text());
+        return ColorFunctionParserToken.degreesUnitSymbol(
+            stringParserToken.value(),
+            token.text()
+        );
     }
 
-    private static ParserToken transformNumber(final ParserToken token, ParserContext context) {
+    private static ParserToken transformNumber(final ParserToken token,
+                                               ParserContext context) {
         final DoubleParserToken doubleParserToken = Cast.to(token);
-        return ColorFunctionParserToken.number(doubleParserToken.value(), doubleParserToken.text());
+        return ColorFunctionParserToken.number(
+            doubleParserToken.value(),
+            doubleParserToken.text()
+        );
     }
 
     // hsl..............................................................................................................
