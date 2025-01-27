@@ -81,10 +81,12 @@ public final class NumberColorFunctionParserTokenTest extends NonSymbolColorFunc
         return "99";
     }
 
+    @Override //
     Double value() {
         return 99.0;
     }
 
+    @Override //
     Double differentValue() {
         return 99999.0;
     }

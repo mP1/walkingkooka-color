@@ -65,6 +65,7 @@ abstract public class HslColorComponent extends HslOrHsvColorComponent {
     /**
      * Would be setter that returns a {@link HslColorComponent} with the new value.
      */
+    @Override //
     abstract public HslColorComponent setValue(float value);
 
     /**

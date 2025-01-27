@@ -81,10 +81,12 @@ public final class NameColorFunctionParserTokenTest extends NonSymbolColorFuncti
         return "rgb";
     }
 
+    @Override //
     String value() {
         return "rgb";
     }
 
+    @Override //
     String differentValue() {
         return "different-value";
     }

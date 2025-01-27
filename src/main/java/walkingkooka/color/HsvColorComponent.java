@@ -65,6 +65,7 @@ abstract public class HsvColorComponent extends HslOrHsvColorComponent {
     /**
      * Would be setter that returns a {@link HsvColorComponent} with the new value.
      */
+    @Override //
     abstract public HsvColorComponent setValue(float value);
 
     /**
@@ -107,5 +108,5 @@ abstract public class HsvColorComponent extends HslOrHsvColorComponent {
 
     // Object...........................................................................................................
 
-    abstract boolean canBeEqual(Object other);
+    @Override abstract boolean canBeEqual(Object other);
 }

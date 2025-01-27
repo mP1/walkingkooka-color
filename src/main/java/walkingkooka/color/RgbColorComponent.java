@@ -109,6 +109,7 @@ abstract public class RgbColorComponent extends ColorComponent {
     /**
      * Returns a {@link RgbColorComponent} with the value inverted.
      */
+    @Override
     final public RgbColorComponent invert() {
         return this.replace(RgbColorComponent.mask(~this.value));
     }

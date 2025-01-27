@@ -491,6 +491,7 @@ abstract public class RgbColor extends Color {
      * <a>http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c</a>
      * </pre>
      */
+    @Override
     public final HslColor toHsl() {
         final float red = this.red.floatValue;
         final float green = this.green.floatValue;

@@ -85,6 +85,7 @@ abstract public class HslColorComponentTestCase<C extends HslColorComponent> ext
         assertEquals(expected, added.value(), 0.1f, "value");
     }
 
+    @Override
     @Test
     public final void testIsMethods() throws Exception {
         final C component = this.createHslComponent();
