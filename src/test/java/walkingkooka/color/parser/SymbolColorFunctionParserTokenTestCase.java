@@ -28,8 +28,13 @@ public abstract class SymbolColorFunctionParserTokenTestCase<T extends SymbolCol
     }
 
     @Test
-    public final void testDifferentValue() {
-        this.checkNotEquals(this.createToken(this.text(), "different-value"));
+    public final void testEqualsDifferentValue() {
+        this.checkNotEquals(
+            this.createToken(
+                this.text(),
+                "different-value"
+            )
+        );
     }
 
     @Override
