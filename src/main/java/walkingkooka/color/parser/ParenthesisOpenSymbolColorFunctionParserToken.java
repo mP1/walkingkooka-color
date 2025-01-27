@@ -17,15 +17,15 @@
 
 package walkingkooka.color.parser;
 
-public final class ColorFunctionParenthesisOpenSymbolParserToken extends ColorFunctionSymbolParserToken<String> {
+public final class ParenthesisOpenSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-    static ColorFunctionParenthesisOpenSymbolParserToken with(final String value, final String text) {
+    static ParenthesisOpenSymbolColorFunctionParserToken with(final String value, final String text) {
         check(value, text);
 
-        return new ColorFunctionParenthesisOpenSymbolParserToken(value, text);
+        return new ParenthesisOpenSymbolColorFunctionParserToken(value, text);
     }
 
-    private ColorFunctionParenthesisOpenSymbolParserToken(final String value, final String text) {
+    private ParenthesisOpenSymbolColorFunctionParserToken(final String value, final String text) {
         super(value, text);
     }
 
@@ -38,6 +38,6 @@ public final class ColorFunctionParenthesisOpenSymbolParserToken extends ColorFu
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionParenthesisOpenSymbolParserToken;
+        return other instanceof ParenthesisOpenSymbolColorFunctionParserToken;
     }
 }

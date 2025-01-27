@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionSeparatorSymbolParserTokenTest extends ColorFunctionSymbolParserTokenTestCase<ColorFunctionSeparatorSymbolParserToken> {
+public final class WhitespaceColorFunctionParserTokenTest extends SymbolColorFunctionParserTokenTestCase<WhitespaceColorFunctionParserToken> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionSeparatorSymbolParserToken token = this.createToken();
+        final WhitespaceColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionSeparatorSymbolParserTokenTest extends ColorFunc
             }
 
             @Override
-            protected void visit(final ColorFunctionSeparatorSymbolParserToken t) {
+            protected void visit(final WhitespaceColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,17 +67,17 @@ public final class ColorFunctionSeparatorSymbolParserTokenTest extends ColorFunc
     }
 
     @Override
-    public Class<ColorFunctionSeparatorSymbolParserToken> type() {
-        return ColorFunctionSeparatorSymbolParserToken.class;
+    public Class<WhitespaceColorFunctionParserToken> type() {
+        return WhitespaceColorFunctionParserToken.class;
     }
 
     @Override
-    public ColorFunctionSeparatorSymbolParserToken createToken(final String text, final String value) {
-        return ColorFunctionSeparatorSymbolParserToken.with(text, value);
+    public WhitespaceColorFunctionParserToken createToken(final String text, final String value) {
+        return WhitespaceColorFunctionParserToken.with(text, value);
     }
 
     @Override
     public String text() {
-        return ",";
+        return " ";
     }
 }

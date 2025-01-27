@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionParenthesisOpenSymbolParserTokenTest extends ColorFunctionSymbolParserTokenTestCase<ColorFunctionParenthesisOpenSymbolParserToken> {
+public final class ParenthesisOpenSymbolColorFunctionParserTokenTest extends SymbolColorFunctionParserTokenTestCase<ParenthesisOpenSymbolColorFunctionParserToken> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionParenthesisOpenSymbolParserToken token = this.createToken();
+        final ParenthesisOpenSymbolColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionParenthesisOpenSymbolParserTokenTest extends Col
             }
 
             @Override
-            protected void visit(final ColorFunctionParenthesisOpenSymbolParserToken t) {
+            protected void visit(final ParenthesisOpenSymbolColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,13 +67,13 @@ public final class ColorFunctionParenthesisOpenSymbolParserTokenTest extends Col
     }
 
     @Override
-    public Class<ColorFunctionParenthesisOpenSymbolParserToken> type() {
-        return ColorFunctionParenthesisOpenSymbolParserToken.class;
+    public Class<ParenthesisOpenSymbolColorFunctionParserToken> type() {
+        return ParenthesisOpenSymbolColorFunctionParserToken.class;
     }
 
     @Override
-    public ColorFunctionParenthesisOpenSymbolParserToken createToken(final String text, final String value) {
-        return ColorFunctionParenthesisOpenSymbolParserToken.with(text, value);
+    public ParenthesisOpenSymbolColorFunctionParserToken createToken(final String text, final String value) {
+        return ParenthesisOpenSymbolColorFunctionParserToken.with(text, value);
     }
 
     @Override

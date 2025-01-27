@@ -17,22 +17,19 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.text.CharSequences;
+public final class DegreesUnitSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbolParserToken<String> {
+    static DegreesUnitSymbolColorFunctionParserToken with(final String value, final String text) {
+        check(value, text);
 
-    static ColorFunctionWhitespaceParserToken with(final String value, final String text) {
-        return new ColorFunctionWhitespaceParserToken(
-            checkValue(value),
-            CharSequences.failIfNullOrEmpty(text, "text")
-        );
+        return new DegreesUnitSymbolColorFunctionParserToken(value, text);
     }
 
-    private ColorFunctionWhitespaceParserToken(final String value, final String text) {
+    private DegreesUnitSymbolColorFunctionParserToken(final String value, final String text) {
         super(value, text);
     }
 
-    // ColorFunctionParserTokenVisitor..................................................................................
+    // Visitor.........................................................................................................
 
     @Override
     void accept(final ColorFunctionParserTokenVisitor visitor) {
@@ -41,6 +38,6 @@ public final class ColorFunctionWhitespaceParserToken extends ColorFunctionSymbo
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionWhitespaceParserToken;
+        return other instanceof DegreesUnitSymbolColorFunctionParserToken;
     }
 }

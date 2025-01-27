@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionNumberParserTokenTest extends ColorFunctionNonSymbolParserTokenTestCase<ColorFunctionNumberParserToken, Double> {
+public final class ParenthesisCloseSymbolColorFunctionParserTokenTest extends SymbolColorFunctionParserTokenTestCase<ParenthesisCloseSymbolColorFunctionParserToken> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionNumberParserToken token = this.createToken();
+        final ParenthesisCloseSymbolColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionNumberParserTokenTest extends ColorFunctionNonSy
             }
 
             @Override
-            protected void visit(final ColorFunctionNumberParserToken t) {
+            protected void visit(final ParenthesisCloseSymbolColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,25 +67,17 @@ public final class ColorFunctionNumberParserTokenTest extends ColorFunctionNonSy
     }
 
     @Override
-    ColorFunctionNumberParserToken createToken(final String text, final Double value) {
-        return ColorFunctionNumberParserToken.with(value, text);
+    public Class<ParenthesisCloseSymbolColorFunctionParserToken> type() {
+        return ParenthesisCloseSymbolColorFunctionParserToken.class;
     }
 
     @Override
-    public Class<ColorFunctionNumberParserToken> type() {
-        return ColorFunctionNumberParserToken.class;
+    public ParenthesisCloseSymbolColorFunctionParserToken createToken(final String text, final String value) {
+        return ParenthesisCloseSymbolColorFunctionParserToken.with(text, value);
     }
 
     @Override
     public String text() {
-        return "99";
-    }
-
-    Double value() {
-        return 99.0;
-    }
-
-    Double differentValue() {
-        return 99999.0;
+        return ")";
     }
 }

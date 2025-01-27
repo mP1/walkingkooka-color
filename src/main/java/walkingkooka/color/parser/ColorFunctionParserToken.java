@@ -44,66 +44,66 @@ import java.util.List;
 public abstract class ColorFunctionParserToken implements ParserToken {
 
     /**
-     * {@see ColorFunctionDegreesUnitSymbolParserToken}
+     * {@see DegreesUnitSymbolColorFunctionParserToken}
      */
-    public static ColorFunctionDegreesUnitSymbolParserToken degreesUnitSymbol(final String value, final String text) {
-        return ColorFunctionDegreesUnitSymbolParserToken.with(value, text);
+    public static DegreesUnitSymbolColorFunctionParserToken degreesUnitSymbol(final String value, final String text) {
+        return DegreesUnitSymbolColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionFunctionParserToken}
+     * {@see FunctionColorFunctionParserToken}
      */
-    public static ColorFunctionFunctionParserToken function(final List<ParserToken> value, final String text) {
-        return ColorFunctionFunctionParserToken.with(value, text);
+    public static FunctionColorFunctionParserToken function(final List<ParserToken> value, final String text) {
+        return FunctionColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionFunctionNameParserToken}
+     * {@see NameColorFunctionParserToken}
      */
-    public static ColorFunctionFunctionNameParserToken functionName(final String value, final String text) {
-        return ColorFunctionFunctionNameParserToken.with(value, text);
+    public static NameColorFunctionParserToken name(final String value, final String text) {
+        return NameColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionNumberParserToken}
+     * {@see NumberColorFunctionParserToken}
      */
-    public static ColorFunctionNumberParserToken number(final Double value, final String text) {
-        return ColorFunctionNumberParserToken.with(value, text);
+    public static NumberColorFunctionParserToken number(final Double value, final String text) {
+        return NumberColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionParenthesisCloseSymbolParserToken}
+     * {@see ParenthesisCloseSymbolColorFunctionParserToken}
      */
-    public static ColorFunctionParenthesisCloseSymbolParserToken parenthesisCloseSymbol(final String value, final String text) {
-        return ColorFunctionParenthesisCloseSymbolParserToken.with(value, text);
+    public static ParenthesisCloseSymbolColorFunctionParserToken parenthesisCloseSymbol(final String value, final String text) {
+        return ParenthesisCloseSymbolColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionParenthesisOpenSymbolParserToken}
+     * {@see ParenthesisOpenSymbolColorFunctionParserToken}
      */
-    public static ColorFunctionParenthesisOpenSymbolParserToken parenthesisOpenSymbol(final String value, final String text) {
-        return ColorFunctionParenthesisOpenSymbolParserToken.with(value, text);
+    public static ParenthesisOpenSymbolColorFunctionParserToken parenthesisOpenSymbol(final String value, final String text) {
+        return ParenthesisOpenSymbolColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionPercentageParserToken}
+     * {@see PercentageColorFunctionParserToken}
      */
-    public static ColorFunctionPercentageParserToken percentage(final Double value, final String text) {
-        return ColorFunctionPercentageParserToken.with(value, text);
+    public static PercentageColorFunctionParserToken percentage(final Double value, final String text) {
+        return PercentageColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionSeparatorSymbolParserToken}
+     * {@see SeparatorSymbolColorFunctionParserToken}
      */
-    public static ColorFunctionSeparatorSymbolParserToken separatorSymbol(final String value, final String text) {
-        return ColorFunctionSeparatorSymbolParserToken.with(value, text);
+    public static SeparatorSymbolColorFunctionParserToken separatorSymbol(final String value, final String text) {
+        return SeparatorSymbolColorFunctionParserToken.with(value, text);
     }
 
     /**
-     * {@see ColorFunctionWhitespaceParserToken}
+     * {@see WhitespaceColorFunctionParserToken}
      */
-    public static ColorFunctionWhitespaceParserToken whitespace(final String value, final String text) {
-        return ColorFunctionWhitespaceParserToken.with(value, text);
+    public static WhitespaceColorFunctionParserToken whitespace(final String value, final String text) {
+        return WhitespaceColorFunctionParserToken.with(value, text);
     }
 
     static String checkText(final String text) {
@@ -132,19 +132,19 @@ public abstract class ColorFunctionParserToken implements ParserToken {
     // isXXX............................................................................................................
 
     public final boolean isDegreesUnitSymbol() {
-        return this instanceof ColorFunctionDegreesUnitSymbolParserToken;
+        return this instanceof DegreesUnitSymbolColorFunctionParserToken;
     }
 
     public final boolean isFunction() {
-        return this instanceof ColorFunctionFunctionParserToken;
-    }
-
-    public final boolean isFunctionName() {
-        return this instanceof ColorFunctionFunctionNameParserToken;
+        return this instanceof FunctionColorFunctionParserToken;
     }
 
     public final boolean isLeaf() {
-        return this instanceof ColorFunctionLeafParserToken;
+        return this instanceof LeafColorFunctionParserToken;
+    }
+
+    public final boolean isName() {
+        return this instanceof NameColorFunctionParserToken;
     }
 
     @Override
@@ -153,7 +153,7 @@ public abstract class ColorFunctionParserToken implements ParserToken {
     }
 
     public final boolean isNumber() {
-        return this instanceof ColorFunctionNumberParserToken;
+        return this instanceof NumberColorFunctionParserToken;
     }
 
     @Override
@@ -162,29 +162,29 @@ public abstract class ColorFunctionParserToken implements ParserToken {
     }
 
     public final boolean isParenthesisCloseSymbol() {
-        return this instanceof ColorFunctionParenthesisCloseSymbolParserToken;
+        return this instanceof ParenthesisCloseSymbolColorFunctionParserToken;
     }
 
     public final boolean isParenthesisOpenSymbol() {
-        return this instanceof ColorFunctionParenthesisOpenSymbolParserToken;
+        return this instanceof ParenthesisOpenSymbolColorFunctionParserToken;
     }
 
     public final boolean isPercentage() {
-        return this instanceof ColorFunctionPercentageParserToken;
+        return this instanceof PercentageColorFunctionParserToken;
     }
 
     public final boolean isSeparatorSymbol() {
-        return this instanceof ColorFunctionSeparatorSymbolParserToken;
+        return this instanceof SeparatorSymbolColorFunctionParserToken;
     }
 
     @Override
     public final boolean isSymbol() {
-        return this instanceof ColorFunctionSymbolParserToken;
+        return this instanceof SymbolColorFunctionParserToken;
     }
 
     @Override
     public final boolean isWhitespace() {
-        return this instanceof ColorFunctionWhitespaceParserToken;
+        return this instanceof WhitespaceColorFunctionParserToken;
     }
 
     // ColorFunctionParserTokenVisitor..................................................................................

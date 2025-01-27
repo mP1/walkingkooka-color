@@ -27,7 +27,7 @@ import java.util.Objects;
 /**
  * Base class for a rgb function leaf {@link ParserToken}.
  */
-abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken implements Value<V> {
+abstract class LeafColorFunctionParserToken<V> extends ColorFunctionParserToken implements Value<V> {
 
     static String checkValue(final String text) {
         return CharSequences.failIfNullOrEmpty(text, "text");
@@ -40,7 +40,7 @@ abstract class ColorFunctionLeafParserToken<V> extends ColorFunctionParserToken 
     /**
      * Package private ctor to limit subclassing.
      */
-    ColorFunctionLeafParserToken(final V value, final String text) {
+    LeafColorFunctionParserToken(final V value, final String text) {
         super(text);
         this.value = value;
     }

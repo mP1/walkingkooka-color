@@ -53,7 +53,7 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
-    protected void visit(final ColorFunctionFunctionNameParserToken token) {
+    protected void visit(final NameColorFunctionParserToken token) {
         this.functionName = token;
 
         ColorFunctionTransformer transformer;
@@ -77,16 +77,16 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
         this.transformer = transformer;
     }
 
-    private ColorFunctionFunctionNameParserToken functionName;
+    private NameColorFunctionParserToken functionName;
     private ColorFunctionTransformer transformer;
 
     @Override
-    protected void visit(final ColorFunctionNumberParserToken token) {
+    protected void visit(final NumberColorFunctionParserToken token) {
         this.values.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionPercentageParserToken token) {
+    protected void visit(final PercentageColorFunctionParserToken token) {
         this.values.add(token);
     }
 
@@ -95,7 +95,7 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-            .label("functionName")
+            .label("name")
             .value(this.functionName)
             .label("transformer")
             .value(this.transformer)

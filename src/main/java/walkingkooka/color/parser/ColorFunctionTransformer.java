@@ -81,7 +81,7 @@ enum ColorFunctionTransformer {
     /**
      * Returns the {@link ColorFunctionTransformer} by name, failing if the name is unknown.
      */
-    static ColorFunctionTransformer functionName(final ColorFunctionFunctionNameParserToken functionName) {
+    static ColorFunctionTransformer functionName(final NameColorFunctionParserToken functionName) {
         ColorFunctionTransformer transformer;
 
         switch (functionName.value()) {

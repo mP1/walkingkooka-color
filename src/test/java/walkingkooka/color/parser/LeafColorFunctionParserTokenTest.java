@@ -17,22 +17,12 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.text.cursor.parser.ParserToken;
+import walkingkooka.Cast;
 
-/**
- * Base class for a non symbol {@link ParserToken}.
- */
-abstract class ColorFunctionNonSymbolParserToken<V> extends ColorFunctionLeafParserToken<V> {
+public final class LeafColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase2<LeafColorFunctionParserToken<?>> {
 
-    static void check(final Object value, final String text) {
-        checkValue(value);
-        checkText(text);
-    }
-
-    /**
-     * Package private ctor to limit subclassing.
-     */
-    ColorFunctionNonSymbolParserToken(final V value, final String text) {
-        super(value, text);
+    @Override
+    public Class<LeafColorFunctionParserToken<?>> type() {
+        return Cast.to(LeafColorFunctionParserToken.class);
     }
 }

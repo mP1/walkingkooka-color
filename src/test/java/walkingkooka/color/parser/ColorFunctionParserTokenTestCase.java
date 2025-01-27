@@ -17,16 +17,23 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.text.cursor.parser.ParserToken;
+import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.TypeNameTesting;
 
-public abstract class ColorFunctionParserTokenTestCase<T extends ColorFunctionParserToken> extends ColorFunctionTestCase<T> {
+public abstract class ColorFunctionParserTokenTestCase<T extends ColorFunctionParserToken> implements ClassTesting2<T>,
+    TypeNameTesting<T> {
 
     ColorFunctionParserTokenTestCase() {
         super();
     }
 
     @Override
+    public String typeNamePrefix() {
+        return "";
+    }
+
+    @Override
     public String typeNameSuffix() {
-        return ParserToken.class.getSimpleName();
+        return ColorFunctionParserToken.class.getSimpleName();
     }
 }

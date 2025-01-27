@@ -22,7 +22,7 @@ import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserToken;
 
 /**
- * Accepts (@link ParserToken) tokens and replaces it with a {@link ColorFunctionPercentageParserToken}.
+ * Accepts (@link ParserToken) tokens and replaces it with a {@link PercentageColorFunctionParserToken}.
  */
 final class ColorParsersPercentageColorFunctionParserTokenVisitor extends ColorFunctionParserTokenVisitor {
 
@@ -37,7 +37,7 @@ final class ColorParsersPercentageColorFunctionParserTokenVisitor extends ColorF
     }
 
     @Override
-    protected void visit(final ColorFunctionNumberParserToken token) {
+    protected void visit(final NumberColorFunctionParserToken token) {
         this.value = token.value();
     }
 

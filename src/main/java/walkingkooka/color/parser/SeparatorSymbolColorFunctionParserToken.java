@@ -17,15 +17,15 @@
 
 package walkingkooka.color.parser;
 
-public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunctionSymbolParserToken<String> {
+public final class SeparatorSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-    static ColorFunctionSeparatorSymbolParserToken with(final String value, final String text) {
+    static SeparatorSymbolColorFunctionParserToken with(final String value, final String text) {
         check(value, text);
 
-        return new ColorFunctionSeparatorSymbolParserToken(value, text);
+        return new SeparatorSymbolColorFunctionParserToken(value, text);
     }
 
-    private ColorFunctionSeparatorSymbolParserToken(final String value, final String text) {
+    private SeparatorSymbolColorFunctionParserToken(final String value, final String text) {
         super(value, text);
     }
 
@@ -38,6 +38,6 @@ public final class ColorFunctionSeparatorSymbolParserToken extends ColorFunction
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionSeparatorSymbolParserToken;
+        return other instanceof SeparatorSymbolColorFunctionParserToken;
     }
 }

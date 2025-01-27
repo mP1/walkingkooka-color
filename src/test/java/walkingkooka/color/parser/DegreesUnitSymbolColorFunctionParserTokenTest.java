@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionDegreesUnitSymbolParserTokenTest extends ColorFunctionSymbolParserTokenTestCase<ColorFunctionDegreesUnitSymbolParserToken> {
+public final class DegreesUnitSymbolColorFunctionParserTokenTest extends SymbolColorFunctionParserTokenTestCase<DegreesUnitSymbolColorFunctionParserToken> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionDegreesUnitSymbolParserToken token = this.createToken();
+        final DegreesUnitSymbolColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionDegreesUnitSymbolParserTokenTest extends ColorFu
             }
 
             @Override
-            protected void visit(final ColorFunctionDegreesUnitSymbolParserToken t) {
+            protected void visit(final DegreesUnitSymbolColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,13 +67,13 @@ public final class ColorFunctionDegreesUnitSymbolParserTokenTest extends ColorFu
     }
 
     @Override
-    public Class<ColorFunctionDegreesUnitSymbolParserToken> type() {
-        return ColorFunctionDegreesUnitSymbolParserToken.class;
+    public Class<DegreesUnitSymbolColorFunctionParserToken> type() {
+        return DegreesUnitSymbolColorFunctionParserToken.class;
     }
 
     @Override
-    public ColorFunctionDegreesUnitSymbolParserToken createToken(final String text, final String value) {
-        return ColorFunctionDegreesUnitSymbolParserToken.with(text, value);
+    public DegreesUnitSymbolColorFunctionParserToken createToken(final String text, final String value) {
+        return DegreesUnitSymbolColorFunctionParserToken.with(text, value);
     }
 
     @Override

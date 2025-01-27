@@ -17,19 +17,19 @@
 
 package walkingkooka.color.parser;
 
-public final class ColorFunctionDegreesUnitSymbolParserToken extends ColorFunctionSymbolParserToken<String> {
+public final class ParenthesisCloseSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-    static ColorFunctionDegreesUnitSymbolParserToken with(final String value, final String text) {
+    static ParenthesisCloseSymbolColorFunctionParserToken with(final String value, final String text) {
         check(value, text);
 
-        return new ColorFunctionDegreesUnitSymbolParserToken(value, text);
+        return new ParenthesisCloseSymbolColorFunctionParserToken(value, text);
     }
 
-    private ColorFunctionDegreesUnitSymbolParserToken(final String value, final String text) {
+    private ParenthesisCloseSymbolColorFunctionParserToken(final String value, final String text) {
         super(value, text);
     }
 
-    // Visitor.........................................................................................................
+    // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
     void accept(final ColorFunctionParserTokenVisitor visitor) {
@@ -38,6 +38,6 @@ public final class ColorFunctionDegreesUnitSymbolParserToken extends ColorFuncti
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionDegreesUnitSymbolParserToken;
+        return other instanceof ParenthesisCloseSymbolColorFunctionParserToken;
     }
 }
