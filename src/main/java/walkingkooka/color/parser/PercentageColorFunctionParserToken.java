@@ -33,15 +33,15 @@ import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
 
-public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbolParserToken<Double> {
+public final class PercentageColorFunctionParserToken extends NonSymbolColorFunctionParserToken<Double> {
 
-    static ColorFunctionNumberParserToken with(final Double value, final String text) {
+    static PercentageColorFunctionParserToken with(final Double value, final String text) {
         check(value, text);
 
-        return new ColorFunctionNumberParserToken(value, text);
+        return new PercentageColorFunctionParserToken(value, text);
     }
 
-    private ColorFunctionNumberParserToken(final Double value, final String text) {
+    private PercentageColorFunctionParserToken(final Double value, final String text) {
         super(value, text);
     }
 
@@ -56,7 +56,7 @@ public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbol
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionNumberParserToken;
+        return other instanceof PercentageColorFunctionParserToken;
     }
 
     // ColorFunctionTransformer.........................................................................................
@@ -82,12 +82,12 @@ public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbol
     }
 
     private byte byteValue() {
-        return this.value().byteValue();
+        return (byte) Math.round(this.value() * RgbColorComponent.MAX_VALUE / 100);
     }
 
     @Override
     HueHslColorComponent hslHue() {
-        return HslColorComponent.hue(this.floatValue());
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -107,7 +107,7 @@ public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbol
 
     @Override
     HueHsvColorComponent hsvHue() {
-        return HsvColorComponent.hue(this.floatValue());
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -126,6 +126,6 @@ public final class ColorFunctionNumberParserToken extends ColorFunctionNonSymbol
     }
 
     private float floatValue() {
-        return this.value().floatValue();
+        return this.value().floatValue() / 100;
     }
 }

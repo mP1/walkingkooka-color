@@ -80,26 +80,26 @@ public final class ColorParsersColorFunctionFunctionParserTokenColorFunctionPars
     }
 
     private ColorFunctionParserToken functionName(final String name) {
-        return ColorFunctionParserToken.functionName(name, name);
+        return ColorFunctionParserToken.name(name, name);
     }
 
-    private ColorFunctionNumberParserToken number(final double value) {
+    private NumberColorFunctionParserToken number(final double value) {
         return ColorFunctionParserToken.number(value, String.valueOf(value));
     }
 
-    private ColorFunctionParenthesisCloseSymbolParserToken parenthesisCloseSymbol() {
+    private ParenthesisCloseSymbolColorFunctionParserToken parenthesisCloseSymbol() {
         return ColorFunctionParserToken.parenthesisCloseSymbol(")", ")");
     }
 
-    private ColorFunctionParenthesisOpenSymbolParserToken parenthesisOpenSymbol() {
+    private ParenthesisOpenSymbolColorFunctionParserToken parenthesisOpenSymbol() {
         return ColorFunctionParserToken.parenthesisOpenSymbol("(", "(");
     }
 
-    private ColorFunctionSeparatorSymbolParserToken separator() {
+    private SeparatorSymbolColorFunctionParserToken separator() {
         return ColorFunctionParserToken.separatorSymbol(",", ",");
     }
 
-    private ColorFunctionWhitespaceParserToken whitespace() {
+    private WhitespaceColorFunctionParserToken whitespace() {
         return ColorFunctionParserToken.whitespace(" ", " ");
     }
 

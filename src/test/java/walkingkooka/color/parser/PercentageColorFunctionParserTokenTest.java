@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionWhitespaceParserTokenTest extends ColorFunctionSymbolParserTokenTestCase<ColorFunctionWhitespaceParserToken> {
+public final class PercentageColorFunctionParserTokenTest extends NonSymbolColorFunctionParserTokenTestCase<PercentageColorFunctionParserToken, Double> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionWhitespaceParserToken token = this.createToken();
+        final PercentageColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionWhitespaceParserTokenTest extends ColorFunctionS
             }
 
             @Override
-            protected void visit(final ColorFunctionWhitespaceParserToken t) {
+            protected void visit(final PercentageColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,17 +67,25 @@ public final class ColorFunctionWhitespaceParserTokenTest extends ColorFunctionS
     }
 
     @Override
-    public Class<ColorFunctionWhitespaceParserToken> type() {
-        return ColorFunctionWhitespaceParserToken.class;
+    PercentageColorFunctionParserToken createToken(final String text, final Double value) {
+        return PercentageColorFunctionParserToken.with(value, text);
     }
 
     @Override
-    public ColorFunctionWhitespaceParserToken createToken(final String text, final String value) {
-        return ColorFunctionWhitespaceParserToken.with(text, value);
+    public Class<PercentageColorFunctionParserToken> type() {
+        return PercentageColorFunctionParserToken.class;
     }
 
     @Override
     public String text() {
-        return " ";
+        return "99%";
+    }
+
+    Double value() {
+        return 999.0;
+    }
+
+    Double differentValue() {
+        return 99999.0;
     }
 }

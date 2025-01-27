@@ -24,7 +24,7 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionParserTokenTestCase3<ColorFunctionFunctionParserToken> {
+public final class FunctionColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase3<FunctionColorFunctionParserToken> {
 
     @Override
     public void testEmptyTextFails() {
@@ -33,7 +33,7 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionFunctionParserToken token = this.createToken();
+        final FunctionColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -59,45 +59,45 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
             }
 
             @Override
-            protected Visiting startVisit(final ColorFunctionFunctionParserToken t) {
+            protected Visiting startVisit(final FunctionColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
                 return Visiting.CONTINUE;
             }
 
             @Override
-            protected void endVisit(final ColorFunctionFunctionParserToken t) {
+            protected void endVisit(final FunctionColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("6");
             }
 
             @Override
-            protected void visit(final ColorFunctionFunctionNameParserToken t) {
+            protected void visit(final NameColorFunctionParserToken t) {
                 b.append("7");
             }
 
             @Override
-            protected void visit(final ColorFunctionNumberParserToken t) {
+            protected void visit(final NumberColorFunctionParserToken t) {
                 b.append("8");
             }
 
             @Override
-            protected void visit(final ColorFunctionParenthesisCloseSymbolParserToken t) {
+            protected void visit(final ParenthesisCloseSymbolColorFunctionParserToken t) {
                 b.append("9");
             }
 
             @Override
-            protected void visit(final ColorFunctionParenthesisOpenSymbolParserToken t) {
+            protected void visit(final ParenthesisOpenSymbolColorFunctionParserToken t) {
                 b.append("A");
             }
 
             @Override
-            protected void visit(final ColorFunctionSeparatorSymbolParserToken t) {
+            protected void visit(final SeparatorSymbolColorFunctionParserToken t) {
                 b.append("B");
             }
 
             @Override
-            protected void visit(final ColorFunctionWhitespaceParserToken t) {
+            protected void visit(final WhitespaceColorFunctionParserToken t) {
                 b.append("C");
             }
         }.accept(token);
@@ -106,7 +106,7 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     }
 
     @Override
-    public ColorFunctionFunctionParserToken createToken(final String text) {
+    public FunctionColorFunctionParserToken createToken(final String text) {
         return this.createToken(text,
             functionName("rgb"),
             parenthesisOpen(),
@@ -124,7 +124,7 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     }
 
     @Override
-    public ColorFunctionFunctionParserToken createDifferentToken() {
+    public FunctionColorFunctionParserToken createDifferentToken() {
         return this.createToken("rgba(9,8,7)",
             functionName("rgba"),
             parenthesisOpen(),
@@ -136,12 +136,12 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
             parenthesisClose());
     }
 
-    private ColorFunctionFunctionParserToken createToken(final String text, final ColorFunctionParserToken... tokens) {
-        return ColorFunctionFunctionParserToken.with(Lists.of(tokens), text);
+    private FunctionColorFunctionParserToken createToken(final String text, final ColorFunctionParserToken... tokens) {
+        return FunctionColorFunctionParserToken.with(Lists.of(tokens), text);
     }
 
     private ColorFunctionParserToken functionName(final String name) {
-        return ColorFunctionParserToken.functionName(name, name);
+        return ColorFunctionParserToken.name(name, name);
     }
 
     private ColorFunctionParserToken number(final double value) {
@@ -161,7 +161,7 @@ public final class ColorFunctionFunctionParserTokenTest extends ColorFunctionPar
     }
 
     @Override
-    public Class<ColorFunctionFunctionParserToken> type() {
-        return ColorFunctionFunctionParserToken.class;
+    public Class<FunctionColorFunctionParserToken> type() {
+        return FunctionColorFunctionParserToken.class;
     }
 }

@@ -56,51 +56,51 @@ public class FakeColorFunctionParserTokenVisitor extends ColorFunctionParserToke
     }
 
     @Override
-    protected Visiting startVisit(final ColorFunctionFunctionParserToken token) {
+    protected Visiting startVisit(final FunctionColorFunctionParserToken token) {
         return Visiting.CONTINUE;
     }
 
     @Override
-    protected void endVisit(final ColorFunctionFunctionParserToken token) {
+    protected void endVisit(final FunctionColorFunctionParserToken token) {
     }
 
     @Override
-    protected void visit(final ColorFunctionDegreesUnitSymbolParserToken token) {
+    protected void visit(final DegreesUnitSymbolColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionFunctionNameParserToken token) {
+    protected void visit(final NameColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionNumberParserToken token) {
+    protected void visit(final NumberColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionParenthesisCloseSymbolParserToken token) {
+    protected void visit(final ParenthesisCloseSymbolColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionParenthesisOpenSymbolParserToken token) {
+    protected void visit(final ParenthesisOpenSymbolColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionPercentageParserToken token) {
+    protected void visit(final PercentageColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionSeparatorSymbolParserToken token) {
+    protected void visit(final SeparatorSymbolColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void visit(final ColorFunctionWhitespaceParserToken token) {
+    protected void visit(final WhitespaceColorFunctionParserToken token) {
         throw new UnsupportedOperationException();
     }
 

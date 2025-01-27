@@ -18,33 +18,25 @@
 package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.reflect.IsMethodTesting;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
-public abstract class ColorFunctionNonSymbolParserTokenTestCase<T extends ColorFunctionNonSymbolParserToken<V>, V> extends ColorFunctionLeafParserTokenTestCase<T>
-    implements ParserTokenTesting<T> {
+public abstract class LeafColorFunctionParserTokenTestCase<T extends LeafColorFunctionParserToken<?>> extends ColorFunctionParserTokenTestCase3<T>
+    implements ParserTokenTesting<T>,
+    IsMethodTesting<T> {
 
-    ColorFunctionNonSymbolParserTokenTestCase() {
+    LeafColorFunctionParserTokenTestCase() {
         super();
     }
 
     @Test
-    public final void testIsSymbol() {
-        this.checkEquals(false, this.createToken().isSymbol());
-    }
-
-    @Test
-    public final void testDifferentValue() {
-        this.checkNotEquals(this.createToken(this.text(), this.differentValue()));
+    public final void testAccept2() {
+        new ColorFunctionParserTokenVisitor() {
+        }.accept(this.createToken());
     }
 
     @Override
-    public final T createToken(final String text) {
-        return this.createToken(text, this.value());
+    public final T createDifferentToken() {
+        return this.createToken("different");
     }
-
-    abstract T createToken(final String text, final V value);
-
-    abstract V value();
-
-    abstract V differentValue();
 }

@@ -757,7 +757,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
             parser.orReport(ParserReporters.basic())
                 .parse(TextCursors.charSequence(text),
                     this.parserContext())
-                .map(t -> ((ColorFunctionFunctionParserToken) t).toColorHslOrHsv())
+                .map(t -> ((FunctionColorFunctionParserToken) t).toColorHslOrHsv())
                 .orElseThrow(AssertionError::new),
             () -> "parse " + CharSequences.quoteAndEscape(text)
         );

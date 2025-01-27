@@ -33,15 +33,15 @@ import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
 
-public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSymbolParserToken<Double> {
+public final class NumberColorFunctionParserToken extends NonSymbolColorFunctionParserToken<Double> {
 
-    static ColorFunctionPercentageParserToken with(final Double value, final String text) {
+    static NumberColorFunctionParserToken with(final Double value, final String text) {
         check(value, text);
 
-        return new ColorFunctionPercentageParserToken(value, text);
+        return new NumberColorFunctionParserToken(value, text);
     }
 
-    private ColorFunctionPercentageParserToken(final Double value, final String text) {
+    private NumberColorFunctionParserToken(final Double value, final String text) {
         super(value, text);
     }
 
@@ -56,7 +56,7 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionPercentageParserToken;
+        return other instanceof NumberColorFunctionParserToken;
     }
 
     // ColorFunctionTransformer.........................................................................................
@@ -82,12 +82,12 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
     }
 
     private byte byteValue() {
-        return (byte) Math.round(this.value() * RgbColorComponent.MAX_VALUE / 100);
+        return this.value().byteValue();
     }
 
     @Override
     HueHslColorComponent hslHue() {
-        throw new UnsupportedOperationException();
+        return HslColorComponent.hue(this.floatValue());
     }
 
     @Override
@@ -107,7 +107,7 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
 
     @Override
     HueHsvColorComponent hsvHue() {
-        throw new UnsupportedOperationException();
+        return HsvColorComponent.hue(this.floatValue());
     }
 
     @Override
@@ -126,6 +126,6 @@ public final class ColorFunctionPercentageParserToken extends ColorFunctionNonSy
     }
 
     private float floatValue() {
-        return this.value().floatValue() / 100;
+        return this.value().floatValue();
     }
 }

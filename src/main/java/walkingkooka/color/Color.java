@@ -20,8 +20,8 @@ package walkingkooka.color;
 import walkingkooka.Cast;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.UsesToStringBuilder;
-import walkingkooka.color.parser.ColorFunctionFunctionParserToken;
 import walkingkooka.color.parser.ColorParsers;
+import walkingkooka.color.parser.FunctionColorFunctionParserToken;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.text.CharSequences;
@@ -151,7 +151,7 @@ public abstract class Color implements HasText,
         return parser.parseText(
                 text,
                 PARSER_CONTEXT
-            ).cast(ColorFunctionFunctionParserToken.class)
+            ).cast(FunctionColorFunctionParserToken.class)
             .toColorHslOrHsv();
     }
 

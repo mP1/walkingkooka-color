@@ -17,12 +17,24 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.Cast;
+import org.junit.jupiter.api.Test;
+import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
-public final class ColorFunctionLeafParserTokenTest extends ColorFunctionParserTokenTestCase2<ColorFunctionLeafParserToken<?>> {
+public abstract class SymbolColorFunctionParserTokenTestCase<T extends SymbolColorFunctionParserToken<?>> extends LeafColorFunctionParserTokenTestCase<T>
+    implements ParserTokenTesting<T> {
 
-    @Override
-    public Class<ColorFunctionLeafParserToken<?>> type() {
-        return Cast.to(ColorFunctionLeafParserToken.class);
+    SymbolColorFunctionParserTokenTestCase() {
+        super();
     }
+
+    @Test
+    public final void testDifferentValue() {
+        this.checkNotEquals(this.createToken(this.text(), "different-value"));
+    }
+
+    public final T createToken(final String text) {
+        return this.createToken(text, text);
+    }
+
+    abstract T createToken(final String text, final String value);
 }

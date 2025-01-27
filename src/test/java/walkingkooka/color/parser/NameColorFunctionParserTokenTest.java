@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionParenthesisCloseSymbolParserTokenTest extends ColorFunctionSymbolParserTokenTestCase<ColorFunctionParenthesisCloseSymbolParserToken> {
+public final class NameColorFunctionParserTokenTest extends NonSymbolColorFunctionParserTokenTestCase<NameColorFunctionParserToken, String> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionParenthesisCloseSymbolParserToken token = this.createToken();
+        final NameColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionParenthesisCloseSymbolParserTokenTest extends Co
             }
 
             @Override
-            protected void visit(final ColorFunctionParenthesisCloseSymbolParserToken t) {
+            protected void visit(final NameColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,17 +67,25 @@ public final class ColorFunctionParenthesisCloseSymbolParserTokenTest extends Co
     }
 
     @Override
-    public Class<ColorFunctionParenthesisCloseSymbolParserToken> type() {
-        return ColorFunctionParenthesisCloseSymbolParserToken.class;
+    NameColorFunctionParserToken createToken(final String text, final String value) {
+        return NameColorFunctionParserToken.with(value, text);
     }
 
     @Override
-    public ColorFunctionParenthesisCloseSymbolParserToken createToken(final String text, final String value) {
-        return ColorFunctionParenthesisCloseSymbolParserToken.with(text, value);
+    public Class<NameColorFunctionParserToken> type() {
+        return NameColorFunctionParserToken.class;
     }
 
     @Override
     public String text() {
-        return ")";
+        return "rgb";
+    }
+
+    String value() {
+        return "rgb";
+    }
+
+    String differentValue() {
+        return "different-value";
     }
 }

@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionPercentageParserTokenTest extends ColorFunctionNonSymbolParserTokenTestCase<ColorFunctionPercentageParserToken, Double> {
+public final class SeparatorSymbolColorFunctionParserTokenTest extends SymbolColorFunctionParserTokenTestCase<SeparatorSymbolColorFunctionParserToken> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionPercentageParserToken token = this.createToken();
+        final SeparatorSymbolColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionPercentageParserTokenTest extends ColorFunctionN
             }
 
             @Override
-            protected void visit(final ColorFunctionPercentageParserToken t) {
+            protected void visit(final SeparatorSymbolColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,25 +67,17 @@ public final class ColorFunctionPercentageParserTokenTest extends ColorFunctionN
     }
 
     @Override
-    ColorFunctionPercentageParserToken createToken(final String text, final Double value) {
-        return ColorFunctionPercentageParserToken.with(value, text);
+    public Class<SeparatorSymbolColorFunctionParserToken> type() {
+        return SeparatorSymbolColorFunctionParserToken.class;
     }
 
     @Override
-    public Class<ColorFunctionPercentageParserToken> type() {
-        return ColorFunctionPercentageParserToken.class;
+    public SeparatorSymbolColorFunctionParserToken createToken(final String text, final String value) {
+        return SeparatorSymbolColorFunctionParserToken.with(text, value);
     }
 
     @Override
     public String text() {
-        return "99%";
-    }
-
-    Double value() {
-        return 999.0;
-    }
-
-    Double differentValue() {
-        return 99999.0;
+        return ",";
     }
 }

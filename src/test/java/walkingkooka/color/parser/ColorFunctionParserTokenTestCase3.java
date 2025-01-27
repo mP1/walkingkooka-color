@@ -22,7 +22,6 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.reflect.IsMethodTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticFactoryTesting;
-import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
 import java.util.function.Predicate;
@@ -40,10 +39,12 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
 
     @Test
     public final void testPublicStaticFactoryMethod() {
-        PublicStaticFactoryTesting.checkFactoryMethods(ColorFunctionParserToken.class,
-            "ColorFunction",
-            ParserToken.class.getSimpleName(),
-            this.type());
+        PublicStaticFactoryTesting.checkFactoryMethods(
+            ColorFunctionParserToken.class,
+            "",
+            ColorFunctionParserToken.class.getSimpleName(),
+            this.type()
+        );
     }
 
     @Test
@@ -66,12 +67,12 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
 
     @Override
     public final String isMethodTypeNamePrefix() {
-        return "ColorFunction";
+        return "";
     }
 
     @Override
     public final String isMethodTypeNameSuffix() {
-        return ParserToken.class.getSimpleName();
+        return ColorFunctionParserToken.class.getSimpleName();
     }
 
     @Override

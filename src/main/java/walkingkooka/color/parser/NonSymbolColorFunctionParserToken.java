@@ -17,18 +17,22 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.TypeNameTesting;
+import walkingkooka.text.cursor.parser.ParserToken;
 
-public abstract class ColorFunctionTestCase<T> implements ClassTesting2<T>,
-    TypeNameTesting<T> {
+/**
+ * Base class for a non symbol {@link ParserToken}.
+ */
+abstract class NonSymbolColorFunctionParserToken<V> extends LeafColorFunctionParserToken<V> {
 
-    ColorFunctionTestCase() {
-        super();
+    static void check(final Object value, final String text) {
+        checkValue(value);
+        checkText(text);
     }
 
-    @Override
-    public final String typeNamePrefix() {
-        return "ColorFunction";
+    /**
+     * Package private ctor to limit subclassing.
+     */
+    NonSymbolColorFunctionParserToken(final V value, final String text) {
+        super(value, text);
     }
 }

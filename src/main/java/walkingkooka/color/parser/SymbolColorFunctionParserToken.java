@@ -30,30 +30,21 @@ import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
 
-public final class ColorFunctionFunctionNameParserToken extends ColorFunctionNonSymbolParserToken<String> {
+/**
+ * Base for all rgb function symbols.
+ */
+abstract class SymbolColorFunctionParserToken<V> extends LeafColorFunctionParserToken<String> {
 
-    static ColorFunctionFunctionNameParserToken with(final String value, final String text) {
-        check(value, text);
-
-        return new ColorFunctionFunctionNameParserToken(value, text);
+    static void check(final String value, final String text) {
+        checkValue(value);
+        checkText(text);
     }
 
-    private ColorFunctionFunctionNameParserToken(final String value, final String text) {
+    /**
+     * Package private ctor to limit subclassing.
+     */
+    SymbolColorFunctionParserToken(final String value, final String text) {
         super(value, text);
-    }
-
-    // ColorFunctionParserTokenVisitor..................................................................................
-
-    @Override
-    void accept(final ColorFunctionParserTokenVisitor visitor) {
-        visitor.visit(this);
-    }
-
-    // Object...........................................................................................................
-
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionFunctionNameParserToken;
     }
 
     // ColorFunctionTransformer.........................................................................................

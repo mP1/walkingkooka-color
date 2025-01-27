@@ -23,12 +23,12 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class ColorFunctionFunctionNameParserTokenTest extends ColorFunctionNonSymbolParserTokenTestCase<ColorFunctionFunctionNameParserToken, String> {
+public final class NumberColorFunctionParserTokenTest extends NonSymbolColorFunctionParserTokenTestCase<NumberColorFunctionParserToken, Double> {
 
     @Test
     public void testAccept() {
         final StringBuilder b = new StringBuilder();
-        final ColorFunctionFunctionNameParserToken token = this.createToken();
+        final NumberColorFunctionParserToken token = this.createToken();
 
         new FakeColorFunctionParserTokenVisitor() {
             @Override
@@ -58,7 +58,7 @@ public final class ColorFunctionFunctionNameParserTokenTest extends ColorFunctio
             }
 
             @Override
-            protected void visit(final ColorFunctionFunctionNameParserToken t) {
+            protected void visit(final NumberColorFunctionParserToken t) {
                 assertSame(token, t);
                 b.append("5");
             }
@@ -67,25 +67,25 @@ public final class ColorFunctionFunctionNameParserTokenTest extends ColorFunctio
     }
 
     @Override
-    ColorFunctionFunctionNameParserToken createToken(final String text, final String value) {
-        return ColorFunctionFunctionNameParserToken.with(value, text);
+    NumberColorFunctionParserToken createToken(final String text, final Double value) {
+        return NumberColorFunctionParserToken.with(value, text);
     }
 
     @Override
-    public Class<ColorFunctionFunctionNameParserToken> type() {
-        return ColorFunctionFunctionNameParserToken.class;
+    public Class<NumberColorFunctionParserToken> type() {
+        return NumberColorFunctionParserToken.class;
     }
 
     @Override
     public String text() {
-        return "rgb";
+        return "99";
     }
 
-    String value() {
-        return "rgb";
+    Double value() {
+        return 99.0;
     }
 
-    String differentValue() {
-        return "different-value";
+    Double differentValue() {
+        return 99999.0;
     }
 }

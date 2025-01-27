@@ -174,7 +174,7 @@ final class ColorParsersEbnfParserCombinatorGrammarTransformer implements EbnfPa
     private static ParserToken transformFunctionName(final ParserToken token,
                                                      final ParserContext context) {
         final StringParserToken string = Cast.to(token);
-        return ColorFunctionParserToken.functionName(string.value(), string.text());
+        return ColorFunctionParserToken.name(string.value(), string.text());
     }
 
     private static ParserToken transformParenthesisClose(final ParserToken token,

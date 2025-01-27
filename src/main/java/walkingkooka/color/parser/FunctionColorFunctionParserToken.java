@@ -40,17 +40,17 @@ import java.util.Objects;
 /**
  * Holds a json array which may contain further json values.
  */
-public final class ColorFunctionFunctionParserToken extends ColorFunctionParserToken implements Value<List<ParserToken>> {
+public final class FunctionColorFunctionParserToken extends ColorFunctionParserToken implements Value<List<ParserToken>> {
 
-    static ColorFunctionFunctionParserToken with(final List<ParserToken> value,
+    static FunctionColorFunctionParserToken with(final List<ParserToken> value,
                                                  final String text) {
         Objects.requireNonNull(value, "tokens");
 
-        return new ColorFunctionFunctionParserToken(Lists.immutable(value),
+        return new FunctionColorFunctionParserToken(Lists.immutable(value),
             Objects.requireNonNull(text, "text"));
     }
 
-    private ColorFunctionFunctionParserToken(final List<ParserToken> value,
+    private FunctionColorFunctionParserToken(final List<ParserToken> value,
                                              final String text) {
         super(text);
 
@@ -78,11 +78,11 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
     // children.........................................................................................................
 
     @Override
-    public ColorFunctionFunctionParserToken setChildren(final List<ParserToken> children) {
+    public FunctionColorFunctionParserToken setChildren(final List<ParserToken> children) {
         return ParserToken.parentSetChildren(
             this,
             children,
-            ColorFunctionFunctionParserToken::new
+            FunctionColorFunctionParserToken::new
         );
     }
 
@@ -106,7 +106,7 @@ public final class ColorFunctionFunctionParserToken extends ColorFunctionParserT
 
     @Override
     boolean canBeEqual(final Object other) {
-        return other instanceof ColorFunctionFunctionParserToken;
+        return other instanceof FunctionColorFunctionParserToken;
     }
 
     // ColorFunctionTransformer.........................................................................................

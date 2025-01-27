@@ -24,17 +24,18 @@ import walkingkooka.color.HslColorComponent;
 import walkingkooka.color.HsvColor;
 import walkingkooka.color.HsvColorComponent;
 import walkingkooka.color.RgbColor;
+import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<ColorFunctionTransformer> {
+public final class ColorFunctionTransformerTest implements ClassTesting2<ColorFunctionTransformer> {
 
     @Test
     public void testFunctionNameInvalidFails() {
-        assertThrows(IllegalArgumentException.class, () -> ColorFunctionTransformer.functionName(ColorFunctionParserToken.functionName("unknown", "unknown")));
+        assertThrows(IllegalArgumentException.class, () -> ColorFunctionTransformer.functionName(ColorFunctionParserToken.name("unknown", "unknown")));
     }
 
     // hsl..............................................................................................................
@@ -279,7 +280,7 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
                             final Color color,
                             final ColorFunctionParserToken... values) {
         this.checkEquals(color,
-            ColorFunctionTransformer.functionName(ColorFunctionFunctionNameParserToken.with(name, name))
+            ColorFunctionTransformer.functionName(NameColorFunctionParserToken.with(name, name))
                 .color(
                     values[0],
                     values[1],
@@ -298,12 +299,5 @@ public final class ColorFunctionTransformerTest extends ColorFunctionTestCase<Co
     @Override
     public JavaVisibility typeVisibility() {
         return JavaVisibility.PACKAGE_PRIVATE;
-    }
-
-    // TypeNameTesting..................................................................................................
-
-    @Override
-    public String typeNameSuffix() {
-        return "";
     }
 }

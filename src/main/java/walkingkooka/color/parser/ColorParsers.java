@@ -113,7 +113,7 @@ public final class ColorParsers implements PublicStaticHelper {
      * <pre>
      * hsl(359, 100%, 99%)
      * </pre>
-     * into a {@link ColorFunctionFunctionParserToken}.
+     * into a {@link FunctionColorFunctionParserToken}.
      */
     public static <C extends ParserContext> Parser<C> hsl() {
         return HSL_PARSER.cast();
@@ -128,7 +128,7 @@ public final class ColorParsers implements PublicStaticHelper {
      * <pre>
      * hsv(359, 100%, 99%)
      * </pre>
-     * into a {@link ColorFunctionFunctionParserToken}.
+     * into a {@link FunctionColorFunctionParserToken}.
      */
     public static <C extends ParserContext> Parser<C> hsv() {
         return HSV_PARSER.cast();
@@ -143,7 +143,7 @@ public final class ColorParsers implements PublicStaticHelper {
      * <pre>
      * rgb(RR,GG,BB)
      * </pre>
-     * into a {@link ColorFunctionFunctionParserToken}.
+     * into a {@link FunctionColorFunctionParserToken}.
      */
     public static <C extends ParserContext> Parser<C> rgb() {
         return RGB_PARSER.cast();

@@ -24,11 +24,11 @@ import walkingkooka.text.cursor.parser.ParserToken;
 import java.util.List;
 
 /**
- * Accepts a parser token graph which is assumed to only contain {@link ColorFunctionParserToken tokens} and makes a {@link ColorFunctionFunctionParserToken}.
+ * Accepts a parser token graph which is assumed to only contain {@link ColorFunctionParserToken tokens} and makes a {@link FunctionColorFunctionParserToken}.
  */
 final class ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor extends ColorFunctionParserTokenVisitor {
 
-    static ColorFunctionFunctionParserToken transform(final ParserToken token, final ParserContext context) {
+    static FunctionColorFunctionParserToken transform(final ParserToken token, final ParserContext context) {
         final ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor visitor = new ColorParsersColorFunctionFunctionParserTokenColorFunctionParserTokenVisitor();
         visitor.accept(token);
         return ColorFunctionParserToken.function(visitor.tokens, ParserToken.text(visitor.tokens));
@@ -41,42 +41,42 @@ final class ColorParsersColorFunctionFunctionParserTokenColorFunctionParserToken
     // ColorFunctionParserTokenVisitor..................................................................................
 
     @Override
-    protected void visit(final ColorFunctionDegreesUnitSymbolParserToken token) {
+    protected void visit(final DegreesUnitSymbolColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionFunctionNameParserToken token) {
+    protected void visit(final NameColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionNumberParserToken token) {
+    protected void visit(final NumberColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionParenthesisCloseSymbolParserToken token) {
+    protected void visit(final ParenthesisCloseSymbolColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionParenthesisOpenSymbolParserToken token) {
+    protected void visit(final ParenthesisOpenSymbolColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionPercentageParserToken token) {
+    protected void visit(final PercentageColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionSeparatorSymbolParserToken token) {
+    protected void visit(final SeparatorSymbolColorFunctionParserToken token) {
         this.add(token);
     }
 
     @Override
-    protected void visit(final ColorFunctionWhitespaceParserToken token) {
+    protected void visit(final WhitespaceColorFunctionParserToken token) {
         this.add(token);
     }
 

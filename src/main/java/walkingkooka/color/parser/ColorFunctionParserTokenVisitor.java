@@ -35,42 +35,42 @@ public abstract class ColorFunctionParserTokenVisitor extends ParserTokenVisitor
     protected void endVisit(final ColorFunctionParserToken token) {
     }
 
-    protected Visiting startVisit(final ColorFunctionFunctionParserToken token) {
+    protected Visiting startVisit(final FunctionColorFunctionParserToken token) {
         return Visiting.CONTINUE;
     }
 
-    protected void endVisit(final ColorFunctionFunctionParserToken token) {
+    protected void endVisit(final FunctionColorFunctionParserToken token) {
     }
 
-    protected void visit(final ColorFunctionDegreesUnitSymbolParserToken token) {
+    protected void visit(final DegreesUnitSymbolColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionFunctionNameParserToken token) {
+    protected void visit(final NameColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionNumberParserToken token) {
+    protected void visit(final NumberColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionParenthesisCloseSymbolParserToken token) {
+    protected void visit(final ParenthesisCloseSymbolColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionParenthesisOpenSymbolParserToken token) {
+    protected void visit(final ParenthesisOpenSymbolColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionPercentageParserToken token) {
+    protected void visit(final PercentageColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionSeparatorSymbolParserToken token) {
+    protected void visit(final SeparatorSymbolColorFunctionParserToken token) {
         // nop
     }
 
-    protected void visit(final ColorFunctionWhitespaceParserToken token) {
+    protected void visit(final WhitespaceColorFunctionParserToken token) {
         // nop
     }
 }
