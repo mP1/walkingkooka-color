@@ -34,8 +34,13 @@ public abstract class NonSymbolColorFunctionParserTokenTestCase<T extends NonSym
     }
 
     @Test
-    public final void testDifferentValue() {
-        this.checkNotEquals(this.createToken(this.text(), this.differentValue()));
+    public final void testEqualsDifferentValue() {
+        this.checkNotEquals(
+            this.createToken(
+                this.text(),
+                this.differentValue()
+            )
+        );
     }
 
     @Override
