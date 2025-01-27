@@ -121,6 +121,7 @@ public abstract class ColorFunctionParserToken implements ParserToken {
     /**
      * The text matched by the {@link Parser}.
      */
+    @Override
     public final String text() {
         return this.text;
     }
@@ -139,6 +140,7 @@ public abstract class ColorFunctionParserToken implements ParserToken {
         return this instanceof FunctionColorFunctionParserToken;
     }
 
+    @Override
     public final boolean isLeaf() {
         return this instanceof LeafColorFunctionParserToken;
     }
