@@ -27,6 +27,7 @@ public abstract class NonSymbolColorFunctionParserTokenTestCase<T extends NonSym
         super();
     }
 
+    @Override
     @Test
     public final void testIsSymbol() {
         this.checkEquals(false, this.createToken().isSymbol());

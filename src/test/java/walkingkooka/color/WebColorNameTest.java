@@ -54,6 +54,7 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
 
     // with.............................................................................................................
 
+    @Override
     @Test
     public void testEmptyFails() {
         // nop

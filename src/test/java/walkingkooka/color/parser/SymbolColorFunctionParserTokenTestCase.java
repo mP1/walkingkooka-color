@@ -32,6 +32,7 @@ public abstract class SymbolColorFunctionParserTokenTestCase<T extends SymbolCol
         this.checkNotEquals(this.createToken(this.text(), "different-value"));
     }
 
+    @Override
     public final T createToken(final String text) {
         return this.createToken(text, text);
     }

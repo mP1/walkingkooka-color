@@ -37,6 +37,7 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
         super();
     }
 
+    @Override
     @Test
     public final void testPublicStaticFactoryMethod() {
         PublicStaticFactoryTesting.checkFactoryMethods(
@@ -54,7 +55,7 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
 
     // HashCodeEqualsDefinedTesting.....................................................................................
 
-    public final T createObject() {
+    @Override public final T createObject() {
         return this.createToken();
     }
 

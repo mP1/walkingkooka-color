@@ -81,10 +81,12 @@ public final class PercentageColorFunctionParserTokenTest extends NonSymbolColor
         return "99%";
     }
 
+    @Override //
     Double value() {
         return 999.0;
     }
 
+    @Override //
     Double differentValue() {
         return 99999.0;
     }
