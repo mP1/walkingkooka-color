@@ -48,11 +48,6 @@ public abstract class ColorComponentTestCase<C extends ColorComponent> implement
         return this.createObject();
     }
 
-    @Override
-    public final String isMethodTypeNamePrefix() {
-        return "";
-    }
-
     // TypeNameTesting ................................................................................................
 
     @Override

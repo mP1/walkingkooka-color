@@ -67,16 +67,6 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
     }
 
     @Override
-    public final String isMethodTypeNamePrefix() {
-        return "";
-    }
-
-    @Override
-    public final String isMethodTypeNameSuffix() {
-        return ColorFunctionParserToken.class.getSimpleName();
-    }
-
-    @Override
     public final Predicate<String> isMethodIgnoreMethodFilter() {
         return (m) -> m.equals("isLeaf") ||
             m.equals("isNoise") ||
@@ -85,6 +75,18 @@ public abstract class ColorFunctionParserTokenTestCase3<T extends ColorFunctionP
             m.equals("isEmpty") ||
             m.equals("isNotEmpty"); // skip isNoise
     }
+
+
+    @Override
+    public final String toIsMethodName(final String typeName) {
+        return this.toIsMethodNameWithPrefixSuffix(
+            typeName,
+            "",
+            ColorFunctionParserToken.class.getSimpleName()
+        );
+    }
+
+    // class............................................................................................................
 
     @Override
     public final JavaVisibility typeVisibility() {

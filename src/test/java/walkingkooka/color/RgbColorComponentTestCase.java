@@ -179,19 +179,23 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
         return this.createColorComponent();
     }
 
-    // IsMethodTesting.................................................................................................
-
-    @Override
-    public final String isMethodTypeNameSuffix() {
-        return RgbColorComponent.class.getSimpleName();
-    }
+    // IsMethodTesting..................................................................................................
 
     @Override
     public final Predicate<String> isMethodIgnoreMethodFilter() {
         return (m) -> false;
     }
 
-    // TypeNameTesting ................................................................................................
+    @Override
+    public final String toIsMethodName(final String typeName) {
+        return this.toIsMethodNameWithPrefixSuffix(
+            typeName,
+            "",
+            RgbColorComponent.class.getSimpleName()
+        );
+    }
+
+    // TypeNameTesting .................................................................................................
 
     @Override
     public final String typeNameSuffix() {
