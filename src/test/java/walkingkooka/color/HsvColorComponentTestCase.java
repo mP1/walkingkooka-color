@@ -94,14 +94,18 @@ abstract public class HsvColorComponentTestCase<C extends HsvColorComponent> ext
         return this.createHsvComponent(value);
     }
 
-    // IsMethodTesting.................................................................................................
+    // IsMethodTesting..................................................................................................
 
     @Override
-    public final String isMethodTypeNameSuffix() {
-        return HsvColorComponent.class.getSimpleName();
+    public final String toIsMethodName(final String typeName) {
+        return this.toIsMethodNameWithPrefixSuffix(
+            typeName,
+            "",
+            HsvColorComponent.class.getSimpleName()
+        );
     }
 
-    // TypeNameTesting .........................................................................................
+    // TypeNameTesting .................................................................................................
 
     @Override
     public final String typeNameSuffix() {
