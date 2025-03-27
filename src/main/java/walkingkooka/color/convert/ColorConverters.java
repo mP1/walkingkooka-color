@@ -17,9 +17,18 @@
 
 package walkingkooka.color.convert;
 
+import walkingkooka.convert.Converter;
+import walkingkooka.convert.ConverterContext;
 import walkingkooka.reflect.PublicStaticHelper;
 
 public final class ColorConverters implements PublicStaticHelper {
+
+    /**
+     * {@see StringToColorConverter}
+     */
+    public static <C extends ConverterContext> Converter<C> stringToConverter() {
+        return StringToColorConverter.instance();
+    }
 
     /**
      * Stop creation
