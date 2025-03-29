@@ -600,14 +600,16 @@ abstract public class RgbColor extends Color {
     /**
      * Lazily calculates the hash code and stores it for future retrieval.
      */
-    @Override final public int hashCode() {
+    @Override //
+    final public int hashCode() {
         return this.value();
     }
 
     /**
      * {@link RgbColor colors} are equal if their values are the same.
      */
-    @Override final boolean equals0(final Object other) {
+    @Override //
+    final boolean equals0(final Object other) {
         return this.equals1(Cast.to(other));
     }
 
@@ -615,7 +617,8 @@ abstract public class RgbColor extends Color {
         return this.value() == other.value();
     }
 
-    @Override final public void buildToString(final ToStringBuilder builder) {
+    @Override //
+    final public void buildToString(final ToStringBuilder builder) {
         builder.disable(ToStringBuilderOption.ESCAPE);
         builder.disable(ToStringBuilderOption.QUOTE);
         builder.disable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE);
