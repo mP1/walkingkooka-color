@@ -54,7 +54,7 @@ abstract public class RgbColor extends Color {
         return color;
     }
 
-    // parseRgb rgb(12,34,56)..............................................................................................
+    // parseRgb rgb(12,34,56)...........................................................................................
 
     private static RgbColor parseRgbFunction(final String text) {
         return parseColorParserToken(text, RGB_FUNCTION_PARSER)
@@ -233,7 +233,9 @@ abstract public class RgbColor extends Color {
     /**
      * Factory used by {@link HslColor#toRgb()} and {@link HsvColor#toRgb()}
      */
-    static RgbColor with(final float red, final float green, final float blue) {
+    static RgbColor with(final float red,
+                         final float green,
+                         final float blue) {
         return RgbColor.with( //
             RedRgbColorComponent.with(RgbColorComponent.toByte(red)), //
             GreenRgbColorComponent.with(RgbColorComponent.toByte(green)), //
@@ -244,7 +246,9 @@ abstract public class RgbColor extends Color {
     /**
      * Package private constructor to limit sub classing.
      */
-    RgbColor(final RedRgbColorComponent red, final GreenRgbColorComponent green, final BlueRgbColorComponent blue) {
+    RgbColor(final RedRgbColorComponent red,
+             final GreenRgbColorComponent green,
+             final BlueRgbColorComponent blue) {
         super();
         this.red = red;
         this.green = green;
@@ -271,7 +275,11 @@ abstract public class RgbColor extends Color {
     final RgbColor setRed(final RedRgbColorComponent red) {
         return this.red.equals(red) ?
             this :
-            this.replace(red, this.green, this.blue);
+            this.replace(
+                red,
+                this.green,
+                this.blue
+            );
     }
 
     /**
@@ -280,7 +288,11 @@ abstract public class RgbColor extends Color {
     final RgbColor setGreen(final GreenRgbColorComponent green) {
         return this.green.equals(green) ?
             this :
-            this.replace(this.red, green, this.blue);
+            this.replace(
+                this.red,
+                green,
+                this.blue
+            );
     }
 
     /**
@@ -289,7 +301,11 @@ abstract public class RgbColor extends Color {
     final RgbColor setBlue(final BlueRgbColorComponent blue) {
         return this.blue.equals(blue) ?
             this :
-            this.replace(this.red, this.green, blue);
+            this.replace(
+                this.red,
+                this.green,
+                blue
+            );
     }
 
     /**
@@ -424,18 +440,28 @@ abstract public class RgbColor extends Color {
     /**
      * Returns the max of 3 floats.
      */
-    private static float max(final float a, final float b, final float c) {
-        return Math.max(a, Math.max(b, c));
+    private static float max(final float a,
+                             final float b,
+                             final float c) {
+        return Math.max(
+            a,
+            Math.max(b, c)
+        );
     }
 
     /**
      * Returns the min of 3 floats.
      */
-    private static float min(final float a, final float b, final float c) {
-        return Math.min(a, Math.min(b, c));
+    private static float min(final float a,
+                             final float b,
+                             final float c) {
+        return Math.min(
+            a,
+            Math.min(b, c)
+        );
     }
 
-    // WebColorName..........................................................................................................
+    // WebColorName.....................................................................................................
 
     /**
      * Returns a {@link WebColorName} for this rgb if one exists. Note that colors with alpha always returns nothing.
@@ -595,7 +621,7 @@ abstract public class RgbColor extends Color {
         );
     }
 
-    // Object..........................................................................................................
+    // Object...........................................................................................................
 
     /**
      * Lazily calculates the hash code and stores it for future retrieval.
@@ -637,7 +663,7 @@ abstract public class RgbColor extends Color {
         builder.value(this.blue);
     }
 
-    // RgbColorString................................................................................
+    // RgbColorString...................................................................................................
 
     /**
      * Returns either <code>rgb</code> or <code>rgba</code>
