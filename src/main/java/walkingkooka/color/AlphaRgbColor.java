@@ -163,11 +163,6 @@ final class AlphaRgbColor extends RgbColor {
 
     // Object..........................................................................................................
 
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof AlphaRgbColor;
-    }
-
     // UsesToStringBuilder
 
     @Override

@@ -405,13 +405,15 @@ public abstract class Color implements HasText,
     @Override
     abstract public int hashCode();
 
-    @Override final public boolean equals(final Object other) {
+    @Override //
+    final public boolean equals(final Object other) {
         return this == other ||
-            this.canBeEqual(other) &&
-                this.equals0(Cast.to(other));
+            null != other &&
+                this.getClass() == other.getClass() &&
+                this.equals0(
+                    Cast.to(other)
+                );
     }
-
-    abstract boolean canBeEqual(final Object other);
 
     abstract boolean equals0(final Object other);
 
