@@ -64,11 +64,6 @@ final class OpaqueHslColor extends HslColor {
     }
 
     @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof OpaqueHslColor;
-    }
-
-    @Override
     boolean equalsAlpha(final HslColor other) {
         return true; // no alpha component to compare.
     }

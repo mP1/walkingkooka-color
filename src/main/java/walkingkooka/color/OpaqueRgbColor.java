@@ -165,14 +165,6 @@ final class OpaqueRgbColor extends RgbColor {
 
     // Object..........................................................................................................
 
-    /**
-     * Can only be equal to {@link RgbColor} without an alpha.
-     */
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof OpaqueRgbColor;
-    }
-
     // UsesToStringBuilder
 
     @Override
