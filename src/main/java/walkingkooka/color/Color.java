@@ -26,6 +26,7 @@ import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasText;
+import walkingkooka.text.cursor.parser.InvalidCharacterExceptionFactory;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
@@ -156,6 +157,7 @@ public abstract class Color implements HasText,
     }
 
     private final static ParserContext PARSER_CONTEXT = ParserContexts.basic(
+        InvalidCharacterExceptionFactory.POSITION,
         DateTimeContexts.fake(),
         DecimalNumberContexts.american(MathContext.DECIMAL32)
     );

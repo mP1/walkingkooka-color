@@ -27,6 +27,7 @@ import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.TextCursors;
+import walkingkooka.text.cursor.parser.InvalidCharacterExceptionFactory;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
@@ -765,6 +766,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     private ParserContext parserContext() {
         return ParserContexts.basic(
+            InvalidCharacterExceptionFactory.POSITION,
             DateTimeContexts.fake(),
             DecimalNumberContexts.american(MathContext.DECIMAL32)
         );
