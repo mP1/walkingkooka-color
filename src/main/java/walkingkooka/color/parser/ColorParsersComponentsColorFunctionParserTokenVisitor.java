@@ -20,7 +20,6 @@ package walkingkooka.color.parser;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
-import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.parser.ParserToken;
 
 import java.util.List;
@@ -56,25 +55,7 @@ final class ColorParsersComponentsColorFunctionParserTokenVisitor extends ColorF
     protected void visit(final NameColorFunctionParserToken token) {
         this.functionName = token;
 
-        ColorFunctionTransformer transformer;
-        switch (token.value()) {
-            case "rgb":
-            case "rgba":
-                transformer = ColorFunctionTransformer.RGB;
-                break;
-            case "hsl":
-            case "hsla":
-                transformer = ColorFunctionTransformer.HSL;
-                break;
-            case "hsv":
-            case "hsva":
-                transformer = ColorFunctionTransformer.HSV;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown function " + token + " in " + CharSequences.quoteAndEscape(token.text()));
-        }
-
-        this.transformer = transformer;
+        this.transformer = ColorFunctionTransformer.functionName(token);
     }
 
     private NameColorFunctionParserToken functionName;
