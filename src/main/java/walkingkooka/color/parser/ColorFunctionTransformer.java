@@ -98,7 +98,7 @@ enum ColorFunctionTransformer {
                 transformer = ColorFunctionTransformer.HSV;
                 break;
             default:
-                throw new IllegalArgumentException("Unknown function " + functionName + " in " + CharSequences.quoteAndEscape(functionName.text()));
+                throw new IllegalArgumentException("Unknown function " + CharSequences.quoteAndEscape(functionName.value()));
         }
         return transformer;
     }
