@@ -239,10 +239,12 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
      */
     private static <T> WebColorName registerConstant(final String name,
                                                      final String text) {
-        CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(name,
+        CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
+            name,
             "name",
             INITIAL,
-            PART);
+            PART
+        );
         if (text.trim().isEmpty()) {
             throw new IllegalArgumentException("Empty text for " + CharSequences.quoteAndEscape(name));
         }
