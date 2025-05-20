@@ -21,12 +21,12 @@ import walkingkooka.Cast;
 import walkingkooka.color.Color;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterContext;
-import walkingkooka.convert.TextToTemplatedConverter;
+import walkingkooka.convert.TextToTryingShortCircuitingConverter;
 
 /**
  * A {@link Converter} that handles parsing any given text using the Color type to select the right parseXXX method.
  */
-final class TextToColorConverter<C extends ConverterContext> implements TextToTemplatedConverter<C> {
+final class TextToColorConverter<C extends ConverterContext> implements TextToTryingShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
