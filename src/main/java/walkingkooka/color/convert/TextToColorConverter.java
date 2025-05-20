@@ -18,45 +18,40 @@
 package walkingkooka.color.convert;
 
 import walkingkooka.Cast;
-import walkingkooka.Either;
 import walkingkooka.color.Color;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterContext;
-
-import java.util.Objects;
+import walkingkooka.convert.TextToTemplatedConverter;
 
 /**
  * A {@link Converter} that handles parsing any given text using the Color type to select the right parseXXX method.
  */
-final class StringToColorConverter<C extends ConverterContext> implements Converter<C> {
+final class TextToColorConverter<C extends ConverterContext> implements TextToTemplatedConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> StringToColorConverter<C> instance() {
+    static <C extends ConverterContext> TextToColorConverter<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static StringToColorConverter<ConverterContext> INSTANCE = new StringToColorConverter<>();
+    private final static TextToColorConverter<ConverterContext> INSTANCE = new TextToColorConverter<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private StringToColorConverter() {
+    private TextToColorConverter() {
         super();
     }
 
     @Override
-    public boolean canConvert(final Object value,
-                              final Class<?> type,
-                              final C context) {
-        Objects.requireNonNull(type, "type");
-        Objects.requireNonNull(context, "context");
-
-        return value instanceof String && isColorSubclass(type);
+    public boolean isTargetType(final Object value,
+                                final Class<?> type,
+                                final C context) {
+        return isColorSubclass(type);
     }
 
     private static boolean isColorSubclass(final Class<?> type) {
@@ -76,29 +71,9 @@ final class StringToColorConverter<C extends ConverterContext> implements Conver
     }
 
     @Override
-    public <T> Either<T, String> convert(final Object value,
-                                         final Class<T> type,
-                                         final C context) {
-        return this.canConvert(
-            value,
-            type,
-            context
-        ) ?
-            this.successfulConversion(
-                this.parse(
-                    (String) value,
-                    type
-                ),
-                type
-            ) :
-            this.failConversion(
-                value,
-                type
-            );
-    }
-
-    private static Color parse(final String text,
-                               final Class<?> type) {
+    public Object parseText(final String text,
+                            final Class<?> type,
+                            final C context) {
         final Color color;
 
         switch (type.getSimpleName()) {
