@@ -19,13 +19,16 @@ package walkingkooka.color.convert;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
+import walkingkooka.Either;
 import walkingkooka.color.Color;
+import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterTesting2;
+import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
 import java.util.function.Function;
 
-public final class StringToColorConverterTest implements ConverterTesting2<StringToColorConverter<FakeConverterContext>, FakeConverterContext> {
+public final class TextToColorConverterTest implements ConverterTesting2<TextToColorConverter<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertWithRgbColorStringAndColor() {
@@ -121,13 +124,35 @@ public final class StringToColorConverterTest implements ConverterTesting2<Strin
     }
 
     @Override
-    public StringToColorConverter<FakeConverterContext> createConverter() {
-        return StringToColorConverter.instance();
+    public TextToColorConverter<FakeConverterContext> createConverter() {
+        return TextToColorConverter.instance();
     }
 
     @Override
     public FakeConverterContext createContext() {
-        return new FakeConverterContext();
+        return new FakeConverterContext() {
+            @Override
+            public boolean canConvert(final Object value,
+                                      final Class<?> type) {
+                return this.converter.canConvert(
+                    value,
+                    type,
+                    this
+                );
+            }
+
+            @Override
+            public <T> Either<T, String> convert(final Object value,
+                                                 final Class<T> type) {
+                return this.converter.convert(
+                    value,
+                    type,
+                    this
+                );
+            }
+
+            private final Converter<FakeConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
+        };
     }
 
     // toString.........................................................................................................
@@ -135,7 +160,7 @@ public final class StringToColorConverterTest implements ConverterTesting2<Strin
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            StringToColorConverter.instance(),
+            TextToColorConverter.instance(),
             "String to Color"
         );
     }
@@ -143,7 +168,7 @@ public final class StringToColorConverterTest implements ConverterTesting2<Strin
     // class............................................................................................................
 
     @Override
-    public Class<StringToColorConverter<FakeConverterContext>> type() {
-        return Cast.to(StringToColorConverter.class);
+    public Class<TextToColorConverter<FakeConverterContext>> type() {
+        return Cast.to(TextToColorConverter.class);
     }
 }
