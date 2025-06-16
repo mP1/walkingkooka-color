@@ -17,12 +17,22 @@
 
 package walkingkooka.color.expression.function;
 
+import walkingkooka.color.Color;
 import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.tree.expression.function.ExpressionFunction;
 
 /**
  * A collection of factory methods for {@link walkingkooka.color.Color}.
  */
 public final class ColorExpressionFunctions implements PublicStaticHelper {
+
+    /**
+     * {@see ColorExpressionFunctionColor}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<Color, C> color() {
+        return ColorExpressionFunctionColor.instance();
+    }
 
     /**
      * Prevent creation
