@@ -95,6 +95,26 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
         );
     }
 
+    @Test
+    public void testMixColorWithColorColorAndFloat() {
+        final Color color = Color.parse("#123");
+        final Color other = Color.parse("#FFF");
+        final Float amount = 0.5f;
+
+        this.evaluateAndCheck(
+            "mixColor",
+            Lists.of(
+                color,
+                other,
+                amount
+            ),
+            color.mix(
+                other,
+                amount
+            )
+        );
+    }
+
     private void evaluateAndCheck(final String functionName,
                                   final List<Object> parameters,
                                   final Object expected) {
@@ -116,6 +136,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.color();
                             case "invertColor":
                                 return ColorExpressionFunctions.invertColor();
+                            case "mixColor":
+                                return ColorExpressionFunctions.mixColor();
                             default:
                                 throw new UnknownExpressionFunctionException(name);
                         }

@@ -42,6 +42,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorExpressionFunctionMixColor}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<Color, C> mixColor() {
+        return ColorExpressionFunctionMixColor.instance();
+    }
+
+    /**
      * Prevent creation
      */
     private ColorExpressionFunctions() {
