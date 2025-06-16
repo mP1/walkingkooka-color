@@ -68,6 +68,33 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
         );
     }
 
+    @Test
+    public void testInvertColorWithColor() {
+        final Color color = Color.parse("#123");
+
+        this.evaluateAndCheck(
+            "invertColor",
+            Lists.of(
+                color
+            ),
+            color.invert()
+        );
+    }
+
+    @Test
+    public void testInvertColorWithText() {
+        final Color color = Color.parse("#123");
+
+        this.evaluateAndCheck(
+            "invertColor",
+            Lists.of(
+                color.toRgb()
+                    .text()
+            ),
+            color.invert()
+        );
+    }
+
     private void evaluateAndCheck(final String functionName,
                                   final List<Object> parameters,
                                   final Object expected) {
@@ -87,6 +114,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                         switch (name.value()) {
                             case "color":
                                 return ColorExpressionFunctions.color();
+                            case "invertColor":
+                                return ColorExpressionFunctions.invertColor();
                             default:
                                 throw new UnknownExpressionFunctionException(name);
                         }

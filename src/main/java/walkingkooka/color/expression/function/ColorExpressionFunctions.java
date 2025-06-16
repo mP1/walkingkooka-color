@@ -35,6 +35,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorExpressionFunctionInvertColor}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<Color, C> invertColor() {
+        return ColorExpressionFunctionInvertColor.instance();
+    }
+
+    /**
      * Prevent creation
      */
     private ColorExpressionFunctions() {
