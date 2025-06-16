@@ -152,6 +152,24 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
             });
     }
 
+    // toHexString......................................................................................................
+
+    @Test
+    public void testToHexString() {
+        this.toHexStringAndCheck(
+            RgbColor.fromRgb0(0x123456),
+            "#123456"
+        );
+    }
+
+    @Test
+    public void testToHexString2() {
+        this.toHexStringAndCheck(
+            RgbColor.fromRgb0(0),
+            "#000000"
+        );
+    }
+
     // HasJsonNode............................................................................................
 
     @Test

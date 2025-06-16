@@ -621,6 +621,24 @@ abstract public class RgbColor extends Color {
         );
     }
 
+    // toHexString......................................................................................................
+
+    /**
+     * Returns this color in hex notation, eg #123456
+     */
+    public final String toHexString() {
+        return "#" +
+            CharSequences.padLeft(
+                Integer.toHexString(
+                    this.value()
+                ),
+                this.hexStringDigitLength(),
+                '0'
+            );
+    }
+
+    abstract int hexStringDigitLength();
+
     // Object...........................................................................................................
 
     /**
