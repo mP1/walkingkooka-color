@@ -59,7 +59,7 @@ final class TextToColorConverter<C extends ConverterContext> implements TextToTr
 
         Class<?> temp = type;
 
-        while (Object.class != temp) {
+        while (null != temp && Object.class != temp) {
             is = Color.class == temp;
             if (is) {
                 break;
