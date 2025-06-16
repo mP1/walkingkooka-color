@@ -26,9 +26,18 @@ import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
+import java.util.List;
 import java.util.function.Function;
 
 public final class TextToColorConverterTest implements ConverterTesting2<TextToColorConverter<FakeConverterContext>, FakeConverterContext> {
+
+    @Test
+    public void testConvertWithInterfaceClassFails() {
+        this.convertFails(
+            "#123456",
+            List.class
+        );
+    }
 
     @Test
     public void testConvertWithRgbColorStringAndColor() {
