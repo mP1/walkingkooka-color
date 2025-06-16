@@ -82,11 +82,20 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         assertSame(replacement, opaque.alpha(), "alpha");
     }
 
+    // mixComponent.....................................................................................................
+
     @Test
     public void testMixComponentDifferentAlphaVeryLargeAmount() {
         final AlphaRgbColorComponent replacement = AlphaRgbColorComponent.with(DIFFERENT);
-        this.mixComponentAndCheck(this.createColor(), replacement, LARGE_AMOUNT, replacement);
+        this.mixComponentAndCheck(
+            this.createColor(),
+            replacement,
+            LARGE_AMOUNT,
+            replacement
+        );
     }
+
+    // invert...........................................................................................................
 
     @Test
     public void testInvert2() {
@@ -142,7 +151,9 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
 
     @Test
     public void testToAwtColor() {
-        final java.awt.Color rgb = this.createColor().toAwtColor();
+        final java.awt.Color rgb = this.createColor()
+            .toAwtColor();
+
         this.checkEquals(1, rgb.getRed(), "red");
         this.checkEquals(2, rgb.getGreen(), "green");
         this.checkEquals(3, rgb.getBlue(), "blue");
@@ -160,14 +171,22 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testToWebNameCyan() {
         this.toWebNameAndCheck(
-            WebColorName.CYAN.color().setAlpha(AlphaRgbColorComponent.with((byte) 0x50))
+            WebColorName.CYAN.color()
+                .setAlpha(AlphaRgbColorComponent.with((byte) 0x50))
         );
     }
 
     @Test
     public void testEqualsDifferentAlpha() {
         final RgbColor rgb = this.createColor();
-        this.checkNotEquals(AlphaRgbColor.with(rgb.red(), rgb.green(), rgb.blue(), AlphaRgbColorComponent.with((byte) 0xff)));
+        this.checkNotEquals(
+            AlphaRgbColor.with(
+                rgb.red(),
+                rgb.green(),
+                rgb.blue(),
+                AlphaRgbColorComponent.with((byte) 0xff)
+            )
+        );
     }
 
     // toHexString......................................................................................................
@@ -188,42 +207,59 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         );
     }
 
-    // HasJsonNode............................................................................................
-
-    @Test
-    public void testJsonNodeUnmarshall() {
-        this.unmarshallAndCheck(JsonNode.string("#01020304"), RgbColor.fromArgb0(0x04010203));
-    }
-
-    @Test
-    public void testJsonNodeUnmarshallFEDCBA98() {
-        this.unmarshallAndCheck(JsonNode.string("#fedcba98"), RgbColor.fromArgb0(0x98FEDCBA));
-    }
-
-
-    @Test
-    public void testJsonNodeMarshall() {
-        this.marshallAndCheck(RgbColor.fromArgb0(0x04010203), JsonNode.string("#01020304"));
-    }
-
-    @Test
-    public void testJsonNodeMarshallFEDCBA98() {
-        this.marshallAndCheck(RgbColor.fromArgb0(0x98FEDCBA), JsonNode.string("#fedcba98"));
-    }
-
-    // Object............................................................................................
-
-    @Test
-    public void testToString() {
-        this.toStringAndCheck(RgbColor.fromArgb0(0x04010203), "#01020304");
-    }
-
     @Override
     AlphaRgbColor createColor(final RedRgbColorComponent red,
                               final GreenRgbColorComponent green,
                               final BlueRgbColorComponent blue) {
         return AlphaRgbColor.with(red, green, blue, ALPHA);
     }
+
+    // json.............................................................................................................
+
+    @Test
+    public void testJsonNodeUnmarshall() {
+        this.unmarshallAndCheck(
+            JsonNode.string("#01020304"),
+            RgbColor.fromArgb0(0x04010203)
+        );
+    }
+
+    @Test
+    public void testJsonNodeUnmarshallFEDCBA98() {
+        this.unmarshallAndCheck(
+            JsonNode.string("#fedcba98"),
+            RgbColor.fromArgb0(0x98FEDCBA)
+        );
+    }
+
+
+    @Test
+    public void testJsonNodeMarshall() {
+        this.marshallAndCheck(
+            RgbColor.fromArgb0(0x04010203),
+            JsonNode.string("#01020304")
+        );
+    }
+
+    @Test
+    public void testJsonNodeMarshallFEDCBA98() {
+        this.marshallAndCheck(
+            RgbColor.fromArgb0(0x98FEDCBA),
+            JsonNode.string("#fedcba98")
+        );
+    }
+
+    // Object...........................................................................................................
+
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(
+            RgbColor.fromArgb0(0x04010203),
+            "#01020304"
+        );
+    }
+
+    // class............................................................................................................
 
     @Override
     public Class<AlphaRgbColor> type() {
