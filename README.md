@@ -29,3 +29,9 @@ Color hsv = Color.parseHsv("hsv(270, 0.5, 0.25)")
 Color mixed = red.mix(hsv.green(), 0.75);
 
 ```
+
+### [Function](https://github.com/mP1/walkingkooka-convert/blob/master/src/main/java/walkingkooka/convert/Converter.java)
+
+Functions that will be useful with `Color`
+
+- [color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/expression/function/ColorExpressionFunctionColor.java)

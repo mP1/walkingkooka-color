@@ -22,6 +22,9 @@ import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionFunctionName;
 import walkingkooka.tree.expression.ExpressionPurityContext;
 import walkingkooka.tree.expression.function.ExpressionFunction;
+import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
+import walkingkooka.tree.expression.function.ExpressionFunctionParameterKind;
+import walkingkooka.tree.expression.function.ExpressionFunctionParameterName;
 
 import java.util.Optional;
 
@@ -58,4 +61,8 @@ abstract class ColorExpressionFunction<T, C extends ExpressionEvaluationContext>
             .get()
             .toString();
     }
+
+    final static ExpressionFunctionParameter<Color> COLOR = ExpressionFunctionParameterName.with("color")
+        .required(Color.class)
+        .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE);
 }
