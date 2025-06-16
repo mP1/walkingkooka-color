@@ -115,6 +115,30 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
         );
     }
 
+    @Test
+    public void testToRgbHexStringWithColor() {
+        final Color color = Color.parse("#123");
+
+        this.evaluateAndCheck(
+            "toRgbHexString",
+            Lists.of(
+                color
+            ),
+            "#112233"
+        );
+    }
+
+    @Test
+    public void testToRgbHexStringWithString() {
+        this.evaluateAndCheck(
+            "toRgbHexString",
+            Lists.of(
+                "#123"
+            ),
+            "#112233"
+        );
+    }
+
     private void evaluateAndCheck(final String functionName,
                                   final List<Object> parameters,
                                   final Object expected) {
@@ -138,6 +162,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.invertColor();
                             case "mixColor":
                                 return ColorExpressionFunctions.mixColor();
+                            case "toRgbHexString":
+                                return ColorExpressionFunctions.toRgbHexString();
                             default:
                                 throw new UnknownExpressionFunctionException(name);
                         }
