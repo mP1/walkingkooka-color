@@ -161,6 +161,11 @@ final class AlphaRgbColor extends RgbColor {
             ')';
     }
 
+    @Override
+    int hexStringDigitLength() {
+        return 8;
+    }
+
     // Object..........................................................................................................
 
     // UsesToStringBuilder

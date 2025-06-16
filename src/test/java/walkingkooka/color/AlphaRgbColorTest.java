@@ -170,6 +170,24 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         this.checkNotEquals(AlphaRgbColor.with(rgb.red(), rgb.green(), rgb.blue(), AlphaRgbColorComponent.with((byte) 0xff)));
     }
 
+    // toHexString......................................................................................................
+
+    @Test
+    public void testToHexString() {
+        this.toHexStringAndCheck(
+            RgbColor.fromArgb0(0x12345678),
+            "#12345678"
+        );
+    }
+
+    @Test
+    public void testToHexString2() {
+        this.toHexStringAndCheck(
+            RgbColor.fromArgb0(0),
+            "#00000000"
+        );
+    }
+
     // HasJsonNode............................................................................................
 
     @Test

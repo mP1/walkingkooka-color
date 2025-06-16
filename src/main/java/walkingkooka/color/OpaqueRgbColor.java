@@ -163,6 +163,11 @@ final class OpaqueRgbColor extends RgbColor {
             ')';
     }
 
+    @Override
+    int hexStringDigitLength() {
+        return 6;
+    }
+
     // Object..........................................................................................................
 
     // UsesToStringBuilder

@@ -674,6 +674,16 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         );
     }
 
+    // toHexString......................................................................................................
+
+    final void toHexStringAndCheck(final RgbColor color,
+                                   final String expected) {
+        this.checkEquals(
+            expected,
+            color.toHexString()
+        );
+    }
+
     // HasJsonNode.......................................................................................................
 
     @Test
