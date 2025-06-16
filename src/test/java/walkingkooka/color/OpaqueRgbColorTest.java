@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.tree.json.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -29,17 +28,38 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
 
     @Test
     public void testWithNullRedFails() {
-        assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(null, GREEN, BLUE));
+        assertThrows(
+            NullPointerException.class,
+            () -> OpaqueRgbColor.withOpaque(
+                null,
+                GREEN,
+                BLUE
+            )
+        );
     }
 
     @Test
     public void testWithNullGreenFails() {
-        assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(RED, null, BLUE));
+        assertThrows(
+            NullPointerException.class,
+            () -> OpaqueRgbColor.withOpaque(
+                RED,
+                null,
+                BLUE
+            )
+        );
     }
 
     @Test
     public void testWithNullBlueFails() {
-        assertThrows(NullPointerException.class, () -> OpaqueRgbColor.withOpaque(RED, GREEN, null));
+        assertThrows(
+            NullPointerException.class,
+            () -> OpaqueRgbColor.withOpaque(
+                RED,
+                GREEN,
+                null
+            )
+        );
     }
 
     @Test
@@ -49,7 +69,12 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         assertSame(GREEN, rgb.green(), "green");
         assertSame(BLUE, rgb.blue(), "blue");
         assertSame(AlphaRgbColorComponent.OPAQUE, rgb.alpha(), "alpha");
-        this.checkEquals((RED.value << 16) + (GREEN.value << 8) + BLUE.value, rgb.rgb(), "rgb");
+
+        this.checkEquals(
+            (RED.value << 16) + (GREEN.value << 8) + BLUE.value,
+            rgb.rgb(),
+            "rgb"
+        );
     }
 
     @Test
@@ -59,7 +84,12 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         assertSame(GREEN, rgb.green(), "green");
         assertSame(BLUE, rgb.blue(), "blue");
         assertSame(AlphaRgbColorComponent.OPAQUE, rgb.alpha(), "alpha");
-        this.checkEquals(0x010203, rgb.rgb(), "rgb");
+
+        this.checkEquals(
+            0x010203,
+            rgb.rgb(),
+            "rgb"
+        );
     }
 
     @Test
@@ -77,21 +107,45 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     @Override
     public void testHasAlpha() {
         final OpaqueRgbColor rgb = OpaqueRgbColor.withOpaque(RED, GREEN, BLUE);
-        assertFalse(rgb.hasAlpha(), rgb + " has no alpha");
+        this.checkEquals(
+            false,
+            rgb.hasAlpha(),
+            () -> rgb + " has no alpha"
+        );
     }
 
     @Test
     public void testWithAlpha() {
         final RgbColor rgb = this.createColor();
-        this.checkNotEquals(AlphaRgbColor.with(rgb.red(), rgb.green(), rgb.blue(), AlphaRgbColorComponent.with((byte) 4)));
+        this.checkNotEquals(
+            AlphaRgbColor.with(
+                rgb.red(),
+                rgb.green(),
+                rgb.blue(),
+                AlphaRgbColorComponent.with((byte) 4))
+        );
     }
 
     @Test
     public void testToAwtColor() {
-        final java.awt.Color rgb = RgbColor.fromRgb0(0x010203).toAwtColor();
-        this.checkEquals(1, rgb.getRed(), "red");
-        this.checkEquals(2, rgb.getGreen(), "green");
-        this.checkEquals(3, rgb.getBlue(), "blue");
+        final java.awt.Color rgb = RgbColor.fromRgb0(0x010203)
+            .toAwtColor();
+
+        this.checkEquals(
+            1,
+            rgb.getRed(),
+            "red"
+        );
+        this.checkEquals(
+            2,
+            rgb.getGreen(),
+            "green"
+        );
+        this.checkEquals(
+            3,
+            rgb.getBlue(),
+            "blue"
+        );
     }
 
     // mix..............................................................................................................
@@ -140,7 +194,10 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
 
     @Test
     public void testWebNameCyan() {
-        this.toWebNameAndCheck(WebColorName.CYAN.color(), WebColorName.CYAN);
+        this.toWebNameAndCheck(
+            WebColorName.CYAN.color(),
+            WebColorName.CYAN
+        );
     }
 
     @Test
@@ -170,7 +227,18 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         );
     }
 
-    // HasJsonNode............................................................................................
+    @Override
+    OpaqueRgbColor createColor(final RedRgbColorComponent red,
+                               final GreenRgbColorComponent green,
+                               final BlueRgbColorComponent blue) {
+        return OpaqueRgbColor.withOpaque(
+            red,
+            green,
+            blue
+        );
+    }
+
+    // json.............................................................................................................
 
     @Test
     public void testJsonNodeUnmarshallString() {
@@ -184,21 +252,17 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
             JsonNode.string("#123456"));
     }
 
-    // Object............................................................................................
+    // Object...........................................................................................................
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(RgbColor.fromRgb0(0x010203), "#010203");
+        this.toStringAndCheck(
+            RgbColor.fromRgb0(0x010203),
+            "#010203"
+        );
     }
 
-    @Override
-    OpaqueRgbColor createColor(final RedRgbColorComponent red,
-                               final GreenRgbColorComponent green,
-                               final BlueRgbColorComponent blue) {
-        return OpaqueRgbColor.withOpaque(red, green, blue);
-    }
-
-    // ClassTesting ...................................................................................................
+    // ClassTesting ....................................................................................................
 
     @Override
     public Class<OpaqueRgbColor> type() {
