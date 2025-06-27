@@ -24,6 +24,7 @@ import walkingkooka.color.convert.ColorConverters;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
 import walkingkooka.datetime.DateTimeContexts;
+import walkingkooka.locale.LocaleContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
@@ -189,7 +190,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                         ),
                         DateTimeContexts.fake(),
                         DecimalNumberContexts.fake()
-                    )
+                    ),
+                    LocaleContexts.fake()
                 )
             )
         );
