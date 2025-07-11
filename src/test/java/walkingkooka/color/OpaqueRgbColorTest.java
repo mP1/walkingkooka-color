@@ -209,6 +209,16 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
             });
     }
 
+    // toGray...........................................................................................................
+
+    @Test
+    public void testToGray() {
+        this.toGrayAndCheck(
+            RgbColor.parseRgb("#18f"),
+            RgbColor.parseRgb("#717171")
+        );
+    }
+
     // toHexString......................................................................................................
 
     @Test
