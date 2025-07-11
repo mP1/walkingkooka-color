@@ -482,6 +482,46 @@ abstract public class RgbColor extends Color {
     // Color............................................................................................................
 
     /**
+     * <pre>
+     * https://stackoverflow.com/questions/687261/converting-rgb-to-grayscale-intensity
+     *
+     * nGray =  0.299F * R + 0.587F * G + 0.114F * B;
+     * </pre>
+     */
+    public final RgbColor toGray() {
+        RgbColor gray = this;
+
+        final float red = this.red()
+            .floatValue;
+
+        final float green = this.green()
+            .floatValue;
+
+        final float blue = this.blue()
+            .floatValue;
+
+        if (red > 0 || green > 0 || blue > 0) {
+            final byte grayByte = RgbColorComponent.toByte(
+                (red + GRAY_ROUNDING) * 0.299F +
+                    (green + GRAY_ROUNDING) * 0.587F +
+                    (blue + GRAY_ROUNDING) * 0.114f
+            );
+
+            return this.setRed(
+                RgbColorComponent.red(grayByte)
+            ).setGreen(
+                RgbColorComponent.green(grayByte)
+            ).setBlue(
+                RgbColorComponent.blue(grayByte)
+            );
+        }
+
+        return gray;
+    }
+
+    private final static float GRAY_ROUNDING = 1f / RgbColorComponent.MAX_VALUE / 2f;
+
+    /**
      * Returns a {@link HslColor} which is equivalent to this {@link Color} form, ignoring any {@link AlphaRgbColorComponent}.<br>
      *
      * <pre>

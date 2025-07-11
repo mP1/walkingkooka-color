@@ -698,6 +698,58 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
         checkComponent(alpha, mixedColor.alpha(), "alpha", rgb, mixed, amount);
     }
 
+    // toGray...........................................................................................................
+
+    @Test
+    public final void testToGrayWithBlack() {
+        this.toGrayAndCheck(
+            this.createColor(
+                RgbColorComponent.red((byte) 0),
+                RgbColorComponent.green((byte) 0),
+                RgbColorComponent.blue((byte) 0)
+            )
+        );
+    }
+
+    @Test
+    public final void testToGrayWithMediumGray() {
+        this.toGrayAndCheck(
+            this.createColor(
+                RgbColorComponent.red((byte) 127),
+                RgbColorComponent.green((byte) 127),
+                RgbColorComponent.blue((byte) 127)
+            )
+        );
+    }
+
+    @Test
+    public final void testToGrayWithMediumWhite() {
+        this.toGrayAndCheck(
+            this.createColor(
+                RgbColorComponent.red((byte) 255),
+                RgbColorComponent.green((byte) 255),
+                RgbColorComponent.blue((byte) 255)
+            )
+        );
+    }
+
+    final void toGrayAndCheck(final RgbColor rgb) {
+        assertSame(
+            rgb,
+            rgb.toGray()
+        );
+    }
+
+    final void toGrayAndCheck(final RgbColor rgb,
+                              final RgbColor expected) {
+        this.checkEquals(
+            expected,
+            rgb.toGray()
+        );
+    }
+
+    // toHsv............................................................................................................
+
     // toHsv http://web.forret.com/tools/color.asp
 
     @Test

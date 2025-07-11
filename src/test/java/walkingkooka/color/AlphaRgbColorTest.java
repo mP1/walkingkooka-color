@@ -189,6 +189,16 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         );
     }
 
+    // toGray...........................................................................................................
+
+    @Test
+    public void testToGray() {
+        this.toGrayAndCheck(
+            RgbColor.parseRgb("#18F4"),
+            RgbColor.parseRgb("#71717144")
+        );
+    }
+
     // toHexString......................................................................................................
 
     @Test
