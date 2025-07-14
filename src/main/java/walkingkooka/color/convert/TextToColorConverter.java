@@ -51,23 +51,7 @@ final class TextToColorConverter<C extends ConverterContext> implements TextToTr
     public boolean isTargetType(final Object value,
                                 final Class<?> type,
                                 final C context) {
-        return isColorSubclass(type);
-    }
-
-    private static boolean isColorSubclass(final Class<?> type) {
-        boolean is = false;
-
-        Class<?> temp = type;
-
-        while (null != temp && Object.class != temp) {
-            is = Color.class == temp;
-            if (is) {
-                break;
-            }
-            temp = temp.getSuperclass();
-        }
-
-        return is;
+        return Color.isColorClass(type);
     }
 
     @Override
