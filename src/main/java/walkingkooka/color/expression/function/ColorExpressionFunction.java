@@ -18,6 +18,7 @@
 package walkingkooka.color.expression.function;
 
 import walkingkooka.color.Color;
+import walkingkooka.color.RgbColor;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionFunctionName;
 import walkingkooka.tree.expression.ExpressionPurityContext;
@@ -64,5 +65,9 @@ abstract class ColorExpressionFunction<T, C extends ExpressionEvaluationContext>
 
     final static ExpressionFunctionParameter<Color> COLOR = ExpressionFunctionParameterName.with("color")
         .required(Color.class)
+        .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE);
+
+    final static ExpressionFunctionParameter<RgbColor> RGBCOLOR = ExpressionFunctionParameterName.with("rgbColor")
+        .required(RgbColor.class)
         .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE);
 }

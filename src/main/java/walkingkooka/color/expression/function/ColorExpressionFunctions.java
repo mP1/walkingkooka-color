@@ -18,6 +18,7 @@
 package walkingkooka.color.expression.function;
 
 import walkingkooka.color.Color;
+import walkingkooka.color.RgbColor;
 import walkingkooka.reflect.PublicStaticHelper;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunction;
@@ -53,6 +54,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<String, C> toRgbHexString() {
         return ColorExpressionFunctionToRgbHexString.instance();
+    }
+
+    /**
+     * {@see ColorExpressionFunctionRgbColorToGray}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toGray() {
+        return ColorExpressionFunctionRgbColorToGray.instance();
     }
 
     /**

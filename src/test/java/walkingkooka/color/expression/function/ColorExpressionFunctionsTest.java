@@ -20,6 +20,7 @@ package walkingkooka.color.expression.function;
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
+import walkingkooka.color.RgbColor;
 import walkingkooka.color.convert.ColorConverters;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
@@ -117,6 +118,32 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testToGrayWithString() {
+        final String text = "#123";
+
+        this.evaluateAndCheck(
+            "toGray",
+            Lists.of(
+                text
+            ),
+            Color.parseRgb(text).toGray()
+        );
+    }
+
+    @Test
+    public void testToGrayWithColor() {
+        final RgbColor color = Color.parseRgb("#456");
+
+        this.evaluateAndCheck(
+            "toGray",
+            Lists.of(
+                color
+            ),
+            color.toGray()
+        );
+    }
+
+    @Test
     public void testToRgbHexStringWithColor() {
         final Color color = Color.parse("#123");
 
@@ -163,6 +190,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.invertColor();
                             case "mixColor":
                                 return ColorExpressionFunctions.mixColor();
+                            case "toGray":
+                                return ColorExpressionFunctions.toGray();
                             case "toRgbHexString":
                                 return ColorExpressionFunctions.toRgbHexString();
                             default:
