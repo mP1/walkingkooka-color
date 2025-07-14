@@ -41,6 +41,14 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     }
 
     @Test
+    public final void testIsColorClass() {
+        this.checkEquals(
+            Color.isColorClass(this.createColor().getClass()),
+            true
+        );
+    }
+
+    @Test
     public final void testIsHsl() {
         final C color = this.createColor();
         this.checkEquals(color instanceof HslColor,

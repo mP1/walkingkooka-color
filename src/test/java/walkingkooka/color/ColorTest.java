@@ -29,6 +29,48 @@ public final class ColorTest implements ClassTesting2<Color>,
     JsonNodeMarshallingTesting<Color>,
     ParseStringTesting<Color> {
 
+    // isColorType......................................................................................................
+
+    @Test
+    public void testIsColorClassWithNull() {
+        this.isColorClassAndCheck(
+            null,
+            false
+        );
+    }
+
+    @Test
+    public void testIsColorClassWithThis() {
+        this.isColorClassAndCheck(
+            this.getClass(),
+            false
+        );
+    }
+
+    @Test
+    public void testIsColorClassWithColor() {
+        this.isColorClassAndCheck(
+            Color.class,
+            true
+        );
+    }
+
+    @Test
+    public void testIsColorClassWithRgbColor() {
+        this.isColorClassAndCheck(
+            RgbColor.class,
+            true
+        );
+    }
+
+    private void isColorClassAndCheck(final Class<?> type,
+                                      final boolean expected) {
+        this.checkEquals(
+            Color.isColorClass(type),
+            expected
+        );
+    }
+
     // parse...........................................................................................................
 
     @Test

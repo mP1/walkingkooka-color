@@ -62,6 +62,25 @@ public abstract class Color implements HasText,
     public final static RgbColor WHITE = RgbColor.fromRgb0(0xFFFFFF);
 
     /**
+     * Tests if the given type is a {@link Color} sub class.
+     * This is useful in GWT where {@link Class#isAssignableFrom(Class)} is not supported.
+     */
+    public static boolean isColorClass(final Class<?> type) {
+        return null != type && (
+            Color.class == type ||
+                HslColor.class == type ||
+                OpaqueHslColor.class == type ||
+                AlphaHslColor.class == type ||
+                RgbColor.class == type ||
+                OpaqueRgbColor.class == type ||
+                AlphaRgbColor.class == type ||
+                HsvColor.class == type ||
+                OpaqueHsvColor.class == type ||
+                AlphaHsvColor.class == type
+        );
+    }
+
+    /**
      * Creates a new {@link HslColor} with the given components.
      */
     public static HslColor hsl(final HueHslColorComponent hue,
