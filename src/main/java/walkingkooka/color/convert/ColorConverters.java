@@ -26,7 +26,7 @@ public final class ColorConverters implements PublicStaticHelper {
     /**
      * {@see ColorToRgbColorConverter}
      */
-    public static <C extends ConverterContext> Converter<C> colorToRgb() {
+    public static <C extends ConverterContext> Converter<C> colorToRgbColor() {
         return ColorToRgbColorConverter.instance();
     }
 
