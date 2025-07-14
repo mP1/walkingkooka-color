@@ -214,7 +214,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                             Lists.of(
                                 Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
                                 Converters.simple(), // handles Text -> TextNode
-                                ColorConverters.textToConverter()
+                                ColorConverters.textToColor()
                             )
                         ),
                         DateTimeContexts.fake(),

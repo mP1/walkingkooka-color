@@ -33,7 +33,7 @@ public final class ColorConverters implements PublicStaticHelper {
     /**
      * {@see TextToColorConverter}
      */
-    public static <C extends ConverterContext> Converter<C> textToConverter() {
+    public static <C extends ConverterContext> Converter<C> textToColor() {
         return TextToColorConverter.instance();
     }
 
