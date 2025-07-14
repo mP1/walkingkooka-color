@@ -97,7 +97,7 @@ public final class ColorToRgbColorConverterTest implements ConverterTesting2<Col
             private final Converter<FakeConverterContext> converter = Converters.collection(
                 Lists.of(
                     Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
-                    ColorConverters.textToConverter()
+                    ColorConverters.textToColor()
                 )
             );
         };
