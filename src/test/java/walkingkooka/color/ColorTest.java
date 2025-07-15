@@ -140,6 +140,84 @@ public final class ColorTest implements ClassTesting2<Color>,
             expected
         );
     }
+
+    // isHsvColorClass..................................................................................................
+
+    @Test
+    public void testIsHsvColorClassWithNull() {
+        this.isHsvColorClassAndCheck(
+            null,
+            false
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithThis() {
+        this.isHsvColorClassAndCheck(
+            this.getClass(),
+            false
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithColor() {
+        this.isHsvColorClassAndCheck(
+            Color.class,
+            false
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithRgbColor() {
+        this.isHsvColorClassAndCheck(
+            RgbColor.class,
+            false
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithHslColor() {
+        this.isHsvColorClassAndCheck(
+            Color.BLACK.toHsl().getClass(),
+            false
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithOpaqueHsvColor() {
+        this.isHsvColorClassAndCheck(
+            Color.parseRgb("#123")
+                .toHsv()
+                .getClass(),
+            true
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithAlphaHsvColor() {
+        this.isHsvColorClassAndCheck(
+            Color.parseRgb("#112233ff")
+                .toHsv()
+                .getClass(),
+            true
+        );
+    }
+
+    @Test
+    public void testIsHsvColorClassWithHsvColor() {
+        this.isHsvColorClassAndCheck(
+            HsvColor.class,
+            true
+        );
+    }
+
+    private void isHsvColorClassAndCheck(final Class<?> type,
+                                         final boolean expected) {
+        this.checkEquals(
+            Color.isHsvColorClass(type),
+            expected
+        );
+    }
     
     // isRgbColorClass..................................................................................................
 
