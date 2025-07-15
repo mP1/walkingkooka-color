@@ -81,6 +81,16 @@ public abstract class Color implements HasText,
     }
 
     /**
+     * Tests if the given type is {@link HslColor} or a sub-class.
+     * This is useful in GWT where {@link Class#isAssignableFrom(Class)} is not supported.
+     */
+    public static boolean isHslColorClass(final Class<?> type) {
+        return HslColor.class == type ||
+            OpaqueHslColor.class == type ||
+            AlphaHslColor.class == type;
+    }
+
+    /**
      * Tests if the given type is {@link RgbColor} or a sub-class.
      * This is useful in GWT where {@link Class#isAssignableFrom(Class)} is not supported.
      */
