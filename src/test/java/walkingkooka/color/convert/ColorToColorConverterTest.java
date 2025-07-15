@@ -22,19 +22,43 @@ import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
+import walkingkooka.color.HslColor;
+import walkingkooka.color.HsvColor;
 import walkingkooka.color.RgbColor;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
-public final class ColorToRgbColorConverterTest implements ConverterTesting2<ColorToRgbColorConverter<FakeConverterContext>, FakeConverterContext> {
+public final class ColorToColorConverterTest implements ConverterTesting2<ColorToColorConverter<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertStringToColorFails() {
         this.convertFails(
             "#123456",
             Color.class
+        );
+    }
+
+    @Test
+    public void testConvertStringToHslColor() {
+        final HslColor color = Color.BLACK.toHsl();
+
+        this.convertAndCheck(
+            color.toString(),
+            HslColor.class,
+            color
+        );
+    }
+
+    @Test
+    public void testConvertStringToHsvColor() {
+        final HsvColor color = Color.BLACK.toHsv();
+
+        this.convertAndCheck(
+            color.toString(),
+            HsvColor.class,
+            color
         );
     }
 
@@ -47,6 +71,26 @@ public final class ColorToRgbColorConverterTest implements ConverterTesting2<Col
         );
     }
 
+    @Test
+    public void testConvertRgbColorToHslColor() {
+        final Color color = Color.BLACK;
+        this.convertAndCheck(
+            color,
+            HslColor.class,
+            color.toHsl()
+        );
+    }
+
+    @Test
+    public void testConvertRgbColorToHsvColor() {
+        final Color color = Color.BLACK;
+        this.convertAndCheck(
+            color,
+            HsvColor.class,
+            color.toHsv()
+        );
+    }
+    
     @Test
     public void testConvertRgbColorToRgbColor() {
         this.convertAndCheck(
@@ -67,8 +111,8 @@ public final class ColorToRgbColorConverterTest implements ConverterTesting2<Col
     }
 
     @Override
-    public ColorToRgbColorConverter<FakeConverterContext> createConverter() {
-        return ColorToRgbColorConverter.instance();
+    public ColorToColorConverter<FakeConverterContext> createConverter() {
+        return ColorToColorConverter.instance();
     }
 
     @Override
@@ -108,15 +152,15 @@ public final class ColorToRgbColorConverterTest implements ConverterTesting2<Col
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ColorToRgbColorConverter.instance(),
-            "Color to RgbColor"
+            ColorToColorConverter.instance(),
+            "Color to Color"
         );
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<ColorToRgbColorConverter<FakeConverterContext>> type() {
-        return Cast.to(ColorToRgbColorConverter.class);
+    public Class<ColorToColorConverter<FakeConverterContext>> type() {
+        return Cast.to(ColorToColorConverter.class);
     }
 }

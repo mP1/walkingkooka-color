@@ -25,26 +25,26 @@ import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
 
 /**
- * A {@link Converter} that converts a {@link Color} to a {@link walkingkooka.color.RgbColor}.
+ * A {@link Converter} that converts a {@link Color} to another {@link Color}.
  */
-final class ColorToRgbColorConverter<C extends ConverterContext> implements ShortCircuitingConverter<C> {
+final class ColorToColorConverter<C extends ConverterContext> implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorToRgbColorConverter<C> instance() {
+    static <C extends ConverterContext> ColorToColorConverter<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorToRgbColorConverter<ConverterContext> INSTANCE = new ColorToRgbColorConverter<>();
+    private final static ColorToColorConverter<ConverterContext> INSTANCE = new ColorToColorConverter<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ColorToRgbColorConverter() {
+    private ColorToColorConverter() {
         super();
     }
 
@@ -52,7 +52,7 @@ final class ColorToRgbColorConverter<C extends ConverterContext> implements Shor
     public boolean canConvert(final Object value,
                               final Class<?> type,
                               final C context) {
-        return Color.isRgbColorClass(type) &&
+        return Color.isColorClass(type) &&
             (value instanceof Color || context.canConvert(value, type));
     }
 
@@ -68,17 +68,37 @@ final class ColorToRgbColorConverter<C extends ConverterContext> implements Shor
             );
         }
 
-        final Color color = (Color) temp;
-        return this.successfulConversion(
-            color.toRgb(),
-            type
-        );
+        Color color = (Color) temp;
+
+        if (Color.isRgbColorClass(type)) {
+            color = color.toRgb();
+        } else {
+            if (Color.isHslColorClass(type)) {
+                color = color.toHsl();
+            } else {
+                if (Color.isHsvColorClass(type)) {
+                    color = color.toHsv();
+                } else {
+                    color = null;
+                }
+            }
+        }
+
+        return null != color ?
+            this.successfulConversion(
+                color,
+                type
+            ) :
+            this.failConversion(
+                value,
+                type
+            );
     }
 
     // Object...........................................................................................................
 
     @Override
     public String toString() {
-        return "Color to RgbColor";
+        return "Color to Color";
     }
 }

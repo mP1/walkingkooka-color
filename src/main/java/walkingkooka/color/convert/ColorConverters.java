@@ -24,10 +24,10 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class ColorConverters implements PublicStaticHelper {
 
     /**
-     * {@see ColorToRgbColorConverter}
+     * {@see ColorToColorConverter}
      */
-    public static <C extends ConverterContext> Converter<C> colorToRgbColor() {
-        return ColorToRgbColorConverter.instance();
+    public static <C extends ConverterContext> Converter<C> colorToColor() {
+        return ColorToColorConverter.instance();
     }
 
     /**
