@@ -34,7 +34,7 @@ Color mixed = red.mix(hsv.green(), 0.75);
 
 A collection of converters that are particularly useful within expressions and support passing colors as text.
 
-- [ColorToRgbColorConverter](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorToRgbColorConverter.java)
+- [ColorToColorConverter](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorToColorConverter.java)
 - [TextToColorConverter](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/TextToColorConverter.java)
 
 ### [Function](https://github.com/mP1/walkingkooka-convert/blob/master/src/main/java/walkingkooka/convert/Converter.java)
