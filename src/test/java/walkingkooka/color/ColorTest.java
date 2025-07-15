@@ -71,6 +71,72 @@ public final class ColorTest implements ClassTesting2<Color>,
         );
     }
 
+    // isRgbColorClass..................................................................................................
+
+    @Test
+    public void testIsRgbColorClassWithNull() {
+        this.isRgbColorClassAndCheck(
+            null,
+            false
+        );
+    }
+
+    @Test
+    public void testIsRgbColorClassWithThis() {
+        this.isRgbColorClassAndCheck(
+            this.getClass(),
+            false
+        );
+    }
+
+    @Test
+    public void testIsRgbColorClassWithColor() {
+        this.isRgbColorClassAndCheck(
+            Color.class,
+            false
+        );
+    }
+
+    @Test
+    public void testIsRgbColorClassWithRgbColor() {
+        this.isRgbColorClassAndCheck(
+            RgbColor.class,
+            true
+        );
+    }
+
+    @Test
+    public void testIsRgbColorClassWithOpaqueRgbColor() {
+        this.isRgbColorClassAndCheck(
+            Color.parseRgb("#123").getClass(),
+            true
+        );
+    }
+
+    @Test
+    public void testIsRgbColorClassWithAlphaRgbColor() {
+        this.isRgbColorClassAndCheck(
+            Color.parseRgb("#112233ff").getClass(),
+            true
+        );
+    }
+
+    @Test
+    public void testIsRgbColorClassWithHslColor() {
+        this.isRgbColorClassAndCheck(
+            HslColor.class,
+            false
+        );
+    }
+
+    private void isRgbColorClassAndCheck(final Class<?> type,
+                                         final boolean expected) {
+        this.checkEquals(
+            Color.isRgbColorClass(type),
+            expected
+        );
+    }
+
     // parse............................................................................................................
 
     @Test
