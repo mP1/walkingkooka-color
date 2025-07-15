@@ -29,7 +29,7 @@ public final class ColorTest implements ClassTesting2<Color>,
     JsonNodeMarshallingTesting<Color>,
     ParseStringTesting<Color> {
 
-    // isColorType......................................................................................................
+    // isColorClass.....................................................................................................
 
     @Test
     public void testIsColorClassWithNull() {
@@ -71,54 +71,89 @@ public final class ColorTest implements ClassTesting2<Color>,
         );
     }
 
-    // parse...........................................................................................................
+    // parse............................................................................................................
 
     @Test
     public void testParseFails() {
-        this.parseStringFails("abc", IllegalArgumentException.class);
+        this.parseStringFails(
+            "abc",
+            IllegalArgumentException.class
+        );
     }
 
     @Test
     public void testParseHsl() {
-        this.parseStringAndCheck("hsl(359, 0%, 25%)",
-            HslColor.with(HslColorComponent.hue(359f),
+        this.parseStringAndCheck(
+            "hsl(359, 0%, 25%)",
+            HslColor.with(
+                HslColorComponent.hue(359f),
                 HslColorComponent.saturation(0.0f),
-                HslColorComponent.lightness(0.25f)));
+                HslColorComponent.lightness(0.25f)
+            )
+        );
     }
 
     @Test
     public void testParseHsla() {
-        this.parseStringAndCheck("hsla(359, 0%, 25%, 50%)",
-            HslColor.with(HslColorComponent.hue(359f),
-                    HslColorComponent.saturation(0.0f),
-                    HslColorComponent.lightness(0.25f))
-                .set(HslColorComponent.alpha(0.5f)));
+        this.parseStringAndCheck(
+            "hsla(359, 0%, 25%, 50%)",
+            HslColor.with(
+                HslColorComponent.hue(359f),
+                HslColorComponent.saturation(0.0f),
+                HslColorComponent.lightness(0.25f)
+            ).set(HslColorComponent.alpha(0.5f)
+            )
+        );
     }
 
     @Test
     public void testParseHsv() {
-        this.parseStringAndCheck("hsv(359, 0%, 25%)",
-            HsvColor.with(HsvColorComponent.hue(359f),
+        this.parseStringAndCheck(
+            "hsv(359, 0%, 25%)",
+            HsvColor.with(
+                HsvColorComponent.hue(359f),
                 HsvColorComponent.saturation(0.0f),
-                HsvColorComponent.value(0.25f)));
+                HsvColorComponent.value(0.25f)
+            )
+        );
     }
 
     @Test
     public void testParseRgb() {
-        this.parseStringAndCheck("rgb(12,34,56)",
-            RgbColor.with(RgbColorComponent.red((byte) 12),
+        this.parseStringAndCheck(
+            "rgb(12,34,56)",
+            RgbColor.with(
+                RgbColorComponent.red((byte) 12),
                 RgbColorComponent.green((byte) 34),
-                RgbColorComponent.blue((byte) 56)));
+                RgbColorComponent.blue((byte) 56)
+            )
+        );
     }
 
     @Test
     public void testParseWebColorName() {
-        this.parseStringAndCheck("red",
+        this.parseStringAndCheck(
+            "red",
             Color.parse("#ff0000")
         );
     }
 
-    // unmarshall.....................................................................................................
+    @Override
+    public Color parseString(final String text) {
+        return Color.parse(text);
+    }
+
+    @Override
+    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
+        return expected;
+    }
+
+    @Override
+    public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
+        return expected;
+    }
+
+    // unmarshall.......................................................................................................
 
     @Test
     public void testJsonNodeUnmarshallInvalidStringFails() {
@@ -147,8 +182,6 @@ public final class ColorTest implements ClassTesting2<Color>,
         this.unmarshallAndCheck(hsv.marshall(this.marshallContext()), hsv);
     }
 
-    // HasJsonNode.....................................................................................................
-
     @Override
     public Color unmarshall(final JsonNode from,
                             final JsonNodeUnmarshallContext context) {
@@ -160,24 +193,7 @@ public final class ColorTest implements ClassTesting2<Color>,
         return RgbColor.fromArgb0(0x123456);
     }
 
-    // ParseStringTesting...............................................................................................
-
-    @Override
-    public Color parseString(final String text) {
-        return Color.parse(text);
-    }
-
-    @Override
-    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
-        return expected;
-    }
-
-    @Override
-    public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
-        return expected;
-    }
-
-    // ClassTesting....................................................................................................
+    // Class............................................................................................................
 
     @Override
     public Class<Color> type() {
