@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.color.Color;
+import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
@@ -40,9 +41,27 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     }
 
     @Test
-    public void testConvertWithRgbColorStringAndColor() {
+    public void testConvertWithRgbColorStringHash3DigitsAndColor() {
+        this.convertAndCheck2(
+            "#123",
+            Color.class,
+            Color::parse
+        );
+    }
+
+    @Test
+    public void testConvertWithRgbColorStringHash6DigitsAndColor() {
         this.convertAndCheck2(
             "#123456",
+            Color.class,
+            Color::parse
+        );
+    }
+
+    @Test
+    public void testConvertWithRgbColorStringWebColorNameAndColor() {
+        this.convertAndCheck2(
+            WebColorName.RED.text(),
             Color.class,
             Color::parse
         );
