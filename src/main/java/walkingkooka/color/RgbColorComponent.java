@@ -79,14 +79,19 @@ abstract public class RgbColorComponent extends ColorComponent {
      * {@link RgbColorComponent}
      */
     static byte toByte(final float value) {
-        return (byte) Math.round(value * RgbColorComponent.MAX_VALUE);
+        return (byte)
+            Math.round(
+                value * RgbColorComponent.MAX_VALUE
+            );
     }
 
-    static byte addUnsignedSaturated(final int value, final int value2) {
+    static byte addUnsignedSaturated(final int value,
+                                     final int value2) {
         final int sum = value + value2;
-        return (byte) (sum > MAX_VALUE ?
-            MAX_VALUE :
-            Math.max(sum, 0));
+        return (byte)
+            (sum > MAX_VALUE ?
+                MAX_VALUE :
+                Math.max(sum, 0));
     }
 
     /**
@@ -98,7 +103,10 @@ abstract public class RgbColorComponent extends ColorComponent {
 
         final int integer = mask(value);
         this.unsignedIntValue = integer;
-        this.floatValue = Math.max(0, (integer - 1) * (1.0f / 255.0f));
+        this.floatValue = Math.max(
+            0,
+            (integer - 1) * (1.0f / 255.0f)
+        );
     }
 
     /**
@@ -111,7 +119,9 @@ abstract public class RgbColorComponent extends ColorComponent {
      */
     @Override
     final public RgbColorComponent invert() {
-        return this.replace(RgbColorComponent.mask(~this.value));
+        return this.replace(
+            RgbColorComponent.mask(~this.value)
+        );
     }
 
     /**
@@ -134,7 +144,11 @@ abstract public class RgbColorComponent extends ColorComponent {
 
         // if components are equal do not bother mixing and updating component.
         return 0 != difference ?
-            this.setComponent(color, from + Math.round(difference * amount)) :
+            this.setComponent(
+                color,
+                from +
+                    Math.round(difference * amount)
+            ) :
             color;
     }
 
@@ -200,7 +214,7 @@ abstract public class RgbColorComponent extends ColorComponent {
      */
     final float floatValue;
 
-    // HashCodeEqualsDefined
+    // Object...........................................................................................................
 
     @Override final public int hashCode() {
         return this.value;
@@ -240,7 +254,7 @@ abstract public class RgbColorComponent extends ColorComponent {
         return toString;
     }
 
-    // RgbColorString................................................................................
+    // RgbColorString...................................................................................................
 
     /**
      * Formats the value as a decimal between 0 and 255.
@@ -275,6 +289,11 @@ abstract public class RgbColorComponent extends ColorComponent {
         .toArray(String[]::new);
 
     private static String toPercentageString(final int value) {
-        return String.valueOf(Math.round(100f * value / MAX_VALUE)) + '%';
+        return String.valueOf(
+            Math.round(
+                100f * value /
+                    MAX_VALUE
+            )
+        ) + '%';
     }
 }
