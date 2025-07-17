@@ -101,7 +101,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     public void testMixColorWithColorColorAndFloat() {
         final Color color = Color.parse("#123");
         final Color other = Color.parse("#FFF");
-        final Float amount = 0.5f;
+        final float amount = 0.5f;
 
         this.evaluateAndCheck(
             "mixColor",
