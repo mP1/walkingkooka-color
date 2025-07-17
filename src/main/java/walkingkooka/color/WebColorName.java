@@ -36,7 +36,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
 
     /**
      * First because required by {@link #NAME_CONSTANTS} init.
-     * Probably should be case sensitive but to be a bit more practical make insensitive.
+     * Probably should be case-insensitive but to be a bit more practical make insensitive.
      */
     private final static CaseSensitivity CASE_SENSITIVITY = CaseSensitivity.INSENSITIVE;
 
