@@ -29,7 +29,7 @@ abstract public class RgbColorComponent extends ColorComponent
     implements Value<Byte>,
     ColorLike {
 
-    static boolean isRgbColorComponentClass(final Class<?> clazz) {
+    public static boolean isRgbColorComponentClass(final Class<?> clazz) {
         return clazz == RgbColorComponent.class ||
             clazz == BlueRgbColorComponent.class ||
             clazz == RedRgbColorComponent.class ||
