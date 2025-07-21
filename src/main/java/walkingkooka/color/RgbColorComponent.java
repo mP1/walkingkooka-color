@@ -29,6 +29,14 @@ abstract public class RgbColorComponent extends ColorComponent
     implements Value<Byte>,
     ColorLike {
 
+    static boolean isRgbColorComponentClass(final Class<?> clazz) {
+        return clazz == RgbColorComponent.class ||
+            clazz == BlueRgbColorComponent.class ||
+            clazz == RedRgbColorComponent.class ||
+            clazz == GreenRgbColorComponent.class ||
+            clazz == AlphaRgbColorComponent.class;
+    }
+
     final static char SEPARATOR = ',';
 
     static <C extends RgbColorComponent> C[] createConstants(final C[] constants,

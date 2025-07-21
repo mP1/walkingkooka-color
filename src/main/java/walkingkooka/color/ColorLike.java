@@ -21,4 +21,9 @@ package walkingkooka.color;
  * An interface that tags {@link RgbColor} and {@link RgbColorComponent}.
  */
 public interface ColorLike {
+
+    static boolean isColorLikeClass(final Class<?> clazz) {
+        return Color.isRgbColorClass(clazz) ||
+            RgbColorComponent.isRgbColorComponentClass(clazz);
+    }
 }
