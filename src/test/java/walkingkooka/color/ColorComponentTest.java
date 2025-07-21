@@ -36,6 +36,6 @@ public final class ColorComponentTest implements ClassTesting2<ColorComponent> {
 
     @Override
     public JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
+        return JavaVisibility.PUBLIC;
     }
 }
