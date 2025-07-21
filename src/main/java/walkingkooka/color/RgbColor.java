@@ -33,7 +33,7 @@ import java.util.Optional;
  * Holds an immutable {@link RgbColor}.
  */
 @SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
-abstract public class RgbColor extends Color implements ColorLike {
+abstract public class RgbColor extends Color implements ColorLike<Integer> {
 
     static RgbColor parseRgbOrHash(final String text) {
         final RgbColor color;
@@ -435,7 +435,8 @@ abstract public class RgbColor extends Color implements ColorLike {
     /**
      * Returns either RGB or ARGB value.
      */
-    abstract public int value();
+    @Override
+    abstract public Integer value();
 
     /**
      * Returns the max of 3 floats.
@@ -698,7 +699,10 @@ abstract public class RgbColor extends Color implements ColorLike {
     }
 
     private boolean equals1(final RgbColor other) {
-        return this.value() == other.value();
+        return this.value()
+            .equals(
+                other.value()
+            );
     }
 
     @Override //

@@ -131,7 +131,7 @@ final class AlphaRgbColor extends RgbColor {
      * Returns the ARGB
      */
     @Override
-    public int value() {
+    public Integer value() {
         return this.argb();
     }
 

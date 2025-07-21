@@ -17,8 +17,6 @@
 
 package walkingkooka.color;
 
-import walkingkooka.Value;
-
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
 
@@ -26,8 +24,7 @@ import java.util.stream.IntStream;
  * A value that holds a pixel rgb component such as the alpha channel component in a RGBA image.
  */
 abstract public class RgbColorComponent extends ColorComponent
-    implements Value<Byte>,
-    ColorLike {
+    implements ColorLike<Byte> {
 
     public static boolean isRgbColorComponentClass(final Class<?> clazz) {
         return clazz == RgbColorComponent.class ||
