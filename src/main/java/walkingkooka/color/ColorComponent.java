@@ -17,6 +17,9 @@
 
 package walkingkooka.color;
 
+/**
+ * Base class for all color components, including RGB, HSL and HSV.
+ */
 abstract class ColorComponent {
 
     ColorComponent() {
