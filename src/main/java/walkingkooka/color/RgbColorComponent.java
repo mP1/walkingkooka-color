@@ -121,7 +121,8 @@ abstract public class RgbColorComponent extends ColorComponent
     /**
      * Returns a {@link RgbColorComponent} with the value inverted.
      */
-    @Override final public RgbColorComponent invert() {
+    @Override //
+    final public RgbColorComponent invert() {
         return this.replace(
             RgbColorComponent.mask(~this.value)
         );
@@ -225,14 +226,16 @@ abstract public class RgbColorComponent extends ColorComponent
         return this.value;
     }
 
-    @Override final public boolean equals(final Object other) {
+    @Override //
+    final public boolean equals(final Object other) {
         return this == other;
     }
 
     /**
      * Returns the value in hex form.
      */
-    @Override final public String toString() {
+    @Override //
+    final public String toString() {
         return this.toHexString();
     }
 
