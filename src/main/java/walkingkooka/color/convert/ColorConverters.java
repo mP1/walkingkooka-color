@@ -31,6 +31,13 @@ public final class ColorConverters implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorToNumberConverter}
+     */
+    public static <C extends ConverterContext> Converter<C> colorToNumber() {
+        return ColorToNumberConverter.instance();
+    }
+
+    /**
      * {@see NumberToColorConverter}
      */
     public static <C extends ConverterContext> Converter<C> numberToColor() {
