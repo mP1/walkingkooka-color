@@ -33,7 +33,7 @@ import java.util.Optional;
  * Holds an immutable {@link RgbColor}.
  */
 @SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
-abstract public class RgbColor extends Color {
+abstract public class RgbColor extends Color implements ColorLike {
 
     static RgbColor parseRgbOrHash(final String text) {
         final RgbColor color;
