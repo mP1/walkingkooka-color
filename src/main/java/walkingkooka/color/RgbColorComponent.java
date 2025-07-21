@@ -26,7 +26,8 @@ import java.util.stream.IntStream;
  * A value that holds a pixel rgb component such as the alpha channel component in a RGBA image.
  */
 abstract public class RgbColorComponent extends ColorComponent
-    implements Value<Byte> {
+    implements Value<Byte>,
+    ColorLike {
 
     final static char SEPARATOR = ',';
 
