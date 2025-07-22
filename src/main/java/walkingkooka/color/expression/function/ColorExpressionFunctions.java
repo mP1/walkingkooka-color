@@ -89,6 +89,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorExpressionFunctionSetBlue}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setBlue() {
+        return ColorExpressionFunctionSetBlue.instance();
+    }
+
+    /**
      * {@see ColorExpressionFunctionToRgbHexString}
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<String, C> toRgbHexString() {

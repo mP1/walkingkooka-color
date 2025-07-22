@@ -20,6 +20,7 @@ package walkingkooka.color.expression.function;
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.AlphaRgbColorComponent;
+import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
@@ -202,6 +203,36 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testSetBlueWithRgbColorAndBlueRgbColorComponent() {
+        final RgbColor rgb = Color.parseRgb("#123");
+        final BlueRgbColorComponent component = RgbColorComponent.blue((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setBlue",
+            Lists.of(
+                rgb,
+                component
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
+    public void testSetBlueWithRgbColorAndNumber() {
+        final RgbColor rgb = Color.parseRgb("#123");
+        final BlueRgbColorComponent component = RgbColorComponent.blue((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setBlue",
+            Lists.of(
+                rgb,
+                component.value()
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
     public void testToGrayWithString() {
         final String text = "#123";
 
@@ -284,6 +315,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.mixColor();
                             case "setAlpha":
                                 return ColorExpressionFunctions.setAlpha();
+                            case "setBlue":
+                                return ColorExpressionFunctions.setBlue();
                             case "toGray":
                                 return ColorExpressionFunctions.toGray();
                             case "toRgbHexString":
