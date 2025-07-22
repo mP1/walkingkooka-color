@@ -353,4 +353,13 @@ abstract public class RgbColorComponent extends ColorComponent
             )
         ) + '%';
     }
+
+    // HasText..........................................................................................................
+
+    @Override
+    public final String text() {
+        return this.toDecimalString(
+            this.unsignedIntValue
+        );
+    }
 }
