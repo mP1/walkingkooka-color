@@ -20,6 +20,7 @@ package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
+import walkingkooka.test.ParseStringTesting;
 
 import java.util.function.Predicate;
 
@@ -27,7 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> extends ColorComponentTestCase<C> {
+abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> extends ColorComponentTestCase<C>
+    implements ParseStringTesting<C> {
 
     RgbColorComponentTestCase() {
         super();
@@ -177,6 +179,58 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
     @Override
     public final C createObject() {
         return this.createColorComponent();
+    }
+
+    // parse............................................................................................................
+
+    @Test
+    public final void testParseInvalidNumberFails() {
+        this.parseStringFails(
+            "invalid1",
+            NumberFormatException.class
+        );
+    }
+
+    @Test
+    public final void testParseNegativeNumberFails() {
+        this.parseStringFails(
+            "-1",
+            new IllegalArgumentException("Invalid value -1 < 0 or > 255")
+        );
+    }
+
+    @Test
+    public final void testParsePositiveNumberFails() {
+        this.parseStringFails(
+            "256",
+            new IllegalArgumentException("Invalid value 256 < 0 or > 255")
+        );
+    }
+
+    @Test
+    public final void testParseZero() {
+        this.parseStringAndCheck(
+            "0",
+            this.createColorComponent((byte) 0)
+        );
+    }
+
+    @Test
+    public final void testParse255() {
+        this.parseStringAndCheck(
+            "255",
+            this.createColorComponent((byte) 255)
+        );
+    }
+
+    @Override
+    public final Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> thrown) {
+        return thrown;
+    }
+
+    @Override
+    public final RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
+        return thrown;
     }
 
     // IsMethodTesting..................................................................................................

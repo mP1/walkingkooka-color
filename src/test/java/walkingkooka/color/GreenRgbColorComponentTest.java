@@ -47,6 +47,11 @@ public final class GreenRgbColorComponentTest extends RgbColorComponentTestCase<
     }
 
     @Override
+    public GreenRgbColorComponent parseString(final String text) {
+        return RgbColorComponent.parseGreen(text);
+    }
+
+    @Override
     public Class<GreenRgbColorComponent> type() {
         return GreenRgbColorComponent.class;
     }

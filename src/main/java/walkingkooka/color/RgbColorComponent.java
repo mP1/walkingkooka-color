@@ -17,6 +17,7 @@
 
 package walkingkooka.color;
 
+import java.util.Objects;
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
 
@@ -41,6 +42,49 @@ abstract public class RgbColorComponent extends ColorComponent
         IntStream.rangeClosed(0, 255)
             .forEach(i -> constants[i] = factory.apply(i));
         return constants;
+    }
+
+    public static AlphaRgbColorComponent parseAlpha(final String text) {
+        return alpha(
+            parse(
+                text
+            )
+        );
+    }
+
+    public static BlueRgbColorComponent parseBlue(final String text) {
+        return blue(
+            parse(
+                text
+            )
+        );
+    }
+
+    public static GreenRgbColorComponent parseGreen(final String text) {
+        return green(
+            parse(
+                text
+            )
+        );
+    }
+
+    public static RedRgbColorComponent parseRed(final String text) {
+        return red(
+            parse(
+                text
+            )
+        );
+    }
+
+    private static byte parse(final String text) {
+        Objects.requireNonNull(text, "text");
+
+        final int value = Integer.parseInt(text);
+        if (value < 0 || value > 255) {
+            throw new IllegalArgumentException("Invalid value " + value + " < 0 or > 255");
+        }
+
+        return (byte) value;
     }
 
     /**

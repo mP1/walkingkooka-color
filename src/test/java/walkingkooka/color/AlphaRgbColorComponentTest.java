@@ -47,6 +47,11 @@ public final class AlphaRgbColorComponentTest extends RgbColorComponentTestCase<
     }
 
     @Override
+    public AlphaRgbColorComponent parseString(final String text) {
+        return RgbColorComponent.parseAlpha(text);
+    }
+
+    @Override
     public Class<AlphaRgbColorComponent> type() {
         return AlphaRgbColorComponent.class;
     }
