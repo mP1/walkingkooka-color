@@ -105,6 +105,16 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     }
 
     @Test
+    public void testParseWebColorName() {
+        final WebColorName webColorName = WebColorName.HOTPINK;
+
+        this.parseStringAndCheck(
+            webColorName.text(),
+            webColorName.color()
+        );
+    }
+
+    @Test
     public void testParseColorRgbaFunction() {
         this.parseRgbaAndCheck3(
             "rgba(1,2,3,127)",
