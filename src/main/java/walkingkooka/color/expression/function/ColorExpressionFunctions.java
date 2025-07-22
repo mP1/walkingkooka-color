@@ -82,6 +82,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorExpressionFunctionSetAlpha}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setAlpha() {
+        return ColorExpressionFunctionSetAlpha.instance();
+    }
+
+    /**
      * {@see ColorExpressionFunctionToRgbHexString}
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<String, C> toRgbHexString() {
