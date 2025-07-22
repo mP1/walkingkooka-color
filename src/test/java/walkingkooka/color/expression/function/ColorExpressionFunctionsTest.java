@@ -19,8 +19,10 @@ package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColor;
+import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.convert.ColorConverters;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
@@ -170,6 +172,36 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testSetAlphaWithRgbColorAndAlphaRgbColorComponent() {
+        final RgbColor rgb = Color.parseRgb("#123");
+        final AlphaRgbColorComponent component = RgbColorComponent.alpha((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setAlpha",
+            Lists.of(
+                rgb,
+                component
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
+    public void testSetAlphaWithRgbColorAndNumber() {
+        final RgbColor rgb = Color.parseRgb("#123");
+        final AlphaRgbColorComponent component = RgbColorComponent.alpha((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setAlpha",
+            Lists.of(
+                rgb,
+                component.value()
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
     public void testToGrayWithString() {
         final String text = "#123";
 
@@ -250,6 +282,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.invertColor();
                             case "mixColor":
                                 return ColorExpressionFunctions.mixColor();
+                            case "setAlpha":
+                                return ColorExpressionFunctions.setAlpha();
                             case "toGray":
                                 return ColorExpressionFunctions.toGray();
                             case "toRgbHexString":
@@ -274,7 +308,10 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                             Lists.of(
                                 Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
                                 Converters.simple(), // handles Text -> TextNode
-                                ColorConverters.textToColor()
+                                ColorConverters.textToColor(),
+                                Converters.numberToNumber(),
+                                ColorConverters.numberToColor(),
+                                ColorConverters.colorToNumber()
                             )
                         ),
                         DateTimeContexts.fake(),
