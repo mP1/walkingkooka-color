@@ -74,4 +74,11 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
     final String toStringPercentage() {
         return Math.round(100 * this.value) + "%";
     }
+
+    // HasText..........................................................................................................
+
+    @Override
+    public final String text() {
+        return this.toString();
+    }
 }

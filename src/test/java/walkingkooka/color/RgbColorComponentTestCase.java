@@ -249,6 +249,24 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
         );
     }
 
+    // HasText..........................................................................................................
+
+    @Test
+    public final void testTextWith0() {
+        this.textAndCheck(
+            this.createColorComponent((byte) 0),
+            "0"
+        );
+    }
+
+    @Test
+    public final void testTextWith255() {
+        this.textAndCheck(
+            this.createColorComponent((byte) 255),
+            "255"
+        );
+    }
+
     // TypeNameTesting .................................................................................................
 
     @Override

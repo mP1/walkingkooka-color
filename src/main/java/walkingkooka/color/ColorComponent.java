@@ -17,10 +17,12 @@
 
 package walkingkooka.color;
 
+import walkingkooka.text.HasText;
+
 /**
  * Base class for all color components, including RGB, HSL and HSV.
  */
-abstract public class ColorComponent {
+abstract public class ColorComponent implements HasText {
 
     ColorComponent() {
         super();
