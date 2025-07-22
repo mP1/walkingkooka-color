@@ -19,6 +19,7 @@ package walkingkooka.color.expression.function;
 
 import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.Color;
+import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.reflect.PublicStaticHelper;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
@@ -41,6 +42,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<AlphaRgbColorComponent, C> getAlpha() {
         return ColorExpressionFunctionGetAlpha.instance();
+    }
+
+    /**
+     * {@see ColorExpressionFunctionGetRed}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RedRgbColorComponent, C> getRed() {
+        return ColorExpressionFunctionGetRed.instance();
     }
 
     /**
