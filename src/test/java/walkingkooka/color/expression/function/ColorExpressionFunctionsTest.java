@@ -22,6 +22,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.Color;
+import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.convert.ColorConverters;
@@ -233,6 +234,36 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testSetGreenWithRgbColorAndGreenRgbColorComponent() {
+        final RgbColor rgb = Color.parseRgb("#123");
+        final GreenRgbColorComponent component = RgbColorComponent.green((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setGreen",
+            Lists.of(
+                rgb,
+                component
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
+    public void testSetGreenWithRgbColorAndNumber() {
+        final RgbColor rgb = Color.parseRgb("#123");
+        final GreenRgbColorComponent component = RgbColorComponent.green((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setGreen",
+            Lists.of(
+                rgb,
+                component.value()
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
     public void testToGrayWithString() {
         final String text = "#123";
 
@@ -317,6 +348,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.setAlpha();
                             case "setBlue":
                                 return ColorExpressionFunctions.setBlue();
+                            case "setGreen":
+                                return ColorExpressionFunctions.setGreen();
                             case "toGray":
                                 return ColorExpressionFunctions.toGray();
                             case "toRgbHexString":
