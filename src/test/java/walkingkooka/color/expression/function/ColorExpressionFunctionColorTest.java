@@ -22,14 +22,21 @@ import walkingkooka.Cast;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
+import walkingkooka.color.RgbColor;
+import walkingkooka.color.RgbColorComponent;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
 
 public final class ColorExpressionFunctionColorTest implements ExpressionFunctionTesting<ColorExpressionFunctionColor<FakeExpressionEvaluationContext>, Color, FakeExpressionEvaluationContext>,
     ToStringTesting<ColorExpressionFunctionColor<FakeExpressionEvaluationContext>> {
 
+    @Override
+    public void testSetParametersSame() {
+        throw new UnsupportedOperationException();
+    }
+
     @Test
-    public void testApply() {
+    public void testApplyWithOneColorParameter() {
         final Color color = Color.parse("#123456");
 
         this.applyAndCheck(
@@ -37,6 +44,36 @@ public final class ColorExpressionFunctionColorTest implements ExpressionFunctio
                 color
             ),
             color
+        );
+    }
+
+    @Test
+    public void testApplyWithThreeParameters() {
+        final RgbColor rgb = Color.parseRgb("#123456");
+
+        this.applyAndCheck(
+            Lists.of(
+                rgb.red(),
+                rgb.green(),
+                rgb.blue()
+            ),
+            rgb
+        );
+    }
+
+    @Test
+    public void testApplyWithFourParameters() {
+        final RgbColor rgb = Color.parseRgb("#123456")
+            .set(RgbColorComponent.alpha((byte) 0xff));
+
+        this.applyAndCheck(
+            Lists.of(
+                rgb.red(),
+                rgb.green(),
+                rgb.blue(),
+                rgb.alpha()
+            ),
+            rgb
         );
     }
 
@@ -54,7 +91,7 @@ public final class ColorExpressionFunctionColorTest implements ExpressionFunctio
 
     @Override
     public int minimumParameterCount() {
-        return 2;
+        return 4;
     }
 
     // toString.........................................................................................................
