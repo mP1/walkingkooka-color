@@ -97,6 +97,32 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testGetGreenWithRgbColor() {
+        final RgbColor rgb = Color.parseRgb("#123");
+
+        this.evaluateAndCheck(
+            "getGreen",
+            Lists.of(
+                rgb
+            ),
+            rgb.green()
+        );
+    }
+
+    @Test
+    public void testGetRedWithRgbColor() {
+        final RgbColor rgb = Color.parseRgb("#123");
+
+        this.evaluateAndCheck(
+            "getRed",
+            Lists.of(
+                rgb
+            ),
+            rgb.red()
+        );
+    }
+
+    @Test
     public void testInvertColorWithColor() {
         final Color color = Color.parse("#123");
 
@@ -216,6 +242,10 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.getAlpha();
                             case "getBlue":
                                 return ColorExpressionFunctions.getBlue();
+                            case "getGreen":
+                                return ColorExpressionFunctions.getGreen();
+                            case "getRed":
+                                return ColorExpressionFunctions.getRed();
                             case "invertColor":
                                 return ColorExpressionFunctions.invertColor();
                             case "mixColor":
