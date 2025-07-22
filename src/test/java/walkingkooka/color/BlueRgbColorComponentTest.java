@@ -47,6 +47,11 @@ public final class BlueRgbColorComponentTest extends RgbColorComponentTestCase<B
     }
 
     @Override
+    public BlueRgbColorComponent parseString(final String text) {
+        return RgbColorComponent.parseBlue(text);
+    }
+
+    @Override
     public Class<BlueRgbColorComponent> type() {
         return BlueRgbColorComponent.class;
     }
