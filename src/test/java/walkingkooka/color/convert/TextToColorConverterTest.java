@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.color.Color;
+import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterTesting2;
@@ -134,6 +135,38 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     }
 
     @Test
+    public void testConvertWithStringNumberToAlphaRgbColorComponent() {
+        this.convertAndCheck2(
+            "111",
+            RgbColorComponent::parseAlpha
+        );
+    }
+
+    @Test
+    public void testConvertWithStringNumberToBlueRgbColorComponent() {
+        this.convertAndCheck2(
+            "22",
+            RgbColorComponent::parseBlue
+        );
+    }
+
+    @Test
+    public void testConvertWithStringNumberToGreenRgbColorComponent() {
+        this.convertAndCheck2(
+            "33",
+            RgbColorComponent::parseGreen
+        );
+    }
+
+    @Test
+    public void testConvertWithStringNumberToRedRgbColorComponent() {
+        this.convertAndCheck2(
+            "44",
+            RgbColorComponent::parseRed
+        );
+    }
+
+    @Test
     public void testConvertWithStringWithWebColorNameToRgbColor() {
         final WebColorName webColorName = WebColorName.HOTPINK;
         this.convertAndCheck(
@@ -143,7 +176,7 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     }
 
     private void convertAndCheck2(final String text,
-                                  final Function<String, Color> parser) {
+                                  final Function<String, Object> parser) {
         this.convertAndCheck(
             text,
             parser.apply(text)

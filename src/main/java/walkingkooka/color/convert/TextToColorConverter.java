@@ -19,6 +19,7 @@ package walkingkooka.color.convert;
 
 import walkingkooka.Cast;
 import walkingkooka.color.Color;
+import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.TextToTryingShortCircuitingConverter;
@@ -51,14 +52,15 @@ final class TextToColorConverter<C extends ConverterContext> implements TextToTr
     public boolean isTargetType(final Object value,
                                 final Class<?> type,
                                 final C context) {
-        return Color.isColorClass(type);
+        return Color.isColorClass(type) ||
+            RgbColorComponent.isRgbColorComponentClass(type);
     }
 
     @Override
     public Object parseText(final String text,
                             final Class<?> type,
                             final C context) {
-        final Color color;
+        final Object color;
 
         switch (type.getSimpleName()) {
             case "Color":
@@ -78,6 +80,18 @@ final class TextToColorConverter<C extends ConverterContext> implements TextToTr
             case "OpaqueHsvColor":
             case "AlphaHsvColor":
                 color = Color.parseHsv(text);
+                break;
+            case "AlphaRgbColorComponent":
+                color = RgbColorComponent.parseAlpha(text);
+                break;
+            case "BlueRgbColorComponent":
+                color = RgbColorComponent.parseBlue(text);
+                break;
+            case "GreenRgbColorComponent":
+                color = RgbColorComponent.parseGreen(text);
+                break;
+            case "RedRgbColorComponent":
+                color = RgbColorComponent.parseRed(text);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown color " + type.getName());
