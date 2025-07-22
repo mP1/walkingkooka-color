@@ -76,6 +76,67 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testColorWithRedColorCompionentAndGreenColorComponentAndBlueColorComponent() {
+        final RgbColor rgb = Color.parseRgb("#123");
+
+        this.evaluateAndCheck(
+            "color",
+            Lists.of(
+                rgb.red(),
+                rgb.green(),
+                rgb.blue()
+            ),
+            rgb
+        );
+    }
+
+    @Test
+    public void testColorWithRedTextAndGreenTextAndBlueText() {
+        final RgbColor rgb = Color.parseRgb("#090807");
+
+        this.evaluateAndCheck(
+            "color",
+            Lists.of(
+                "9",
+                "8",
+                "7"
+            ),
+            rgb
+        );
+    }
+
+    @Test
+    public void testColorWithRedTextAndGreenTextAndBlueText2() {
+        final RgbColor rgb = Color.parseRgb("#123");
+
+        this.evaluateAndCheck(
+            "color",
+            Lists.of(
+                "" + rgb.red().value(),
+                "" + rgb.green().value(),
+                "" + rgb.blue().value()
+            ),
+            rgb
+        );
+    }
+
+    @Test
+    public void testColorWithRedTextAndGreenTextAndBlueTextAndAlphaText() {
+        final RgbColor rgb = Color.parseRgb("#11223380");
+
+        this.evaluateAndCheck(
+            "color",
+            Lists.of(
+                Integer.parseInt("11", 16),
+                Integer.parseInt("22", 16),
+                Integer.parseInt("33", 16),
+                Integer.parseInt("80", 16)
+            ),
+            rgb
+        );
+    }
+
+    @Test
     public void testGetAlphaWithRgbColor() {
         final RgbColor rgb = Color.parseRgb("#123");
 
@@ -406,11 +467,11 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                         Converters.collection(
                             Lists.of(
                                 Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                                Converters.numberToNumber(),
                                 Converters.simple(), // handles Text -> TextNode
                                 ColorConverters.textToColor(),
-                                Converters.numberToNumber(),
-                                ColorConverters.numberToColor(),
-                                ColorConverters.colorToNumber()
+                                ColorConverters.colorToNumber(),
+                                ColorConverters.numberToColor()
                             )
                         ),
                         DateTimeContexts.fake(),
@@ -418,7 +479,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     ),
                     LocaleContexts.fake()
                 )
-            )
+            ),
+            () -> functionName + " " + parameters
         );
     }
 

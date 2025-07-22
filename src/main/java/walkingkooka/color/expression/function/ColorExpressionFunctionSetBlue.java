@@ -5,8 +5,6 @@ import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
-import walkingkooka.tree.expression.function.ExpressionFunctionParameterKind;
-import walkingkooka.tree.expression.function.ExpressionFunctionParameterName;
 
 import java.util.List;
 
@@ -32,10 +30,6 @@ final class ColorExpressionFunctionSetBlue<C extends ExpressionEvaluationContext
     public List<ExpressionFunctionParameter<?>> parameters(final int count) {
         return PARAMETERS;
     }
-
-    private final static ExpressionFunctionParameter<BlueRgbColorComponent> RGB_BLUE = ExpressionFunctionParameterName.with("blue")
-        .required(BlueRgbColorComponent.class)
-        .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE);
 
     private final static List<ExpressionFunctionParameter<?>> PARAMETERS = ExpressionFunctionParameter.list(
         RGBCOLOR,
