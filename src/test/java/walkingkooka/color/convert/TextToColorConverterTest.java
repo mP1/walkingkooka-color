@@ -133,6 +133,15 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
         );
     }
 
+    @Test
+    public void testConvertWithStringWithWebColorNameToRgbColor() {
+        final WebColorName webColorName = WebColorName.HOTPINK;
+        this.convertAndCheck(
+            webColorName.text(),
+            webColorName.color()
+        );
+    }
+
     private void convertAndCheck2(final String text,
                                   final Function<String, Color> parser) {
         this.convertAndCheck(
