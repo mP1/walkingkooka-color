@@ -25,7 +25,8 @@ import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
 
 /**
- * A {@link Converter} that converts a {@link Color} to another {@link Color}.
+ * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} or {@link String} such as
+ * <pre>#123456</pre> to another {@link Color}.
  */
 final class ColorToColorConverter<C extends ConverterContext> implements ShortCircuitingConverter<C> {
 
