@@ -25,6 +25,7 @@ import walkingkooka.color.Color;
 import walkingkooka.color.HslColor;
 import walkingkooka.color.HsvColor;
 import walkingkooka.color.RgbColor;
+import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
@@ -68,6 +69,17 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
             "#123456",
             RgbColor.class,
             Color.parseRgb("#123456")
+        );
+    }
+
+    @Test
+    public void testConvertWebColorNameToRgbColor() {
+        final WebColorName webColorName = WebColorName.RED;
+
+        this.convertAndCheck(
+            webColorName,
+            RgbColor.class,
+            webColorName.color()
         );
     }
 
