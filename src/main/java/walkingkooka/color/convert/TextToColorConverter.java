@@ -26,6 +26,14 @@ import walkingkooka.convert.TextToTryingShortCircuitingConverter;
 
 /**
  * A {@link Converter} that handles parsing any given text using the Color type to select the right parseXXX method.
+ * Examples.
+ * <pre>
+ * #123456 // rgb
+ * #12345680 // rgb alpha
+ * hsl(359,100%,50%) // hsl
+ * hsv(359,100%,50%) // hsv
+ * RED // WebColorName -> rgb
+ * </pre>
  */
 final class TextToColorConverter<C extends ConverterContext> implements TextToTryingShortCircuitingConverter<C> {
 
