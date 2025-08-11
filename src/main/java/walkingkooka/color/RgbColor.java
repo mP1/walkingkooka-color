@@ -705,6 +705,16 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
             );
     }
 
+    @Override
+    public final String toString() {
+        final WebColorName webColorName = WebColorName.RRGGBB_CONSTANTS.get(
+            this.argb()
+        );
+        return null != webColorName ?
+            webColorName.toString() :
+            ToStringBuilder.buildFrom(this);
+    }
+
     @Override //
     final public void buildToString(final ToStringBuilder builder) {
         builder.disable(ToStringBuilderOption.ESCAPE);
