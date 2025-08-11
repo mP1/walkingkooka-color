@@ -19,6 +19,7 @@ package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
+import walkingkooka.ToStringBuilder;
 import walkingkooka.tree.json.JsonNode;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -289,6 +290,30 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         this.toStringAndCheck(
             webColorName.color(),
             webColorName.text()
+        );
+    }
+
+    @Test
+    public void testToStringBuilderWithWebColor() {
+        final WebColorName webColorName = WebColorName.GREEN;
+
+        this.toStringAndCheck(
+            webColorName,
+            ToStringBuilder.empty()
+                .value(webColorName)
+                .build()
+        );
+    }
+
+    @Test
+    public void testToStringBuilderWithNotWebColor() {
+        final String text = "#123456";
+
+        this.toStringAndCheck(
+            text,
+            ToStringBuilder.empty()
+                .value(Color.parseRgb(text))
+                .build()
         );
     }
 
