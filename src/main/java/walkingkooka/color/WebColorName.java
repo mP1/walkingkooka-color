@@ -252,7 +252,20 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
         final RgbColor color = RgbColor.parseRgb(text);
         final WebColorName webColorName = new WebColorName(name, color);
         WebColorName.NAME_CONSTANTS.put(name, webColorName);
-        RRGGBB_CONSTANTS.put(color.argb(), webColorName);
+
+        final int argb = color.argb();
+
+        final WebColorName duplicate = RRGGBB_CONSTANTS.put(
+            argb,
+            webColorName
+        );
+        if (null != duplicate && duplicate != AQUA && duplicate != FUCHSIA) {
+            if (false == name.replace("gray", "grey").equals(duplicate.name.replace("gray", "grey"))) {
+                if (null != duplicate) {
+                    throw new IllegalStateException("Multiple WebColorName constants " + webColorName + " and " + duplicate + " for " + Integer.toHexString(argb));
+                }
+            }
+        }
         return webColorName;
     }
 
