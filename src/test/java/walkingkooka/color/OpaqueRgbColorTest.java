@@ -272,6 +272,26 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         );
     }
 
+    @Test
+    public void testToStringWebColorBlack() {
+        final WebColorName webColorName = WebColorName.BLACK;
+
+        this.toStringAndCheck(
+            webColorName.color(),
+            webColorName.text()
+        );
+    }
+
+    @Test
+    public void testToStringWebColor() {
+        final WebColorName webColorName = WebColorName.RED;
+
+        this.toStringAndCheck(
+            webColorName.color(),
+            webColorName.text()
+        );
+    }
+
     // ClassTesting ....................................................................................................
 
     @Override

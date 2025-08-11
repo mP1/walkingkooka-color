@@ -18,7 +18,6 @@
 package walkingkooka.color;
 
 import walkingkooka.Cast;
-import walkingkooka.ToStringBuilder;
 import walkingkooka.UsesToStringBuilder;
 import walkingkooka.color.parser.ColorParsers;
 import walkingkooka.color.parser.FunctionColorFunctionParserToken;
@@ -459,11 +458,6 @@ public abstract class Color implements HasText,
     }
 
     abstract boolean equals0(final Object other);
-
-    @Override
-    public final String toString() {
-        return ToStringBuilder.buildFrom(this);
-    }
 
     // helpers..........................................................................................................
 

@@ -370,6 +370,11 @@ public abstract class HslColor extends Color {
     abstract boolean equalsAlpha(final HslColor other);
 
     @Override
+    public final String toString() {
+        return ToStringBuilder.buildFrom(this);
+    }
+
+    @Override
     public final void buildToString(final ToStringBuilder builder) {
         builder.separator(",")
             .append(this.functionName())

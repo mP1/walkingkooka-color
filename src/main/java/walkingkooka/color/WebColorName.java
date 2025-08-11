@@ -69,6 +69,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     /**
      * Allows lookup by RRGGBB value, used by {@link RgbColor#toWebColorName}.
      */
+    // RgbColor#toString
     final static Map<Integer, WebColorName> RRGGBB_CONSTANTS = Maps.sorted();
 
     // generated constants begin........................................................................................

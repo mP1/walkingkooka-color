@@ -314,6 +314,11 @@ public abstract class HsvColor extends Color {
     abstract boolean equalsAlpha(final HsvColor other);
 
     @Override
+    public final String toString() {
+        return ToStringBuilder.buildFrom(this);
+    }
+
+    @Override
     public final void buildToString(final ToStringBuilder builder) {
         builder.separator(",")
             .append(this.functionName())
