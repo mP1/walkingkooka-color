@@ -146,20 +146,7 @@ final class AlphaRgbColor extends RgbColor {
             this.alpha.unsignedIntValue);
     }
 
-    // text............................................................................................................
-
-    @Override
-    public String text() {
-        return "rgba(" +
-            this.red.unsignedIntValue +
-            ", " +
-            this.green.unsignedIntValue +
-            ", " +
-            this.blue.unsignedIntValue +
-            ", " +
-            this.alpha.floatValue +
-            ')';
-    }
+    // toHexString......................................................................................................
 
     @Override
     int hexStringDigitLength() {

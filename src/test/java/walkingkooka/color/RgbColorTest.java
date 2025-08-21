@@ -459,17 +459,19 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     @Test
     public void testText() {
+        final String text = "#00FF80";
         this.textAndCheck(
-            Color.parse("#00FF80"),
-            "rgb(0, 255, 128)"
+            Color.parse(text),
+            text.toLowerCase()
         );
     }
 
     @Test
     public void testTextWhenRed() {
+        final WebColorName webColorName = WebColorName.RED;
         this.textAndCheck(
-            WebColorName.RED.color(),
-            "rgb(255, 0, 0)"
+            webColorName.color(),
+            webColorName.text()
         );
     }
 

@@ -230,16 +230,6 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase<HsvC
         );
     }
 
-    // text............................................................................................................
-
-    @Test
-    public void testTextFails() {
-        assertThrows(
-            UnsupportedOperationException.class,
-            () -> this.createHsv().text()
-        );
-    }
-
     // HashCodeEqualsDefined ..................................................................................................
 
     @Test

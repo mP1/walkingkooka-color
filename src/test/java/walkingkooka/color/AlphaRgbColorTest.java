@@ -162,9 +162,10 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
 
     @Test
     public void testText() {
+        final String text = "#12345681";
         this.textAndCheck(
-            Color.parse("#12345681"),
-            "rgba(18, 52, 86, 0.5019608)"
+            Color.parse(text),
+            text
         );
     }
 
