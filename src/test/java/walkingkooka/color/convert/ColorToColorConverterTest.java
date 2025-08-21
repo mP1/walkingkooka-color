@@ -17,7 +17,6 @@
 
 package walkingkooka.color.convert;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.Either;
@@ -35,7 +34,6 @@ import walkingkooka.convert.FakeConverterContext;
 public final class ColorToColorConverterTest implements ConverterTesting2<ColorToColorConverter<FakeConverterContext>, FakeConverterContext> {
 
     @Test
-    @Disabled
     public void testConvertInvalidStringToColorFails() {
         this.convertFails(
             "Invalid!",

@@ -61,28 +61,47 @@ final class ColorToColorConverter<C extends ConverterContext> implements ShortCi
     public <T> Either<T, String> doConvert(final Object value,
                                            final Class<T> type,
                                            final C context) {
-        Object temp = value;
-        if (false == temp instanceof Color) {
-            temp = context.convertOrFail(
+        Either<T, String> result;
+
+        if (false == value instanceof Color) {
+            result = context.convert(
                 value,
+                type
+            );
+            if (result.isLeft()) {
+                result = this.convertColor(
+                    (Color) result.leftValue(),
+                    type
+                );
+            }
+        } else {
+            result = this.convertColor(
+                (Color) value,
                 type
             );
         }
 
-        Color color = (Color) temp;
+        return result;
+    }
+
+    private <T> Either<T, String> convertColor(final Color color,
+                                               final Class<T> type) {
+        final Color result;
 
         if (Color.isRgbColorClass(type)) {
-            color = color.toRgb();
+            result = color.toRgb();
         } else {
             if (Color.isHslColorClass(type)) {
-                color = color.toHsl();
+                result = color.toHsl();
             } else {
                 if (Color.isHsvColorClass(type)) {
-                    color = color.toHsv();
+                    result = color.toHsv();
                 } else {
                     // any Color subclass to Color.class gives color
-                    if (Color.class != type) {
-                        color = null;
+                    if (Color.class == type) {
+                        result = color;
+                    } else {
+                        result = null;
                     }
                 }
             }
@@ -90,11 +109,11 @@ final class ColorToColorConverter<C extends ConverterContext> implements ShortCi
 
         return null != color ?
             this.successfulConversion(
-                color,
+                result,
                 type
             ) :
             this.failConversion(
-                value,
+                result,
                 type
             );
     }
