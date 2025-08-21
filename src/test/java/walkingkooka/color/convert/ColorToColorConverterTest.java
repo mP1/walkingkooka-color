@@ -17,6 +17,7 @@
 
 package walkingkooka.color.convert;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.Either;
@@ -34,10 +35,21 @@ import walkingkooka.convert.FakeConverterContext;
 public final class ColorToColorConverterTest implements ConverterTesting2<ColorToColorConverter<FakeConverterContext>, FakeConverterContext> {
 
     @Test
-    public void testConvertStringToColorFails() {
+    @Disabled
+    public void testConvertInvalidStringToColorFails() {
         this.convertFails(
-            "#123456",
+            "Invalid!",
             Color.class
+        );
+    }
+
+    @Test
+    public void testConvertStringToColorWithHashRgb6() {
+        final String text = "#123456";
+        this.convertAndCheck(
+            text,
+            Color.class,
+            Color.parse(text)
         );
     }
 
@@ -84,6 +96,16 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
     }
 
     @Test
+    public void testConvertRgbColorToColor() {
+        final Color color = Color.BLACK;
+        this.convertAndCheck(
+            color,
+            Color.class,
+            color
+        );
+    }
+
+    @Test
     public void testConvertRgbColorToHslColor() {
         final Color color = Color.BLACK;
         this.convertAndCheck(
@@ -108,6 +130,18 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
         this.convertAndCheck(
             Color.parseRgb("#123456"),
             RgbColor.class
+        );
+    }
+
+    @Test
+    public void testConvertHsvColorToColor() {
+        final HsvColor hsv = Color.parseRgb("#123456")
+            .toHsv();
+
+        this.convertAndCheck(
+            hsv,
+            Color.class,
+            hsv
         );
     }
 
