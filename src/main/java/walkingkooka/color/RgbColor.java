@@ -27,6 +27,7 @@ import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserReporters;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -264,7 +265,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
      * Would be setter that returns a {@link RgbColor} holding the new component. If the component is not new this will be returned.
      */
     public RgbColor set(final RgbColorComponent component) {
-        checkComponent(component);
+        Objects.requireNonNull(component, "component");
 
         return component.setComponent(this);
     }
@@ -378,7 +379,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
      */
     public RgbColor mix(final RgbColorComponent component,
                         final float amount) {
-        checkComponent(component);
+        Objects.requireNonNull(component, "component");
         checkAmount(amount);
 
         return isMixSmall(amount) ? //

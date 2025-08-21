@@ -59,7 +59,7 @@ public abstract class HslColor extends Color {
      * Would be setter that returns a {@link HslColor} holding the new component. If the component is not new this will be returned.
      */
     public final HslColor set(final HslColorComponent component) {
-        checkComponent(component);
+        Objects.requireNonNull(component, "component");
 
         return component.setComponent(this);
     }
