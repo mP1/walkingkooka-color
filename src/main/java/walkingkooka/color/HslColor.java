@@ -271,7 +271,7 @@ public abstract class HslColor extends Color {
     @Override
     public final HslColor mix(final Color color,
                               final float amount) {
-        checkColor(color);
+        Objects.requireNonNull(color, "color");
         checkAmount(amount);
 
         return isMixSmall(amount) ? //

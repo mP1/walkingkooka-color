@@ -261,10 +261,6 @@ public abstract class Color implements HasText,
     public abstract Color mix(final Color other,
                               final float amount);
 
-    static Color checkColor(final Color color) {
-        return Objects.requireNonNull(color, "color");
-    }
-
     static float checkAmount(final float amount) {
         if ((amount < 0f) || (amount > 1.0f)) {
             throw new IllegalArgumentException("amount must be between 0.0 and 1.0 but was " + amount);
