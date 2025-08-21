@@ -80,7 +80,10 @@ final class ColorToColorConverter<C extends ConverterContext> implements ShortCi
                 if (Color.isHsvColorClass(type)) {
                     color = color.toHsv();
                 } else {
-                    color = null;
+                    // any Color subclass to Color.class gives color
+                    if (Color.class != type) {
+                        color = null;
+                    }
                 }
             }
         }
