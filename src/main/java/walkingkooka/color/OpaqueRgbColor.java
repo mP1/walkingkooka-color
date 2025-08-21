@@ -157,13 +157,21 @@ final class OpaqueRgbColor extends RgbColor {
         return 6;
     }
 
-    // Object..........................................................................................................
-
-    // UsesToStringBuilder
+    // UsesToStringBuilder..............................................................................................
 
     @Override
     void buildColorComponentsToString(final ToStringBuilder builder) {
-        this.addRedGreenBlueComponents(builder);
+        final RedRgbColorComponent red = this.red;
+        final GreenRgbColorComponent green = this.green;
+        final BlueRgbColorComponent blue = this.blue;
+
+        if (canBeOneHexDigit(red) && canBeOneHexDigit(green) && canBeOneHexDigit(blue)) {
+            addHexDigit(red, builder);
+            addHexDigit(green, builder);
+            addHexDigit(blue, builder);
+        } else {
+            this.addRedGreenBlueComponents(builder);
+        }
     }
 
     // RgbColorString................................................................................

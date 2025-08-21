@@ -153,14 +153,24 @@ final class AlphaRgbColor extends RgbColor {
         return 8;
     }
 
-    // Object..........................................................................................................
-
-    // UsesToStringBuilder
+    // UsesToStringBuilder..............................................................................................
 
     @Override
     void buildColorComponentsToString(final ToStringBuilder builder) {
-        this.addRedGreenBlueComponents(builder);
-        builder.value(this.alpha);
+        final RedRgbColorComponent red = this.red;
+        final GreenRgbColorComponent green = this.green;
+        final BlueRgbColorComponent blue = this.blue;
+        final AlphaRgbColorComponent alpha = this.alpha;
+
+        if (canBeOneHexDigit(red) && canBeOneHexDigit(green) && canBeOneHexDigit(blue) && canBeOneHexDigit(alpha)) {
+            addHexDigit(red, builder);
+            addHexDigit(green, builder);
+            addHexDigit(blue, builder);
+            addHexDigit(alpha, builder);
+        } else {
+            this.addRedGreenBlueComponents(builder);
+            builder.value(this.alpha);
+        }
     }
 
     // RgbColorString................................................................................

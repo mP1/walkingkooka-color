@@ -265,8 +265,24 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            RgbColor.fromArgb0(0x04010203),
-            "#01020304"
+            RgbColor.fromArgb0(0x05010234),
+            "#01023405"
+        );
+    }
+
+    @Test
+    public void testToString2() {
+        this.toStringAndCheck(
+            RgbColor.fromArgb0(0x45010203),
+            "#01020345"
+        );
+    }
+
+    @Test
+    public void testToString4HexDigits() {
+        this.toStringAndCheck(
+            RgbColor.fromArgb0(0xee112233),
+            "#123e"
         );
     }
 

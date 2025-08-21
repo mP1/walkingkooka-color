@@ -274,6 +274,22 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
     }
 
     @Test
+    public void testToString3HexDigits() {
+        this.toStringAndCheck(
+            RgbColor.fromRgb0(0x111111),
+            "#111"
+        );
+    }
+
+    @Test
+    public void testToString3HexDigits2() {
+        this.toStringAndCheck(
+            RgbColor.fromRgb0(0xeeeeee),
+            "#eee"
+        );
+    }
+
+    @Test
     public void testToStringWebColorBlack() {
         final WebColorName webColorName = WebColorName.BLACK;
 
