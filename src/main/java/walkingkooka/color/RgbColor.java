@@ -734,6 +734,26 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
         builder.value(this.blue);
     }
 
+    final void addHexDigit(final RgbColorComponent component,
+                           final ToStringBuilder builder) {
+        builder.value(
+            Integer.toHexString(
+                component.value & 0xf
+            )
+        );
+    }
+
+    /**
+     * Helper that can be used to format RGB values like #112233 as #123.
+     */
+    static boolean canBeOneHexDigit(final RgbColorComponent component) {
+        final int value = component.value();
+        final int tens = (value >> 4) & 0x0f;
+        final int ones = value & 0x0f;
+
+        return ones == tens;
+    }
+
     // RgbColorString...................................................................................................
 
     /**
