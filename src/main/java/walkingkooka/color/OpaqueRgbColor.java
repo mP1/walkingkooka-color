@@ -150,18 +150,7 @@ final class OpaqueRgbColor extends RgbColor {
         return new java.awt.Color(this.rgb());
     }
 
-    // text............................................................................................................
-
-    @Override
-    public String text() {
-        return "rgb(" +
-            this.red.unsignedIntValue +
-            ", " +
-            this.green.unsignedIntValue +
-            ", " +
-            this.blue.unsignedIntValue +
-            ')';
-    }
+    // toHexString......................................................................................................
 
     @Override
     int hexStringDigitLength() {

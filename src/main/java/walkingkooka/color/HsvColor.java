@@ -266,13 +266,6 @@ public abstract class HsvColor extends Color {
         );
     }
 
-    // text............................................................................................................
-
-    @Override
-    public final String text() {
-        throw new UnsupportedOperationException(this.toString());
-    }
-
     // invert...........................................................................................................
 
     @Override

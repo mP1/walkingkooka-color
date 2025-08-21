@@ -315,14 +315,10 @@ public abstract class Color implements HasText,
 
     // css..............................................................................................................
 
-    /**
-     * Returns a {@link String} holding the css representation of this {@link Color}.
-     * Note unlike {@link #parse(String)}, a color name aka {@link WebColorName#text()} is not returned.
-     * <br>
-     * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
-     */
     @Override
-    public abstract String text();
+    public final String text() {
+        return this.toString();
+    }
 
     // invert...........................................................................................................
 
