@@ -324,7 +324,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
     @Override
     public final RgbColor mix(final Color color,
                               final float amount) {
-        checkColor(color);
+        Objects.requireNonNull(color, "color");
         checkAmount(amount);
 
         return isMixSmall(amount) ? //

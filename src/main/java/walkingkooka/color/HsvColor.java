@@ -216,7 +216,7 @@ public abstract class HsvColor extends Color {
     @Override
     public final HsvColor mix(final Color color,
                               final float amount) {
-        checkColor(color);
+        Objects.requireNonNull(color, "color");
         checkAmount(amount);
 
         return isMixSmall(amount) ? //
