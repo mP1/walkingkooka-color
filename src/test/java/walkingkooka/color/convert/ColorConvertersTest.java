@@ -33,7 +33,6 @@ import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
-import walkingkooka.text.CharSequences;
 
 import java.lang.reflect.Method;
 
@@ -187,8 +186,6 @@ public final class ColorConvertersTest implements ConverterTesting,
                         public boolean canConvert(final Object value,
                                                   final Class<?> type,
                                                   final ConverterContext context) {
-                            System.out.println("@canConvert: value=" + CharSequences.quoteIfChars(value) + " type=" + type.getName());
-
                             return (value instanceof Integer || value instanceof String) && Integer.class == type;
                         }
 
