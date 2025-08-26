@@ -42,54 +42,42 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
     }
 
     @Test
-    public void testConvertStringToColorWithHashRgb6() {
-        final String text = "#123456";
-        this.convertAndCheck(
-            text,
-            Color.class,
-            Color.parse(text)
-        );
-    }
-
-    @Test
-    public void testConvertStringToHslColor() {
-        final HslColor color = Color.BLACK.toHsl();
-
-        this.convertAndCheck(
-            color.toString(),
-            HslColor.class,
-            color
-        );
-    }
-
-    @Test
-    public void testConvertStringToHsvColor() {
-        final HsvColor color = Color.BLACK.toHsv();
-
-        this.convertAndCheck(
-            color.toString(),
-            HsvColor.class,
-            color
-        );
-    }
-
-    @Test
-    public void testConvertStringToRgbColor() {
-        this.convertAndCheck(
+    public void testConvertStringToColorWithHashRgb6Fails() {
+        this.convertFails(
             "#123456",
-            RgbColor.class,
-            Color.parseRgb("#123456")
+            Color.class
         );
     }
 
     @Test
-    public void testConvertWebColorNameToRgbColor() {
-        final WebColorName webColorName = WebColorName.RED;
+    public void testConvertStringToHslColorFails() {
+        this.convertFails(
+            Color.BLACK.toHsl().toString(),
+            HslColor.class
+        );
+    }
 
-        this.convertAndCheck(
-            webColorName,
-            RgbColor.class,
-            webColorName.color()
+    @Test
+    public void testConvertStringToHsvColorFails() {
+        this.convertFails(
+            Color.BLACK.toHsv().toString(),
+            HsvColor.class
+        );
+    }
+
+    @Test
+    public void testConvertStringHash6ToRgbColorFails() {
+        this.convertFails(
+            "#123456",
+            RgbColor.class
+        );
+    }
+
+    @Test
+    public void testConvertWebColorNameToRgbColorFails() {
+        this.convertFails(
+            WebColorName.RED,
+            RgbColor.class
         );
     }
 
