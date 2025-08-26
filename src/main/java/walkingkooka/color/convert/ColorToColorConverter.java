@@ -25,7 +25,7 @@ import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
 
 /**
- * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} or {@link String} such as
+ * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} but not a {@link String} such as
  * <pre>#123456</pre> to another {@link Color}.
  */
 final class ColorToColorConverter<C extends ConverterContext> implements ShortCircuitingConverter<C> {
@@ -54,38 +54,14 @@ final class ColorToColorConverter<C extends ConverterContext> implements ShortCi
                               final Class<?> type,
                               final C context) {
         return Color.isColorClass(type) &&
-            (value instanceof Color || context.canConvert(value, type));
+            value instanceof Color;
     }
 
     @Override
     public <T> Either<T, String> doConvert(final Object value,
                                            final Class<T> type,
                                            final C context) {
-        Either<T, String> result;
-
-        if (false == value instanceof Color) {
-            result = context.convert(
-                value,
-                type
-            );
-            if (result.isLeft()) {
-                result = this.convertColor(
-                    (Color) result.leftValue(),
-                    type
-                );
-            }
-        } else {
-            result = this.convertColor(
-                (Color) value,
-                type
-            );
-        }
-
-        return result;
-    }
-
-    private <T> Either<T, String> convertColor(final Color color,
-                                               final Class<T> type) {
+        final Color color = (Color) value;
         final Color result;
 
         if (Color.isRgbColorClass(type)) {

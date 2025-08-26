@@ -54,8 +54,9 @@ final class NumberToColorConverter<C extends ConverterContext> implements ShortC
     public boolean canConvert(final Object value,
                               final Class<?> type,
                               final C context) {
-        return (Color.isRgbColorClass(type) || (RgbColorComponent.isRgbColorComponentClass(type) && RgbColorComponent.class != type)) &&
-            (value instanceof Number || context.canConvert(value, type));
+        return value instanceof Number &&
+            (Color.isRgbColorClass(type) ||
+                (RgbColorComponent.isRgbColorComponentClass(type) && RgbColorComponent.class != type));
     }
 
     @Override
