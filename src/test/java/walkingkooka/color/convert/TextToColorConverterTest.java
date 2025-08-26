@@ -42,6 +42,14 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     }
 
     @Test
+    public void testConvertWithColorToStringFails() {
+        this.convertFails(
+            Color.parse("#123456"),
+            String.class
+        );
+    }
+
+    @Test
     public void testConvertWithRgbColorStringHash3DigitsAndColor() {
         this.convertAndCheck2(
             "#123",
