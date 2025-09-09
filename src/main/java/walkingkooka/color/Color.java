@@ -200,6 +200,7 @@ public abstract class Color implements HasText,
     private final static ParserContext PARSER_CONTEXT = ParserContexts.basic(
         false, // canNumbersHaveGroupSeparator
         InvalidCharacterExceptionFactory.POSITION,
+        ',', // valueSeparator
         DateTimeContexts.fake(),
         DecimalNumberContexts.american(MathContext.DECIMAL32)
     );
