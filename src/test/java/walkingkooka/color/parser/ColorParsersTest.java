@@ -766,7 +766,7 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
 
     private ParserContext parserContext() {
         return ParserContexts.basic(
-            false, // isGroupSeparatorWithinNumbersSupported
+            false, // canNumbersHaveGroupSeparator
             InvalidCharacterExceptionFactory.POSITION_EXPECTED,
             DateTimeContexts.fake(),
             DecimalNumberContexts.american(MathContext.DECIMAL32)
