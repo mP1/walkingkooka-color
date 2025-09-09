@@ -465,6 +465,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     ConverterContexts.basic(
                         false, // canNumbersHaveGroupSeparator
                         Converters.EXCEL_1900_DATE_SYSTEM_OFFSET, // dateTimeOffset
+                        ',', // valueSeparator
                         Converters.collection(
                             Lists.of(
                                 Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
