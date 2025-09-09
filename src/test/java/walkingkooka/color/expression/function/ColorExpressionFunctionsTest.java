@@ -463,6 +463,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     },
                     CaseSensitivity.SENSITIVE,
                     ConverterContexts.basic(
+                        false, // canNumbersHaveGroupSeparator
                         Converters.EXCEL_1900_DATE_SYSTEM_OFFSET, // dateTimeOffset
                         Converters.collection(
                             Lists.of(
