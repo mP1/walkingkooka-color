@@ -125,6 +125,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorExpressionFunctionToRgbColor}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toRgbColor() {
+        return ColorExpressionFunctionToRgbColor.instance();
+    }
+
+    /**
      * {@see ColorExpressionFunctionToWebColorName}
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<WebColorName, C> toWebColorName() {
