@@ -22,6 +22,7 @@ import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.Color;
 import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.HslColor;
+import walkingkooka.color.HsvColor;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
@@ -130,6 +131,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<HslColor, C> toHslColor() {
         return ColorExpressionFunctionToHslColor.instance();
+    }
+
+    /**
+     * {@see ColorExpressionFunctionToHsvColor}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<HsvColor, C> toHsvColor() {
+        return ColorExpressionFunctionToHsvColor.instance();
     }
     
     /**
