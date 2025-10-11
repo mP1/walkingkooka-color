@@ -23,6 +23,7 @@ import walkingkooka.color.Color;
 import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
+import walkingkooka.color.WebColorName;
 import walkingkooka.reflect.PublicStaticHelper;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunction;
@@ -121,6 +122,13 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
      */
     public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toGray() {
         return ColorExpressionFunctionRgbColorToGray.instance();
+    }
+
+    /**
+     * {@see ColorExpressionFunctionToWebColorName}
+     */
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<WebColorName, C> toWebColorName() {
+        return ColorExpressionFunctionToWebColorName.instance();
     }
 
     /**
