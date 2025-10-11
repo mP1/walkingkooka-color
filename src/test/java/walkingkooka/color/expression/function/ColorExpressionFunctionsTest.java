@@ -23,6 +23,7 @@ import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.Color;
 import walkingkooka.color.GreenRgbColorComponent;
+import walkingkooka.color.HslColor;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
@@ -383,6 +384,31 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testToHslColorWithString() {
+        final HslColor color = Color.BLACK.toHsl();
+
+        this.evaluateAndCheck(
+            "toHslColor",
+            Lists.of(
+                color.toString()
+            ),
+            color
+        );
+    }
+
+    @Test
+    public void testToHslColorWithColor() {
+        final HslColor color = Color.parseRgb("#123")
+            .toHsl();
+
+        this.evaluateAndCheck(
+            "toHslColor",
+            Lists.of(color),
+            color
+        );
+    }
+
+    @Test
     public void testToRgbColorWithString() {
         final RgbColor color = Color.parseRgb("#123");
 
@@ -485,6 +511,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.setRed();
                             case "toGray":
                                 return ColorExpressionFunctions.toGray();
+                            case "toHslColor":
+                                return ColorExpressionFunctions.toHslColor();
                             case "toRgbColor":
                                 return ColorExpressionFunctions.toRgbColor();
                             case "toRgbHexString":
