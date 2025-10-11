@@ -382,6 +382,32 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testToRgbColorWithString() {
+        final RgbColor color = Color.parseRgb("#123");
+
+        this.evaluateAndCheck(
+            "toRgbColor",
+            Lists.of(
+                color.toHexString()
+            ),
+            color
+        );
+    }
+
+    @Test
+    public void testToRgbColorWithColor() {
+        final Color color = Color.parse("#123");
+
+        this.evaluateAndCheck(
+            "toRgbColor",
+            Lists.of(
+                color
+            ),
+            color
+        );
+    }
+
+    @Test
     public void testToRgbHexStringWithColor() {
         final Color color = Color.parse("#123");
 
@@ -446,6 +472,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.setRed();
                             case "toGray":
                                 return ColorExpressionFunctions.toGray();
+                            case "toRgbColor":
+                                return ColorExpressionFunctions.toRgbColor();
                             case "toRgbHexString":
                                 return ColorExpressionFunctions.toRgbHexString();
                             default:
