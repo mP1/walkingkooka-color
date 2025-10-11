@@ -26,6 +26,7 @@ import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
+import walkingkooka.color.WebColorName;
 import walkingkooka.color.convert.ColorConverters;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
@@ -431,6 +432,18 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
         );
     }
 
+    @Test
+    public void testToWebColorNameWithRgbColor() {
+        this.evaluateAndCheck(
+            "toWebColorName",
+            Lists.of(
+                "blue"
+            ),
+            WebColorName.with("blue")
+                .get()
+        );
+    }
+
     private void evaluateAndCheck(final String functionName,
                                   final List<Object> parameters,
                                   final Object expected) {
@@ -476,6 +489,8 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 return ColorExpressionFunctions.toRgbColor();
                             case "toRgbHexString":
                                 return ColorExpressionFunctions.toRgbHexString();
+                            case "toWebColorName":
+                                return ColorExpressionFunctions.toWebColorName();
                             default:
                                 throw new UnknownExpressionFunctionException(name);
                         }
