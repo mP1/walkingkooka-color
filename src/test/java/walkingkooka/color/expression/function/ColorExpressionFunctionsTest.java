@@ -33,6 +33,7 @@ import walkingkooka.color.convert.ColorConverters;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
 import walkingkooka.datetime.DateTimeContexts;
+import walkingkooka.environment.EnvironmentContexts;
 import walkingkooka.locale.LocaleContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.reflect.JavaVisibility;
@@ -578,6 +579,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                         DateTimeContexts.fake(),
                         DecimalNumberContexts.fake()
                     ),
+                    EnvironmentContexts.fake(),
                     LocaleContexts.fake()
                 )
             ),
