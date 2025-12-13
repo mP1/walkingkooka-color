@@ -80,12 +80,12 @@ final class ColorExpressionFunctionColor<C extends ExpressionEvaluationContext> 
         final int count = parameters.size();
         switch (count) {
             case 1:
-                color = COLOR.getOrFail(parameters, 0);
+                color = COLOR.getOrFail(parameters, 0, context);
                 break;
             case 3: {
-                final RedRgbColorComponent red = RGB_RED.getOrFail(parameters, 0);
-                final GreenRgbColorComponent green = RGB_GREEN.getOrFail(parameters, 1);
-                final BlueRgbColorComponent blue = RGB_BLUE.getOrFail(parameters, 2);
+                final RedRgbColorComponent red = RGB_RED.getOrFail(parameters, 0, context);
+                final GreenRgbColorComponent green = RGB_GREEN.getOrFail(parameters, 1, context);
+                final BlueRgbColorComponent blue = RGB_BLUE.getOrFail(parameters, 2, context);
 
                 color = Color.rgb(
                     red,
@@ -95,10 +95,10 @@ final class ColorExpressionFunctionColor<C extends ExpressionEvaluationContext> 
                 break;
             }
             case 4: {
-                final RedRgbColorComponent red = RGB_RED.getOrFail(parameters, 0);
-                final GreenRgbColorComponent green = RGB_GREEN.getOrFail(parameters, 1);
-                final BlueRgbColorComponent blue = RGB_BLUE.getOrFail(parameters, 2);
-                final AlphaRgbColorComponent alpha = RGB_ALPHA.getOrFail(parameters, 3);
+                final RedRgbColorComponent red = RGB_RED.getOrFail(parameters, 0, context);
+                final GreenRgbColorComponent green = RGB_GREEN.getOrFail(parameters, 1, context);
+                final BlueRgbColorComponent blue = RGB_BLUE.getOrFail(parameters, 2, context);
+                final AlphaRgbColorComponent alpha = RGB_ALPHA.getOrFail(parameters, 3, context);
 
                 color = Color.rgb(
                     red,

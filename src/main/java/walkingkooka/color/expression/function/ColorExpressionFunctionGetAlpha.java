@@ -43,7 +43,7 @@ final class ColorExpressionFunctionGetAlpha<C extends ExpressionEvaluationContex
     @Override
     public AlphaRgbColorComponent apply(final List<Object> parameters,
                                         final C context) {
-        return RGBCOLOR.getOrFail(parameters, 0)
+        return RGBCOLOR.getOrFail(parameters, 0, context)
             .alpha();
     }
 }

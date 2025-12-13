@@ -44,7 +44,7 @@ final class ColorExpressionFunctionToWebColorName<C extends ExpressionEvaluation
     @Override
     public WebColorName apply(final List<Object> parameters,
                               final C context) {
-        final Color color = COLOR.getOrFail(parameters, 0);
+        final Color color = COLOR.getOrFail(parameters, 0, context);
 
         return color.toRgb()
             .toWebColorName()
