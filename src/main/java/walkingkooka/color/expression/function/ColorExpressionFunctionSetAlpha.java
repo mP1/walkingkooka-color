@@ -44,8 +44,8 @@ final class ColorExpressionFunctionSetAlpha<C extends ExpressionEvaluationContex
     @Override
     public RgbColor apply(final List<Object> parameters,
                           final C context) {
-        final RgbColor color = RGBCOLOR.getOrFail(parameters, 0, context);
-        final AlphaRgbColorComponent component = RGB_ALPHA.getOrFail(parameters, 1, context);
+        final RgbColor color = RGBCOLOR.getOrFail(parameters, 0);
+        final AlphaRgbColorComponent component = RGB_ALPHA.getOrFail(parameters, 1);
 
         return color.set(component);
     }

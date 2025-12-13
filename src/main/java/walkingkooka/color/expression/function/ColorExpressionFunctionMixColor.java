@@ -52,9 +52,9 @@ final class ColorExpressionFunctionMixColor<C extends ExpressionEvaluationContex
     @Override
     public Color apply(final List<Object> parameters,
                        final C context) {
-        final Color color = COLOR.getOrFail(parameters, 0, context);
-        final Color other = OTHER_COLOR.getOrFail(parameters, 1, context);
-        final Float amount = AMOUNT.getOrFail(parameters, 2, context);
+        final Color color = COLOR.getOrFail(parameters, 0);
+        final Color other = OTHER_COLOR.getOrFail(parameters, 1);
+        final Float amount = AMOUNT.getOrFail(parameters, 2);
 
         return color.mix(
             other,
