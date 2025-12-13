@@ -42,7 +42,7 @@ final class ColorExpressionFunctionInvertColor<C extends ExpressionEvaluationCon
     @Override
     public Color apply(final List<Object> parameters,
                        final C context) {
-        return COLOR.getOrFail(parameters, 0, context)
+        return COLOR.getOrFail(parameters, 0)
             .invert();
     }
 }

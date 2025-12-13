@@ -44,8 +44,8 @@ final class ColorExpressionFunctionSetRed<C extends ExpressionEvaluationContext>
     @Override
     public RgbColor apply(final List<Object> parameters,
                           final C context) {
-        final RgbColor color = RGBCOLOR.getOrFail(parameters, 0, context);
-        final RedRgbColorComponent component = RGB_RED.getOrFail(parameters, 1, context);
+        final RgbColor color = RGBCOLOR.getOrFail(parameters, 0);
+        final RedRgbColorComponent component = RGB_RED.getOrFail(parameters, 1);
 
         return color.set(component);
     }
