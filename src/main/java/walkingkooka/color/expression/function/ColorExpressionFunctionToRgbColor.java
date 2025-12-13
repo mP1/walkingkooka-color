@@ -43,7 +43,7 @@ final class ColorExpressionFunctionToRgbColor<C extends ExpressionEvaluationCont
     @Override
     public RgbColor apply(final List<Object> parameters,
                           final C context) {
-        final Color color = COLOR.getOrFail(parameters, 0);
+        final Color color = COLOR.getOrFail(parameters, 0, context);
 
         return color.toRgb();
     }

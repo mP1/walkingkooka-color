@@ -43,7 +43,7 @@ final class ColorExpressionFunctionGetGreen<C extends ExpressionEvaluationContex
     @Override
     public GreenRgbColorComponent apply(final List<Object> parameters,
                                         final C context) {
-        return RGBCOLOR.getOrFail(parameters, 0)
+        return RGBCOLOR.getOrFail(parameters, 0, context)
             .green();
     }
 }
