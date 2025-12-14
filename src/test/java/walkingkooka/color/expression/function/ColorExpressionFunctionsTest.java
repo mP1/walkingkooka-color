@@ -512,6 +512,9 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
             ).toValue(
                 ExpressionEvaluationContexts.basic(
                     ExpressionNumberKind.BIG_DECIMAL,
+                    (e, c) -> {
+                        throw new UnsupportedOperationException();
+                    },
                     (name) -> {
                         switch (name.value()) {
                             case "color":
