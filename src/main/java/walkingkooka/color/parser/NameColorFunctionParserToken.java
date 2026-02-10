@@ -32,13 +32,16 @@ import walkingkooka.color.ValueHsvColorComponent;
 
 public final class NameColorFunctionParserToken extends NonSymbolColorFunctionParserToken<String> {
 
-    static NameColorFunctionParserToken with(final String value, final String text) {
-        check(value, text);
-
-        return new NameColorFunctionParserToken(value, text);
+    static NameColorFunctionParserToken with(final String value,
+                                             final String text) {
+        return new NameColorFunctionParserToken(
+            value,
+            text
+        );
     }
 
-    private NameColorFunctionParserToken(final String value, final String text) {
+    private NameColorFunctionParserToken(final String value,
+                                         final String text) {
         super(value, text);
     }
 

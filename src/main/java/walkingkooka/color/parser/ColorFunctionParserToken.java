@@ -30,7 +30,7 @@ import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.SaturationHslColorComponent;
 import walkingkooka.color.SaturationHsvColorComponent;
 import walkingkooka.color.ValueHsvColorComponent;
-import walkingkooka.text.Whitespace;
+import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserToken;
 import walkingkooka.text.cursor.parser.ParserTokenVisitor;
@@ -106,16 +106,13 @@ public abstract class ColorFunctionParserToken implements ParserToken {
         return WhitespaceColorFunctionParserToken.with(value, text);
     }
 
-    static String checkText(final String text) {
-        return Whitespace.failIfNullOrEmptyOrWhitespace(text, "text");
-    }
-
     /**
      * Package private ctor to limit subclassing.
      */
     ColorFunctionParserToken(final String text) {
         super();
-        this.text = text;
+
+        this.text = CharSequences.failIfNullOrEmpty(text, "text");
     }
 
     /**

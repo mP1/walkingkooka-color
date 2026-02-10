@@ -35,11 +35,6 @@ import walkingkooka.color.ValueHsvColorComponent;
  */
 abstract class SymbolColorFunctionParserToken<V> extends LeafColorFunctionParserToken<String> {
 
-    static void check(final String value, final String text) {
-        checkValue(value);
-        checkText(text);
-    }
-
     /**
      * Package private ctor to limit subclassing.
      */

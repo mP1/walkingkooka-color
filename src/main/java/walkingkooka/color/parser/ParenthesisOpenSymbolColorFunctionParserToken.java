@@ -19,13 +19,16 @@ package walkingkooka.color.parser;
 
 public final class ParenthesisOpenSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-    static ParenthesisOpenSymbolColorFunctionParserToken with(final String value, final String text) {
-        check(value, text);
-
-        return new ParenthesisOpenSymbolColorFunctionParserToken(value, text);
+    static ParenthesisOpenSymbolColorFunctionParserToken with(final String value,
+                                                              final String text) {
+        return new ParenthesisOpenSymbolColorFunctionParserToken(
+            value,
+            text
+        );
     }
 
-    private ParenthesisOpenSymbolColorFunctionParserToken(final String value, final String text) {
+    private ParenthesisOpenSymbolColorFunctionParserToken(final String value,
+                                                          final String text) {
         super(value, text);
     }
 
