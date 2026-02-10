@@ -236,13 +236,18 @@ public abstract class ColorFunctionParserToken implements ParserToken {
 
     @Override
     public final boolean equals(final Object other) {
-        return this == other || this.canBeEqual(other) && this.equals0(Cast.to(other));
+        return this == other ||
+            (
+                null != other &&
+                    other.getClass() == this.getClass() &&
+                    this.equalsTextAndValue(Cast.to(other)
+                    )
+            );
     }
 
-    abstract boolean canBeEqual(final Object other);
-
-    private boolean equals0(final ColorFunctionParserToken other) {
-        return this.text.equals(other.text) && this.value().equals(other.value());
+    private boolean equalsTextAndValue(final ColorFunctionParserToken other) {
+        return this.text.equals(other.text) &&
+            this.value().equals(other.value());
     }
 
     @Override

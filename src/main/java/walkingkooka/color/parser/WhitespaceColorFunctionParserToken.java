@@ -38,9 +38,4 @@ public final class WhitespaceColorFunctionParserToken extends SymbolColorFunctio
     void accept(final ColorFunctionParserTokenVisitor visitor) {
         visitor.visit(this);
     }
-
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof WhitespaceColorFunctionParserToken;
-    }
 }

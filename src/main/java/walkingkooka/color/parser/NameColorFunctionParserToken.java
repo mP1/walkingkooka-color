@@ -52,13 +52,6 @@ public final class NameColorFunctionParserToken extends NonSymbolColorFunctionPa
         visitor.visit(this);
     }
 
-    // Object...........................................................................................................
-
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof NameColorFunctionParserToken;
-    }
-
     // ColorFunctionTransformer.........................................................................................
 
     @Override

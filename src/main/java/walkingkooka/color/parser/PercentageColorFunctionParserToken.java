@@ -55,13 +55,6 @@ public final class PercentageColorFunctionParserToken extends NonSymbolColorFunc
         visitor.visit(this);
     }
 
-    // Object...........................................................................................................
-
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof PercentageColorFunctionParserToken;
-    }
-
     // ColorFunctionTransformer.........................................................................................
 
     @Override

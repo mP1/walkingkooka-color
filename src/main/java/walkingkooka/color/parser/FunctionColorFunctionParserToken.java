@@ -102,13 +102,6 @@ public final class FunctionColorFunctionParserToken extends ColorFunctionParserT
         }
     }
 
-    // Object .........................................................................................................
-
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof FunctionColorFunctionParserToken;
-    }
-
     // ColorFunctionTransformer.........................................................................................
 
     @Override
