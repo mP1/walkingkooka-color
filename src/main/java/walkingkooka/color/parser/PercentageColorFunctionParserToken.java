@@ -35,13 +35,16 @@ import walkingkooka.color.ValueHsvColorComponent;
 
 public final class PercentageColorFunctionParserToken extends NonSymbolColorFunctionParserToken<Double> {
 
-    static PercentageColorFunctionParserToken with(final Double value, final String text) {
-        check(value, text);
-
-        return new PercentageColorFunctionParserToken(value, text);
+    static PercentageColorFunctionParserToken with(final Double value,
+                                                   final String text) {
+        return new PercentageColorFunctionParserToken(
+            value,
+            text
+        );
     }
 
-    private PercentageColorFunctionParserToken(final Double value, final String text) {
+    private PercentageColorFunctionParserToken(final Double value,
+                                               final String text) {
         super(value, text);
     }
 

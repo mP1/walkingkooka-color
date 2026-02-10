@@ -20,12 +20,14 @@ package walkingkooka.color.parser;
 public final class DegreesUnitSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
     static DegreesUnitSymbolColorFunctionParserToken with(final String value, final String text) {
-        check(value, text);
-
-        return new DegreesUnitSymbolColorFunctionParserToken(value, text);
+        return new DegreesUnitSymbolColorFunctionParserToken(
+            value,
+            text
+        );
     }
 
-    private DegreesUnitSymbolColorFunctionParserToken(final String value, final String text) {
+    private DegreesUnitSymbolColorFunctionParserToken(final String value,
+                                                      final String text) {
         super(value, text);
     }
 

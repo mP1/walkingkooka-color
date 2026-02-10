@@ -24,15 +24,11 @@ import walkingkooka.text.cursor.parser.ParserToken;
  */
 abstract class NonSymbolColorFunctionParserToken<V> extends LeafColorFunctionParserToken<V> {
 
-    static void check(final Object value, final String text) {
-        checkValue(value);
-        checkText(text);
-    }
-
     /**
      * Package private ctor to limit subclassing.
      */
-    NonSymbolColorFunctionParserToken(final V value, final String text) {
+    NonSymbolColorFunctionParserToken(final V value,
+                                      final String text) {
         super(value, text);
     }
 }

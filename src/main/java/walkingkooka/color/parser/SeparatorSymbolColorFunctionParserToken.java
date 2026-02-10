@@ -19,13 +19,16 @@ package walkingkooka.color.parser;
 
 public final class SeparatorSymbolColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-    static SeparatorSymbolColorFunctionParserToken with(final String value, final String text) {
-        check(value, text);
-
-        return new SeparatorSymbolColorFunctionParserToken(value, text);
+    static SeparatorSymbolColorFunctionParserToken with(final String value,
+                                                        final String text) {
+        return new SeparatorSymbolColorFunctionParserToken(
+            value,
+            text
+        );
     }
 
-    private SeparatorSymbolColorFunctionParserToken(final String value, final String text) {
+    private SeparatorSymbolColorFunctionParserToken(final String value,
+                                                    final String text) {
         super(value, text);
     }
 

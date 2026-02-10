@@ -18,7 +18,6 @@
 package walkingkooka.color.parser;
 
 import walkingkooka.Value;
-import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.parser.ParserToken;
 
 import java.util.List;
@@ -29,20 +28,12 @@ import java.util.Objects;
  */
 abstract class LeafColorFunctionParserToken<V> extends ColorFunctionParserToken implements Value<V> {
 
-    static String checkValue(final String text) {
-        return CharSequences.failIfNullOrEmpty(text, "text");
-    }
-
-    static <T> T checkValue(final T value) {
-        return Objects.requireNonNull(value, "value");
-    }
-
     /**
      * Package private ctor to limit subclassing.
      */
     LeafColorFunctionParserToken(final V value, final String text) {
         super(text);
-        this.value = value;
+        this.value = Objects.requireNonNull(value, "value");
     }
 
     @Override

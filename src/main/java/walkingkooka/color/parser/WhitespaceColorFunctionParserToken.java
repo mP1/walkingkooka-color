@@ -17,18 +17,18 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.text.CharSequences;
-
 public final class WhitespaceColorFunctionParserToken extends SymbolColorFunctionParserToken<String> {
 
-    static WhitespaceColorFunctionParserToken with(final String value, final String text) {
+    static WhitespaceColorFunctionParserToken with(final String value,
+                                                   final String text) {
         return new WhitespaceColorFunctionParserToken(
-            checkValue(value),
-            CharSequences.failIfNullOrEmpty(text, "text")
+            value,
+            text
         );
     }
 
-    private WhitespaceColorFunctionParserToken(final String value, final String text) {
+    private WhitespaceColorFunctionParserToken(final String value,
+                                               final String text) {
         super(value, text);
     }
 
