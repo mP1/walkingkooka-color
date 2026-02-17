@@ -67,10 +67,10 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     private final static Map<String, WebColorName> NAME_CONSTANTS = Maps.sorted(WebColorName.CASE_SENSITIVITY.comparator());
 
     /**
-     * Allows lookup by RRGGBB value, used by {@link RgbColor#toWebColorName}.
+     * Allows lookup by AARRGGBB value, used by {@link RgbColor#toWebColorName}.
      */
     // RgbColor#toString
-    final static Map<Integer, WebColorName> RRGGBB_CONSTANTS = Maps.sorted();
+    final static Map<Integer, WebColorName> AARRGGBB_CONSTANTS = Maps.sorted();
 
     // generated constants begin........................................................................................
 
@@ -256,7 +256,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
 
         final int argb = color.argb();
 
-        final WebColorName duplicate = RRGGBB_CONSTANTS.put(
+        final WebColorName duplicate = AARRGGBB_CONSTANTS.put(
             argb,
             webColorName
         );
@@ -267,6 +267,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
                 }
             }
         }
+
         return webColorName;
     }
 

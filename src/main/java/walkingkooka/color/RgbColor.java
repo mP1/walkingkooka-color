@@ -466,11 +466,15 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
     // WebColorName.....................................................................................................
 
     /**
-     * Returns a {@link WebColorName} for this rgb if one exists. Note that colors with alpha always returns nothing.
+     * Returns a {@link WebColorName} for this argb if one exists.
      */
     @Override
     public final Optional<WebColorName> toWebColorName() {
-        return Optional.ofNullable(WebColorName.RRGGBB_CONSTANTS.get(this.argb()));
+        return Optional.ofNullable(
+            WebColorName.AARRGGBB_CONSTANTS.get(
+                this.argb()
+            )
+        );
     }
 
     // AWT..............................................................................................................
@@ -710,7 +714,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
     final public void buildToString(final ToStringBuilder builder) {
         builder.disable(ToStringBuilderOption.QUOTE);
 
-        final WebColorName webColorName = WebColorName.RRGGBB_CONSTANTS.get(
+        final WebColorName webColorName = WebColorName.AARRGGBB_CONSTANTS.get(
             this.argb()
         );
         if (null != webColorName) {

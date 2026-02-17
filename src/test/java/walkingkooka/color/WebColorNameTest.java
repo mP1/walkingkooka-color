@@ -111,7 +111,7 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
         webColorName.ifPresent(
             colorName -> this.checkEquals(
                 colorName,
-                WebColorName.RRGGBB_CONSTANTS.get(color.argb()),
+                WebColorName.AARRGGBB_CONSTANTS.get(color.argb()),
                 () -> "RRGGBB_CONSTANTS -> name " + CharSequences.quoteAndEscape(name))
         );
     }
