@@ -568,6 +568,12 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     },
                     CaseSensitivity.SENSITIVE,
                     ConverterContexts.basic(
+                        (l) -> {
+                            throw new UnsupportedOperationException();
+                        }, // canDateTimeSymbolsForLocale
+                        (l) -> {
+                            throw new UnsupportedOperationException();
+                        }, // canDecimalNumberSymbolsForLocale
                         false, // canNumbersHaveGroupSeparator
                         Converters.EXCEL_1900_DATE_SYSTEM_OFFSET, // dateTimeOffset
                         Indentation.SPACES2,
