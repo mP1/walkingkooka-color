@@ -34,21 +34,32 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
 
     @Test
     public void testConstants() {
-        this.checkEquals(Lists.empty(),
+        this.checkEquals(
+            Lists.empty(),
             Arrays.stream(WebColorName.class.getDeclaredFields())
                 .filter(FieldAttributes.STATIC::is)
                 .filter(f -> f.getType() == WebColorName.class)
                 .filter(WebColorNameTest::constantNotCached)
-                .collect(Collectors.toList()),
-            "");
+                .collect(Collectors.toList())
+        );
     }
 
     private static boolean constantNotCached(final Field field) {
         try {
-            final WebColorName name = Cast.to(field.get(null));
-            return !Optional.of(name).equals(WebColorName.with(name.value()));
+            final WebColorName name = Cast.to(
+                field.get(null)
+            );
+            return !Optional.of(name)
+                .equals(
+                    WebColorName.with(
+                        name.value()
+                    )
+                );
         } catch (final Exception cause) {
-            throw new AssertionError(cause.getMessage(), cause);
+            throw new AssertionError(
+                cause.getMessage(),
+                cause
+            );
         }
     }
 
@@ -70,7 +81,10 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
 
     @Test
     public void testWithBlack() {
-        this.withAndCheck("black", RgbColor.BLACK);
+        this.withAndCheck(
+            "black",
+            RgbColor.BLACK
+        );
     }
 
     @Test
@@ -132,7 +146,8 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
 
     @Override
     public WebColorName createName(final String name) {
-        return WebColorName.with(name).get();
+        return WebColorName.with(name)
+            .get();
     }
 
     @Override
