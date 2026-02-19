@@ -238,8 +238,8 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
     /**
      * Creates and adds a new {@link WebColorName} to the cache being built.
      */
-    private static <T> WebColorName registerConstant(final String name,
-                                                     final String text) {
+    private static WebColorName registerConstant(final String name,
+                                                 final String text) {
         CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
             name,
             "name",
