@@ -105,6 +105,14 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     }
 
     @Test
+    public void testParseUnknownWebColorNameFails() {
+        this.parseStringFails(
+            "Unknown123",
+            new IllegalArgumentException("Unknown color name \"Unknown123\"")
+        );
+    }
+
+    @Test
     public void testParseWebColorName() {
         final WebColorName webColorName = WebColorName.HOTPINK;
 
