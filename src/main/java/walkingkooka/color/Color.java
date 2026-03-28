@@ -31,6 +31,8 @@ import walkingkooka.text.cursor.parser.Parser;
 import walkingkooka.text.cursor.parser.ParserContext;
 import walkingkooka.text.cursor.parser.ParserContexts;
 import walkingkooka.text.cursor.parser.ParserReporters;
+import walkingkooka.text.printer.IndentingPrinter;
+import walkingkooka.text.printer.TreePrintable;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeContext;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallContext;
@@ -47,7 +49,8 @@ import java.util.function.Function;
  * Base class for all rgb like value classes.
  */
 public abstract class Color implements HasText,
-    UsesToStringBuilder {
+    UsesToStringBuilder,
+    TreePrintable {
 
     /**
      * A constant holding black
@@ -457,5 +460,12 @@ public abstract class Color implements HasText,
     @Override
     public final String toString() {
         return ToStringBuilder.buildFrom(this);
+    }
+
+    // TreePrintable....................................................................................................
+
+    @Override
+    public final void printTree(final IndentingPrinter printer) {
+        printer.println(this.toString());
     }
 }
