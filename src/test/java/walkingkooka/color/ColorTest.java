@@ -21,13 +21,15 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
+import walkingkooka.text.printer.TreePrintableTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 public final class ColorTest implements ClassTesting2<Color>,
     JsonNodeMarshallingTesting<Color>,
-    ParseStringTesting<Color> {
+    ParseStringTesting<Color>,
+    TreePrintableTesting {
 
     // isColorClass.....................................................................................................
 
@@ -405,6 +407,24 @@ public final class ColorTest implements ClassTesting2<Color>,
     @Override
     public Color createJsonNodeMarshallingValue() {
         return RgbColor.fromArgb0(0x123456);
+    }
+
+    // TreePrintable....................................................................................................
+
+    @Test
+    public void testTreePrintRgbColor() {
+        this.treePrintAndCheck(
+            Color.parse("black"),
+            "black\n"
+        );
+    }
+
+    @Test
+    public void testTreePrintRgbColor2() {
+        this.treePrintAndCheck(
+            Color.parse("#123"),
+            "#123\n"
+        );
     }
 
     // Class............................................................................................................
