@@ -73,7 +73,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
     private static RgbColor parseWebColorName(final String name) {
         return WebColorName.with(name)
             .map(WebColorName::color)
-            .orElseThrow(() -> new IllegalArgumentException("Unknown rgb name " + CharSequences.quoteAndEscape(name)));
+            .orElseThrow(() -> new IllegalArgumentException("Unknown color name " + CharSequences.quoteAndEscape(name)));
     }
 
     /**
