@@ -20,6 +20,7 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
+import walkingkooka.ValueTesting;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
@@ -34,7 +35,8 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     HashCodeEqualsDefinedTesting2<C>,
     JsonNodeMarshallingTesting<C>,
     HasTextTesting,
-    ToStringTesting<C> {
+    ToStringTesting<C>,
+    ValueTesting {
 
     ColorTestCase() {
         super();

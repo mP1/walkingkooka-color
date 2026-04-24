@@ -64,7 +64,10 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
 
     private void createComponentAndCheck(final byte value, final int unsigned, final float floatValue) {
         final C component = this.createColorComponent(value);
-        this.checkEquals(value, component.value(), "value");
+        this.valueAndCheck(
+            component,
+            value
+        );
         this.checkEquals(unsigned, component.unsignedIntValue, "unsignedIntValue");
         assertEquals(floatValue, component.floatValue, 0.1f, "floatValue");
     }
@@ -147,7 +150,10 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
     private void invertAndCheck(final RgbColorComponent component, final int value) {
         final RgbColorComponent inverted = component.invert();
         assertNotSame(component, inverted, "invert should not return this");
-        this.checkEquals((byte) value, inverted.value(), "value");
+        this.valueAndCheck(
+            inverted,
+            (byte) value
+        );
     }
 
     @Test

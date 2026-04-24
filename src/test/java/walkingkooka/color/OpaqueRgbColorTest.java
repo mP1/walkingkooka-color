@@ -102,7 +102,10 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         );
         this.checkEquals(0x808182, rgb.rgb(), "rgb");
         this.checkEquals(0xFF808182, rgb.argb(), "argb");
-        this.checkEquals(0x808182, rgb.value(), "value");
+        this.valueAndCheck(
+            rgb,
+            0x808182
+        );
     }
 
     @Override
