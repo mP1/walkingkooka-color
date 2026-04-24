@@ -55,7 +55,10 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
 
         this.checkEquals(0x808182, rgb.rgb(), "rgb");
         this.checkEquals(0x84808182, rgb.argb(), "argb");
-        this.checkEquals(0x84808182, rgb.value(), "value");
+        this.valueAndCheck(
+            rgb,
+            0x84808182
+        );
     }
 
     @Test
