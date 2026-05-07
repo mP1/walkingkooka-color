@@ -16,7 +16,7 @@
  */
 package walkingkooka.color.parser;
 
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.AlphaHslColorComponent;
 import walkingkooka.color.AlphaHsvColorComponent;
@@ -40,7 +40,7 @@ import java.util.Objects;
 /**
  * Holds a json array which may contain further json values.
  */
-public final class FunctionColorFunctionParserToken extends ColorFunctionParserToken implements Value<List<ParserToken>> {
+public final class FunctionColorFunctionParserToken extends ColorFunctionParserToken implements HasValue<List<ParserToken>> {
 
     static FunctionColorFunctionParserToken with(final List<ParserToken> value,
                                                  final String text) {

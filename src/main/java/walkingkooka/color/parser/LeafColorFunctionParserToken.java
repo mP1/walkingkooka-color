@@ -17,7 +17,7 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 import walkingkooka.text.cursor.parser.ParserToken;
 
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.Objects;
 /**
  * Base class for a rgb function leaf {@link ParserToken}.
  */
-abstract class LeafColorFunctionParserToken<V> extends ColorFunctionParserToken implements Value<V> {
+abstract class LeafColorFunctionParserToken<V> extends ColorFunctionParserToken implements HasValue<V> {
 
     /**
      * Package private ctor to limit subclassing.
