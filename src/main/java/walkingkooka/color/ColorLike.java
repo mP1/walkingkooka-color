@@ -17,12 +17,12 @@
 
 package walkingkooka.color;
 
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 
 /**
  * An interface that tags {@link RgbColor} and {@link RgbColorComponent}.
  */
-public interface ColorLike<T extends Number> extends Value<T> {
+public interface ColorLike<T extends Number> extends HasValue<T> {
 
     static boolean isColorLikeClass(final Class<?> clazz) {
         return Color.isRgbColorClass(clazz) ||

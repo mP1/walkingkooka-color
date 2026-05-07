@@ -19,7 +19,7 @@ package walkingkooka.color.convert;
 
 import walkingkooka.Cast;
 import walkingkooka.Either;
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 import walkingkooka.color.Color;
 import walkingkooka.color.ColorComponent;
 import walkingkooka.color.ColorLike;
@@ -59,7 +59,7 @@ final class ColorToNumberConverter<C extends ConverterContext> implements ShortC
         // RgbColor OR RgbColorComponent
         return value instanceof ColorLike &&
             // must have a value getter
-            value instanceof Value &&
+            value instanceof HasValue &&
             (
                 value instanceof ColorComponent ||
                     // Color cannot be converted to Byte or Short
@@ -76,8 +76,8 @@ final class ColorToNumberConverter<C extends ConverterContext> implements ShortC
         Number number = null;
 
         // get the number
-        if (value instanceof Value) {
-            number = ((Value<Number>) value).value();
+        if (value instanceof HasValue) {
+            number = ((HasValue<Number>) value).value();
         }
 
         return null != number ?
