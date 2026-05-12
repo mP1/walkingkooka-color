@@ -32,6 +32,7 @@ import walkingkooka.color.WebColorName;
 import walkingkooka.color.convert.ColorConverters;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
+import walkingkooka.currency.CurrencyExchangeRaters;
 import walkingkooka.currency.CurrencyLocaleContexts;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.environment.EnvironmentContexts;
@@ -584,6 +585,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 ColorConverters.numberToColor()
                             )
                         ),
+                        CurrencyExchangeRaters.fake(),
                         CurrencyLocaleContexts.fake(),
                         DateTimeContexts.fake(),
                         DecimalNumberContexts.fake()
