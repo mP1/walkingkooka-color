@@ -34,7 +34,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     public void testParseColorMissingLeadingHashFails() {
         this.parseStringFails(
             "123",
-            IllegalArgumentException.class
+            new IllegalArgumentException("Invalid rgb color \"123\"")
         );
     }
 
@@ -42,7 +42,7 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
     public void testParseColorInvalidFails() {
         this.parseStringFails(
             "xyz",
-            IllegalArgumentException.class
+            new IllegalArgumentException("Unknown color name \"xyz\"")
         );
     }
 

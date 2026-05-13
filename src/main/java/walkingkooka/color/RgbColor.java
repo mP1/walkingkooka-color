@@ -48,7 +48,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
                 if (text.startsWith("#")) {
                     color = parseHash(text);
                 } else {
-                    throw new IllegalArgumentException("Invalid rgb " + CharSequences.quoteAndEscape(text));
+                    throw new IllegalArgumentException("Invalid rgb color " + CharSequences.quoteAndEscape(text));
                 }
             }
         }
