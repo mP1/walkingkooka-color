@@ -40,9 +40,11 @@ public final class RgbColorTest extends ColorTestCase<RgbColor> implements Parse
 
     @Test
     public void testParseColorInvalidFails() {
+        final String name = "xyz";
+
         this.parseStringFails(
-            "xyz",
-            new IllegalArgumentException("Unknown color name \"xyz\"")
+            name,
+            new UnknownColorNameException(name)
         );
     }
 
