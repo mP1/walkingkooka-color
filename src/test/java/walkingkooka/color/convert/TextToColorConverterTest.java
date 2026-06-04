@@ -239,7 +239,7 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     public void testToString() {
         this.toStringAndCheck(
             TextToColorConverter.instance(),
-            "String to Color"
+            "TEXT to Color"
         );
     }
 

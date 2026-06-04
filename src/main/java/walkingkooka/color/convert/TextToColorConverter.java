@@ -112,6 +112,6 @@ final class TextToColorConverter<C extends ConverterContext> implements TextToTr
 
     @Override
     public String toString() {
-        return "String to Color";
+        return TEXT + " to Color";
     }
 }
