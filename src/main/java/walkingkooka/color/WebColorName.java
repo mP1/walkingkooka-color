@@ -17,12 +17,12 @@
 
 package walkingkooka.color;
 
+import walkingkooka.EmptyTextException;
 import walkingkooka.collect.map.Maps;
 import walkingkooka.naming.Name;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
 import walkingkooka.text.CaseSensitivity;
-import walkingkooka.text.CharSequences;
 
 import java.util.Map;
 import java.util.Objects;
@@ -247,7 +247,7 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
             PART
         );
         if (text.trim().isEmpty()) {
-            throw new IllegalArgumentException("Empty text for " + CharSequences.quoteAndEscape(name));
+            throw new EmptyTextException(name);
         }
 
         final RgbColor color = RgbColor.parseRgb(text);
