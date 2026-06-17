@@ -70,8 +70,4 @@ final public class AlphaHslColorComponent extends AlphaLightnessOrSaturationHslC
         return hsl.setAlpha(this);
     }
 
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof AlphaHslColorComponent;
-    }
 }

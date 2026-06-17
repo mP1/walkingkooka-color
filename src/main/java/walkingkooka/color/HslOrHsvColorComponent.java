@@ -67,11 +67,9 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
     @Override //
     final public boolean equals(final Object other) {
         return this == other ||
-            this.canBeEqual(other) &&
+            other != null && this.getClass() == other.getClass() &&
                 this.equals0(Cast.to(other));
     }
-
-    abstract boolean canBeEqual(Object other);
 
     private boolean equals0(final HslOrHsvColorComponent other) {
         return this.value == other.value;
