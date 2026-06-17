@@ -62,7 +62,4 @@ final public class SaturationHsvColorComponent extends AlphaSaturationOrValueHsv
     HsvColor setComponent(final HsvColor hsv) {
         return hsv.setSaturation(this);
     }
-
-    // Object
-
 }
