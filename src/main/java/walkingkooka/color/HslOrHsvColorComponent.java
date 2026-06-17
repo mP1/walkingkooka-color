@@ -49,17 +49,23 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
     /**
      * Performs a saturated add.
      */
-    static float add(final float value, final float min, final float max) {
-        return value < min ? min : Math.min(value, max);
+    static float add(final float value,
+                     final float min,
+                     final float max) {
+        return value < min ?
+            min :
+            Math.min(value, max);
     }
 
     // Object..........................................................................................................
 
-    @Override final public int hashCode() {
+    @Override//
+    final public int hashCode() {
         return Float.hashCode(this.value);
     }
 
-    @Override final public boolean equals(final Object other) {
+    @Override //
+    final public boolean equals(final Object other) {
         return this == other ||
             this.canBeEqual(other) &&
                 this.equals0(Cast.to(other));
