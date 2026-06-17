@@ -105,7 +105,4 @@ abstract public class HsvColorComponent extends HslOrHsvColorComponent {
      * Setter used to create a new {@link HsvColor} with this component replaced if different
      */
     abstract HsvColor setComponent(final HsvColor hsv);
-
-    // Object...........................................................................................................
-
 }
