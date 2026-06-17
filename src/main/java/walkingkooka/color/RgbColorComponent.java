@@ -358,7 +358,7 @@ abstract public class RgbColorComponent extends ColorComponent
 
     @Override
     public final String text() {
-        return this.toDecimalString(
+        return toDecimalString(
             this.unsignedIntValue
         );
     }
