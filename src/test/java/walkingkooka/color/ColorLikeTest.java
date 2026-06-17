@@ -18,10 +18,11 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.Cast;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
-public final class ColorLikeTest implements ClassTesting2<ColorLike> {
+public final class ColorLikeTest implements ClassTesting2<ColorLike<?>> {
 
     @Test
     public void testIsColorLikeClassWithNull() {
@@ -175,8 +176,8 @@ public final class ColorLikeTest implements ClassTesting2<ColorLike> {
     // class............................................................................................................
 
     @Override
-    public Class<ColorLike> type() {
-        return ColorLike.class;
+    public Class<ColorLike<?>> type() {
+        return Cast.to(ColorLike.class);
     }
 
     @Override
