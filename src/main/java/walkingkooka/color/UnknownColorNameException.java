@@ -59,5 +59,5 @@ public final class UnknownColorNameException extends IllegalArgumentException im
         return this.name;
     }
 
-    private String name;
+    private final String name;
 }
