@@ -65,8 +65,4 @@ final public class SaturationHsvColorComponent extends AlphaSaturationOrValueHsv
 
     // Object
 
-    @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof SaturationHsvColorComponent;
-    }
 }

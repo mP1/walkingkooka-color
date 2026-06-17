@@ -108,5 +108,4 @@ abstract public class HsvColorComponent extends HslOrHsvColorComponent {
 
     // Object...........................................................................................................
 
-    @Override abstract boolean canBeEqual(Object other);
 }

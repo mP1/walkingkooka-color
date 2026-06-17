@@ -86,11 +86,6 @@ final public class HueHslColorComponent extends HslColorComponent {
     }
 
     @Override
-    boolean canBeEqual(final Object other) {
-        return other instanceof HueHslColorComponent;
-    }
-
-    @Override
     public String toString() {
         return String.valueOf(Math.round(this.value));
     }
