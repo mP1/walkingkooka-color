@@ -49,7 +49,6 @@ import walkingkooka.tree.expression.ExpressionEvaluationContexts;
 import walkingkooka.tree.expression.ExpressionFunctionName;
 import walkingkooka.tree.expression.ExpressionNumberKind;
 import walkingkooka.tree.expression.ExpressionReference;
-import walkingkooka.tree.expression.function.UnknownExpressionFunctionException;
 
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
@@ -558,7 +557,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                             case "toWebColorName":
                                 return ColorExpressionFunctions.toWebColorName();
                             default:
-                                throw new UnknownExpressionFunctionException(name);
+                                throw name.unknownExpressionFunctionException();
                         }
                     }, // name -> function
                     (final RuntimeException cause) -> {
