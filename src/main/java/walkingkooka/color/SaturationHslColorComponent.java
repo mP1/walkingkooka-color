@@ -26,7 +26,6 @@ final public class SaturationHslColorComponent extends AlphaLightnessOrSaturatio
      * Factory that creates a new {@link SaturationHslColorComponent}
      */
     static SaturationHslColorComponent with(final float value) {
-        SaturationHslColorComponent.check(value);
         return new SaturationHslColorComponent(value);
     }
 
@@ -46,8 +45,9 @@ final public class SaturationHslColorComponent extends AlphaLightnessOrSaturatio
 
     @Override
     public SaturationHslColorComponent setValue(final float value) {
-        SaturationHslColorComponent.check(value);
-        return this.value == value ? this : this.replace(value);
+        return this.value == value ?
+            this :
+            this.replace(value);
     }
 
     /**
