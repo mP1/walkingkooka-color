@@ -77,6 +77,13 @@ public final class ColorComparators implements PublicStaticHelper {
     }
 
     /**
+     * {@link ColorComparatorHslOrHsvSharedHsvValue}
+     */
+    public static Comparator<Color> hsvValue() {
+        return ColorComparatorHslOrHsvSharedHsvValue.INSTANCE;
+    }
+
+    /**
      * {@link ColorComparatorRgbRed}
      */
     public static Comparator<Color> red() {
