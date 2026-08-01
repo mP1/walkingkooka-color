@@ -36,19 +36,7 @@ final public class HueHsvColorComponent extends HsvColorComponent {
      * Factory that creates a new {@link HueHsvColorComponent}
      */
     static HueHsvColorComponent with(final float value) {
-        HueHsvColorComponent.check(value);
         return new HueHsvColorComponent(value);
-    }
-
-    /**
-     * Verifies that the value is within the acceptable range.
-     */
-    private static float check(final float value) {
-        return check(
-            value,
-            MIN_VALUE,
-            MAX_VALUE
-        );
     }
 
     /**
@@ -56,6 +44,12 @@ final public class HueHsvColorComponent extends HsvColorComponent {
      */
     private HueHsvColorComponent(final float value) {
         super(value);
+
+        check(
+            value,
+            MIN_VALUE,
+            MAX_VALUE
+        );
     }
 
     @Override
@@ -65,8 +59,9 @@ final public class HueHsvColorComponent extends HsvColorComponent {
 
     @Override
     public HueHsvColorComponent setValue(final float value) {
-        HueHsvColorComponent.check(value);
-        return this.value == value ? this : this.replace(value);
+        return this.value == value ?
+            this :
+            this.replace(value);
     }
 
     /**
