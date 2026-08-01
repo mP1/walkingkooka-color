@@ -26,7 +26,6 @@ final public class LightnessHslColorComponent extends AlphaLightnessOrSaturation
      * Factory that creates a new {@link LightnessHslColorComponent}
      */
     static LightnessHslColorComponent with(final float value) {
-        LightnessHslColorComponent.check(value);
         return new LightnessHslColorComponent(value);
     }
 
@@ -45,8 +44,9 @@ final public class LightnessHslColorComponent extends AlphaLightnessOrSaturation
 
     @Override
     public LightnessHslColorComponent setValue(final float value) {
-        LightnessHslColorComponent.check(value);
-        return this.value == value ? this : this.replace(value);
+        return this.value == value ?
+            this :
+            this.replace(value);
     }
 
     /**
