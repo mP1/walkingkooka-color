@@ -17,38 +17,26 @@
 
 package walkingkooka.color.compare;
 
+import org.junit.jupiter.api.Test;
 import walkingkooka.color.Color;
-import walkingkooka.reflect.PublicStaticHelper;
 
-import java.util.Comparator;
+public final class ColorComparatorRgbBlueTest extends ColorComparatorRgbTestCase<ColorComparatorRgbBlue> {
 
-/**
- * A collection of {@link walkingkooka.color.Color} related {@link java.util.Comparator}.
- */
-public final class ColorComparators implements PublicStaticHelper {
+    @Test
+    public void testCompare() {
+        this.compareAndCheckLess(
+            Color.parseRgb("#FFFF01"),
+            Color.parseRgb("#FFFF02")
+        );
+    }
 
-    /**
-     * {@link ColorComparatorRgbBlue}
-     */
-    public static Comparator<Color> blue() {
+    @Override
+    public ColorComparatorRgbBlue createComparator() {
         return ColorComparatorRgbBlue.INSTANCE;
     }
-    
-    /**
-     * {@link ColorComparatorRgbGreen}
-     */
-    public static Comparator<Color> green() {
-        return ColorComparatorRgbGreen.INSTANCE;
-    }
-    
-    /**
-     * {@link ColorComparatorRgbRed}
-     */
-    public static Comparator<Color> red() {
-        return ColorComparatorRgbRed.INSTANCE;
-    }
 
-    private ColorComparators() {
-        throw new UnsupportedOperationException();
+    @Override
+    public Class<ColorComparatorRgbBlue> type() {
+        return ColorComparatorRgbBlue.class;
     }
 }
