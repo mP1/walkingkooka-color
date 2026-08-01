@@ -54,7 +54,15 @@ final public class HueHsvColorComponent extends HsvColorComponent {
 
     @Override
     public HueHsvColorComponent add(final float value) {
-        return 0 == value ? this : new HueHsvColorComponent(HsvColorComponent.add(value, HueHsvColorComponent.MIN_VALUE, HueHsvColorComponent.MAX_VALUE));
+        return 0 == value ?
+            this :
+            new HueHsvColorComponent(
+                HsvColorComponent.add(
+                    value,
+                    MIN_VALUE,
+                    MAX_VALUE
+                )
+            );
     }
 
     @Override
