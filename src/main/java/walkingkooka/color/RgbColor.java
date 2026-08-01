@@ -635,10 +635,10 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
 
             hue *= 60.0f;
             while (hue < 0.0f) {
-                hue += HueHsvColorComponent.MAX;
+                hue += HueHsvColorComponent.MAX_VALUE;
             }
-            while (hue >= HueHsvColorComponent.MAX) {
-                hue -= HueHsvColorComponent.MAX;
+            while (hue >= HueHsvColorComponent.MAX_VALUE) {
+                hue -= HueHsvColorComponent.MAX_VALUE;
             }
         }
 
