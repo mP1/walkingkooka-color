@@ -25,18 +25,18 @@ abstract class AlphaSaturationOrValueHsvColorComponent extends HsvColorComponent
     /**
      * The lowest possible legal value.
      */
-    public final static float MIN = 0.0f;
+    public final static float MIN_VALUE = 0.0f;
 
     /**
      * The highest possible legal value.
      */
-    public final static float MAX = 1.0f;
+    public final static float MAX_VALUE = 1.0f;
 
     /**
      * Verifies that the value is within the acceptable range.
      */
     static void check(final float value) {
-        check(value, MIN, MAX);
+        check(value, MIN_VALUE, MAX_VALUE);
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class AlphaSaturationOrValueHsvColorComponent extends HsvColorComponent
 
     @Override
     public final HsvColorComponent invert() {
-        return this.setValue(MAX - this.value);
+        return this.setValue(MAX_VALUE - this.value);
     }
 
     @Override
