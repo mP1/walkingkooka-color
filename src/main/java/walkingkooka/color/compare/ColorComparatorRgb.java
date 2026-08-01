@@ -29,12 +29,13 @@ abstract class ColorComparatorRgb extends ColorComparator {
     @Override
     public final int compare(final Color left,
                              final Color right) {
-        return this.compareRgbColor(
-            left.toRgb(),
-            right.toRgb()
-        );
+        return this.getComponentValue(
+            left.toRgb()
+        ) -
+            this.getComponentValue(
+                right.toRgb()
+            );
     }
 
-    abstract int compareRgbColor(final RgbColor left,
-                                 final RgbColor right);
+    abstract int getComponentValue(final RgbColor rgbColor);
 }
