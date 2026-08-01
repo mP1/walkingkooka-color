@@ -41,6 +41,7 @@ two [Color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/
 - [hslSaturation](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHslSaturation.java)
 - [hslLightness](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHslLightness.java)
 - [hsvHue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHsvHue.java)
+- [hsvSaturation](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHsvSaturation.java)
 - [hsvValue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHsvValue.java)
 - [red](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbRed.java)
 
