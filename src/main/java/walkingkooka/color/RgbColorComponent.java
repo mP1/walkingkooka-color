@@ -27,6 +27,16 @@ import java.util.stream.IntStream;
 abstract public class RgbColorComponent extends ColorComponent
     implements ColorLike<Byte> {
 
+    /**
+     * The minimum or lower bound of a component value.
+     */
+    public final static int MIN_VALUE = 0;
+
+    /**
+     * The maximum (inclusive) component value.
+     */
+    public final static int MAX_VALUE = 255;
+
     public static boolean isRgbColorComponentClass(final Class<?> clazz) {
         return clazz == RgbColorComponent.class ||
             clazz == BlueRgbColorComponent.class ||
@@ -39,7 +49,7 @@ abstract public class RgbColorComponent extends ColorComponent
 
     static <C extends RgbColorComponent> C[] createConstants(final C[] constants,
                                                              final IntFunction<C> factory) {
-        IntStream.rangeClosed(0, 255)
+        IntStream.rangeClosed(MIN_VALUE, MAX_VALUE)
             .forEach(i -> constants[i] = factory.apply(i));
         return constants;
     }
@@ -80,8 +90,8 @@ abstract public class RgbColorComponent extends ColorComponent
         Objects.requireNonNull(text, "text");
 
         final int value = Integer.parseInt(text);
-        if (value < 0 || value > 255) {
-            throw new IllegalArgumentException("Invalid value " + value + " < 0 or > 255");
+        if (value < MIN_VALUE || value > MAX_VALUE) {
+            throw new IllegalArgumentException("Invalid value " + value + " < " + MIN_VALUE + " or > " + MAX_VALUE);
         }
 
         return (byte) value;
@@ -114,11 +124,6 @@ abstract public class RgbColorComponent extends ColorComponent
     public static RedRgbColorComponent red(final byte value) {
         return RedRgbColorComponent.with(value);
     }
-
-    /**
-     * The maximum component value.
-     */
-    public final static int MAX_VALUE = 255;
 
     /**
      * Returns an unsigned int value after masking only the bottom 8 bits.
