@@ -37,6 +37,7 @@ two [Color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/
 
 - [blue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbBlue.java)
 - [green](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbGreen.java)
+- [hslHue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHslHue.java)
 - [red](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbRed.java)
 
 ### [Converters](https://github.com/mP1/walkingkooka-convert/blob/master/src/main/java/walkingkooka/convert/Converter.java)

@@ -33,14 +33,21 @@ public final class ColorComparators implements PublicStaticHelper {
     public static Comparator<Color> blue() {
         return ColorComparatorRgbBlue.INSTANCE;
     }
-    
+
     /**
      * {@link ColorComparatorRgbGreen}
      */
     public static Comparator<Color> green() {
         return ColorComparatorRgbGreen.INSTANCE;
     }
-    
+
+    /**
+     * {@link ColorComparatorHslOrHsvSharedHslHue}
+     */
+    public static Comparator<Color> hslHue() {
+        return ColorComparatorHslOrHsvSharedHslHue.INSTANCE;
+    }
+
     /**
      * {@link ColorComparatorRgbRed}
      */
