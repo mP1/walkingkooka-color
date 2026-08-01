@@ -24,13 +24,15 @@ abstract class HslOrHsvColorComponent extends ColorComponent {
     /**
      * Verifies that the value is within the acceptable range.
      */
-    static void check(final float value,
-                      final float min,
-                      final float max) {
+    static float check(final float value,
+                       final float min,
+                       final float max) {
         if (value < min || value > max) {
             throw new IllegalArgumentException(
-                "value not between " + min + " and " + max + "=" + value);
+                "value not between " + min + " and " + max + "=" + value
+            );
         }
+        return value;
     }
 
     HslOrHsvColorComponent(final float value) {
