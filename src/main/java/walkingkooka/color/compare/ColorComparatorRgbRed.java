@@ -17,24 +17,31 @@
 
 package walkingkooka.color.compare;
 
-import walkingkooka.color.Color;
-import walkingkooka.reflect.PublicStaticHelper;
-
-import java.util.Comparator;
+import walkingkooka.color.RgbColor;
 
 /**
- * A collection of {@link walkingkooka.color.Color} related {@link java.util.Comparator}.
+ * A {@link java.util.Comparator} that compares the RED component of the given {@link walkingkooka.color.Color}.
  */
-public final class ColorComparators implements PublicStaticHelper {
+final class ColorComparatorRgbRed extends ColorComparatorRgb {
 
     /**
-     * {@link ColorComparatorRgbRed}
+     * Singleton
      */
-    public static Comparator<Color> red() {
-        return ColorComparatorRgbRed.INSTANCE;
+    final static ColorComparatorRgbRed INSTANCE = new ColorComparatorRgbRed();
+
+    private ColorComparatorRgbRed() {
+        super();
     }
 
-    private ColorComparators() {
-        throw new UnsupportedOperationException();
+    @Override
+    int getComponentValue(final RgbColor rgbColor) {
+        return rgbColor.red()
+            .value()
+            .intValue();
+    }
+
+    @Override
+    public String toString() {
+        return "Red";
     }
 }
