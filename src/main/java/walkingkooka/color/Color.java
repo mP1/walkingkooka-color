@@ -161,7 +161,7 @@ public abstract class Color implements HasText,
      * </pre>
      */
     public static Color parse(final String text) {
-        checkText(text);
+        CharSequences.failIfNullOrEmpty(text, "text");
 
         final Color color;
 
@@ -183,12 +183,8 @@ public abstract class Color implements HasText,
      * <a href="https://en.wikipedia.org/wiki/Web_colors#CSS_colors"></a>
      */
     public static RgbColor parseRgb(final String text) {
-        checkText(text);
+        CharSequences.failIfNullOrEmpty(text, "text");
         return RgbColor.parseRgbOrHash(text);
-    }
-
-    private static String checkText(final String text) {
-        return CharSequences.failIfNullOrEmpty(text, "text");
     }
 
     static Color parseColorParserToken(final String text,
