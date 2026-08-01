@@ -25,7 +25,7 @@ final public class AlphaHslColorComponent extends AlphaLightnessOrSaturationHslC
     /**
      * An opaque alpha component returned by {@link OpaqueHslColor#alpha()}.
      */
-    final static AlphaHslColorComponent OPAQUE = AlphaHslColorComponent.with(MAX);
+    final static AlphaHslColorComponent OPAQUE = AlphaHslColorComponent.with(MAX_VALUE);
 
     /**
      * Factory that creates a new {@link AlphaHslColorComponent}
@@ -44,7 +44,7 @@ final public class AlphaHslColorComponent extends AlphaLightnessOrSaturationHslC
 
     @Override
     public AlphaHslColorComponent add(final float value) {
-        return 0 == value ? this : new AlphaHslColorComponent(HslColorComponent.add(value, AlphaHslColorComponent.MIN, AlphaHslColorComponent.MAX));
+        return 0 == value ? this : new AlphaHslColorComponent(HslColorComponent.add(value, AlphaHslColorComponent.MIN_VALUE, AlphaHslColorComponent.MAX_VALUE));
     }
 
     @Override
