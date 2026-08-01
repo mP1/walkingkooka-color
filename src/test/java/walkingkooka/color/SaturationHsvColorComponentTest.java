@@ -53,12 +53,12 @@ public final class SaturationHsvColorComponentTest extends HsvColorComponentTest
 
     @Override
     float min() {
-        return SaturationHsvColorComponent.MIN;
+        return SaturationHsvColorComponent.MIN_VALUE;
     }
 
     @Override
     float max() {
-        return SaturationHsvColorComponent.MAX;
+        return SaturationHsvColorComponent.MAX_VALUE;
     }
 
     @Override

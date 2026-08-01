@@ -53,12 +53,12 @@ public final class AlphaHsvColorComponentTest extends HsvColorComponentTestCase<
 
     @Override
     float min() {
-        return AlphaHsvColorComponent.MIN;
+        return AlphaHsvColorComponent.MIN_VALUE;
     }
 
     @Override
     float max() {
-        return AlphaHsvColorComponent.MAX;
+        return AlphaHsvColorComponent.MAX_VALUE;
     }
 
     @Override
