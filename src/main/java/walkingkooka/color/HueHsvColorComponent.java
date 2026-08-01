@@ -25,12 +25,12 @@ final public class HueHsvColorComponent extends HsvColorComponent {
     /**
      * The lowest possible legal value.
      */
-    public final static float MIN = 0.0f;
+    public final static float MIN_VALUE = 0.0f;
 
     /**
      * The highest possible legal value.
      */
-    public final static float MAX = 360.0f;
+    public final static float MAX_VALUE = 360.0f;
 
     /**
      * Factory that creates a new {@link HueHsvColorComponent}
@@ -44,7 +44,7 @@ final public class HueHsvColorComponent extends HsvColorComponent {
      * Verifies that the value is within the acceptable range.
      */
     private static void check(final float value) {
-        check(value, MIN, MAX);
+        check(value, MIN_VALUE, MAX_VALUE);
     }
 
     /**
@@ -56,7 +56,7 @@ final public class HueHsvColorComponent extends HsvColorComponent {
 
     @Override
     public HueHsvColorComponent add(final float value) {
-        return 0 == value ? this : new HueHsvColorComponent(HsvColorComponent.add(value, HueHsvColorComponent.MIN, HueHsvColorComponent.MAX));
+        return 0 == value ? this : new HueHsvColorComponent(HsvColorComponent.add(value, HueHsvColorComponent.MIN_VALUE, HueHsvColorComponent.MAX_VALUE));
     }
 
     @Override
@@ -81,7 +81,7 @@ final public class HueHsvColorComponent extends HsvColorComponent {
     @Override
     public HueHsvColorComponent invert() {
         return this.setValue(
-            MAX - this.value()
+            MAX_VALUE - this.value()
         );
     }
 

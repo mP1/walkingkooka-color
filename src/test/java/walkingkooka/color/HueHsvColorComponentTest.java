@@ -53,12 +53,12 @@ public final class HueHsvColorComponentTest extends HsvColorComponentTestCase<Hu
 
     @Override
     float min() {
-        return HueHsvColorComponent.MIN;
+        return HueHsvColorComponent.MIN_VALUE;
     }
 
     @Override
     float max() {
-        return HueHsvColorComponent.MAX;
+        return HueHsvColorComponent.MAX_VALUE;
     }
 
     @Override
