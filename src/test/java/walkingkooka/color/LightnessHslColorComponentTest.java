@@ -53,12 +53,12 @@ public final class LightnessHslColorComponentTest extends HslColorComponentTestC
 
     @Override
     float min() {
-        return LightnessHslColorComponent.MIN;
+        return LightnessHslColorComponent.MIN_VALUE;
     }
 
     @Override
     float max() {
-        return LightnessHslColorComponent.MAX;
+        return LightnessHslColorComponent.MAX_VALUE;
     }
 
     @Override
