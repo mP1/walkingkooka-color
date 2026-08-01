@@ -597,7 +597,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
         }
 
         return HslColor.with(//
-            HslColorComponent.hue(Math.abs(hue * HueHslColorComponent.MAX)), //
+            HslColorComponent.hue(Math.abs(hue * HueHslColorComponent.MAX_VALUE)), //
             HslColorComponent.saturation(saturation), //
             HslColorComponent.lightness(lightness));
     }

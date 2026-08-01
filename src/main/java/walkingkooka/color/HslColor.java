@@ -210,7 +210,7 @@ public abstract class HslColor extends Color {
                 : (lightness + saturation) - (lightness * saturation);
             final float p = (2 * lightness) - q;
 
-            final float hue = this.hue.value / HueHslColorComponent.MAX; // now within 0..1
+            final float hue = this.hue.value / HueHslColorComponent.MAX_VALUE; // now within 0..1
             red = HslColor.hue2rgb(p, q, hue + (1f / 3));
             green = HslColor.hue2rgb(p, q, hue);
             blue = HslColor.hue2rgb(p, q, hue - (1f / 3));
