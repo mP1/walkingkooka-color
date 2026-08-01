@@ -17,22 +17,9 @@
 
 package walkingkooka.color.compare;
 
-import walkingkooka.color.Color;
+public abstract class ColorComparatorHslOrHsvSharedTestCase<C extends ColorComparatorHslOrHsvShared> extends ColorComparatorTestCase<C> {
 
-abstract class ColorComparatorHslOrHsv extends ColorComparator {
-
-    ColorComparatorHslOrHsv() {
+    ColorComparatorHslOrHsvSharedTestCase() {
         super();
     }
-
-    @Override
-    public final int compare(final Color left,
-                             final Color right) {
-        return Float.compare(
-            this.getComponentValue(left),
-            this.getComponentValue(right)
-        );
-    }
-
-    abstract float getComponentValue(final Color color);
 }
