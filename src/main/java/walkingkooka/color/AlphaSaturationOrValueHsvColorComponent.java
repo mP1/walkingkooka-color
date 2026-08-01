@@ -33,21 +33,16 @@ abstract class AlphaSaturationOrValueHsvColorComponent extends HsvColorComponent
     public final static float MAX_VALUE = 1.0f;
 
     /**
-     * Verifies that the value is within the acceptable range.
-     */
-    static float check(final float value) {
-        return check(
-            value,
-            MIN_VALUE,
-            MAX_VALUE
-        );
-    }
-
-    /**
      * Package private to limit sub classing.
      */
     AlphaSaturationOrValueHsvColorComponent(final float value) {
         super(value);
+
+        check(
+            value,
+            MIN_VALUE,
+            MAX_VALUE
+        );
     }
 
     @Override

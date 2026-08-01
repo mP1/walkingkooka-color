@@ -31,7 +31,6 @@ final public class AlphaHsvColorComponent extends AlphaSaturationOrValueHsvColor
      * Factory that creates a new {@link AlphaHsvColorComponent}
      */
     static AlphaHsvColorComponent with(final float value) {
-        AlphaHsvColorComponent.check(value);
         return new AlphaHsvColorComponent(value);
     }
 
@@ -50,8 +49,9 @@ final public class AlphaHsvColorComponent extends AlphaSaturationOrValueHsvColor
 
     @Override
     public AlphaHsvColorComponent setValue(final float value) {
-        AlphaHsvColorComponent.check(value);
-        return this.value == value ? this : this.replace(value);
+        return this.value == value ?
+            this :
+            this.replace(value);
     }
 
     /**
