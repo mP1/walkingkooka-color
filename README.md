@@ -35,6 +35,7 @@ Color mixed = red.mix(hsv.green(), 0.75);
 Comparators that accept
 two [Color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/Color.java)
 
+- [blue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbBlue.java)
 - [green](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbGreen.java)
 - [red](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbRed.java)
 
