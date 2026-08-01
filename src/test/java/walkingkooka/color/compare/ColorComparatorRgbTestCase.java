@@ -17,12 +17,7 @@
 
 package walkingkooka.color.compare;
 
-import walkingkooka.color.Color;
-import walkingkooka.compare.ComparatorTesting2;
-import walkingkooka.reflect.ClassTesting2;
-
-public abstract class ColorComparatorRgbTestCase<C extends ColorComparatorRgb> implements ComparatorTesting2<C, Color>,
-    ClassTesting2<C> {
+public abstract class ColorComparatorRgbTestCase<C extends ColorComparatorRgb> extends ColorComparatorTestCase<C> {
 
     ColorComparatorRgbTestCase() {
         super();
