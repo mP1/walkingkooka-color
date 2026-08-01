@@ -35,8 +35,12 @@ abstract class AlphaLightnessOrSaturationHslColorComponent extends HslColorCompo
     /**
      * Verifies that the value is within the acceptable range.
      */
-    static void check(final float value) {
-        check(value, MIN_VALUE, MAX_VALUE);
+    static float check(final float value) {
+        return check(
+            value,
+            MIN_VALUE,
+            MAX_VALUE
+        );
     }
 
     /**

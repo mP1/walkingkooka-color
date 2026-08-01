@@ -43,8 +43,12 @@ final public class HueHsvColorComponent extends HsvColorComponent {
     /**
      * Verifies that the value is within the acceptable range.
      */
-    private static void check(final float value) {
-        check(value, MIN_VALUE, MAX_VALUE);
+    private static float check(final float value) {
+        return check(
+            value,
+            MIN_VALUE,
+            MAX_VALUE
+        );
     }
 
     /**
