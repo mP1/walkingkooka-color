@@ -30,6 +30,13 @@ Color mixed = red.mix(hsv.green(), 0.75);
 
 ```
 
+### Comparators
+
+Comparators that accept
+two [Color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/Color.java)
+
+- [red](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbRed.java)
+
 ### [Converters](https://github.com/mP1/walkingkooka-convert/blob/master/src/main/java/walkingkooka/convert/Converter.java)
 
 A collection of converters that are particularly useful within expressions and support passing colors as text.
