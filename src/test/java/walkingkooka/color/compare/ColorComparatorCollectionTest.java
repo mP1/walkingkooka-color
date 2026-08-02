@@ -18,6 +18,7 @@
 package walkingkooka.color.compare;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
@@ -27,6 +28,7 @@ import java.util.List;
 
 public final class ColorComparatorCollectionTest extends ColorComparatorTestCase<ColorComparatorCollection>
     implements ParseStringTesting<ColorComparatorCollection>,
+    HashCodeEqualsDefinedTesting2<ColorComparatorCollection>,
     ToStringTesting<ColorComparatorCollection> {
 
     @Override
@@ -359,6 +361,27 @@ public final class ColorComparatorCollectionTest extends ColorComparatorTestCase
     @Override
     public RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
         return thrown;
+    }
+
+    // hashCode/equals..................................................................................................
+
+    @Test
+    public void testEqualsDifferentTextExtraSpaces() {
+        this.checkNotEquals(
+            ColorComparatorCollection.parse("red  green  blue  ")
+        );
+    }
+
+    @Test
+    public void testEqualsDifferentText() {
+        this.checkNotEquals(
+            ColorComparatorCollection.parse("red")
+        );
+    }
+
+    @Override
+    public ColorComparatorCollection createObject() {
+        return ColorComparatorCollection.parse("red green blue");
     }
 
     // class............................................................................................................

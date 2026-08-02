@@ -17,6 +17,7 @@
 
 package walkingkooka.color.compare;
 
+import walkingkooka.Cast;
 import walkingkooka.color.Color;
 import walkingkooka.predicate.character.CharPredicates;
 import walkingkooka.text.CaseSensitivity;
@@ -100,7 +101,7 @@ final class ColorComparatorCollection extends ColorComparator {
                 .get();
         }
 
-        final String comparatorName = CaseSensitivity.INSENSITIVE.endsWith(comparatorNameMaybeReversed, REVERSED) ?
+        final String comparatorName = CASE_SENSITIVITY.endsWith(comparatorNameMaybeReversed, REVERSED) ?
             CharSequences.subSequence(
                 comparatorNameMaybeReversed,
                 0,
@@ -149,6 +150,8 @@ final class ColorComparatorCollection extends ColorComparator {
         return comparator;
     }
 
+    private final static CaseSensitivity CASE_SENSITIVITY = CaseSensitivity.INSENSITIVE;
+
     private final static Parser<ParserContext> COMPARATOR_NAME = Parsers.charPredicateString(
         CharPredicates.letter(),
         1,
@@ -181,34 +184,24 @@ final class ColorComparatorCollection extends ColorComparator {
 
     // Object...........................................................................................................
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(
-//            this.text,
-//            this.comparator
-//        );
-//    }
-//
-//    @Override
-//    public boolean equals(final Object other) {
-//        return this == other ||
-//            other instanceof SpreadsheetCell &&
-//                this.equals0(Cast.to(other));
-//    }
-//
-//    private boolean equals0(final SpreadsheetCell other) {
-//        return this.reference.equals(other.reference()) &&
-//            this.formula.equals(other.formula()) &&
-//            this.currency.equals(other.currency) &&
-//            this.dateTimeSymbols.equals(other.dateTimeSymbols) &&
-//            this.decimalNumberSymbols.equals(other.decimalNumberSymbols) &&
-//            this.locale.equals(other.locale) &&
-//            this.style.equals(other.style) &&
-//            this.parser.equals(other.parser) &&
-//            this.formatter.equals(other.formatter) &&
-//            this.formattedValue.equals(other.formattedValue) &&
-//            this.validator.equals(other.validator);
-//    }
+    @Override
+    public int hashCode() {
+        return CASE_SENSITIVITY.hash(this.text);
+    }
+
+    @Override
+    public boolean equals(final Object other) {
+        return this == other ||
+            other instanceof ColorComparatorCollection &&
+                this.equals0(Cast.to(other));
+    }
+
+    private boolean equals0(final ColorComparatorCollection other) {
+        return CASE_SENSITIVITY.equals(
+            text,
+            other.text
+        );
+    }
 
     @Override
     public String toString() {
