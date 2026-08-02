@@ -35,6 +35,13 @@ public final class ColorComparators implements PublicStaticHelper {
     }
 
     /**
+     * {@link ColorComparatorCollection}
+     */
+    public static Comparator<Color> colorCollection(final String text) {
+        return ColorComparatorCollection.parse(text);
+    }
+
+    /**
      * {@link ColorComparatorRgbGreen}
      */
     public static Comparator<Color> green() {
