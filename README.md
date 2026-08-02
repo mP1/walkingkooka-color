@@ -36,6 +36,7 @@ Comparators that accept
 two [Color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/Color.java)
 
 - [blue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbBlue.java)
+- [colorCollection](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorCollection.java)
 - [green](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorRgbGreen.java)
 - [hslHue](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHslHue.java)
 - [hslSaturation](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/compare/ColorComparatorHslOrHsvSharedHslSaturation.java)
