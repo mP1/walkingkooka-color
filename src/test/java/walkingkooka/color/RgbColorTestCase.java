@@ -22,7 +22,7 @@ import walkingkooka.Cast;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.TypeNameTesting;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase<C>
-    implements JsonNodeMarshallingTesting<C>,
+    implements JsonNodeMarshallerTesting<C>,
     TypeNameTesting<C> {
 
     RgbColorTestCase() {

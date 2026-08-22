@@ -23,11 +23,11 @@ import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 import walkingkooka.tree.json.JsonNode;
-import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 public final class ColorTest implements ClassTesting2<Color>,
-    JsonNodeMarshallingTesting<Color>,
+    JsonNodeMarshallerTesting<Color>,
     ParseStringTesting<Color>,
     TreePrintableTesting {
 
@@ -379,7 +379,10 @@ public final class ColorTest implements ClassTesting2<Color>,
     @Test
     public void testJsonNodeUnmarshallColor() {
         final RgbColor color = RgbColor.fromRgb0(0x123456);
-        this.unmarshallAndCheck(color.marshall(this.marshallContext()), color);
+        this.unmarshallAndCheck(
+            color.marshall(JSON_NODE_MARSHALL_CONTEXT),
+            color
+        );
     }
 
     @Test
@@ -387,7 +390,10 @@ public final class ColorTest implements ClassTesting2<Color>,
         final HslColor hsl = HslColor.with(HslColorComponent.hue(99),
             HslColorComponent.saturation(0.25f),
             HslColorComponent.lightness(0.75f));
-        this.unmarshallAndCheck(hsl.marshall(this.marshallContext()), hsl);
+        this.unmarshallAndCheck(
+            hsl.marshall(JSON_NODE_MARSHALL_CONTEXT),
+            hsl
+        );
     }
 
     @Test
@@ -395,7 +401,10 @@ public final class ColorTest implements ClassTesting2<Color>,
         final HsvColor hsv = HsvColor.with(HsvColorComponent.hue(99),
             HsvColorComponent.saturation(0.25f),
             HsvColorComponent.value(0.75f));
-        this.unmarshallAndCheck(hsv.marshall(this.marshallContext()), hsv);
+        this.unmarshallAndCheck(
+            hsv.marshall(JSON_NODE_MARSHALL_CONTEXT),
+            hsv
+        );
     }
 
     @Override
