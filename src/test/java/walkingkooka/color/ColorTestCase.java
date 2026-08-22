@@ -23,7 +23,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.text.HasTextTesting;
-import walkingkooka.tree.json.marshall.JsonNodeMarshallingTesting;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 
 import java.util.Optional;
 
@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
     HashCodeEqualsDefinedTesting2<C>,
-    JsonNodeMarshallingTesting<C>,
+    JsonNodeMarshallerTesting<C>,
     HasTextTesting,
     ToStringTesting<C>,
     HasValueTesting {
