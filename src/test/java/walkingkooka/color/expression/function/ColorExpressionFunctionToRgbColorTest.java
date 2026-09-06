@@ -19,15 +19,12 @@ package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
-import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColor;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
-import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
 
-public final class ColorExpressionFunctionToRgbColorTest implements ExpressionFunctionTesting<ColorExpressionFunctionToRgbColor<FakeExpressionEvaluationContext>, RgbColor, FakeExpressionEvaluationContext>,
-    ToStringTesting<ColorExpressionFunctionToRgbColor<FakeExpressionEvaluationContext>> {
+public final class ColorExpressionFunctionToRgbColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionToRgbColor<FakeExpressionEvaluationContext>, RgbColor> {
 
     @Test
     public void testApplyWithRgbColor() {
@@ -58,12 +55,6 @@ public final class ColorExpressionFunctionToRgbColorTest implements ExpressionFu
         return ColorExpressionFunctionToRgbColor.instance();
     }
 
-    @Override
-    public FakeExpressionEvaluationContext createContext() {
-        return new FakeExpressionEvaluationContext() {
-
-        };
-    }
 
     @Override
     public int minimumParameterCount() {
@@ -85,10 +76,5 @@ public final class ColorExpressionFunctionToRgbColorTest implements ExpressionFu
     @Override
     public Class<ColorExpressionFunctionToRgbColor<FakeExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionToRgbColor.class);
-    }
-
-    @Override
-    public void testTypeNaming() {
-        throw new UnsupportedOperationException();
     }
 }

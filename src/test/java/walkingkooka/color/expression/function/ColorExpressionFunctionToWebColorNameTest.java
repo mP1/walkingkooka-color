@@ -19,18 +19,15 @@ package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
-import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
-import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
 
 import java.util.Optional;
 
-public final class ColorExpressionFunctionToWebColorNameTest implements ExpressionFunctionTesting<ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext>, WebColorName, FakeExpressionEvaluationContext>,
-    ToStringTesting<ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext>> {
+public final class ColorExpressionFunctionToWebColorNameTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext>, WebColorName> {
 
     @Test
     public void testApplyWithColorWithWebColorName() {
@@ -65,13 +62,6 @@ public final class ColorExpressionFunctionToWebColorNameTest implements Expressi
     }
 
     @Override
-    public FakeExpressionEvaluationContext createContext() {
-        return new FakeExpressionEvaluationContext() {
-
-        };
-    }
-
-    @Override
     public int minimumParameterCount() {
         return 1;
     }
@@ -90,11 +80,6 @@ public final class ColorExpressionFunctionToWebColorNameTest implements Expressi
 
     @Override
     public Class<ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext>> type() {
-        return Cast.to(WebColorName.class);
-    }
-
-    @Override
-    public void testTypeNaming() {
-        throw new UnsupportedOperationException();
+        return Cast.to(ColorExpressionFunctionToWebColorName.class);
     }
 }

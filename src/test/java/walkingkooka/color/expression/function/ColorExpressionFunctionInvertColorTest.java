@@ -19,14 +19,11 @@ package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
-import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
-import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
 
-public final class ColorExpressionFunctionInvertColorTest implements ExpressionFunctionTesting<ColorExpressionFunctionInvertColor<FakeExpressionEvaluationContext>, Color, FakeExpressionEvaluationContext>,
-    ToStringTesting<ColorExpressionFunctionInvertColor<FakeExpressionEvaluationContext>> {
+public final class ColorExpressionFunctionInvertColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionInvertColor<FakeExpressionEvaluationContext>, Color> {
 
     @Test
     public void testApply() {
@@ -43,13 +40,6 @@ public final class ColorExpressionFunctionInvertColorTest implements ExpressionF
     @Override
     public ColorExpressionFunctionInvertColor<FakeExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionInvertColor.instance();
-    }
-
-    @Override
-    public FakeExpressionEvaluationContext createContext() {
-        return new FakeExpressionEvaluationContext() {
-
-        };
     }
 
     @Override
@@ -72,10 +62,5 @@ public final class ColorExpressionFunctionInvertColorTest implements ExpressionF
     @Override
     public Class<ColorExpressionFunctionInvertColor<FakeExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionInvertColor.class);
-    }
-
-    @Override
-    public void testTypeNaming() {
-        throw new UnsupportedOperationException();
     }
 }
