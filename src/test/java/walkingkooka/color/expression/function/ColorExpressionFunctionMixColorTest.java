@@ -19,14 +19,11 @@ package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
-import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
-import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
 
-public final class ColorExpressionFunctionMixColorTest implements ExpressionFunctionTesting<ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext>, Color, FakeExpressionEvaluationContext>,
-    ToStringTesting<ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext>> {
+public final class ColorExpressionFunctionMixColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext>, Color> {
 
     @Test
     public void testApply() {
@@ -53,13 +50,6 @@ public final class ColorExpressionFunctionMixColorTest implements ExpressionFunc
     }
 
     @Override
-    public FakeExpressionEvaluationContext createContext() {
-        return new FakeExpressionEvaluationContext() {
-
-        };
-    }
-
-    @Override
     public int minimumParameterCount() {
         return 3;
     }
@@ -79,10 +69,5 @@ public final class ColorExpressionFunctionMixColorTest implements ExpressionFunc
     @Override
     public Class<ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionMixColor.class);
-    }
-
-    @Override
-    public void testTypeNaming() {
-        throw new UnsupportedOperationException();
     }
 }

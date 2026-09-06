@@ -19,16 +19,13 @@ package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
-import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
-import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
 
-public final class ColorExpressionFunctionGetRedTest implements ExpressionFunctionTesting<ColorExpressionFunctionGetRed<FakeExpressionEvaluationContext>, RedRgbColorComponent, FakeExpressionEvaluationContext>,
-    ToStringTesting<ColorExpressionFunctionGetRed<FakeExpressionEvaluationContext>> {
+public final class ColorExpressionFunctionGetRedTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionGetRed<FakeExpressionEvaluationContext>, RedRgbColorComponent> {
 
     @Test
     public void testApply() {
@@ -46,13 +43,6 @@ public final class ColorExpressionFunctionGetRedTest implements ExpressionFuncti
     @Override
     public ColorExpressionFunctionGetRed<FakeExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionGetRed.instance();
-    }
-
-    @Override
-    public FakeExpressionEvaluationContext createContext() {
-        return new FakeExpressionEvaluationContext() {
-
-        };
     }
 
     @Override
@@ -75,10 +65,5 @@ public final class ColorExpressionFunctionGetRedTest implements ExpressionFuncti
     @Override
     public Class<ColorExpressionFunctionGetRed<FakeExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionGetRed.class);
-    }
-
-    @Override
-    public void testTypeNaming() {
-        throw new UnsupportedOperationException();
     }
 }
