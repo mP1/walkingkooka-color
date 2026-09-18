@@ -23,7 +23,6 @@ import walkingkooka.color.HsvColorComponent;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.math.DecimalNumberContexts;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.cursor.TextCursors;
@@ -784,10 +783,5 @@ public final class ColorParsersTest implements PublicStaticHelperTesting<ColorPa
     @Override
     public boolean canHavePublicTypes(final Method method) {
         return false;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }

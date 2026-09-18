@@ -38,7 +38,6 @@ import walkingkooka.datetime.DateTimeContexts;
 import walkingkooka.environment.EnvironmentContexts;
 import walkingkooka.locale.LocaleContexts;
 import walkingkooka.math.DecimalNumberContexts;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CaseSensitivity;
 import walkingkooka.text.Indentation;
@@ -606,11 +605,6 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     @Override
     public Class<ColorExpressionFunctions> type() {
         return ColorExpressionFunctions.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 
     @Override
