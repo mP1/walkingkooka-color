@@ -17,7 +17,6 @@
 
 package walkingkooka.color;
 
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -32,10 +31,5 @@ public final class ColorStartupTest implements PublicStaticHelperTesting<ColorSt
     @Override
     public Class<ColorStartup> type() {
         return ColorStartup.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }

@@ -31,7 +31,6 @@ import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ConverterTesting;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -258,11 +257,6 @@ public final class ColorConvertersTest implements ConverterTesting,
     @Override
     public Class<ColorConverters> type() {
         return ColorConverters.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 
     @Override

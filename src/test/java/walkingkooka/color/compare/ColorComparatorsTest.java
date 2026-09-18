@@ -17,7 +17,6 @@
 
 package walkingkooka.color.compare;
 
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -27,11 +26,6 @@ public final class ColorComparatorsTest implements PublicStaticHelperTesting<Col
     @Override
     public Class<ColorComparators> type() {
         return ColorComparators.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 
     @Override
