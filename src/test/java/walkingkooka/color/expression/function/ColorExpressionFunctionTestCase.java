@@ -19,9 +19,9 @@ package walkingkooka.color.expression.function;
 
 import walkingkooka.ToStringTesting;
 import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
-import walkingkooka.tree.expression.function.ExpressionFunctionTesting;
+import walkingkooka.tree.expression.function.ExpressionFunctionTesting2;
 
-public abstract class ColorExpressionFunctionTestCase<F extends ColorExpressionFunction<T, FakeExpressionEvaluationContext>, T> implements ExpressionFunctionTesting<F, T, FakeExpressionEvaluationContext>,
+public abstract class ColorExpressionFunctionTestCase<F extends ColorExpressionFunction<T, FakeExpressionEvaluationContext>, T> implements ExpressionFunctionTesting2<F, T, FakeExpressionEvaluationContext>,
     ToStringTesting<F> {
 
     ColorExpressionFunctionTestCase() {
