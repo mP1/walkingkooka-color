@@ -20,13 +20,12 @@ package walkingkooka.color;
 import walkingkooka.HasValueTesting;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
-import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.IsMethodTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 import walkingkooka.reflect.TypeNameTesting;
 import walkingkooka.text.HasTextTesting;
 
-public abstract class ColorComponentTestCase<C extends ColorComponent> implements ClassTesting2<C>,
+public abstract class ColorComponentTestCase<C extends ColorComponent> implements PublicClassTesting<C>,
     HashCodeEqualsDefinedTesting2<C>,
     HasTextTesting,
     IsMethodTesting<C>,
@@ -36,13 +35,6 @@ public abstract class ColorComponentTestCase<C extends ColorComponent> implement
 
     ColorComponentTestCase() {
         super();
-    }
-
-    // ClassTesting....................................................................................................
-
-    @Override
-    public final JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 
     // IsMethodTesting.................................................................................................
