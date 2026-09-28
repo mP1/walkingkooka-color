@@ -23,6 +23,8 @@ import java.lang.reflect.Method;
 
 public final class ColorStartupTest implements PublicStaticHelperTesting<ColorStartup> {
 
+    // class............................................................................................................
+
     @Override
     public boolean canHavePublicTypes(final Method method) {
         return false;

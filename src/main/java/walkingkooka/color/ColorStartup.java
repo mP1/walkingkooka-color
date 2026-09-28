@@ -26,7 +26,16 @@ import walkingkooka.tree.json.TreeJsonStartup;
 public final class ColorStartup implements PublicStaticHelper {
 
     static {
-        Color.BLACK.toString();
+        final RgbColor rgbColor = Color.BLACK;
+        rgbColor.setAlpha(
+            RgbColorComponent.alpha((byte) 128)
+        );
+        rgbColor.toHsl()
+            .saturation();
+        rgbColor.toHsv()
+            .hue();
+        rgbColor.toWebColorName();
+
         TreeJsonStartup.init();
     }
 
