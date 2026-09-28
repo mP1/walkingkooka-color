@@ -93,6 +93,9 @@ abstract public class RgbColorComponent extends ColorComponent
         );
     }
 
+    /**
+     * Parses a hex value which may include a leading 0 for values between 0 and 9.
+     */
     public static AlphaRgbColorComponent parseHexAlpha(final String text) {
         return alpha(
             parseHex(
@@ -101,6 +104,9 @@ abstract public class RgbColorComponent extends ColorComponent
         );
     }
 
+    /**
+     * Parses a hex value which may include a leading 0 for values between 0 and 9.
+     */
     public static BlueRgbColorComponent parseHexBlue(final String text) {
         return blue(
             parseHex(
@@ -109,6 +115,9 @@ abstract public class RgbColorComponent extends ColorComponent
         );
     }
 
+    /**
+     * Parses a hex value which may include a leading 0 for values between 0 and 9.
+     */
     public static GreenRgbColorComponent parseHexGreen(final String text) {
         return green(
             parseHex(
@@ -117,6 +126,9 @@ abstract public class RgbColorComponent extends ColorComponent
         );
     }
 
+    /**
+     * Parses a hex value which may include a leading 0 for values between 0 and 9.
+     */
     public static RedRgbColorComponent parseHexRed(final String text) {
         return red(
             parseHex(
@@ -136,7 +148,15 @@ abstract public class RgbColorComponent extends ColorComponent
                                    final int radix) {
         Objects.requireNonNull(text, "text");
 
-        final int value = Integer.parseInt(text, radix);
+        String t = text;
+        if (t.length() == 2 && t.charAt(0) == '0') {
+            t = t.substring(1);
+        }
+
+        final int value = Integer.parseInt(
+            t,
+            radix
+        );
         if (value < MIN_VALUE || value > MAX_VALUE) {
             throw new IllegalArgumentException("Invalid value " + value + " < " + MIN_VALUE + " or > " + MAX_VALUE);
         }
