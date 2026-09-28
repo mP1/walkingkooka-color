@@ -21,6 +21,9 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.test.ParseStringTesting;
+import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.function.Predicate;
 
@@ -29,7 +32,8 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> extends ColorComponentTestCase<C>
-    implements ParseStringTesting<C> {
+    implements ParseStringTesting<C>,
+    JsonNodeMarshallerTesting<C> {
 
     RgbColorComponentTestCase() {
         super();
@@ -387,6 +391,21 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
         this.textAndCheck(
             this.createColorComponent((byte) 255),
             "255"
+        );
+    }
+
+    // json.............................................................................................................
+
+    @Override
+    public C createJsonNodeMarshallingValue() {
+        return this.createColorComponent();
+    }
+
+    @Override
+    public C unmarshall(final JsonNode jsonNode,
+                        final JsonNodeUnmarshallContext context) {
+        return this.parseHex(
+            jsonNode.stringOrFail()
         );
     }
 
