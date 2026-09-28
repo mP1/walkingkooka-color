@@ -27,17 +27,17 @@ public final class GreenRgbColorComponentTest extends RgbColorComponentTestCase<
     }
 
     @Test
-    public void testRed() {
+    public void testEqualsWithRed() {
         this.checkNotEquals(RgbColorComponent.red(VALUE));
     }
 
     @Test
-    public void testBlue() {
+    public void testEqualsWithBlue() {
         this.checkNotEquals(RgbColorComponent.blue(VALUE));
     }
 
     @Test
-    public void testAlpha() {
+    public void testEqualsWithAlpha() {
         this.checkNotEquals(RgbColorComponent.alpha(VALUE));
     }
 
