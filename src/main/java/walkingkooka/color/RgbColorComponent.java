@@ -87,9 +87,56 @@ abstract public class RgbColorComponent extends ColorComponent
     }
 
     private static byte parse(final String text) {
+        return parseRadix(
+            text,
+            10
+        );
+    }
+
+    public static AlphaRgbColorComponent parseHexAlpha(final String text) {
+        return alpha(
+            parseHex(
+                text
+            )
+        );
+    }
+
+    public static BlueRgbColorComponent parseHexBlue(final String text) {
+        return blue(
+            parseHex(
+                text
+            )
+        );
+    }
+
+    public static GreenRgbColorComponent parseHexGreen(final String text) {
+        return green(
+            parseHex(
+                text
+            )
+        );
+    }
+
+    public static RedRgbColorComponent parseHexRed(final String text) {
+        return red(
+            parseHex(
+                text
+            )
+        );
+    }
+
+    private static byte parseHex(final String text) {
+        return parseRadix(
+            text,
+            16
+        );
+    }
+
+    private static byte parseRadix(final String text,
+                                   final int radix) {
         Objects.requireNonNull(text, "text");
 
-        final int value = Integer.parseInt(text);
+        final int value = Integer.parseInt(text, radix);
         if (value < MIN_VALUE || value > MAX_VALUE) {
             throw new IllegalArgumentException("Invalid value " + value + " < " + MIN_VALUE + " or > " + MAX_VALUE);
         }
