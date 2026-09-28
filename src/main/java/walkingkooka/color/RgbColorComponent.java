@@ -287,16 +287,10 @@ abstract public class RgbColorComponent extends ColorComponent
 
     /**
      * Returns the value in hex form.
+     * Formats the given value adding a leading 0 to ensure the {@link String} is two characters.
      */
     @Override //
     final public String toString() {
-        return this.toHexString();
-    }
-
-    /**
-     * Formats the given value adding a leading 0 to ensure the {@link String} is two characters.
-     */
-    private String toHexString() {
         return RgbColorComponent.TO_HEX_STRING[this.unsignedIntValue];
     }
 
