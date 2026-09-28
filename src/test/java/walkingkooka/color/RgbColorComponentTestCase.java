@@ -44,25 +44,43 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
 
     @Test
     public final void testWith() {
-        this.createComponentAndCheck(VALUE, VALUE, VALUE / 255f);
+        this.createComponentAndCheck(
+            VALUE,
+            VALUE,
+            VALUE / 255f
+        );
     }
 
     @Test
     public final void testWith2() {
-        this.createComponentAndCheck(VALUE2, VALUE2, VALUE2 / 255f);
+        this.createComponentAndCheck(
+            VALUE2,
+            VALUE2,
+            VALUE2 / 255f
+        );
     }
 
     @Test
     public final void testWithZero() {
-        this.createComponentAndCheck((byte) 0, 0x0, 0.0f);
+        this.createComponentAndCheck(
+            (byte) 0,
+            0x0,
+            0.0f
+        );
     }
 
     @Test
     public final void testWith0xFF() {
-        this.createComponentAndCheck((byte) 0xFF, 0xFF, 1.0f);
+        this.createComponentAndCheck(
+            (byte) 0xFF,
+            0xFF,
+            1.0f
+        );
     }
 
-    private void createComponentAndCheck(final byte value, final int unsigned, final float floatValue) {
+    private void createComponentAndCheck(final byte value,
+                                         final int unsigned,
+                                         final float floatValue) {
         final C component = this.createColorComponent(value);
         this.valueAndCheck(
             component,
@@ -76,47 +94,78 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
     @Test
     public final void testAddZero() {
         final C component = this.createColorComponent(VALUE);
-        assertSame(component, component.add(0));
+        assertSame(
+            component,
+            component.add(0)
+        );
     }
 
     @Test
     public final void testAddZero2() {
         final C component = this.createColorComponent(VALUE2);
-        assertSame(component, component.add(0));
+        assertSame(
+            component,
+            component.add(0)
+        );
     }
 
     @Test
     public final void testAddOne() {
-        this.addAndCheck(this.createColorComponent(VALUE), 1, VALUE + 1);
+        this.addAndCheck(
+            this.createColorComponent(VALUE),
+            1,
+            VALUE + 1
+        );
     }
 
     @Test
     public final void testAddOne2() {
-        this.addAndCheck(this.createColorComponent(VALUE2), 1, VALUE2 + 1);
+        this.addAndCheck(
+            this.createColorComponent(VALUE2),
+            1,
+            VALUE2 + 1
+        );
     }
 
     @Test
     public final void testAddNegativeOne() {
-        this.addAndCheck(this.createColorComponent(VALUE), -1, VALUE - 1);
+        this.addAndCheck(
+            this.createColorComponent(VALUE),
+            -1,
+            VALUE - 1
+        );
     }
 
     @Test
     public final void testAddNegativeOne2() {
-        this.addAndCheck(this.createColorComponent(VALUE2), -1, VALUE2 - 1);
+        this.addAndCheck(
+            this.createColorComponent(VALUE2),
+            -1,
+            VALUE2 - 1
+        );
     }
 
     @Test
     public final void testAddSaturatedOverflows() {
         final C component = this.createColorComponent(VALUE);
         final C added = Cast.to(component.add(512));
-        this.checkEquals(255, added.unsignedIntValue);
+
+        this.checkEquals(
+            255,
+            added.unsignedIntValue,
+            "unsignedIntValue"
+        );
     }
 
     @Test
     public final void testAddSaturatedUnderflow() {
         final C component = this.createColorComponent(VALUE);
         final C added = Cast.to(component.add(-512));
-        this.checkEquals(0, added.unsignedIntValue);
+        this.checkEquals(
+            0,
+            added.unsignedIntValue,
+            "unsignedIntValue"
+        );
     }
 
     private void addAndCheck(final RgbColorComponent component,
@@ -124,32 +173,54 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
                              final int value) {
         final RgbColorComponent added = Cast.to(component.add(add));
         assertNotSame(component, added);
-        this.checkEquals(component.getClass(), added.getClass(), "result of add was not the same component type");
-        this.checkEquals(value, added.unsignedIntValue, "component " + component + " add " + add + " =" + value);
+        this.checkEquals(
+            component.getClass(),
+            added.getClass(),
+            "result of add was not the same component type"
+        );
+        this.checkEquals(
+            value,
+            added.unsignedIntValue,
+            () -> "component " + component + " add " + add + " =" + value
+        );
     }
 
     // invert
 
     @Test
     public final void testInvert1() {
-        this.invertAndCheck(this.createColorComponent((byte) 0), 255);
+        this.invertAndCheck(
+            this.createColorComponent((byte) 0),
+            255
+        );
     }
 
     @Test
     public final void testInvert2() {
-        this.invertAndCheck(this.createColorComponent((byte) 1), 254);
+        this.invertAndCheck(
+            this.createColorComponent((byte) 1),
+            254
+        );
     }
 
     @Test
     public final void testInvertAll() {
         for (int i = 0; i < 255; i++) {
-            this.invertAndCheck(this.createColorComponent((byte) i), ~i);
+            this.invertAndCheck(
+                this.createColorComponent((byte) i),
+                ~i
+            );
         }
     }
 
-    private void invertAndCheck(final RgbColorComponent component, final int value) {
+    private void invertAndCheck(final RgbColorComponent component,
+                                final int value) {
         final RgbColorComponent inverted = component.invert();
-        assertNotSame(component, inverted, "invert should not return this");
+        assertNotSame(
+            component,
+            inverted,
+            "invert should not return this"
+        );
         this.valueAndCheck(
             inverted,
             (byte) value
@@ -158,22 +229,34 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
 
     @Test
     public final void testSameValueSameInstance() {
-        assertSame(this.createColorComponent(VALUE), this.createColorComponent(VALUE));
+        assertSame(
+            this.createColorComponent(VALUE),
+            this.createColorComponent(VALUE)
+        );
     }
 
     @Test
     public final void testToString() {
-        this.toStringAndCheck(this.createColorComponent(VALUE), Integer.toHexString(VALUE).toUpperCase());
+        this.toStringAndCheck(
+            this.createColorComponent(VALUE),
+            Integer.toHexString(VALUE).toUpperCase()
+        );
     }
 
     @Test
     public final void testToStringFF() {
-        this.toStringAndCheck(this.createColorComponent((byte) 0xFF), "ff");
+        this.toStringAndCheck(
+            this.createColorComponent((byte) 0xFF),
+            "ff"
+        );
     }
 
     @Test
     public final void testToStringLessThan16() {
-        this.toStringAndCheck(this.createColorComponent((byte) 0xF), "0f");
+        this.toStringAndCheck(
+            this.createColorComponent((byte) 0xF),
+            "0f"
+        );
     }
 
     final C createColorComponent() {
