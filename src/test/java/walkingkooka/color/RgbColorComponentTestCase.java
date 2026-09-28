@@ -270,6 +270,40 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
         return this.createColorComponent();
     }
 
+    @Test
+    public final void testParseHex() {
+        this.parseHexAndCheck(
+            "11",
+            VALUE
+        );
+    }
+
+    @Test
+    public void testParseHexLeadingZero() {
+        this.parseHexAndCheck(
+            "01",
+            (byte) 1
+        );
+    }
+
+    @Test
+    public void testParseHexSingleDigit() {
+        this.parseHexAndCheck(
+            "1",
+            (byte) 1
+        );
+    }
+
+    private void parseHexAndCheck(final String text,
+                                  final byte expected) {
+        this.checkEquals(
+            this.createColorComponent(expected),
+            this.parseHex(text)
+        );
+    }
+
+    abstract C parseHex(final String text);
+
     // parse............................................................................................................
 
     @Test

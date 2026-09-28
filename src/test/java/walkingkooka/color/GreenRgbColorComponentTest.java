@@ -22,14 +22,6 @@ import org.junit.jupiter.api.Test;
 public final class GreenRgbColorComponentTest extends RgbColorComponentTestCase<GreenRgbColorComponent> {
 
     @Test
-    public void testParseHex() {
-        this.checkEquals(
-            this.createColorComponent(),
-            RgbColorComponent.parseHexGreen("11")
-        );
-    }
-
-    @Test
     public void testEqualsDifferentValue() {
         this.checkNotEquals(RgbColorComponent.green(VALUE2));
     }
@@ -57,6 +49,11 @@ public final class GreenRgbColorComponentTest extends RgbColorComponentTestCase<
     @Override
     public GreenRgbColorComponent parseString(final String text) {
         return RgbColorComponent.parseGreen(text);
+    }
+
+    @Override
+    public GreenRgbColorComponent parseHex(final String text) {
+        return RgbColorComponent.parseHexGreen(text);
     }
 
     @Override
