@@ -19,9 +19,8 @@ package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.set.Sets;
-import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.ConstantsTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 import walkingkooka.tree.json.JsonNode;
@@ -30,7 +29,7 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Set;
 
-public final class ColorTest implements ClassTesting2<Color>,
+public final class ColorTest implements PublicClassTesting<Color>,
     JsonNodeMarshallerTesting<Color>,
     ParseStringTesting<Color>,
     TreePrintableTesting,
@@ -509,10 +508,5 @@ public final class ColorTest implements ClassTesting2<Color>,
     @Override
     public Class<Color> type() {
         return Color.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
