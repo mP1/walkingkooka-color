@@ -19,7 +19,7 @@ package walkingkooka.color.parser;
 
 import org.junit.jupiter.api.Test;
 
-public abstract class LeafColorFunctionParserTokenTestCase<T extends LeafColorFunctionParserToken<?>> extends ColorFunctionParserTokenTestCase3<T> {
+public abstract class LeafColorFunctionParserTokenTestCase<T extends LeafColorFunctionParserToken<?>> extends ColorFunctionParserTokenTestCase2<T> {
 
     LeafColorFunctionParserTokenTestCase() {
         super();
