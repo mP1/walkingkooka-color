@@ -18,7 +18,9 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.collect.set.Sets;
 import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.ConstantsTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
@@ -26,10 +28,76 @@ import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
+import java.util.Set;
+
 public final class ColorTest implements ClassTesting2<Color>,
     JsonNodeMarshallerTesting<Color>,
     ParseStringTesting<Color>,
-    TreePrintableTesting {
+    TreePrintableTesting,
+    ConstantsTesting<Color> {
+
+    // constants........................................................................................................
+
+    @Test
+    public void testConstantsBlackAndWhite() {
+        this.checkNotEquals(
+            Color.BLACK,
+            Color.WHITE
+        );
+    }
+
+    @Test
+    public void testConstantsRgbBlackAndHslBlack() {
+        this.checkNotEquals(
+            Color.BLACK,
+            Color.BLACK_HSL
+        );
+    }
+
+    @Test
+    public void testConstantsRgbBlackAndHsvBlack() {
+        this.checkNotEquals(
+            Color.BLACK,
+            Color.BLACK_HSV
+        );
+    }
+
+    @Test
+    public void testConstantsHslBlackAndHsvBlack() {
+        this.checkNotEquals(
+            Color.BLACK_HSL,
+            Color.BLACK_HSV
+        );
+    }
+
+    @Test
+    public void testConstantsRgbBlackAndRgbBlackHalf() {
+        this.checkNotEquals(
+            Color.BLACK,
+            Color.BLACK_50_ALPHA
+        );
+    }
+
+    @Test
+    public void testConstantsHslBlackAndRgbBlackHalf() {
+        this.checkNotEquals(
+            Color.BLACK_HSL,
+            Color.BLACK_HSL_50_ALPHA
+        );
+    }
+
+    @Test
+    public void testConstantsHsvBlackAndRgbBlackHalf() {
+        this.checkNotEquals(
+            Color.BLACK_HSV,
+            Color.BLACK_HSV_50_ALPHA
+        );
+    }
+
+    @Override
+    public Set<Color> intentionalDuplicateConstants() {
+        return Sets.empty();
+    }
 
     // isColorClass.....................................................................................................
 

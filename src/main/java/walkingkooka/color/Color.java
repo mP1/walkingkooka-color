@@ -53,10 +53,48 @@ public abstract class Color implements HasText,
     TreePrintable {
 
     /**
-     * A constant holding black
+     * A constant holding RGB black
      */
     @SuppressWarnings("StaticInitializerReferencesSubClass")
     public final static RgbColor BLACK = RgbColor.fromRgb0(0);
+
+    /**
+     * A constant holding RGB black with 50% transparency
+     */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
+    public final static RgbColor BLACK_50_ALPHA = BLACK.setAlpha(
+        RgbColorComponent.alpha(
+            (byte) 0x80
+        )
+    );
+
+    /**
+     * A constant holding HSL black
+     */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
+    public final static HslColor BLACK_HSL = BLACK.toHsl();
+
+    /**
+     * A constant holding HSL black with 50% transparency
+     */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
+    public final static HslColor BLACK_HSL_50_ALPHA = BLACK_HSL.setAlpha(
+        HslColorComponent.alpha(0.5f)
+    );
+
+    /**
+     * A constant holding HSV black
+     */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
+    public final static HsvColor BLACK_HSV = BLACK.toHsv();
+
+    /**
+     * A constant holding HSV black with 50% transparency
+     */
+    @SuppressWarnings("StaticInitializerReferencesSubClass")
+    public final static HsvColor BLACK_HSV_50_ALPHA = BLACK_HSV.setAlpha(
+        HsvColorComponent.alpha(0.5f)
+    );
 
     /**
      * A constant holding white
