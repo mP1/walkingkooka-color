@@ -24,7 +24,7 @@ import walkingkooka.visit.Visiting;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class FunctionColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase3<FunctionColorFunctionParserToken> {
+public final class FunctionColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase2<FunctionColorFunctionParserToken> {
 
     @Override
     public void testEmptyTextFails() {

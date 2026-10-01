@@ -17,10 +17,10 @@
 
 package walkingkooka.color.parser;
 
-import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.PackagePrivateClassTesting;
 import walkingkooka.reflect.TypeNameTesting;
 
-public abstract class ColorFunctionParserTokenTestCase<T extends ColorFunctionParserToken> implements ClassTesting2<T>,
+public abstract class ColorFunctionParserTokenTestCase<T extends ColorFunctionParserToken> implements PackagePrivateClassTesting<T>,
     TypeNameTesting<T> {
 
     ColorFunctionParserTokenTestCase() {

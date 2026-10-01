@@ -17,16 +17,79 @@
 
 package walkingkooka.color.parser;
 
+import org.junit.jupiter.api.Test;
+import walkingkooka.HashCodeEqualsDefinedTesting2;
+import walkingkooka.reflect.IsMethodTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicStaticFactoryTesting;
+import walkingkooka.text.cursor.parser.ParserTokenTesting;
 
-public abstract class ColorFunctionParserTokenTestCase2<T extends ColorFunctionParserToken> extends ColorFunctionParserTokenTestCase<T> {
+import java.util.function.Predicate;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public abstract class ColorFunctionParserTokenTestCase2<T extends ColorFunctionParserToken> extends ColorFunctionParserTokenTestCase<T>
+    implements ParserTokenTesting<T>,
+    HashCodeEqualsDefinedTesting2<T>,
+    IsMethodTesting<T> {
 
     ColorFunctionParserTokenTestCase2() {
         super();
     }
 
     @Override
+    @Test
+    public final void testPublicStaticFactoryMethod() {
+        PublicStaticFactoryTesting.checkFactoryMethods(
+            ColorFunctionParserToken.class,
+            "",
+            ColorFunctionParserToken.class.getSimpleName(),
+            this.type()
+        );
+    }
+
+    @Test
+    public void testEmptyTextFails() {
+        assertThrows(IllegalArgumentException.class, () -> this.createToken(""));
+    }
+
+    // HashCodeEqualsDefinedTesting.....................................................................................
+
+    @Override public final T createObject() {
+        return this.createToken();
+    }
+
+    // isMethodTesting2.................................................................................................
+
+    @Override
+    public T createIsMethodObject() {
+        return this.createToken(this.text());
+    }
+
+    @Override
+    public final Predicate<String> isMethodIgnoreMethodFilter() {
+        return (m) -> m.equals("isLeaf") ||
+            m.equals("isNoise") ||
+            m.equals("isParent") ||
+            m.equals("isSymbol") ||
+            m.equals("isEmpty") ||
+            m.equals("isNotEmpty"); // skip isNoise
+    }
+
+
+    @Override
+    public final String toIsMethodName(final String typeName) {
+        return this.toIsMethodNameWithPrefixSuffix(
+            typeName,
+            "",
+            ColorFunctionParserToken.class.getSimpleName()
+        );
+    }
+
+    // class............................................................................................................
+
+    @Override
     public final JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
+        return JavaVisibility.PUBLIC;
     }
 }

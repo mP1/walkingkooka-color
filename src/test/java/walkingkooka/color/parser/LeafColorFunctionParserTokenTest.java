@@ -19,7 +19,7 @@ package walkingkooka.color.parser;
 
 import walkingkooka.Cast;
 
-public final class LeafColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase2<LeafColorFunctionParserToken<?>> {
+public final class LeafColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase<LeafColorFunctionParserToken<?>> {
 
     @Override
     public Class<LeafColorFunctionParserToken<?>> type() {

@@ -19,7 +19,7 @@ package walkingkooka.color.parser;
 
 import walkingkooka.Cast;
 
-public final class SymbolColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase2<SymbolColorFunctionParserToken<?>> {
+public final class SymbolColorFunctionParserTokenTest extends ColorFunctionParserTokenTestCase<SymbolColorFunctionParserToken<?>> {
 
     @Override
     public Class<SymbolColorFunctionParserToken<?>> type() {
