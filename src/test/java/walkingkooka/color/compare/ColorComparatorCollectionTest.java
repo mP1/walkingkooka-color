@@ -390,14 +390,4 @@ public final class ColorComparatorCollectionTest extends ColorComparatorTestCase
     public Class<ColorComparatorCollection> type() {
         return ColorComparatorCollection.class;
     }
-
-    @Override
-    public void testAllConstructorsVisibility() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void testIfClassIsFinalIfAllConstructorsArePrivate() {
-        throw new UnsupportedOperationException();
-    }
 }
