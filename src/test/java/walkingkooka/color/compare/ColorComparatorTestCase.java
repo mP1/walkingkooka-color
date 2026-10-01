@@ -19,12 +19,11 @@ package walkingkooka.color.compare;
 
 import walkingkooka.color.Color;
 import walkingkooka.compare.ComparatorTesting2;
-import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PackagePrivateClassTesting;
 import walkingkooka.text.CharSequences;
 
 public abstract class ColorComparatorTestCase<C extends ColorComparator> implements ComparatorTesting2<C, Color>,
-    ClassTesting2<C> {
+    PackagePrivateClassTesting<C> {
 
     ColorComparatorTestCase() {
         super();
@@ -46,10 +45,5 @@ public abstract class ColorComparatorTestCase<C extends ColorComparator> impleme
     @Override
     public final String typeNameSuffix() {
         return "";
-    }
-
-    @Override
-    public final JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
