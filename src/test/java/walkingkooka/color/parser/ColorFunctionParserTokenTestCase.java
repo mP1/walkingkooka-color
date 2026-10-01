@@ -28,12 +28,12 @@ public abstract class ColorFunctionParserTokenTestCase<T extends ColorFunctionPa
     }
 
     @Override
-    public String typeNamePrefix() {
+    public final String typeNamePrefix() {
         return "";
     }
 
     @Override
-    public String typeNameSuffix() {
+    public final String typeNameSuffix() {
         return ColorFunctionParserToken.class.getSimpleName();
     }
 }
