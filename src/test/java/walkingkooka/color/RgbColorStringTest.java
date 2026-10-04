@@ -18,12 +18,11 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
+public final class RgbColorStringTest implements PublicClassTesting<RgbColorString> {
 
     @Test
     public void testToStringNullFails() {
@@ -177,15 +176,10 @@ public final class RgbColorStringTest implements ClassTesting2<RgbColorString> {
         );
     }
 
-    // ClassTesting.....................................................................................................
+    // Class............................................................................................................
 
     @Override
     public Class<RgbColorString> type() {
         return RgbColorString.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
