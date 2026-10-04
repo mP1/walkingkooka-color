@@ -420,7 +420,7 @@ public abstract class Color implements HasText,
     static {
         //noinspection unchecked
         register(
-            "rgb-hsl-hsv",
+            "color",
             Color::unmarshall,
             Color.class
         );
