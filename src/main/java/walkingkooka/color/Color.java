@@ -18,6 +18,8 @@
 package walkingkooka.color;
 
 import walkingkooka.Cast;
+import walkingkooka.InvalidCharacterException;
+import walkingkooka.InvalidTextLengthException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.UsesToStringBuilder;
 import walkingkooka.color.parser.ColorParsers;
@@ -108,12 +110,19 @@ public abstract class Color implements HasText,
     public final static IndexedColor INDEXED_COLOR = indexed(0);
 
     /**
+     * A constant holding {@link NamedColor} with "Black"
+     */
+    // Avoids NPE race conditions because NamedColor.with constants might be null.
+    public final static NamedColor NAMED_COLOR = new NamedColor("Black");
+    
+    /**
      * Tests if the given type is a {@link Color} sub class.
      * This is useful in GWT where {@link Class#isAssignableFrom(Class)} is not supported.
      */
     public static boolean isColorClass(final Class<?> type) {
         return Color.class == type ||
             IndexedColor.class == type ||
+            NamedColor.class == type ||
             isHslColorClass(type) ||
             isHsvColorClass(type) ||
             isRgbColorClass(type);
@@ -172,6 +181,13 @@ public abstract class Color implements HasText,
      */
     public static IndexedColor indexed(final int index) {
         return IndexedColor.with(index);
+    }
+
+    /**
+     * {@link NamedColor}
+     */
+    public static NamedColor named(final String name) {
+        return NamedColor.with(name);
     }
 
     /**
@@ -276,6 +292,43 @@ public abstract class Color implements HasText,
         .orReport(ParserReporters.basic());
 
     /**
+     * Expects a quoted named color.
+     * <pre>
+     * \"red\"
+     * </pre>
+     */
+    public static NamedColor parseNamed(final String text) {
+        CharSequences.failIfNullOrEmpty(text, "text");
+
+        InvalidTextLengthException.throwIfFail(
+            text,
+            "text",
+            2,
+            256
+        );
+
+        final char first = text.charAt(0);
+        if ('"' != first) {
+            throw new InvalidCharacterException(
+                text,
+                0
+            );
+        }
+        final int lastIndex = text.length() - 1;
+        final char last = text.charAt(lastIndex);
+        if ('"' != last) {
+            throw new InvalidCharacterException(
+                text,
+                0
+            );
+        }
+
+        return named(
+            text.substring(1, lastIndex)
+        );
+    }
+    
+    /**
      * Expects a positive number which contains the index.
      * <pre>
      * 0
@@ -307,6 +360,13 @@ public abstract class Color implements HasText,
      */
     public final boolean isIndexed() {
         return this instanceof IndexedColor;
+    }
+
+    /**
+     * Returns true if {@link NamedColor}.
+     */
+    public final boolean isNamed() {
+        return this instanceof NamedColor;
     }
 
     public final boolean isRgb() {
@@ -414,10 +474,14 @@ public abstract class Color implements HasText,
                 public Color apply(final String text) {
                     CharSequences.failIfNullOrEmpty(text, "text");
 
-                    return Character.isDigit(text.charAt(0)) ?
+                    final char first = text.charAt(0);
+                    return Character.isDigit(first) ?
                         // if first character is a digit must be a IndexedColor
                         parseIndexed(text) :
-                        parse(text);
+                        // if in quote must be NamedColor
+                        '"' == first ?
+                            parseNamed(text) :
+                            parse(text);
                 }
 
                 @Override
@@ -436,6 +500,17 @@ public abstract class Color implements HasText,
         return unmarshall(
             from,
             Color::parseIndexed
+        );
+    }
+
+    /**
+     * Creates a {@link NamedColor} from a {@link JsonNode}.
+     */
+    static NamedColor unmarshallNamed(final JsonNode from,
+                                      final JsonNodeUnmarshallContext context) {
+        return unmarshall(
+            from,
+            Color::parseNamed
         );
     }
 
@@ -493,6 +568,12 @@ public abstract class Color implements HasText,
         register(
             Color::unmarshallIndexed,
             IndexedColor.class
+        );
+
+        //noinspection unchecked
+        register(
+            Color::unmarshallNamed,
+            NamedColor.class
         );
 
         //noinspection unchecked

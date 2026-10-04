@@ -462,6 +462,16 @@ public final class ColorTest implements PublicClassTesting<Color>,
     }
 
     @Test
+    public void testJsonNodeUnmarshallNamedColor() {
+        final NamedColor namedColor = Color.named("HelloWorld");
+
+        this.unmarshallAndCheck(
+            namedColor.marshall(JSON_NODE_MARSHALL_CONTEXT),
+            namedColor
+        );
+    }
+
+    @Test
     public void testJsonNodeUnmarshallRgbColor() {
         final RgbColor color = RgbColor.fromRgb0(0x123456);
         this.unmarshallAndCheck(
