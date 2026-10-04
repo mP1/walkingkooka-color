@@ -27,11 +27,10 @@ import walkingkooka.color.HsvColor;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
-public final class NumberToColorConverterTest implements ConverterTesting2<NumberToColorConverter<FakeConverterContext>, FakeConverterContext> {
+public final class ConverterNumberToColorTest extends ConverterColorTestCase<ConverterNumberToColor<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertStringToColorFails() {
@@ -159,8 +158,8 @@ public final class NumberToColorConverterTest implements ConverterTesting2<Numbe
     }
 
     @Override
-    public NumberToColorConverter<FakeConverterContext> createConverter() {
-        return NumberToColorConverter.instance();
+    public ConverterNumberToColor<FakeConverterContext> createConverter() {
+        return ConverterNumberToColor.instance();
     }
 
     @Override
@@ -199,7 +198,7 @@ public final class NumberToColorConverterTest implements ConverterTesting2<Numbe
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            NumberToColorConverter.instance(),
+            ConverterNumberToColor.instance(),
             "Number to Color"
         );
     }
@@ -207,7 +206,7 @@ public final class NumberToColorConverterTest implements ConverterTesting2<Numbe
     // class............................................................................................................
 
     @Override
-    public Class<NumberToColorConverter<FakeConverterContext>> type() {
-        return Cast.to(NumberToColorConverter.class);
+    public Class<ConverterNumberToColor<FakeConverterContext>> type() {
+        return Cast.to(ConverterNumberToColor.class);
     }
 }
