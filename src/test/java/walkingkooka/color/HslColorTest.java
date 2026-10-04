@@ -26,7 +26,7 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class HslColorTest extends ColorTestCase<HslColor> implements ParseStringTesting<HslColor> {
+public final class HslColorTest extends ColorTestCase2<HslColor> implements ParseStringTesting<HslColor> {
 
     // constants
 

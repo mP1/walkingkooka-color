@@ -103,11 +103,17 @@ public abstract class Color implements HasText,
     public final static RgbColor WHITE = RgbColor.fromRgb0(0xFFFFFF);
 
     /**
+     * A constant holding {@link IndexedColor} with 0
+     */
+    public final static IndexedColor INDEXED_COLOR = indexed(0);
+
+    /**
      * Tests if the given type is a {@link Color} sub class.
      * This is useful in GWT where {@link Class#isAssignableFrom(Class)} is not supported.
      */
     public static boolean isColorClass(final Class<?> type) {
         return Color.class == type ||
+            IndexedColor.class == type ||
             isHslColorClass(type) ||
             isHsvColorClass(type) ||
             isRgbColorClass(type);
@@ -162,6 +168,13 @@ public abstract class Color implements HasText,
     }
 
     /**
+     * {@link IndexedColor}
+     */
+    public static IndexedColor indexed(final int index) {
+        return IndexedColor.with(index);
+    }
+
+    /**
      * Creates a new {@link RgbColor} with the provided components.
      */
     public static RgbColor rgb(final RedRgbColorComponent red,
@@ -185,7 +198,7 @@ public abstract class Color implements HasText,
     }
 
     /**
-     * Parses the numerous supported {@link RgbColor}, {@link HslColor} and {@link HsvColor}.
+     * Parses the numerous supported {@link IndexedColor}, {@link RgbColor}, {@link HslColor} and {@link HsvColor}.
      * This equivalent to calling any of each until success or failure.
      * Examples of supported text forms include.
      * <pre>
@@ -262,6 +275,20 @@ public abstract class Color implements HasText,
     private final static Parser<ParserContext> HSV_FUNCTION_PARSER = ColorParsers.hsv()
         .orReport(ParserReporters.basic());
 
+    /**
+     * Expects a positive number which contains the index.
+     * <pre>
+     * 0
+     * 123
+     * </pre>
+     */
+    public static IndexedColor parseIndexed(final String text) {
+        CharSequences.failIfNullOrEmpty(text, "text");
+
+        return indexed(
+            Integer.parseInt(text)
+        );
+    }
 
     Color() {
         super();
@@ -273,6 +300,13 @@ public abstract class Color implements HasText,
 
     public final boolean isHsv() {
         return this instanceof HsvColor;
+    }
+
+    /**
+     * Returns true if {@link IndexedColor}.
+     */
+    public final boolean isIndexed() {
+        return this instanceof IndexedColor;
     }
 
     public final boolean isRgb() {
@@ -371,9 +405,38 @@ public abstract class Color implements HasText,
     /**
      * Creates a {@link Color} from a {@link JsonNode}.
      */
-    static Color unmarshall(final JsonNode from,
-                            final JsonNodeUnmarshallContext context) {
-        return unmarshall0(from, Color::parse);
+    static Color unmarshallColor(final JsonNode from,
+                                 final JsonNodeUnmarshallContext context) {
+        return unmarshall(
+            from,
+            new Function<String, Color>() {
+                @Override
+                public Color apply(final String text) {
+                    CharSequences.failIfNullOrEmpty(text, "text");
+
+                    return Character.isDigit(text.charAt(0)) ?
+                        // if first character is a digit must be a IndexedColor
+                        parseIndexed(text) :
+                        parse(text);
+                }
+
+                @Override
+                public String toString() {
+                    return "Color";
+                }
+            }
+        );
+    }
+
+    /**
+     * Creates a {@link RgbColor} from a {@link JsonNode}.
+     */
+    static IndexedColor unmarshallIndexed(final JsonNode from,
+                                          final JsonNodeUnmarshallContext context) {
+        return unmarshall(
+            from,
+            Color::parseIndexed
+        );
     }
 
     /**
@@ -381,7 +444,7 @@ public abstract class Color implements HasText,
      */
     static RgbColor unmarshallRgb(final JsonNode from,
                                   final JsonNodeUnmarshallContext context) {
-        return unmarshall0(from, Color::parseRgb);
+        return unmarshall(from, Color::parseRgb);
     }
 
     /**
@@ -389,7 +452,7 @@ public abstract class Color implements HasText,
      */
     static HslColor unmarshallHsl(final JsonNode from,
                                   final JsonNodeUnmarshallContext context) {
-        return unmarshall0(from, Color::parseHsl);
+        return unmarshall(from, Color::parseHsl);
     }
 
     /**
@@ -397,11 +460,12 @@ public abstract class Color implements HasText,
      */
     static HsvColor unmarshallHsv(final JsonNode from,
                                   final JsonNodeUnmarshallContext context) {
-        return unmarshall0(from, Color::parseHsv);
+        return unmarshall(from, Color::parseHsv);
     }
 
-    private static <C extends Color> C unmarshall0(final JsonNode from,
-                                                   final Function<String, C> parse) {
+    // @VisibleForTesting ColorTest
+    static <C extends Color> C unmarshall(final JsonNode from,
+                                          final Function<String, C> parse) {
         Objects.requireNonNull(from, "from");
 
         try {
@@ -421,8 +485,14 @@ public abstract class Color implements HasText,
         //noinspection unchecked
         register(
             "color",
-            Color::unmarshall,
+            Color::unmarshallColor,
             Color.class
+        );
+
+        //noinspection unchecked
+        register(
+            Color::unmarshallIndexed,
+            IndexedColor.class
         );
 
         //noinspection unchecked

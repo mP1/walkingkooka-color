@@ -357,7 +357,15 @@ public final class ColorTest implements PublicClassTesting<Color>,
     // parse............................................................................................................
 
     @Test
-    public void testParseFails() {
+    public void testParseNumbersFails() {
+        this.parseStringFails(
+            "123",
+            IllegalArgumentException.class
+        );
+    }
+
+    @Test
+    public void testParseLettersFails() {
         this.parseStringFails(
             "abc",
             IllegalArgumentException.class
@@ -444,7 +452,17 @@ public final class ColorTest implements PublicClassTesting<Color>,
     }
 
     @Test
-    public void testJsonNodeUnmarshallColor() {
+    public void testJsonNodeUnmarshallIndexedColor() {
+        final IndexedColor indexedColor = Color.indexed(123);
+
+        this.unmarshallAndCheck(
+            indexedColor.marshall(JSON_NODE_MARSHALL_CONTEXT),
+            indexedColor
+        );
+    }
+
+    @Test
+    public void testJsonNodeUnmarshallRgbColor() {
         final RgbColor color = RgbColor.fromRgb0(0x123456);
         this.unmarshallAndCheck(
             color.marshall(JSON_NODE_MARSHALL_CONTEXT),
@@ -477,21 +495,24 @@ public final class ColorTest implements PublicClassTesting<Color>,
     @Override
     public Color unmarshall(final JsonNode from,
                             final JsonNodeUnmarshallContext context) {
-        return Color.unmarshall(from, context);
+        return Color.unmarshallColor(
+            from,
+            context
+        );
     }
 
     @Override
     public Color createJsonNodeMarshallingValue() {
-        return RgbColor.fromArgb0(0x123456);
+        return Color.fromRgb(0x123456);
     }
 
     // TreePrintable....................................................................................................
 
     @Test
-    public void testTreePrintRgbColor() {
+    public void testTreePrintIndexedColor() {
         this.treePrintAndCheck(
-            Color.parse("black"),
-            "black\n"
+            Color.indexed(123),
+            "123\n"
         );
     }
 

@@ -26,7 +26,7 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Optional;
 
-public final class RgbColorTest extends ColorTestCase<RgbColor> implements ParseStringTesting<RgbColor> {
+public final class RgbColorTest extends ColorTestCase2<RgbColor> implements ParseStringTesting<RgbColor> {
 
     // parseRgb.........................................................................................................
 
