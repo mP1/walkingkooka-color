@@ -19,33 +19,36 @@ package walkingkooka.color.convert;
 
 import walkingkooka.Cast;
 import walkingkooka.Either;
+import walkingkooka.HasValue;
 import walkingkooka.color.Color;
+import walkingkooka.color.ColorComponent;
+import walkingkooka.color.ColorLike;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
+import walkingkooka.tree.expression.ExpressionNumber;
 
 /**
- * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} but not a {@link String} such as
- * <pre>#123456</pre> to another {@link Color}.
+ * A {@link Converter} that converts a {@link Color} to a number.
  */
-final class ColorToColorConverter<C extends ConverterContext> implements ShortCircuitingConverter<C> {
+final class ConverterColorToNumber<C extends ConverterContext> implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorToColorConverter<C> instance() {
+    static <C extends ConverterContext> ConverterColorToNumber<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorToColorConverter<ConverterContext> INSTANCE = new ColorToColorConverter<>();
+    private final static ConverterColorToNumber<ConverterContext> INSTANCE = new ConverterColorToNumber<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ColorToColorConverter() {
+    private ConverterColorToNumber() {
         super();
     }
 
@@ -53,43 +56,41 @@ final class ColorToColorConverter<C extends ConverterContext> implements ShortCi
     public boolean canConvert(final Object value,
                               final Class<?> type,
                               final C context) {
-        return Color.isColorClass(type) &&
-            value instanceof Color;
+        // RgbColor OR RgbColorComponent
+        return value instanceof ColorLike &&
+            // must have a value getter
+            value instanceof HasValue &&
+            (
+                value instanceof ColorComponent ||
+                    // Color cannot be converted to Byte or Short
+                    (value instanceof Color && Byte.class != type && Short.class != type)
+            ) &&
+            // target can be any number
+            (ExpressionNumber.isClass(type) || Number.class == type);
     }
 
     @Override
     public <T> Either<T, String> doConvert(final Object value,
                                            final Class<T> type,
                                            final C context) {
-        final Color color = (Color) value;
-        final Color result;
+        Number number = null;
 
-        if (Color.isRgbColorClass(type)) {
-            result = color.toRgb();
-        } else {
-            if (Color.isHslColorClass(type)) {
-                result = color.toHsl();
-            } else {
-                if (Color.isHsvColorClass(type)) {
-                    result = color.toHsv();
-                } else {
-                    // any Color subclass to Color.class gives color
-                    if (Color.class == type) {
-                        result = color;
-                    } else {
-                        result = null;
-                    }
-                }
-            }
+        // get the number
+        if (value instanceof HasValue) {
+            number = ((HasValue<Number>) value).value();
         }
 
-        return null != color ?
+        return null != number ?
+            // convert to the requested number type
             this.successfulConversion(
-                result,
+                context.convertOrFail(
+                    number,
+                    type
+                ),
                 type
             ) :
             this.failConversion(
-                result,
+                value,
                 type
             );
     }
@@ -98,6 +99,6 @@ final class ColorToColorConverter<C extends ConverterContext> implements ShortCi
 
     @Override
     public String toString() {
-        return "Color to Color";
+        return "Color to Number";
     }
 }

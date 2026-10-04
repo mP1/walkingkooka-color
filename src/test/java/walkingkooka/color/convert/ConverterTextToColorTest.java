@@ -24,14 +24,13 @@ import walkingkooka.color.Color;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
 import java.util.List;
 import java.util.function.Function;
 
-public final class TextToColorConverterTest implements ConverterTesting2<TextToColorConverter<FakeConverterContext>, FakeConverterContext> {
+public final class ConverterTextToColorTest extends ConverterColorTestCase<ConverterTextToColor<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertWithInterfaceClassFails() {
@@ -202,8 +201,8 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     }
 
     @Override
-    public TextToColorConverter<FakeConverterContext> createConverter() {
-        return TextToColorConverter.instance();
+    public ConverterTextToColor<FakeConverterContext> createConverter() {
+        return ConverterTextToColor.instance();
     }
 
     @Override
@@ -238,7 +237,7 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            TextToColorConverter.instance(),
+            ConverterTextToColor.instance(),
             "TEXT to Color"
         );
     }
@@ -246,7 +245,7 @@ public final class TextToColorConverterTest implements ConverterTesting2<TextToC
     // class............................................................................................................
 
     @Override
-    public Class<TextToColorConverter<FakeConverterContext>> type() {
-        return Cast.to(TextToColorConverter.class);
+    public Class<ConverterTextToColor<FakeConverterContext>> type() {
+        return Cast.to(ConverterTextToColor.class);
     }
 }

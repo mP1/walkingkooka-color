@@ -27,11 +27,10 @@ import walkingkooka.color.HsvColor;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterTesting2;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
-public final class ColorToColorConverterTest implements ConverterTesting2<ColorToColorConverter<FakeConverterContext>, FakeConverterContext> {
+public final class ConverterColorToColorTest extends ConverterColorTestCase<ConverterColorToColor<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertInvalidStringToColorFails() {
@@ -143,8 +142,8 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
     }
 
     @Override
-    public ColorToColorConverter<FakeConverterContext> createConverter() {
-        return ColorToColorConverter.instance();
+    public ConverterColorToColor<FakeConverterContext> createConverter() {
+        return ConverterColorToColor.instance();
     }
 
     @Override
@@ -184,7 +183,7 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ColorToColorConverter.instance(),
+            ConverterColorToColor.instance(),
             "Color to Color"
         );
     }
@@ -192,7 +191,7 @@ public final class ColorToColorConverterTest implements ConverterTesting2<ColorT
     // class............................................................................................................
 
     @Override
-    public Class<ColorToColorConverter<FakeConverterContext>> type() {
-        return Cast.to(ColorToColorConverter.class);
+    public Class<ConverterColorToColor<FakeConverterContext>> type() {
+        return Cast.to(ConverterColorToColor.class);
     }
 }
