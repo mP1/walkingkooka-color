@@ -357,10 +357,18 @@ public final class ColorTest implements PublicClassTesting<Color>,
     // parse............................................................................................................
 
     @Test
-    public void testParseNumbersFails() {
-        this.parseStringFails(
+    public void testParseIndexedColor() {
+        this.parseStringAndCheck(
             "123",
-            IllegalArgumentException.class
+            Color.indexed(123)
+        );
+    }
+
+    @Test
+    public void testParseNamedColor() {
+        this.parseStringAndCheck(
+            "\"Red123\"",
+            Color.named("Red123")
         );
     }
 

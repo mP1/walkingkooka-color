@@ -214,7 +214,7 @@ public abstract class Color implements HasText,
     }
 
     /**
-     * Parses the numerous supported {@link IndexedColor}, {@link RgbColor}, {@link HslColor} and {@link HsvColor}.
+     * Parses all color types including {@link RgbColor}, {@link HslColor} and {@link HsvColor}.
      * This equivalent to calling any of each until success or failure.
      * Examples of supported text forms include.
      * <pre>
@@ -238,7 +238,16 @@ public abstract class Color implements HasText,
             if (text.startsWith("hsv")) {
                 color = parseHsv(text);
             } else {
-                color = RgbColor.parseRgbOrHash(text);
+                final char first = text.charAt(0);
+                if (Character.isDigit(first)) {
+                    color = parseIndexed(text);
+                } else {
+                    if ('"' == first) {
+                        color = parseNamed(text);
+                    } else {
+                        color = RgbColor.parseRgbOrHash(text);
+                    }
+                }
             }
         }
 
@@ -469,26 +478,7 @@ public abstract class Color implements HasText,
                                  final JsonNodeUnmarshallContext context) {
         return unmarshall(
             from,
-            new Function<String, Color>() {
-                @Override
-                public Color apply(final String text) {
-                    CharSequences.failIfNullOrEmpty(text, "text");
-
-                    final char first = text.charAt(0);
-                    return Character.isDigit(first) ?
-                        // if first character is a digit must be a IndexedColor
-                        parseIndexed(text) :
-                        // if in quote must be NamedColor
-                        '"' == first ?
-                            parseNamed(text) :
-                            parse(text);
-                }
-
-                @Override
-                public String toString() {
-                    return "Color";
-                }
-            }
+            Color::parse
         );
     }
 
