@@ -429,7 +429,7 @@ public abstract class Color implements HasText,
     }
 
     /**
-     * Creates a {@link RgbColor} from a {@link JsonNode}.
+     * Creates a {@link IndexedColor} from a {@link JsonNode}.
      */
     static IndexedColor unmarshallIndexed(final JsonNode from,
                                           final JsonNodeUnmarshallContext context) {
