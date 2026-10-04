@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase<C>
+abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase2<C>
     implements JsonNodeMarshallerTesting<C>,
     TypeNameTesting<C> {
 
