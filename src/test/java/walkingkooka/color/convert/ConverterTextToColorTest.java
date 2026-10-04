@@ -49,6 +49,24 @@ public final class ConverterTextToColorTest extends ConverterColorTestCase<Conve
     }
 
     @Test
+    public void testConvertWithIndexedColor() {
+        this.convertAndCheck(
+            "123",
+            Color.class,
+            Color.indexed(123)
+        );
+    }
+
+    @Test
+    public void testConvertWithNamedColor() {
+        this.convertAndCheck(
+            "\"Red\"",
+            Color.class,
+            Color.named("Red")
+        );
+    }
+
+    @Test
     public void testConvertWithRgbColorStringHash3DigitsAndColor() {
         this.convertAndCheck2(
             "#123",
