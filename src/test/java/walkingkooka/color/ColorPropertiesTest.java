@@ -24,6 +24,9 @@ import walkingkooka.props.Properties;
 import walkingkooka.props.PropertiesLikeTesting2;
 import walkingkooka.props.PropertiesName;
 import walkingkooka.props.PropertiesPath;
+import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -31,6 +34,7 @@ import static walkingkooka.color.Color.BLACK;
 
 public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorProperties, Color>,
     HashCodeEqualsDefinedTesting2<ColorProperties>,
+    JsonNodeMarshallerTesting<ColorProperties>,
     ToStringTesting<ColorProperties> {
 
     private final static PropertiesPath HELLO = PropertiesPath.parse("hello");
@@ -153,6 +157,19 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
             "hello=BLACK\r\n" +
                 "world=WHITE\r\n"
         );
+    }
+
+    // json.............................................................................................................
+
+    @Override
+    public ColorProperties unmarshall(final JsonNode jsonNode,
+                                      final JsonNodeUnmarshallContext context) {
+        return ColorProperties.unmarshall(jsonNode, context);
+    }
+
+    @Override
+    public ColorProperties createJsonNodeMarshallingValue() {
+        return this.createObject();
     }
 
     // class............................................................................................................
