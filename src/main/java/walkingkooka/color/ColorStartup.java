@@ -17,6 +17,7 @@
 
 package walkingkooka.color;
 
+import walkingkooka.props.Properties;
 import walkingkooka.reflect.PublicStaticHelper;
 import walkingkooka.tree.json.TreeJsonStartup;
 
@@ -35,6 +36,8 @@ public final class ColorStartup implements PublicStaticHelper {
         rgbColor.toHsv()
             .hue();
         rgbColor.toWebColorName();
+
+        ColorProperties.with(Properties.EMPTY);
 
         TreeJsonStartup.init();
     }
