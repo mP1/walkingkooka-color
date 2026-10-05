@@ -20,6 +20,7 @@ package walkingkooka.color;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
+import walkingkooka.net.header.HasContentTypeTesting;
 import walkingkooka.props.Properties;
 import walkingkooka.props.PropertiesLikeTesting2;
 import walkingkooka.props.PropertiesName;
@@ -34,6 +35,7 @@ import static walkingkooka.color.Color.BLACK;
 
 public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorProperties, Color>,
     HashCodeEqualsDefinedTesting2<ColorProperties>,
+    HasContentTypeTesting,
     JsonNodeMarshallerTesting<ColorProperties>,
     ToStringTesting<ColorProperties> {
 
@@ -156,6 +158,16 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
             this.createObject(),
             "hello=BLACK\r\n" +
                 "world=WHITE\r\n"
+        );
+    }
+
+    // HasContentType...................................................................................................
+
+    @Test
+    public void testContentType() {
+        this.contentTypeAndCheck(
+            this.createObject(),
+            ColorProperties.CONTENT_TYPE
         );
     }
 
