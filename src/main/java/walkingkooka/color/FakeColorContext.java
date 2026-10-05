@@ -17,6 +17,8 @@
 
 package walkingkooka.color;
 
+import java.util.Optional;
+
 public class FakeColorContext implements ColorContext {
 
     public FakeColorContext() {
@@ -29,7 +31,7 @@ public class FakeColorContext implements ColorContext {
     }
 
     @Override
-    public Color lookupColor(final Color color) {
+    public Optional<Color> lookupColor(final Color color) {
         throw new UnsupportedOperationException();
     }
 

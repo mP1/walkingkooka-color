@@ -20,6 +20,8 @@ package walkingkooka.color;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.printer.TreePrintableTesting;
 
+import java.util.Optional;
+
 public interface ColorContextTesting extends TreePrintableTesting {
 
     default void indexedColorAndCheck(final ColorContext context,
@@ -33,8 +35,27 @@ public interface ColorContextTesting extends TreePrintableTesting {
     }
 
     default void lookupColorAndCheck(final ColorContext context,
+                                     final Color color) {
+        this.lookupColorAndCheck(
+            context,
+            color,
+            Optional.empty()
+        );
+    }
+
+    default void lookupColorAndCheck(final ColorContext context,
                                      final Color color,
                                      final Color expected) {
+        this.lookupColorAndCheck(
+            context,
+            color,
+            Optional.of(expected)
+        );
+    }
+
+    default void lookupColorAndCheck(final ColorContext context,
+                                     final Color color,
+                                     final Optional<Color> expected) {
         this.checkEquals(
             expected,
             context.lookupColor(color),

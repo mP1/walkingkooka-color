@@ -19,6 +19,8 @@ package walkingkooka.color;
 
 import walkingkooka.Context;
 
+import java.util.Optional;
+
 /**
  * A {@link Context} that includes further operations including a palette lookup for {@link IndexedColor} and similar.
  */
@@ -32,7 +34,7 @@ public interface ColorContext extends Context {
     /**
      * Used to resolve {@link IndexedColor} and {@link NamedColor} into an actual {@link Color}
      */
-    Color lookupColor(final Color color);
+    Optional<Color> lookupColor(final Color color);
 
     /**
      * Creates a {@link NamedColor}.
