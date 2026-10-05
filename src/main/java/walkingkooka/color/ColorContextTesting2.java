@@ -78,4 +78,11 @@ public interface ColorContextTesting2<C extends ColorContext> extends ContextTes
                 .parseColor("")
         );
     }
+
+    // class............................................................................................................
+
+    @Override
+    default String typeNameSuffix() {
+        return ColorContext.class.getSimpleName();
+    }
 }
