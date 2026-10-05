@@ -22,6 +22,12 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class ColorContexts implements PublicStaticHelper {
 
     /**
+     * {@link ColorContextBasic}
+     */
+    public static ColorContext basic() {
+        return ColorContextBasic.INSTANCE;
+    }
+    /**
      * {@link FakeColorContext}
      */
     public static FakeColorContext fake() {
