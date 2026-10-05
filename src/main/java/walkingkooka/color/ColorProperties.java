@@ -22,6 +22,10 @@ import walkingkooka.props.PropertiesLike;
 import walkingkooka.props.PropertiesPath;
 import walkingkooka.text.MultiLineText;
 import walkingkooka.text.TextContext;
+import walkingkooka.tree.json.JsonNode;
+import walkingkooka.tree.json.marshall.JsonNodeContext;
+import walkingkooka.tree.json.marshall.JsonNodeMarshallContext;
+import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Collection;
 import java.util.Map.Entry;
@@ -152,5 +156,30 @@ public final class ColorProperties implements PropertiesLike<Color> {
     @Override
     public MultiLineText multiLineText(final TextContext context) {
         return this.properties.multiLineText(context);
+    }
+
+    // Json.............................................................................................................
+
+    static ColorProperties unmarshall(final JsonNode jsonNode,
+                                      final JsonNodeUnmarshallContext context) {
+        Objects.requireNonNull(jsonNode, "jsonNode");
+
+        return with(
+            context.unmarshall(jsonNode, Properties.class)
+        );
+    }
+
+    private JsonNode marshall(final JsonNodeMarshallContext context) {
+        return context.marshall(this.properties);
+    }
+
+    static {
+        //noinspection unchecked
+        JsonNodeContext.register(
+            JsonNodeContext.computeTypeName(ColorProperties.class),
+            ColorProperties::unmarshall,
+            ColorProperties::marshall,
+            ColorProperties.class
+        );
     }
 }
