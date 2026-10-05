@@ -43,6 +43,8 @@ import java.util.Set;
 public final class ColorProperties implements PropertiesLike<Color>,
     HasContentType {
 
+    public final static ColorProperties EMPTY = ColorProperties.with(Properties.EMPTY);
+
     public static ColorProperties parse(final String color) {
         return with(
             Properties.parse(color)
@@ -50,9 +52,11 @@ public final class ColorProperties implements PropertiesLike<Color>,
     }
 
     public static ColorProperties with(final Properties properties) {
-        return new ColorProperties(
-            Objects.requireNonNull(properties, "properties")
-        );
+        return Properties.EMPTY.equals(properties) ?
+            EMPTY :
+            new ColorProperties(
+                Objects.requireNonNull(properties, "properties")
+            );
     }
 
     private ColorProperties(final Properties properties) {

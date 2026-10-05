@@ -54,6 +54,14 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
     }
 
     @Test
+    public void testWithEmptyProperties() {
+        assertSame(
+            ColorProperties.EMPTY,
+            ColorProperties.with(Properties.EMPTY)
+        );
+    }
+
+    @Test
     public void testGet() {
         this.getAndCheck(
             this.createPropertiesLike(),
