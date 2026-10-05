@@ -17,6 +17,8 @@
 
 package walkingkooka.color;
 
+import walkingkooka.net.header.HasContentType;
+import walkingkooka.net.header.MediaType;
 import walkingkooka.props.Properties;
 import walkingkooka.props.PropertiesLike;
 import walkingkooka.props.PropertiesPath;
@@ -38,7 +40,8 @@ import java.util.Set;
  * Note that equality is done using the backing {@link Properties} which is case-sensitive unlike colors which may be
  * case-insensitive.
  */
-public final class ColorProperties implements PropertiesLike<Color> {
+public final class ColorProperties implements PropertiesLike<Color>,
+    HasContentType {
 
     public static ColorProperties with(final Properties properties) {
         return new ColorProperties(
@@ -181,5 +184,14 @@ public final class ColorProperties implements PropertiesLike<Color> {
             ColorProperties::marshall,
             ColorProperties.class
         );
+    }
+
+    // HasContentType...................................................................................................
+
+    public final static MediaType CONTENT_TYPE = MediaType.parse("text/x-color-properties");
+
+    @Override
+    public Optional<MediaType> contentType() {
+        return Optional.of(CONTENT_TYPE);
     }
 }
