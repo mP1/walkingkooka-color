@@ -25,6 +25,7 @@ import walkingkooka.props.Properties;
 import walkingkooka.props.PropertiesLikeTesting2;
 import walkingkooka.props.PropertiesName;
 import walkingkooka.props.PropertiesPath;
+import walkingkooka.test.ParseStringTesting;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
@@ -37,6 +38,7 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
     HashCodeEqualsDefinedTesting2<ColorProperties>,
     HasContentTypeTesting,
     JsonNodeMarshallerTesting<ColorProperties>,
+    ParseStringTesting<ColorProperties>,
     ToStringTesting<ColorProperties> {
 
     private final static PropertiesPath HELLO = PropertiesPath.parse("hello");
@@ -182,6 +184,46 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
     @Override
     public ColorProperties createJsonNodeMarshallingValue() {
         return this.createObject();
+    }
+
+    // parse............................................................................................................
+
+    @Override
+    public void testParseStringEmptyFails() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Test
+    public void testParseStringEmpty() {
+        this.parseStringAndCheck(
+            "",
+            ColorProperties.with(
+                Properties.EMPTY
+            )
+        );
+    }
+
+    @Test
+    public void testParse() {
+        this.parseStringAndCheck(
+            "hello=BLACK\nworld=WHITE",
+            this.createPropertiesLike()
+        );
+    }
+
+    @Override
+    public ColorProperties parseString(final String text) {
+        return ColorProperties.parse(text);
+    }
+
+    @Override
+    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> thrown) {
+        return thrown;
+    }
+
+    @Override
+    public RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
+        return thrown;
     }
 
     // class............................................................................................................
