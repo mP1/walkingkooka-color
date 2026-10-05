@@ -52,6 +52,13 @@ public final class ColorConverters implements PublicStaticHelper {
     }
 
     /**
+     * {@see ConverterToColorProperties}
+     */
+    public static <C extends ConverterContext> Converter<C> toColorProperties() {
+        return ConverterToColorProperties.instance();
+    }
+
+    /**
      * Stop creation
      */
     private ColorConverters() {
