@@ -17,18 +17,29 @@
 
 package walkingkooka.color;
 
-import walkingkooka.reflect.PublicStaticHelper;
+public class FakeColorContext implements ColorContext {
 
-public final class ColorContexts implements PublicStaticHelper {
-
-    /**
-     * {@link FakeColorContext}
-     */
-    public static FakeColorContext fake() {
-        return new FakeColorContext();
+    public FakeColorContext() {
+        super();
     }
 
-    private ColorContexts() {
+    @Override
+    public IndexedColor indexedColor(final int index) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Color lookupColor(final Color color) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public NamedColor namedColor(final String name) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Color parseColor(final String color) {
         throw new UnsupportedOperationException();
     }
 }
