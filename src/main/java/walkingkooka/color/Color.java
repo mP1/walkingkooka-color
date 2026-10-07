@@ -225,9 +225,43 @@ public abstract class Color implements HasText,
      * hsl(359, 100%, 99%)
      * hsv(359, 100%, 99%)
      *
+     * 123 // IndexedColor
+     * &quot;NamedColor123&quot;
      * </pre>
      */
     public static Color parse(final String text) {
+        CharSequences.failIfNullOrEmpty(text, "text");
+
+        final Color color;
+
+        final char first = text.charAt(0);
+        if (Character.isDigit(first)) {
+            color = parseIndexed(text);
+        } else {
+            if ('"' == first) {
+                color = parseNamed(text);
+            } else {
+                color = RgbColor.parseNotIndirect(text);
+            }
+        }
+
+        return color;
+    }
+
+    /**
+     * Parses ONLY color types including {@link RgbColor}, {@link HslColor} and {@link HsvColor}.
+     * This equivalent to calling any of each until success or failure.
+     * Examples of supported text forms include.
+     * <pre>
+     * rgb(0, 11, 22)
+     * #123 // equivalent to #112233
+     * #123456
+     * RED // web color names
+     * hsl(359, 100%, 99%)
+     * hsv(359, 100%, 99%)
+     * </pre>
+     */
+    public static Color parseNotIndirect(final String text) {
         CharSequences.failIfNullOrEmpty(text, "text");
 
         final Color color;
@@ -238,16 +272,7 @@ public abstract class Color implements HasText,
             if (text.startsWith("hsv")) {
                 color = parseHsv(text);
             } else {
-                final char first = text.charAt(0);
-                if (Character.isDigit(first)) {
-                    color = parseIndexed(text);
-                } else {
-                    if ('"' == first) {
-                        color = parseNamed(text);
-                    } else {
-                        color = RgbColor.parseRgbOrHash(text);
-                    }
-                }
+                color = RgbColor.parseRgbOrHash(text);
             }
         }
 
