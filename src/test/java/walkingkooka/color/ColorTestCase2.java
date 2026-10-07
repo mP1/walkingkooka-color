@@ -18,12 +18,14 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.reflect.ThrowableTesting;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C> {
+public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
+    implements ThrowableTesting {
 
     ColorTestCase2() {
         super();
@@ -93,25 +95,31 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C> {
 
     @Test
     public void testMixWithAmountLessThanZeroFails() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> this.createColor()
-                .mix(
-                    Color.BLACK,
-                    -0.01f
-                )
+        this.getMessageAndCheck(
+            assertThrows(
+                IllegalArgumentException.class,
+                () -> this.createColor()
+                    .mix(
+                        Color.BLACK,
+                        -0.01f
+                    )
+            ),
+            "Invalid amount -0.01 not between 0.0 and 1.0"
         );
     }
 
     @Test
     public void testMixWithAmountGreaterThanOneFails() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> this.createColor()
-                .mix(
-                    Color.BLACK,
-                    1.01f
-                )
+        this.getMessageAndCheck(
+            assertThrows(
+                IllegalArgumentException.class,
+                () -> this.createColor()
+                    .mix(
+                        Color.BLACK,
+                        1.01f
+                    )
+            ),
+            "Invalid amount 1.01 not between 0.0 and 1.0"
         );
     }
 
