@@ -26,6 +26,8 @@ import java.util.Optional;
  */
 public interface ColorContext extends Context {
 
+    Optional<Color> NO_LOOKUP_COLOR = Optional.empty();
+
     /**
      * Creates a {@link IndexedColor}.
      */
