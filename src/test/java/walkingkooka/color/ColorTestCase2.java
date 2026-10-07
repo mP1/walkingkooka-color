@@ -82,7 +82,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
     // mix..............................................................................................................
 
     @Test
-    public void testMixWithNullColorFails() {
+    public final void testMixWithNullColorFails() {
         assertThrows(
             NullPointerException.class,
             () -> this.createColor()
@@ -94,7 +94,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
     }
 
     @Test
-    public void testMixWithAmountLessThanZeroFails() {
+    public final void testMixWithAmountLessThanZeroFails() {
         this.getMessageAndCheck(
             assertThrows(
                 IllegalArgumentException.class,
@@ -109,7 +109,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
     }
 
     @Test
-    public void testMixWithAmountGreaterThanOneFails() {
+    public final void testMixWithAmountGreaterThanOneFails() {
         this.getMessageAndCheck(
             assertThrows(
                 IllegalArgumentException.class,
@@ -124,7 +124,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
     }
 
     @Test
-    public void testMixZeroAmount() {
+    public final void testMixZeroAmount() {
         final C color = this.createColor();
 
         assertSame(
@@ -137,7 +137,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
     }
 
     @Test
-    public void testMixZeroOne() {
+    public final void testMixZeroOne() {
         final Color color = this.createColor()
             .invert();
 
