@@ -405,7 +405,7 @@ public abstract class Color implements HasText,
 
     static float checkAmount(final float amount) {
         if ((amount < 0f) || (amount > 1.0f)) {
-            throw new IllegalArgumentException("amount must be between 0.0 and 1.0 but was " + amount);
+            throw new IllegalArgumentException("Invalid amount " + amount + " not between 0.0 and 1.0");
         }
         return amount;
     }
