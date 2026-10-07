@@ -29,6 +29,8 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public final class ColorTest implements PublicClassTesting<Color>,
     JsonNodeMarshallerTesting<Color>,
     ParseStringTesting<Color>,
@@ -450,6 +452,80 @@ public final class ColorTest implements PublicClassTesting<Color>,
     @Override
     public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
         return expected;
+    }
+
+    // parseNotIndexed..................................................................................................
+
+    @Test
+    public void testParseNotIndirectWithIndexFails() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> Color.parseNotIndirect("123")
+        );
+    }
+
+    @Test
+    public void testParseNotIndirectWithNameFails() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> Color.parseNotIndirect("\"NameNotAllowed\"")
+        );
+    }
+
+    @Test
+    public void testParseNotIndirectHsl() {
+        this.parseNotIndirectAndCheck(
+            "hsl(359, 0%, 25%)",
+            HslColor.with(
+                HslColorComponent.hue(359f),
+                HslColorComponent.saturation(0.0f),
+                HslColorComponent.lightness(0.25f)
+            )
+        );
+    }
+
+    @Test
+    public void testParseNotIndirectHsv() {
+        this.parseNotIndirectAndCheck(
+            "hsv(359, 0%, 25%)",
+            HsvColor.with(
+                HsvColorComponent.hue(359f),
+                HsvColorComponent.saturation(0.0f),
+                HsvColorComponent.value(0.25f)
+            )
+        );
+    }
+
+    @Test
+    public void testParseNotIndirectRgbHex3() {
+        this.parseNotIndirectAndCheck(
+            "#123",
+            Color.parseRgb("#123")
+        );
+    }
+
+    @Test
+    public void testParseNotIndirectRgbHex6() {
+        this.parseNotIndirectAndCheck(
+            "#123456",
+            Color.parseRgb("#123456")
+        );
+    }
+
+    @Test
+    public void testParseNotIndirectWebColorName() {
+        this.parseNotIndirectAndCheck(
+            "BLUE",
+            WebColorName.BLUE.color()
+        );
+    }
+
+    private void parseNotIndirectAndCheck(final String text,
+                                          final Color expected) {
+        this.checkEquals(
+            expected,
+            Color.parseNotIndirect(text)
+        );
     }
 
     // unmarshall.......................................................................................................
