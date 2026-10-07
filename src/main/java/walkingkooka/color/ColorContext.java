@@ -38,6 +38,13 @@ public interface ColorContext extends Context {
      */
     Optional<Color> lookupColor(final Color color);
 
+    default Color lookupColorOrFail(final Color color) {
+        return this.lookupColor(color)
+            .orElseThrow(
+                () -> new IllegalArgumentException("Unknown color " + color)
+            );
+    }
+
     /**
      * Creates a {@link NamedColor}.
      */
