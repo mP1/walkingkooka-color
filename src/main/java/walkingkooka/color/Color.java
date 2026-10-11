@@ -50,7 +50,8 @@ import java.util.function.Function;
 /**
  * Base class for all rgb like value classes.
  */
-public abstract class Color implements HasText,
+public abstract class Color implements HasColor,
+    HasText,
     UsesToStringBuilder,
     TreePrintable {
 
@@ -669,5 +670,12 @@ public abstract class Color implements HasText,
     @Override
     public final void printTree(final IndentingPrinter printer) {
         printer.println(this.toString());
+    }
+
+    // HasColor.........................................................................................................
+
+    @Override
+    public final Color color() {
+        return this;
     }
 }

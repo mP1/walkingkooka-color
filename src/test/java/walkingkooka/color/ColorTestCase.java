@@ -29,6 +29,7 @@ import java.util.Optional;
 
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
     HashCodeEqualsDefinedTesting2<C>,
+    HasColorTesting,
     JsonNodeMarshallerTesting<C>,
     HasTextTesting,
     ToStringTesting<C>,
@@ -127,5 +128,17 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
 
     public final Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
         return expected;
+    }
+
+    // HasColor.........................................................................................................
+
+    @Test
+    public void testColor() {
+        final Color color = this.createColor();
+
+        this.hasColorAndCheck(
+            color,
+            color
+        );
     }
 }
