@@ -25,7 +25,8 @@ import java.util.Optional;
  * A {@link Context} that includes further operations including a palette lookup for {@link IndexedColor} and similar.
  */
 public interface ColorContext extends Context,
-    CanIndexedColor {
+    CanIndexedColor,
+    CanNamedColor {
 
     Optional<Color> NO_LOOKUP_COLOR = Optional.empty();
 
@@ -40,11 +41,6 @@ public interface ColorContext extends Context,
                 () -> new IllegalArgumentException("Unknown color " + color)
             );
     }
-
-    /**
-     * Creates a {@link NamedColor}.
-     */
-    NamedColor namedColor(final String name);
 
     /**
      * Parsers the color into its {@link Color} equivalent.

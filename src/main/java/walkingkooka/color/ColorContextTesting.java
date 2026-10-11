@@ -54,16 +54,6 @@ public interface ColorContextTesting extends CanIndexedColorTesting,
         );
     }
 
-    default void namedColorAndCheck(final ColorContext context,
-                                    final String name,
-                                    final NamedColor expected) {
-        this.checkEquals(
-            expected,
-            context.namedColor(name),
-            () -> "name: " + name
-        );
-    }
-
     default void parseColorAndCheck(final ColorContext context,
                                     final String color,
                                     final Color expected) {
