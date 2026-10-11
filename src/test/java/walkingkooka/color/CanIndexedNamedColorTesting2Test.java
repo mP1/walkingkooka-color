@@ -21,11 +21,11 @@ import walkingkooka.Cast;
 import walkingkooka.color.CanIndexedNamedColorTesting2Test.TestCanIndexedNamedColor;
 import walkingkooka.reflect.PublicClassTesting;
 
-public final class CanIndexedNamedColorTesting2Test implements CanIndexedColorTesting2<TestCanIndexedNamedColor>,
+public final class CanIndexedNamedColorTesting2Test implements CanIndexedNamedColorTesting2<TestCanIndexedNamedColor>,
     PublicClassTesting<CanIndexedNamedColorTesting2<TestCanIndexedNamedColor>> {
 
     @Override
-    public TestCanIndexedNamedColor createCanIndexedColor() {
+    public TestCanIndexedNamedColor createIndexedNamedColor() {
         return new TestCanIndexedNamedColor();
     }
 
