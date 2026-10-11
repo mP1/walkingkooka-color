@@ -30,7 +30,7 @@ import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
-public final class ConverterColorToColorTest extends ConverterColorTestCase<ConverterColorToColor<FakeConverterContext>, FakeConverterContext> {
+public final class ConverterToColorTest extends ConverterColorTestCase<ConverterToColor<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertInvalidStringToColorFails() {
@@ -73,10 +73,12 @@ public final class ConverterColorToColorTest extends ConverterColorTestCase<Conv
     }
 
     @Test
-    public void testConvertWebColorNameToRgbColorFails() {
-        this.convertFails(
+    public void testConvertWebColorNameToRgbColor() {
+        this.convertAndCheck(
             WebColorName.RED,
-            RgbColor.class
+            RgbColor.class,
+            WebColorName.RED.color()
+                .toRgb()
         );
     }
 
@@ -142,8 +144,8 @@ public final class ConverterColorToColorTest extends ConverterColorTestCase<Conv
     }
 
     @Override
-    public ConverterColorToColor<FakeConverterContext> createConverter() {
-        return ConverterColorToColor.instance();
+    public ConverterToColor<FakeConverterContext> createConverter() {
+        return ConverterToColor.instance();
     }
 
     @Override
@@ -183,15 +185,15 @@ public final class ConverterColorToColorTest extends ConverterColorTestCase<Conv
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ConverterColorToColor.instance(),
-            "Color to Color"
+            ConverterToColor.instance(),
+            "to Color"
         );
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<ConverterColorToColor<FakeConverterContext>> type() {
-        return Cast.to(ConverterColorToColor.class);
+    public Class<ConverterToColor<FakeConverterContext>> type() {
+        return Cast.to(ConverterToColor.class);
     }
 }
