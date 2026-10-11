@@ -19,24 +19,15 @@ package walkingkooka.color;
 
 import java.util.Optional;
 
-public class FakeColorContext implements ColorContext {
+public class FakeColorContext extends FakeCanIndexedNameColor
+    implements ColorContext {
 
     public FakeColorContext() {
         super();
     }
 
     @Override
-    public IndexedColor indexedColor(final int index) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public Optional<Color> lookupColor(final Color color) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public NamedColor namedColor(final String name) {
         throw new UnsupportedOperationException();
     }
 

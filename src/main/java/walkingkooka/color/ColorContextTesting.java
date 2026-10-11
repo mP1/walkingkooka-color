@@ -22,7 +22,7 @@ import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.util.Optional;
 
-public interface ColorContextTesting extends CanIndexedColorTesting,
+public interface ColorContextTesting extends CanIndexedNamedColorTesting,
     TreePrintableTesting {
 
     default void lookupColorAndCheck(final ColorContext context,
