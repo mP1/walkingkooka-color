@@ -413,7 +413,9 @@ public abstract class Color implements HasText,
 
     public abstract RgbColor toRgb();
 
-    // WebColorName..........................................................................................................
+    // WebColorName.....................................................................................................
+
+    public final static Optional<WebColorName> NO_WEB_COLOR_NAME = Optional.empty();
 
     /**
      * Returns the {@link WebColorName} for this color if one exists and it is a {@link RgbColor}.
