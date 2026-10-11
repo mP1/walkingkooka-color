@@ -24,7 +24,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public interface ColorContextTesting2<C extends ColorContext> extends ContextTesting<C>,
     ColorContextTesting,
-    CanIndexedColorTesting2<C> {
+    CanIndexedColorTesting2<C>,
+    CanNamedColorTesting2<C> {
 
     @Test
     default void testLookupColorWithNullFails() {
@@ -32,24 +33,6 @@ public interface ColorContextTesting2<C extends ColorContext> extends ContextTes
             NullPointerException.class,
             () -> this.createContext()
                 .lookupColor(null)
-        );
-    }
-
-    @Test
-    default void testNamedColorWithNullStringFails() {
-        assertThrows(
-            NullPointerException.class,
-            () -> this.createContext()
-                .namedColor(null)
-        );
-    }
-
-    @Test
-    default void testNamedColorWithEmptyStringFails() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> this.createContext()
-                .namedColor("")
         );
     }
 
@@ -75,6 +58,13 @@ public interface ColorContextTesting2<C extends ColorContext> extends ContextTes
 
     @Override
     default C createCanIndexedColor() {
+        return this.createContext();
+    }
+
+    // CanNamedColor....................................................................................................
+
+    @Override
+    default C createCanNamedColor() {
         return this.createContext();
     }
 
