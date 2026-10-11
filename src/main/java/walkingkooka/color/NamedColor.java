@@ -125,4 +125,22 @@ public final class NamedColor extends Color implements HasValue<String>,
     public CaseSensitivity caseSensitivity() {
         return CASE_SENSITIVITY;
     }
+
+    // constants........................................................................................................
+
+    public final static NamedColor BLACK = new NamedColor("Black");
+
+    public final static NamedColor WHITE = new NamedColor("White");
+
+    public final static NamedColor RED = new NamedColor("Red");
+
+    public final static NamedColor GREEN = new NamedColor("Green");
+
+    public final static NamedColor BLUE = new NamedColor("Blue");
+
+    public final static NamedColor YELLOW = new NamedColor("Yellow");
+
+    public final static NamedColor MAGENTA = new NamedColor("Magenta");
+
+    public final static NamedColor CYAN = new NamedColor("Cyan");
 }
