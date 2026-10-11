@@ -19,24 +19,13 @@ package walkingkooka.color;
 
 import java.util.Optional;
 
-public interface ColorContextDelegator extends ColorContext {
-
-    @Override
-    default IndexedColor indexedColor(final int index) {
-        return this.colorContext()
-            .indexedColor(index);
-    }
+public interface ColorContextDelegator extends ColorContext,
+    CanIndexedNamedColorDelegator {
 
     @Override
     default Optional<Color> lookupColor(final Color color) {
         return this.colorContext()
             .lookupColor(color);
-    }
-
-    @Override
-    default NamedColor namedColor(final String name) {
-        return this.colorContext()
-            .namedColor(name);
     }
 
     @Override
@@ -46,4 +35,11 @@ public interface ColorContextDelegator extends ColorContext {
     }
 
     ColorContext colorContext();
+
+    // CanIndexedNamedColorDelegator....................................................................................
+
+    @Override
+    default CanIndexedNamedColor canIndexedNamedColor() {
+        return this.colorContext();
+    }
 }
