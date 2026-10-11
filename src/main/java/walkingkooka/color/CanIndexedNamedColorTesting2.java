@@ -20,11 +20,13 @@ package walkingkooka.color;
 public interface CanIndexedNamedColorTesting2<C extends CanIndexedNamedColor> extends CanIndexedColorTesting2<C>,
     CanNamedColorTesting2<C> {
 
-    default C createIndexedColor() {
+    @Override
+    default C createCanIndexedColor() {
         return this.createIndexedNamedColor();
     }
 
-    default C createNamedColor() {
+    @Override
+    default C createCanNamedColor() {
         return this.createIndexedNamedColor();
     }
 
