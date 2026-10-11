@@ -22,17 +22,8 @@ import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.util.Optional;
 
-public interface ColorContextTesting extends TreePrintableTesting {
-
-    default void indexedColorAndCheck(final ColorContext context,
-                                      final int index,
-                                      final IndexedColor expected) {
-        this.checkEquals(
-            expected,
-            context.indexedColor(index),
-            () -> "index: " + index
-        );
-    }
+public interface ColorContextTesting extends CanIndexedColorTesting,
+    TreePrintableTesting {
 
     default void lookupColorAndCheck(final ColorContext context,
                                      final Color color) {

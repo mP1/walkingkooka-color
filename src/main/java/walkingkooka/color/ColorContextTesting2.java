@@ -23,16 +23,8 @@ import walkingkooka.ContextTesting;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public interface ColorContextTesting2<C extends ColorContext> extends ContextTesting<C>,
-    ColorContextTesting {
-
-    @Test
-    default void testIndexedColorWithNegativeFails() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> this.createContext()
-                .indexedColor(-1)
-        );
-    }
+    ColorContextTesting,
+    CanIndexedColorTesting2<C> {
 
     @Test
     default void testLookupColorWithNullFails() {
@@ -77,6 +69,13 @@ public interface ColorContextTesting2<C extends ColorContext> extends ContextTes
             () -> this.createContext()
                 .parseColor("")
         );
+    }
+
+    // CanIndexedColor..................................................................................................
+
+    @Override
+    default C createCanIndexedColor() {
+        return this.createContext();
     }
 
     // class............................................................................................................

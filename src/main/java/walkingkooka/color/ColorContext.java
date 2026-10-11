@@ -24,14 +24,10 @@ import java.util.Optional;
 /**
  * A {@link Context} that includes further operations including a palette lookup for {@link IndexedColor} and similar.
  */
-public interface ColorContext extends Context {
+public interface ColorContext extends Context,
+    CanIndexedColor {
 
     Optional<Color> NO_LOOKUP_COLOR = Optional.empty();
-
-    /**
-     * Creates a {@link IndexedColor}.
-     */
-    IndexedColor indexedColor(final int index);
 
     /**
      * Used to resolve {@link IndexedColor} and {@link NamedColor} into an actual {@link Color}
