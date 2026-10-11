@@ -33,7 +33,7 @@ import java.util.Optional;
 public final class NamedColor extends Color implements HasValue<String>,
     HasCaseSensitivity {
 
-    private final static CaseSensitivity CASE_SENSITIVITY = CaseSensitivity.INSENSITIVE;
+    public final static CaseSensitivity CASE_SENSITIVITY = CaseSensitivity.INSENSITIVE;
 
     private final static CharPredicate INITIAL = CharPredicates.letter();
     private final static CharPredicate PART = CharPredicates.letterOrDigit();
