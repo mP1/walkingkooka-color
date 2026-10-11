@@ -43,7 +43,7 @@ final class ColorContextBasic implements ColorContext {
     @Override
     public Optional<Color> lookupColor(final Color color) {
         Objects.requireNonNull(color, "color");
-        return Optional.empty();
+        return NO_LOOKUP_COLOR;
     }
 
     @Override
