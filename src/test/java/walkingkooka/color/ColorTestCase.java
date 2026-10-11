@@ -136,7 +136,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     public void testColor() {
         final Color color = this.createColor();
 
-        this.hasColorAndCheck(
+        this.colorAndCheck(
             color,
             color
         );
