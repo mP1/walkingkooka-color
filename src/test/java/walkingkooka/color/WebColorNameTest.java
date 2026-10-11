@@ -30,7 +30,8 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public final class WebColorNameTest implements NameTesting2<WebColorName, WebColorName> {
+public final class WebColorNameTest implements NameTesting2<WebColorName, WebColorName>,
+    HasColorTesting {
 
     @Test
     public void testConstants() {
@@ -192,6 +193,16 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
         return 0 == position ?
             CONTROL + ASCII_DIGITS :
             CONTROL;
+    }
+
+    // HasColor.........................................................................................................
+
+    @Test
+    public void testColor() {
+        this.colorAndCheck(
+            WebColorName.RED,
+            WebColorName.RED.color()
+        );
     }
 
     // class............................................................................................................

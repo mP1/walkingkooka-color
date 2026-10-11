@@ -32,7 +32,9 @@ import java.util.Optional;
  * A web rgb name.
  * <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"></a>
  */
-public final class WebColorName implements Name, Comparable<WebColorName> {
+public final class WebColorName implements Name,
+    Comparable<WebColorName>,
+    HasColor {
 
     /**
      * First because required by {@link #NAME_CONSTANTS} init.
@@ -294,9 +296,12 @@ public final class WebColorName implements Name, Comparable<WebColorName> {
 
     private final String name;
 
+    // HasColor.........................................................................................................
+
     /**
      * Returns the {@link RgbColor} with this name.
      */
+    @Override
     public RgbColor color() {
         return this.color;
     }
