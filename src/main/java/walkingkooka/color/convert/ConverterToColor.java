@@ -20,6 +20,7 @@ package walkingkooka.color.convert;
 import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.color.Color;
+import walkingkooka.color.HasColor;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
@@ -28,24 +29,24 @@ import walkingkooka.convert.ShortCircuitingConverter;
  * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} but not a {@link String} such as
  * <pre>#123456</pre> to another {@link Color}.
  */
-final class ConverterColorToColor<C extends ConverterContext> implements ShortCircuitingConverter<C> {
+final class ConverterToColor<C extends ConverterContext> implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ConverterColorToColor<C> instance() {
+    static <C extends ConverterContext> ConverterToColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ConverterColorToColor<ConverterContext> INSTANCE = new ConverterColorToColor<>();
+    private final static ConverterToColor<ConverterContext> INSTANCE = new ConverterToColor<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ConverterColorToColor() {
+    private ConverterToColor() {
         super();
     }
 
@@ -54,14 +55,15 @@ final class ConverterColorToColor<C extends ConverterContext> implements ShortCi
                               final Class<?> type,
                               final C context) {
         return Color.isColorClass(type) &&
-            value instanceof Color;
+            value instanceof HasColor;
     }
 
     @Override
     public <T> Either<T, String> doConvert(final Object value,
                                            final Class<T> type,
                                            final C context) {
-        final Color color = (Color) value;
+        final Color color = ((HasColor) value)
+            .color();
         final Color result;
 
         if (Color.isRgbColorClass(type)) {
@@ -98,6 +100,6 @@ final class ConverterColorToColor<C extends ConverterContext> implements ShortCi
 
     @Override
     public String toString() {
-        return "Color to Color";
+        return "to Color";
     }
 }

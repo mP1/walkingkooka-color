@@ -50,10 +50,10 @@ two [Color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/
 
 A collection of converters that are particularly useful within expressions and support passing colors as text.
 
-- [color-to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ConverterColorToColor.java)
 - [color-to-number](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ConverterColorToNumber.java)
 - [number-to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ConverterNumberToColor.java)
 - [text-to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ConverterTextToColor.java)
+- [to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ConverterToColor.java)
 - [to-color-properties](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ConverterToColorProperties.java)
 
 ### [Functions](https://github.com/mP1/walkingkooka-tree/blob/master/src/main/java/walkingkooka/tree/expression/function/ExpressionFunction.java)
