@@ -81,7 +81,7 @@ public final class NamedColor extends Color implements HasValue<String>,
 
     @Override
     public Optional<WebColorName> toWebColorName() {
-        return Optional.empty();
+        return NO_WEB_COLOR_NAME;
     }
 
     @Override

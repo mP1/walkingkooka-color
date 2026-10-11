@@ -64,7 +64,7 @@ public final class IndexedColor extends Color {
 
     @Override
     public Optional<WebColorName> toWebColorName() {
-        return Optional.empty();
+        return NO_WEB_COLOR_NAME;
     }
 
     @Override
