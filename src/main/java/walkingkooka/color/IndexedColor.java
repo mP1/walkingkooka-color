@@ -90,6 +90,8 @@ public final class IndexedColor extends Color {
         return this.index == ((IndexedColor) other).index;
     }
 
+    // UsesToStringBuilder..............................................................................................
+
     @Override
     public void buildToString(final ToStringBuilder toStringBuilder) {
         toStringBuilder.append(this.index);
