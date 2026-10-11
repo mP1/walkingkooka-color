@@ -110,6 +110,8 @@ public final class NamedColor extends Color implements HasValue<String>,
         );
     }
 
+    // UsesToStringBuilder..............................................................................................
+
     @Override
     public void buildToString(final ToStringBuilder toStringBuilder) {
         toStringBuilder.append(
