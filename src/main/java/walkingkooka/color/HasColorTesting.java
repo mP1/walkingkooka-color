@@ -21,8 +21,8 @@ import walkingkooka.text.printer.TreePrintableTesting;
 
 public interface HasColorTesting extends TreePrintableTesting {
 
-    default void hasColorAndCheck(final HasColor has,
-                                  final Color expected) {
+    default void colorAndCheck(final HasColor has,
+                               final Color expected) {
         this.checkEquals(
             has.color(),
             expected,
