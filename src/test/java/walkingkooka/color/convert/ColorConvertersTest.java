@@ -212,7 +212,7 @@ public final class ColorConvertersTest implements ConverterTesting,
                     },
                     Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
                     Converters.numberToNumber(),
-                    ColorConverters.colorToColor(),
+                    ColorConverters.toColor(),
                     ColorConverters.numberToColor(),
                     ColorConverters.textToColor()
                 )
