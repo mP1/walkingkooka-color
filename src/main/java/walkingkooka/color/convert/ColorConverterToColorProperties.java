@@ -27,24 +27,25 @@ import walkingkooka.props.Properties;
 /**
  * A {@link Converter} that handles parsing text into a {@link walkingkooka.color.ColorProperties}.
  */
-final class ConverterToColorProperties<C extends ConverterContext> implements TryingShortCircuitingConverter<C> {
+final class ColorConverterToColorProperties<C extends ConverterContext> extends ColorConverter<C>
+    implements TryingShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ConverterToColorProperties<C> instance() {
+    static <C extends ConverterContext> ColorConverterToColorProperties<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ConverterToColorProperties<ConverterContext> INSTANCE = new ConverterToColorProperties<>();
+    private final static ColorConverterToColorProperties<ConverterContext> INSTANCE = new ColorConverterToColorProperties<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ConverterToColorProperties() {
+    private ColorConverterToColorProperties() {
         super();
     }
 

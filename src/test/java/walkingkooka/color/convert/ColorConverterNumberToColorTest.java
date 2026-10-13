@@ -30,7 +30,7 @@ import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
-public final class ConverterNumberToColorTest extends ConverterColorTestCase<ConverterNumberToColor<FakeConverterContext>, FakeConverterContext> {
+public final class ColorConverterNumberToColorTest extends ColorConverterColorTestCase<ColorConverterNumberToColor<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertStringToColorFails() {
@@ -158,8 +158,8 @@ public final class ConverterNumberToColorTest extends ConverterColorTestCase<Con
     }
 
     @Override
-    public ConverterNumberToColor<FakeConverterContext> createConverter() {
-        return ConverterNumberToColor.instance();
+    public ColorConverterNumberToColor<FakeConverterContext> createConverter() {
+        return ColorConverterNumberToColor.instance();
     }
 
     @Override
@@ -198,7 +198,7 @@ public final class ConverterNumberToColorTest extends ConverterColorTestCase<Con
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ConverterNumberToColor.instance(),
+            ColorConverterNumberToColor.instance(),
             "Number to Color"
         );
     }
@@ -206,7 +206,7 @@ public final class ConverterNumberToColorTest extends ConverterColorTestCase<Con
     // class............................................................................................................
 
     @Override
-    public Class<ConverterNumberToColor<FakeConverterContext>> type() {
-        return Cast.to(ConverterNumberToColor.class);
+    public Class<ColorConverterNumberToColor<FakeConverterContext>> type() {
+        return Cast.to(ColorConverterNumberToColor.class);
     }
 }

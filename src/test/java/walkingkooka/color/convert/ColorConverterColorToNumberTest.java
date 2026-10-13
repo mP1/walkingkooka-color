@@ -30,7 +30,7 @@ import walkingkooka.tree.expression.convert.ExpressionNumberConverterContext;
 import walkingkooka.tree.expression.convert.ExpressionNumberConverters;
 import walkingkooka.tree.expression.convert.FakeExpressionNumberConverterContext;
 
-public final class ConverterColorToNumberTest extends ConverterColorTestCase<ConverterColorToNumber<ExpressionNumberConverterContext>, ExpressionNumberConverterContext> {
+public final class ColorConverterColorToNumberTest extends ColorConverterColorTestCase<ColorConverterColorToNumber<ExpressionNumberConverterContext>, ExpressionNumberConverterContext> {
 
     @Test
     public void testConvertStringToNumberFails() {
@@ -201,8 +201,8 @@ public final class ConverterColorToNumberTest extends ConverterColorTestCase<Con
     }
 
     @Override
-    public ConverterColorToNumber<ExpressionNumberConverterContext> createConverter() {
-        return ConverterColorToNumber.instance();
+    public ColorConverterColorToNumber<ExpressionNumberConverterContext> createConverter() {
+        return ColorConverterColorToNumber.instance();
     }
 
     @Override
@@ -247,7 +247,7 @@ public final class ConverterColorToNumberTest extends ConverterColorTestCase<Con
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ConverterColorToNumber.instance(),
+            ColorConverterColorToNumber.instance(),
             "Color to Number"
         );
     }
@@ -255,7 +255,7 @@ public final class ConverterColorToNumberTest extends ConverterColorTestCase<Con
     // class............................................................................................................
 
     @Override
-    public Class<ConverterColorToNumber<ExpressionNumberConverterContext>> type() {
-        return Cast.to(ConverterColorToNumber.class);
+    public Class<ColorConverterColorToNumber<ExpressionNumberConverterContext>> type() {
+        return Cast.to(ColorConverterColorToNumber.class);
     }
 }
