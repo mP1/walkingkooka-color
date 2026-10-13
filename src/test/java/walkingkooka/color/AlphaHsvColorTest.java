@@ -22,7 +22,7 @@ import walkingkooka.Cast;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class AlphaHsvColorTest extends HsvTestCase<AlphaHsvColor> {
+public final class AlphaHsvColorTest extends HsvColorTestCase<AlphaHsvColor> {
 
     @Test
     public void testWith() {
