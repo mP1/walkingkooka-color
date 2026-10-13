@@ -29,24 +29,25 @@ import walkingkooka.convert.ShortCircuitingConverter;
  * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} but not a {@link String} such as
  * <pre>#123456</pre> to another {@link Color}.
  */
-final class ConverterToColor<C extends ConverterContext> implements ShortCircuitingConverter<C> {
+final class ColorConverterToColor<C extends ConverterContext> extends ColorConverter<C>
+    implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ConverterToColor<C> instance() {
+    static <C extends ConverterContext> ColorConverterToColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ConverterToColor<ConverterContext> INSTANCE = new ConverterToColor<>();
+    private final static ColorConverterToColor<ConverterContext> INSTANCE = new ColorConverterToColor<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ConverterToColor() {
+    private ColorConverterToColor() {
         super();
     }
 

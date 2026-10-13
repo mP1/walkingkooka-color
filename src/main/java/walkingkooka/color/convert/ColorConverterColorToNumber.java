@@ -31,24 +31,25 @@ import walkingkooka.tree.expression.ExpressionNumber;
 /**
  * A {@link Converter} that converts a {@link Color} to a number.
  */
-final class ConverterColorToNumber<C extends ConverterContext> implements ShortCircuitingConverter<C> {
+final class ColorConverterColorToNumber<C extends ConverterContext> extends ColorConverter<C>
+    implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ConverterColorToNumber<C> instance() {
+    static <C extends ConverterContext> ColorConverterColorToNumber<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ConverterColorToNumber<ConverterContext> INSTANCE = new ConverterColorToNumber<>();
+    private final static ColorConverterColorToNumber<ConverterContext> INSTANCE = new ColorConverterColorToNumber<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ConverterColorToNumber() {
+    private ColorConverterColorToNumber() {
         super();
     }
 

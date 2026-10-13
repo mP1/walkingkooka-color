@@ -17,18 +17,24 @@
 
 package walkingkooka.color.convert;
 
+import walkingkooka.color.Color;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ConverterTesting2;
 
-public abstract class ConverterColorTestCase<C extends Converter<X>, X extends ConverterContext> implements ConverterTesting2<C, X> {
+public abstract class ColorConverterColorTestCase<C extends ColorConverter<X>, X extends ConverterContext> implements ConverterTesting2<C, X> {
 
-    ConverterColorTestCase() {
+    ColorConverterColorTestCase() {
         super();
     }
 
     @Override
-    public final void testTypeNaming() {
-        throw new UnsupportedOperationException();
+    public String typeNamePrefix() {
+        return Color.class.getSimpleName() + Converter.class.getSimpleName();
+    }
+
+    @Override
+    public String typeNameSuffix() {
+        return "";
     }
 }

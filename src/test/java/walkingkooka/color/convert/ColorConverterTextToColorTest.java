@@ -30,7 +30,7 @@ import walkingkooka.convert.FakeConverterContext;
 import java.util.List;
 import java.util.function.Function;
 
-public final class ConverterTextToColorTest extends ConverterColorTestCase<ConverterTextToColor<FakeConverterContext>, FakeConverterContext> {
+public final class ColorConverterTextToColorTest extends ColorConverterColorTestCase<ColorConverterTextToColor<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertWithInterfaceClassFails() {
@@ -219,8 +219,8 @@ public final class ConverterTextToColorTest extends ConverterColorTestCase<Conve
     }
 
     @Override
-    public ConverterTextToColor<FakeConverterContext> createConverter() {
-        return ConverterTextToColor.instance();
+    public ColorConverterTextToColor<FakeConverterContext> createConverter() {
+        return ColorConverterTextToColor.instance();
     }
 
     @Override
@@ -255,7 +255,7 @@ public final class ConverterTextToColorTest extends ConverterColorTestCase<Conve
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ConverterTextToColor.instance(),
+            ColorConverterTextToColor.instance(),
             "TEXT to Color"
         );
     }
@@ -263,7 +263,7 @@ public final class ConverterTextToColorTest extends ConverterColorTestCase<Conve
     // class............................................................................................................
 
     @Override
-    public Class<ConverterTextToColor<FakeConverterContext>> type() {
-        return Cast.to(ConverterTextToColor.class);
+    public Class<ColorConverterTextToColor<FakeConverterContext>> type() {
+        return Cast.to(ColorConverterTextToColor.class);
     }
 }

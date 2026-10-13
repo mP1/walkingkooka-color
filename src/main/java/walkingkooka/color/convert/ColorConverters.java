@@ -24,38 +24,38 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class ColorConverters implements PublicStaticHelper {
 
     /**
-     * {@see ConverterColorToNumber}
+     * {@see ColorConverterColorToNumber}
      */
     public static <C extends ConverterContext> Converter<C> colorToNumber() {
-        return ConverterColorToNumber.instance();
+        return ColorConverterColorToNumber.instance();
     }
 
     /**
-     * {@see ConverterNumberToColor}
+     * {@see ColorConverterNumberToColor}
      */
     public static <C extends ConverterContext> Converter<C> numberToColor() {
-        return ConverterNumberToColor.instance();
+        return ColorConverterNumberToColor.instance();
     }
 
     /**
-     * {@see ConverterTextToColor}
+     * {@see ColorConverterTextToColor}
      */
     public static <C extends ConverterContext> Converter<C> textToColor() {
-        return ConverterTextToColor.instance();
+        return ColorConverterTextToColor.instance();
     }
 
     /**
-     * {@see ConverterToColor}
+     * {@see ColorConverterToColor}
      */
     public static <C extends ConverterContext> Converter<C> toColor() {
-        return ConverterToColor.instance();
+        return ColorConverterToColor.instance();
     }
 
     /**
-     * {@see ConverterToColorProperties}
+     * {@see ColorConverterToColorProperties}
      */
     public static <C extends ConverterContext> Converter<C> toColorProperties() {
-        return ConverterToColorProperties.instance();
+        return ColorConverterToColorProperties.instance();
     }
 
     /**

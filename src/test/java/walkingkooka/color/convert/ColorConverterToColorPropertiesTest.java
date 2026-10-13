@@ -27,7 +27,7 @@ import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
 import walkingkooka.convert.FakeConverterContext;
 
-public final class ConverterToColorPropertiesTest extends ConverterColorTestCase<ConverterToColorProperties<FakeConverterContext>, FakeConverterContext> {
+public final class ColorConverterToColorPropertiesTest extends ColorConverterColorTestCase<ColorConverterToColorProperties<FakeConverterContext>, FakeConverterContext> {
 
     @Test
     public void testConvertStringToColorFails() {
@@ -48,8 +48,8 @@ public final class ConverterToColorPropertiesTest extends ConverterColorTestCase
     }
 
     @Override
-    public ConverterToColorProperties<FakeConverterContext> createConverter() {
-        return ConverterToColorProperties.instance();
+    public ColorConverterToColorProperties<FakeConverterContext> createConverter() {
+        return ColorConverterToColorProperties.instance();
     }
 
     @Override
@@ -89,7 +89,7 @@ public final class ConverterToColorPropertiesTest extends ConverterColorTestCase
     @Test
     public void testToString() {
         this.toStringAndCheck(
-            ConverterToColorProperties.instance(),
+            ColorConverterToColorProperties.instance(),
             "to ColorProperties"
         );
     }
@@ -97,7 +97,7 @@ public final class ConverterToColorPropertiesTest extends ConverterColorTestCase
     // class............................................................................................................
 
     @Override
-    public Class<ConverterToColorProperties<FakeConverterContext>> type() {
-        return Cast.to(ConverterToColorProperties.class);
+    public Class<ColorConverterToColorProperties<FakeConverterContext>> type() {
+        return Cast.to(ColorConverterToColorProperties.class);
     }
 }

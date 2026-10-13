@@ -35,24 +35,25 @@ import walkingkooka.convert.TextToTryingShortCircuitingConverter;
  * RED // WebColorName -> rgb
  * </pre>
  */
-final class ConverterTextToColor<C extends ConverterContext> implements TextToTryingShortCircuitingConverter<C> {
+final class ColorConverterTextToColor<C extends ConverterContext> extends ColorConverter<C>
+    implements TextToTryingShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ConverterTextToColor<C> instance() {
+    static <C extends ConverterContext> ColorConverterTextToColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ConverterTextToColor<ConverterContext> INSTANCE = new ConverterTextToColor<>();
+    private final static ColorConverterTextToColor<ConverterContext> INSTANCE = new ColorConverterTextToColor<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
      */
-    private ConverterTextToColor() {
+    private ColorConverterTextToColor() {
         super();
     }
 
