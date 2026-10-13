@@ -31,7 +31,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public final class WebColorNameTest implements NameTesting2<WebColorName, WebColorName>,
-    HasColorTesting {
+    HasColorTesting,
+    HasWebColorNameTesting {
 
     @Test
     public void testConstants() {
@@ -202,6 +203,16 @@ public final class WebColorNameTest implements NameTesting2<WebColorName, WebCol
         this.colorAndCheck(
             WebColorName.RED,
             WebColorName.RED.color()
+        );
+    }
+
+    // HasWebColorName..................................................................................................
+
+    @Test
+    public void testWebColorName() {
+        this.webColorNameAndCheck(
+            WebColorName.RED,
+            WebColorName.RED
         );
     }
 

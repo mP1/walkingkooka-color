@@ -34,7 +34,8 @@ import java.util.Optional;
  */
 public final class WebColorName implements Name,
     Comparable<WebColorName>,
-    HasColor {
+    HasColor,
+    HasWebColorName {
 
     /**
      * First because required by {@link #NAME_CONSTANTS} init.
@@ -327,5 +328,12 @@ public final class WebColorName implements Name,
     @Override
     public CaseSensitivity caseSensitivity() {
         return CASE_SENSITIVITY;
+    }
+
+    // HasWebColorName..................................................................................................
+
+    @Override
+    public Optional<WebColorName> webColorName() {
+        return Optional.of(this);
     }
 }
