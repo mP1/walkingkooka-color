@@ -280,11 +280,14 @@ public final class WebColorName implements Name,
     public static Optional<WebColorName> with(final String name) {
         Objects.requireNonNull(name, "name");
 
-        return Optional.ofNullable(NAME_CONSTANTS.get(name));
+        return Optional.ofNullable(
+            NAME_CONSTANTS.get(name)
+        );
     }
 
     // @VisibleForTesting
-    WebColorName(final String name, final RgbColor color) {
+    WebColorName(final String name,
+                 final RgbColor color) {
         super();
         this.name = name;
         this.color = color;
@@ -320,7 +323,11 @@ public final class WebColorName implements Name,
 
     @Override
     public int compareTo(final WebColorName other) {
-        return CASE_SENSITIVITY.comparator().compare(this.name, other.name);
+        return CASE_SENSITIVITY.comparator()
+            .compare(
+                this.name,
+                other.name
+            );
     }
 
     // HasCaseSensitivity................................................................................................
