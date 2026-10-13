@@ -47,7 +47,7 @@ final class ColorExpressionFunctionToWebColorName<C extends ExpressionEvaluation
         final Color color = COLOR.getOrFail(parameters, 0);
 
         return color.toRgb()
-            .toWebColorName()
+            .webColorName()
             .orElse(null);
     }
 }

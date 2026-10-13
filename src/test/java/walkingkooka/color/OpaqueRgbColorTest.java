@@ -198,7 +198,7 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
 
     @Test
     public void testWebNameBlue() {
-        this.toWebNameAndCheck(
+        this.webColorNameAndCheck(
             WebColorName.BLUE.color(),
             WebColorName.BLUE
         );
@@ -206,7 +206,7 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
 
     @Test
     public void testWebNameCyan() {
-        this.toWebNameAndCheck(
+        this.webColorNameAndCheck(
             WebColorName.CYAN.color(),
             WebColorName.CYAN
         );
@@ -217,7 +217,7 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         WebColorName.AARRGGBB_CONSTANTS.values()
             .forEach(n -> {
                 final RgbColor color = n.color();
-                this.toWebNameAndCheck(color, n);
+                this.webColorNameAndCheck(color, n);
             });
     }
 

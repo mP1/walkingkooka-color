@@ -210,8 +210,8 @@ public abstract class HsvTestCase<H extends HsvColor> extends ColorTestCase2<Hsv
     }
 
     @Test
-    public final void testToWebColorName() {
-        this.toWebNameAndCheck(
+    public final void testWebColorName() {
+        this.webColorNameAndCheck(
             this.createColor()
         );
     }

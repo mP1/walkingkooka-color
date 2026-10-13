@@ -1057,9 +1057,9 @@ abstract public class RgbColorTestCase<C extends RgbColor> extends ColorTestCase
     // toWebColorName...................................................................................................
 
     @Test
-    public final void testToWebColorNameUnknown() {
+    public final void testWebColorNameUnknown() {
         final byte component = 1;
-        this.toWebNameAndCheck(
+        this.webColorNameAndCheck(
             this.createColor(
                 RgbColorComponent.red(component),
                 RgbColorComponent.green(component),

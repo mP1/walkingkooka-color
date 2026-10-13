@@ -25,11 +25,10 @@ import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 
-import java.util.Optional;
-
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
     HashCodeEqualsDefinedTesting2<C>,
     HasColorTesting,
+    HasWebColorNameTesting,
     JsonNodeMarshallerTesting<C>,
     HasTextTesting,
     ToStringTesting<C>,
@@ -79,29 +78,6 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         this.checkEquals(color instanceof RgbColor,
             color.isRgb(),
             () -> "isRgb " + color);
-    }
-
-    final void toWebNameAndCheck(final Color color) {
-        this.toWebNameAndCheck(
-            color,
-            Optional.empty()
-        );
-    }
-
-    final void toWebNameAndCheck(final Color color,
-                                 final WebColorName expected) {
-        this.toWebNameAndCheck(
-            color,
-            Optional.of(expected)
-        );
-    }
-
-    final void toWebNameAndCheck(final Color color,
-                                 final Optional<WebColorName> expected) {
-        this.checkEquals(
-            expected,
-            color.toWebColorName(),
-            () -> color + " web rgb name");
     }
 
     // factory..........................................................................................................

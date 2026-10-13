@@ -262,7 +262,7 @@ public abstract class HslColor extends Color {
     // WebColorName..........................................................................................................
 
     @Override
-    public final Optional<WebColorName> toWebColorName() {
+    public final Optional<WebColorName> webColorName() {
         return NO_WEB_COLOR_NAME;
     }
 

@@ -210,8 +210,8 @@ public abstract class HslColorTestCase<H extends HslColor> extends ColorTestCase
     }
 
     @Test
-    public final void testToWebColorName() {
-        this.toWebNameAndCheck(
+    public final void testWebColorName() {
+        this.webColorNameAndCheck(
             this.createColor()
         );
     }
