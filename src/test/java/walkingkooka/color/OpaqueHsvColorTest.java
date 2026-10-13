@@ -23,7 +23,7 @@ import walkingkooka.Cast;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class OpaqueHsvColorTest extends HsvTestCase<OpaqueHsvColor> {
+public final class OpaqueHsvColorTest extends HsvColorTestCase<OpaqueHsvColor> {
 
     // tests
 
