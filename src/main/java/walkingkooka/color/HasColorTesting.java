@@ -24,8 +24,8 @@ public interface HasColorTesting extends TreePrintableTesting {
     default void colorAndCheck(final HasColor has,
                                final Color expected) {
         this.checkEquals(
-            has.color(),
             expected,
+            has.color(),
             has::toString
         );
     }
