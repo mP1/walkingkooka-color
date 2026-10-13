@@ -53,6 +53,7 @@ A collection of converters that are particularly useful within expressions and s
 - [color-to-number](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorConverterColorToNumber.java)
 - [number-to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorConverterNumberToColor.java)
 - [text-to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorConverterTextToColor.java)
+- [text-to-web-color-name](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorConverterTextToWebColorName.java)
 - [to-color](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorConverterToColor.java)
 - [to-color-properties](https://github.com/mP1/walkingkooka-color/blob/master/src/main/java/walkingkooka/color/convert/ColorConverterToColorProperties.java)
 

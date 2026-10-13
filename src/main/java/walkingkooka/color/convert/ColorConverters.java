@@ -52,6 +52,13 @@ public final class ColorConverters implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorConverterTextToWebColorName}
+     */
+    public static <C extends ConverterContext> Converter<C> toWebColorName() {
+        return ColorConverterTextToWebColorName.instance();
+    }
+
+    /**
      * {@see ColorConverterToColorProperties}
      */
     public static <C extends ConverterContext> Converter<C> toColorProperties() {
