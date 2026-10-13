@@ -47,7 +47,7 @@ public final class ColorExpressionFunctionToWebColorNameTest extends ColorExpres
 
         this.checkEquals(
             Optional.empty(),
-            color.toWebColorName()
+            color.webColorName()
         );
 
         this.applyAndCheck(

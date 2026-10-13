@@ -490,7 +490,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
-    public void testToWebColorNameWithRgbColor() {
+    public void testWebColorNameWithRgbColor() {
         this.evaluateAndCheck(
             "toWebColorName",
             Lists.of(

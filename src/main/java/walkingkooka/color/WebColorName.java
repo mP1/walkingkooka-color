@@ -70,7 +70,7 @@ public final class WebColorName implements Name,
     private final static Map<String, WebColorName> NAME_CONSTANTS = Maps.sorted(WebColorName.CASE_SENSITIVITY.comparator());
 
     /**
-     * Allows lookup by AARRGGBB value, used by {@link RgbColor#toWebColorName}.
+     * Allows lookup by AARRGGBB value, used by {@link RgbColor#webColorName}.
      */
     // RgbColor#toString
     final static Map<Integer, WebColorName> AARRGGBB_CONSTANTS = Maps.sorted();

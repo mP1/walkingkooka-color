@@ -469,7 +469,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
      * Returns a {@link WebColorName} for this argb if one exists.
      */
     @Override
-    public final Optional<WebColorName> toWebColorName() {
+    public final Optional<WebColorName> webColorName() {
         return Optional.ofNullable(
             WebColorName.AARRGGBB_CONSTANTS.get(
                 this.argb()

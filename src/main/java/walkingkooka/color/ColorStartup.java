@@ -35,7 +35,7 @@ public final class ColorStartup implements PublicStaticHelper {
             .saturation();
         rgbColor.toHsv()
             .hue();
-        rgbColor.toWebColorName();
+        rgbColor.webColorName();
 
         ColorProperties.with(Properties.EMPTY);
 

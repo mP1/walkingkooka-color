@@ -51,6 +51,7 @@ import java.util.function.Function;
  * Base class for all rgb like value classes.
  */
 public abstract class Color implements HasColor,
+    HasWebColorName,
     HasText,
     UsesToStringBuilder,
     TreePrintable {
@@ -421,7 +422,7 @@ public abstract class Color implements HasColor,
     /**
      * Returns the {@link WebColorName} for this color if one exists and it is a {@link RgbColor}.
      */
-    abstract public Optional<WebColorName> toWebColorName();
+    abstract public Optional<WebColorName> webColorName();
 
     // css..............................................................................................................
 
