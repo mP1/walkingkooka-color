@@ -45,17 +45,17 @@ public final class ColorConverters implements PublicStaticHelper {
     }
 
     /**
+     * {@see ColorConverterTextToWebColorName}
+     */
+    public static <C extends ConverterContext> Converter<C> textToWebColorName() {
+        return ColorConverterTextToWebColorName.instance();
+    }
+
+    /**
      * {@see ColorConverterToColor}
      */
     public static <C extends ConverterContext> Converter<C> toColor() {
         return ColorConverterToColor.instance();
-    }
-
-    /**
-     * {@see ColorConverterTextToWebColorName}
-     */
-    public static <C extends ConverterContext> Converter<C> toWebColorName() {
-        return ColorConverterTextToWebColorName.instance();
     }
 
     /**
