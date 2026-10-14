@@ -56,7 +56,7 @@ public interface ColorContextTesting2<C extends ColorContext> extends ContextTes
     // CanIndexedNamedColor.............................................................................................
 
     @Override
-    default C createIndexedNamedColor() {
+    default C createCanIndexedNamedColor() {
         return this.createContext();
     }
 

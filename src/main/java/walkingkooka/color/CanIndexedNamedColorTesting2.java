@@ -22,13 +22,13 @@ public interface CanIndexedNamedColorTesting2<C extends CanIndexedNamedColor> ex
 
     @Override
     default C createCanIndexedColor() {
-        return this.createIndexedNamedColor();
+        return this.createCanIndexedNamedColor();
     }
 
     @Override
     default C createCanNamedColor() {
-        return this.createIndexedNamedColor();
+        return this.createCanIndexedNamedColor();
     }
 
-    C createIndexedNamedColor();
+    C createCanIndexedNamedColor();
 }

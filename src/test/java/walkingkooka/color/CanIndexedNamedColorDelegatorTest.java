@@ -22,7 +22,7 @@ import walkingkooka.color.CanIndexedNamedColorDelegatorTest.TestCanIndexedNamedC
 public final class CanIndexedNamedColorDelegatorTest implements CanIndexedNamedColorTesting2<TestCanIndexedNamedColorDelegator> {
 
     @Override
-    public TestCanIndexedNamedColorDelegator createIndexedNamedColor() {
+    public TestCanIndexedNamedColorDelegator createCanIndexedNamedColor() {
         return new TestCanIndexedNamedColorDelegator();
     }
 
