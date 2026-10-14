@@ -25,7 +25,7 @@ public final class CanIndexedNamedColorTesting2Test implements CanIndexedNamedCo
     PublicClassTesting<CanIndexedNamedColorTesting2<TestCanIndexedNamedColor>> {
 
     @Override
-    public TestCanIndexedNamedColor createIndexedNamedColor() {
+    public TestCanIndexedNamedColor createCanIndexedNamedColor() {
         return new TestCanIndexedNamedColor();
     }
 
