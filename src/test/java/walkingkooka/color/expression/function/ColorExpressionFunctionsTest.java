@@ -58,7 +58,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     BinaryTextContextTesting {
 
     @Test
-    public void testColorWithColor() {
+    public void testColorWithRgbColor() {
         final Color color = Color.parse("#123");
 
         this.evaluateAndCheck(
@@ -67,6 +67,19 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                 color
             ),
             color
+        );
+    }
+
+    @Test
+    public void testColorWithWebColorName() {
+        final WebColorName webColorName = WebColorName.BLACK;
+
+        this.evaluateAndCheck(
+            "color",
+            Lists.of(
+                webColorName
+            ),
+            webColorName.color()
         );
     }
 
@@ -172,6 +185,20 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testGetBlueWithWebColorName() {
+        final WebColorName webColorName = WebColorName.BLUE;
+
+        this.evaluateAndCheck(
+            "getBlue",
+            Lists.of(
+                webColorName
+            ),
+            webColorName.color()
+                .blue()
+        );
+    }
+
+    @Test
     public void testGetGreenWithRgbColor() {
         final RgbColor rgb = Color.parseRgb("#123");
 
@@ -198,13 +225,27 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
-    public void testInvertColorWithColor() {
+    public void testInvertColorWithRgbColor() {
         final Color color = Color.parse("#123");
 
         this.evaluateAndCheck(
             "invertColor",
             Lists.of(
                 color
+            ),
+            color.invert()
+        );
+    }
+
+    @Test
+    public void testInvertColorWithWebColorName() {
+        final WebColorName webColorName = WebColorName.BLUE;
+        final Color color = webColorName.color();
+
+        this.evaluateAndCheck(
+            "invertColor",
+            Lists.of(
+                webColorName
             ),
             color.invert()
         );
@@ -305,6 +346,22 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
+    public void testSetBlueWithWebColorNameAndNumber() {
+        final WebColorName webColorName = WebColorName.RED;
+        final RgbColor rgb = webColorName.color();
+        final BlueRgbColorComponent component = RgbColorComponent.blue((byte) 0xff);
+
+        this.evaluateAndCheck(
+            "setBlue",
+            Lists.of(
+                webColorName,
+                component.value()
+            ),
+            rgb.set(component)
+        );
+    }
+
+    @Test
     public void testSetGreenWithRgbColorAndGreenRgbColorComponent() {
         final RgbColor rgb = Color.parseRgb("#123");
         final GreenRgbColorComponent component = RgbColorComponent.green((byte) 0xff);
@@ -378,7 +435,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
-    public void testToGrayWithColor() {
+    public void testToGrayWithRgbColor() {
         final RgbColor color = Color.parseRgb("#456");
 
         this.evaluateAndCheck(
@@ -387,6 +444,21 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                 color
             ),
             color.toGray()
+        );
+    }
+
+    @Test
+    public void testToGrayWithWebColorName() {
+        final WebColorName webColorName = WebColorName.RED;
+        ;
+
+        this.evaluateAndCheck(
+            "toGray",
+            Lists.of(
+                webColorName
+            ),
+            webColorName.color()
+                .toGray()
         );
     }
 
