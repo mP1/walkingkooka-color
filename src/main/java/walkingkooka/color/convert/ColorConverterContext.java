@@ -19,10 +19,11 @@ package walkingkooka.color.convert;
 
 import walkingkooka.color.ColorContext;
 import walkingkooka.convert.ConverterContext;
+import walkingkooka.tree.expression.convert.ExpressionNumberConverterContext;
 
 /**
  * A {@link ConverterContext} that adds {@link ColorContext}, which is useful for converters converting a value to a {@link walkingkooka.color.Color}.
  */
-public interface ColorConverterContext extends ConverterContext,
+public interface ColorConverterContext extends ExpressionNumberConverterContext,
     ColorContext {
 }
