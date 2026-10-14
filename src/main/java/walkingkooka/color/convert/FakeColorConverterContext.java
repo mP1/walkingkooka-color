@@ -18,15 +18,15 @@
 package walkingkooka.color.convert;
 
 import walkingkooka.color.Color;
-import walkingkooka.color.ColorContext;
 import walkingkooka.color.IndexedColor;
 import walkingkooka.color.NamedColor;
 import walkingkooka.convert.FakeConverterContext;
+import walkingkooka.tree.expression.ExpressionNumberKind;
 
 import java.util.Optional;
 
 public class FakeColorConverterContext extends FakeConverterContext
-    implements ColorContext {
+    implements ColorConverterContext {
 
     public FakeColorConverterContext() {
         super();
@@ -49,6 +49,11 @@ public class FakeColorConverterContext extends FakeConverterContext
 
     @Override
     public Color parseColor(final String color) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ExpressionNumberKind expressionNumberKind() {
         throw new UnsupportedOperationException();
     }
 }
