@@ -3,7 +3,7 @@ package walkingkooka.color.expression.function;
 import walkingkooka.Cast;
 import walkingkooka.color.Color;
 import walkingkooka.color.HsvColor;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -11,16 +11,16 @@ import java.util.List;
 /**
  * A function that returns a {@link HsvColor}.
  */
-final class ColorExpressionFunctionToHsvColor<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<HsvColor, C> {
+final class ColorExpressionFunctionToHsvColor<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<HsvColor, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionToHsvColor<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionToHsvColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionToHsvColor<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionToHsvColor<>();
+    private final static ColorExpressionFunctionToHsvColor INSTANCE = new ColorExpressionFunctionToHsvColor<>();
 
     private ColorExpressionFunctionToHsvColor() {
         super("toHsvColor");

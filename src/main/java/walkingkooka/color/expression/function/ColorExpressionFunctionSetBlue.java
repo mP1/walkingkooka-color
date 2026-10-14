@@ -3,7 +3,7 @@ package walkingkooka.color.expression.function;
 import walkingkooka.Cast;
 import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.RgbColor;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -11,16 +11,16 @@ import java.util.List;
 /**
  * A function that accepts a {@link RgbColor} and returns sets blue component upon the given the result.
  */
-final class ColorExpressionFunctionSetBlue<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<RgbColor, C> {
+final class ColorExpressionFunctionSetBlue<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<RgbColor, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionSetBlue<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionSetBlue<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionSetBlue<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionSetBlue<>();
+    private final static ColorExpressionFunctionSetBlue INSTANCE = new ColorExpressionFunctionSetBlue<>();
 
     private ColorExpressionFunctionSetBlue() {
         super("setBlue");

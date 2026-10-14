@@ -23,7 +23,7 @@ import walkingkooka.color.Color;
 import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionFunctionName;
 import walkingkooka.tree.expression.ExpressionPurityContext;
 import walkingkooka.tree.expression.function.ExpressionFunction;
@@ -36,7 +36,7 @@ import java.util.Optional;
 /**
  * A {@link ExpressionFunction} that involves {@link Color}
  */
-abstract class ColorExpressionFunction<T, C extends ExpressionEvaluationContext> implements ExpressionFunction<T, C> {
+abstract class ColorExpressionFunction<T, C extends ColorExpressionEvaluationContext> implements ExpressionFunction<T, C> {
 
     ColorExpressionFunction(final String name) {
         super();

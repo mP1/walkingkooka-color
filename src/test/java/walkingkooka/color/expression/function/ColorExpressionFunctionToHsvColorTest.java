@@ -23,9 +23,9 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.HsvColor;
 import walkingkooka.color.RgbColor;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 
-public final class ColorExpressionFunctionToHsvColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionToHsvColor<FakeExpressionEvaluationContext>, HsvColor> {
+public final class ColorExpressionFunctionToHsvColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionToHsvColor<FakeColorExpressionEvaluationContext>, HsvColor> {
 
     @Test
     public void testApplyWithRgbColor() {
@@ -52,7 +52,7 @@ public final class ColorExpressionFunctionToHsvColorTest extends ColorExpression
     }
 
     @Override
-    public ColorExpressionFunctionToHsvColor<FakeExpressionEvaluationContext> createBiFunction() {
+    public ColorExpressionFunctionToHsvColor<FakeColorExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionToHsvColor.instance();
     }
 
@@ -74,7 +74,7 @@ public final class ColorExpressionFunctionToHsvColorTest extends ColorExpression
     // class............................................................................................................
 
     @Override
-    public Class<ColorExpressionFunctionToHsvColor<FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunctionToHsvColor<FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionToHsvColor.class);
     }
 }

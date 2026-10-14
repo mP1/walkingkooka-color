@@ -3,7 +3,7 @@ package walkingkooka.color.expression.function;
 import walkingkooka.Cast;
 import walkingkooka.color.Color;
 import walkingkooka.color.WebColorName;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -12,16 +12,16 @@ import java.util.List;
  * A function that accepts a {@link Color}, converts it to RGB and then takes the {@link WebColorName} if available or
  * returns null.
  */
-final class ColorExpressionFunctionToWebColorName<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<WebColorName, C> {
+final class ColorExpressionFunctionToWebColorName<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<WebColorName, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionToWebColorName<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionToWebColorName<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionToWebColorName<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionToWebColorName<>();
+    private final static ColorExpressionFunctionToWebColorName INSTANCE = new ColorExpressionFunctionToWebColorName<>();
 
     private ColorExpressionFunctionToWebColorName() {
         super("toWebColorName");

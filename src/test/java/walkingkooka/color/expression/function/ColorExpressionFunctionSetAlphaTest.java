@@ -24,9 +24,9 @@ import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 
-public final class ColorExpressionFunctionSetAlphaTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionSetAlpha<FakeExpressionEvaluationContext>, RgbColor> {
+public final class ColorExpressionFunctionSetAlphaTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionSetAlpha<FakeColorExpressionEvaluationContext>, RgbColor> {
 
     @Test
     public void testApply() {
@@ -44,7 +44,7 @@ public final class ColorExpressionFunctionSetAlphaTest extends ColorExpressionFu
     }
 
     @Override
-    public ColorExpressionFunctionSetAlpha<FakeExpressionEvaluationContext> createBiFunction() {
+    public ColorExpressionFunctionSetAlpha<FakeColorExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionSetAlpha.instance();
     }
 
@@ -66,7 +66,7 @@ public final class ColorExpressionFunctionSetAlphaTest extends ColorExpressionFu
     // class............................................................................................................
 
     @Override
-    public Class<ColorExpressionFunctionSetAlpha<FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunctionSetAlpha<FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionSetAlpha.class);
     }
 }

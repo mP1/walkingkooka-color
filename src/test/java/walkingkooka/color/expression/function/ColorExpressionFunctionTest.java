@@ -18,13 +18,13 @@
 package walkingkooka.color.expression.function;
 
 import walkingkooka.Cast;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 import walkingkooka.reflect.PackagePrivateClassTesting;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
 
-public final class ColorExpressionFunctionTest implements PackagePrivateClassTesting<ColorExpressionFunction<Void, FakeExpressionEvaluationContext>> {
+public final class ColorExpressionFunctionTest implements PackagePrivateClassTesting<ColorExpressionFunction<Void, FakeColorExpressionEvaluationContext>> {
 
     @Override
-    public Class<ColorExpressionFunction<Void, FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunction<Void, FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunction.class);
     }
 }

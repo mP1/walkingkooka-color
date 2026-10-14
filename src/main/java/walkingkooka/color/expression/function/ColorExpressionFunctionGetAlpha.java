@@ -3,7 +3,7 @@ package walkingkooka.color.expression.function;
 import walkingkooka.Cast;
 import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.RgbColor;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -11,16 +11,16 @@ import java.util.List;
 /**
  * A function that accepts a {@link RgbColor} and returns its alpha component.
  */
-final class ColorExpressionFunctionGetAlpha<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<AlphaRgbColorComponent, C> {
+final class ColorExpressionFunctionGetAlpha<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<AlphaRgbColorComponent, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionGetAlpha<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionGetAlpha<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionGetAlpha<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionGetAlpha<>();
+    private final static ColorExpressionFunctionGetAlpha INSTANCE = new ColorExpressionFunctionGetAlpha<>();
 
     private ColorExpressionFunctionGetAlpha() {
         super("getAlpha");

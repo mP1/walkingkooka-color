@@ -21,9 +21,9 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.RgbColor;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 
-public final class ColorExpressionFunctionRgbColorToGrayTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionRgbColorToGray<FakeExpressionEvaluationContext>, RgbColor> {
+public final class ColorExpressionFunctionRgbColorToGrayTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionRgbColorToGray<FakeColorExpressionEvaluationContext>, RgbColor> {
 
     @Test
     public void testApplyWithRgbColor() {
@@ -38,7 +38,7 @@ public final class ColorExpressionFunctionRgbColorToGrayTest extends ColorExpres
     }
 
     @Override
-    public ColorExpressionFunctionRgbColorToGray<FakeExpressionEvaluationContext> createBiFunction() {
+    public ColorExpressionFunctionRgbColorToGray<FakeColorExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionRgbColorToGray.instance();
     }
 
@@ -60,7 +60,7 @@ public final class ColorExpressionFunctionRgbColorToGrayTest extends ColorExpres
     // class............................................................................................................
 
     @Override
-    public Class<ColorExpressionFunctionRgbColorToGray<FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunctionRgbColorToGray<FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionRgbColorToGray.class);
     }
 }

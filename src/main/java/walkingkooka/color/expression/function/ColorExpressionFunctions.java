@@ -26,8 +26,8 @@ import walkingkooka.color.HsvColor;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.reflect.PublicStaticHelper;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunction;
 
 /**
@@ -38,119 +38,119 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     /**
      * {@see ColorExpressionFunctionColor}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<Color, C> color() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<Color, C> color() {
         return ColorExpressionFunctionColor.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionGetAlpha}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<AlphaRgbColorComponent, C> getAlpha() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<AlphaRgbColorComponent, C> getAlpha() {
         return ColorExpressionFunctionGetAlpha.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionGetBlue}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<BlueRgbColorComponent, C> getBlue() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<BlueRgbColorComponent, C> getBlue() {
         return ColorExpressionFunctionGetBlue.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionGetGreen}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<GreenRgbColorComponent, C> getGreen() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<GreenRgbColorComponent, C> getGreen() {
         return ColorExpressionFunctionGetGreen.instance();
     }
     
     /**
      * {@see ColorExpressionFunctionGetRed}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RedRgbColorComponent, C> getRed() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RedRgbColorComponent, C> getRed() {
         return ColorExpressionFunctionGetRed.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionInvertColor}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<Color, C> invertColor() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<Color, C> invertColor() {
         return ColorExpressionFunctionInvertColor.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionMixColor}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<Color, C> mixColor() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<Color, C> mixColor() {
         return ColorExpressionFunctionMixColor.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionSetAlpha}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setAlpha() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setAlpha() {
         return ColorExpressionFunctionSetAlpha.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionSetBlue}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setBlue() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setBlue() {
         return ColorExpressionFunctionSetBlue.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionSetGreen}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setGreen() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setGreen() {
         return ColorExpressionFunctionSetGreen.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionSetRed}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setRed() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> setRed() {
         return ColorExpressionFunctionSetRed.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionToRgbHexString}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<String, C> toRgbHexString() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<String, C> toRgbHexString() {
         return ColorExpressionFunctionToRgbHexString.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionRgbColorToGray}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toGray() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toGray() {
         return ColorExpressionFunctionRgbColorToGray.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionToHslColor}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<HslColor, C> toHslColor() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<HslColor, C> toHslColor() {
         return ColorExpressionFunctionToHslColor.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionToHsvColor}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<HsvColor, C> toHsvColor() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<HsvColor, C> toHsvColor() {
         return ColorExpressionFunctionToHsvColor.instance();
     }
     
     /**
      * {@see ColorExpressionFunctionToRgbColor}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toRgbColor() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toRgbColor() {
         return ColorExpressionFunctionToRgbColor.instance();
     }
 
     /**
      * {@see ColorExpressionFunctionToWebColorName}
      */
-    public static <C extends ExpressionEvaluationContext> ExpressionFunction<WebColorName, C> toWebColorName() {
+    public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<WebColorName, C> toWebColorName() {
         return ColorExpressionFunctionToWebColorName.instance();
     }
 

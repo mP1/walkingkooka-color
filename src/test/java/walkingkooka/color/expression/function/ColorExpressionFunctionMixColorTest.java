@@ -21,9 +21,9 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 
-public final class ColorExpressionFunctionMixColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext>, Color> {
+public final class ColorExpressionFunctionMixColorTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionMixColor<FakeColorExpressionEvaluationContext>, Color> {
 
     @Test
     public void testApply() {
@@ -45,7 +45,7 @@ public final class ColorExpressionFunctionMixColorTest extends ColorExpressionFu
     }
 
     @Override
-    public ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext> createBiFunction() {
+    public ColorExpressionFunctionMixColor<FakeColorExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionMixColor.instance();
     }
 
@@ -67,7 +67,7 @@ public final class ColorExpressionFunctionMixColorTest extends ColorExpressionFu
     // class............................................................................................................
 
     @Override
-    public Class<ColorExpressionFunctionMixColor<FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunctionMixColor<FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionMixColor.class);
     }
 }
