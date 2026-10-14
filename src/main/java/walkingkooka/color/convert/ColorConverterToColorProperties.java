@@ -20,27 +20,26 @@ package walkingkooka.color.convert;
 import walkingkooka.Cast;
 import walkingkooka.color.ColorProperties;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.TryingShortCircuitingConverter;
 import walkingkooka.props.Properties;
 
 /**
  * A {@link Converter} that handles parsing text into a {@link walkingkooka.color.ColorProperties}.
  */
-final class ColorConverterToColorProperties<C extends ConverterContext> extends ColorConverter<C>
+final class ColorConverterToColorProperties<C extends ColorConverterContext> extends ColorConverter<C>
     implements TryingShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorConverterToColorProperties<C> instance() {
+    static <C extends ColorConverterContext> ColorConverterToColorProperties<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorConverterToColorProperties<ConverterContext> INSTANCE = new ColorConverterToColorProperties<>();
+    private final static ColorConverterToColorProperties INSTANCE = new ColorConverterToColorProperties<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.

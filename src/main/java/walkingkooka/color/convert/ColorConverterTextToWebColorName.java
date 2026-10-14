@@ -20,27 +20,26 @@ package walkingkooka.color.convert;
 import walkingkooka.Cast;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.TextToTryingShortCircuitingConverter;
 import walkingkooka.text.CharSequences;
 
 /**
  * A {@link Converter} that handles parsing any given text into a {@link WebColorName}.
  */
-final class ColorConverterTextToWebColorName<C extends ConverterContext> extends ColorConverter<C>
+final class ColorConverterTextToWebColorName<C extends ColorConverterContext> extends ColorConverter<C>
     implements TextToTryingShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorConverterTextToWebColorName<C> instance() {
+    static <C extends ColorConverterContext> ColorConverterTextToWebColorName<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorConverterTextToWebColorName<ConverterContext> INSTANCE = new ColorConverterTextToWebColorName<>();
+    private final static ColorConverterTextToWebColorName INSTANCE = new ColorConverterTextToWebColorName<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.

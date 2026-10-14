@@ -28,9 +28,8 @@ import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
-import walkingkooka.convert.FakeConverterContext;
 
-public final class ColorConverterNumberToColorTest extends ColorConverterColorTestCase<ColorConverterNumberToColor<FakeConverterContext>, FakeConverterContext> {
+public final class ColorConverterNumberToColorTest extends ColorConverterColorTestCase<ColorConverterNumberToColor<FakeColorConverterContext>, FakeColorConverterContext> {
 
     @Test
     public void testConvertStringToColorFails() {
@@ -158,13 +157,13 @@ public final class ColorConverterNumberToColorTest extends ColorConverterColorTe
     }
 
     @Override
-    public ColorConverterNumberToColor<FakeConverterContext> createConverter() {
+    public ColorConverterNumberToColor<FakeColorConverterContext> createConverter() {
         return ColorConverterNumberToColor.instance();
     }
 
     @Override
-    public FakeConverterContext createContext() {
-        return new FakeConverterContext() {
+    public FakeColorConverterContext createContext() {
+        return new FakeColorConverterContext() {
             @Override
             public boolean canConvert(final Object value,
                                       final Class<?> type) {
@@ -185,7 +184,7 @@ public final class ColorConverterNumberToColorTest extends ColorConverterColorTe
                 );
             }
 
-            private final Converter<FakeConverterContext> converter = Converters.collection(
+            private final Converter<FakeColorConverterContext> converter = Converters.collection(
                 Lists.of(
                     Converters.numberToNumber()
                 )
@@ -206,7 +205,7 @@ public final class ColorConverterNumberToColorTest extends ColorConverterColorTe
     // class............................................................................................................
 
     @Override
-    public Class<ColorConverterNumberToColor<FakeConverterContext>> type() {
+    public Class<ColorConverterNumberToColor<FakeColorConverterContext>> type() {
         return Cast.to(ColorConverterNumberToColor.class);
     }
 }

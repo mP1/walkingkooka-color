@@ -23,26 +23,25 @@ import walkingkooka.color.Color;
 import walkingkooka.color.ColorLike;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
 
 /**
  * A {@link Converter} that converts a {@link Number} to another {@link ColorLike}.
  */
-final class ColorConverterNumberToColor<C extends ConverterContext> extends ColorConverter<C>
+final class ColorConverterNumberToColor<C extends ColorConverterContext> extends ColorConverter<C>
     implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorConverterNumberToColor<C> instance() {
+    static <C extends ColorConverterContext> ColorConverterNumberToColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorConverterNumberToColor<ConverterContext> INSTANCE = new ColorConverterNumberToColor<>();
+    private final static ColorConverterNumberToColor INSTANCE = new ColorConverterNumberToColor<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.

@@ -22,27 +22,26 @@ import walkingkooka.Either;
 import walkingkooka.color.Color;
 import walkingkooka.color.HasColor;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ShortCircuitingConverter;
 
 /**
  * A {@link Converter} that converts a {@link Color}, {@link walkingkooka.color.WebColorName} but not a {@link String} such as
  * <pre>#123456</pre> to another {@link Color}.
  */
-final class ColorConverterToColor<C extends ConverterContext> extends ColorConverter<C>
+final class ColorConverterToColor<C extends ColorConverterContext> extends ColorConverter<C>
     implements ShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorConverterToColor<C> instance() {
+    static <C extends ColorConverterContext> ColorConverterToColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorConverterToColor<ConverterContext> INSTANCE = new ColorConverterToColor<>();
+    private final static ColorConverterToColor INSTANCE = new ColorConverterToColor<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.

@@ -18,7 +18,6 @@
 package walkingkooka.color.convert;
 
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.reflect.PublicStaticHelper;
 
 public final class ColorConverters implements PublicStaticHelper {
@@ -26,42 +25,42 @@ public final class ColorConverters implements PublicStaticHelper {
     /**
      * {@see ColorConverterColorToNumber}
      */
-    public static <C extends ConverterContext> Converter<C> colorToNumber() {
+    public static <C extends ColorConverterContext> Converter<C> colorToNumber() {
         return ColorConverterColorToNumber.instance();
     }
 
     /**
      * {@see ColorConverterNumberToColor}
      */
-    public static <C extends ConverterContext> Converter<C> numberToColor() {
+    public static <C extends ColorConverterContext> Converter<C> numberToColor() {
         return ColorConverterNumberToColor.instance();
     }
 
     /**
      * {@see ColorConverterTextToColor}
      */
-    public static <C extends ConverterContext> Converter<C> textToColor() {
+    public static <C extends ColorConverterContext> Converter<C> textToColor() {
         return ColorConverterTextToColor.instance();
     }
 
     /**
      * {@see ColorConverterTextToWebColorName}
      */
-    public static <C extends ConverterContext> Converter<C> textToWebColorName() {
+    public static <C extends ColorConverterContext> Converter<C> textToWebColorName() {
         return ColorConverterTextToWebColorName.instance();
     }
 
     /**
      * {@see ColorConverterToColor}
      */
-    public static <C extends ConverterContext> Converter<C> toColor() {
+    public static <C extends ColorConverterContext> Converter<C> toColor() {
         return ColorConverterToColor.instance();
     }
 
     /**
      * {@see ColorConverterToColorProperties}
      */
-    public static <C extends ConverterContext> Converter<C> toColorProperties() {
+    public static <C extends ColorConverterContext> Converter<C> toColorProperties() {
         return ColorConverterToColorProperties.instance();
     }
 

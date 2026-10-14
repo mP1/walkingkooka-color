@@ -21,7 +21,6 @@ import walkingkooka.Cast;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.TextToTryingShortCircuitingConverter;
 
 /**
@@ -35,20 +34,20 @@ import walkingkooka.convert.TextToTryingShortCircuitingConverter;
  * RED // WebColorName -> rgb
  * </pre>
  */
-final class ColorConverterTextToColor<C extends ConverterContext> extends ColorConverter<C>
+final class ColorConverterTextToColor<C extends ColorConverterContext> extends ColorConverter<C>
     implements TextToTryingShortCircuitingConverter<C> {
 
     /**
      * Type safe singleton getter.
      */
-    static <C extends ConverterContext> ColorConverterTextToColor<C> instance() {
+    static <C extends ColorConverterContext> ColorConverterTextToColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorConverterTextToColor<ConverterContext> INSTANCE = new ColorConverterTextToColor<>();
+    private final static ColorConverterTextToColor INSTANCE = new ColorConverterTextToColor<>();
 
     /**
      * Private ctor use {@link #INSTANCE}.
