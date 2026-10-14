@@ -10,18 +10,18 @@ import java.util.List;
 /**
  * A function that converts a given {@link walkingkooka.color.RgbColor} to gray
  */
-final class ColorExpressionFunctionRgbColorToGray<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<RgbColor, C> {
+final class ColorExpressionFunctionToGray<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<RgbColor, C> {
 
-    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionRgbColorToGray<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionToGray<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionRgbColorToGray INSTANCE = new ColorExpressionFunctionRgbColorToGray<>();
+    private final static ColorExpressionFunctionToGray INSTANCE = new ColorExpressionFunctionToGray<>();
 
-    private ColorExpressionFunctionRgbColorToGray() {
+    private ColorExpressionFunctionToGray() {
         super("toGray");
     }
 

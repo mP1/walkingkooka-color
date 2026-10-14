@@ -120,10 +120,10 @@ public final class ColorExpressionFunctions implements PublicStaticHelper {
     }
 
     /**
-     * {@see ColorExpressionFunctionRgbColorToGray}
+     * {@see ColorExpressionFunctionToGray}
      */
     public static <C extends ColorExpressionEvaluationContext> ExpressionFunction<RgbColor, C> toGray() {
-        return ColorExpressionFunctionRgbColorToGray.instance();
+        return ColorExpressionFunctionToGray.instance();
     }
 
     /**
