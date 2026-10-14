@@ -31,16 +31,13 @@ import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.WebColorName;
+import walkingkooka.color.convert.ColorConverterContext;
 import walkingkooka.color.convert.ColorConverters;
+import walkingkooka.color.convert.FakeColorConverterContext;
 import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
-import walkingkooka.convert.BinaryNumberConverterFunctions;
-import walkingkooka.convert.ConverterContext;
-import walkingkooka.convert.ConverterContexts;
+import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
-import walkingkooka.currency.CurrencyLocaleContexts;
-import walkingkooka.datetime.DateTimeContexts;
-import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.BinaryTextContextTesting;
 import walkingkooka.tree.expression.Expression;
@@ -652,7 +649,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     @Override
                     public boolean canConvert(final Object value,
                                               final Class<?> type) {
-                        return this.converterContext.canConvert(
+                        return this.colorConverterContext.canConvert(
                             value,
                             type
                         );
@@ -661,12 +658,46 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     @Override
                     public <T> Either<T, String> convert(final Object value,
                                                          final Class<T> target) {
-                        return this.converterContext.convert(
+                        return this.colorConverterContext.convert(
                             value,
                             target
                         );
                     }
 
+                    private final FakeColorConverterContext colorConverterContext = new FakeColorConverterContext() {
+
+                        @Override
+                        public boolean canConvert(final Object value,
+                                                  final Class<?> type) {
+                            return this.converter.canConvert(
+                                value,
+                                type,
+                                this
+                            );
+                        }
+
+                        @Override
+                        public <T> Either<T, String> convert(final Object value,
+                                                             final Class<T> target) {
+                            return this.converter.convert(
+                                value,
+                                target,
+                                this
+                            );
+                        }
+
+                        private final Converter<ColorConverterContext> converter = Converters.collection(
+                            Lists.of(
+                                Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                                Converters.numberToNumber(),
+                                Converters.simple(), // handles Text -> TextNode
+                                ColorConverters.textToColor(),
+                                ColorConverters.colorToNumber(),
+                                ColorConverters.numberToColor()
+                            )
+                        );
+                    };
+/*
                     private final ConverterContext converterContext = ConverterContexts.basic(
                         false, // canNumbersHaveGroupSeparator
                         Converters.EXCEL_1900_DATE_SYSTEM_OFFSET, // dateTimeOffset
@@ -686,7 +717,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                         CurrencyLocaleContexts.fake(),
                         DateTimeContexts.fake(),
                         DecimalNumberContexts.fake()
-                    );
+                    );*/
                 }
             ),
             () -> functionName + " " + parameters

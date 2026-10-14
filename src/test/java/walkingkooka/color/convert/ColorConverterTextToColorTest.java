@@ -25,12 +25,11 @@ import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
-import walkingkooka.convert.FakeConverterContext;
 
 import java.util.List;
 import java.util.function.Function;
 
-public final class ColorConverterTextToColorTest extends ColorConverterColorTestCase<ColorConverterTextToColor<FakeConverterContext>, FakeConverterContext> {
+public final class ColorConverterTextToColorTest extends ColorConverterColorTestCase<ColorConverterTextToColor<FakeColorConverterContext>, FakeColorConverterContext> {
 
     @Test
     public void testConvertWithInterfaceClassFails() {
@@ -219,13 +218,13 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     }
 
     @Override
-    public ColorConverterTextToColor<FakeConverterContext> createConverter() {
+    public ColorConverterTextToColor<FakeColorConverterContext> createConverter() {
         return ColorConverterTextToColor.instance();
     }
 
     @Override
-    public FakeConverterContext createContext() {
-        return new FakeConverterContext() {
+    public FakeColorConverterContext createContext() {
+        return new FakeColorConverterContext() {
             @Override
             public boolean canConvert(final Object value,
                                       final Class<?> type) {
@@ -246,7 +245,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
                 );
             }
 
-            private final Converter<FakeConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
+            private final Converter<FakeColorConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
         };
     }
 
@@ -263,7 +262,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     // class............................................................................................................
 
     @Override
-    public Class<ColorConverterTextToColor<FakeConverterContext>> type() {
+    public Class<ColorConverterTextToColor<FakeColorConverterContext>> type() {
         return Cast.to(ColorConverterTextToColor.class);
     }
 }

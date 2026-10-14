@@ -19,10 +19,9 @@ package walkingkooka.color.convert;
 
 import walkingkooka.color.Color;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ConverterTesting2;
 
-public abstract class ColorConverterColorTestCase<C extends ColorConverter<X>, X extends ConverterContext> implements ConverterTesting2<C, X> {
+public abstract class ColorConverterColorTestCase<C extends ColorConverter<X>, X extends ColorConverterContext> implements ConverterTesting2<C, X> {
 
     ColorConverterColorTestCase() {
         super();

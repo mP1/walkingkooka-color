@@ -18,9 +18,8 @@
 package walkingkooka.color.convert;
 
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 
-abstract class ColorConverter<C extends ConverterContext> implements Converter<C> {
+abstract class ColorConverter<C extends ColorConverterContext> implements Converter<C> {
 
     ColorConverter() {
         super();

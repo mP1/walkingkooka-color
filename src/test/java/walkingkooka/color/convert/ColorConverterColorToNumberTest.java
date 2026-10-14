@@ -26,11 +26,9 @@ import walkingkooka.color.RgbColor;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
 import walkingkooka.tree.expression.ExpressionNumberKind;
-import walkingkooka.tree.expression.convert.ExpressionNumberConverterContext;
 import walkingkooka.tree.expression.convert.ExpressionNumberConverters;
-import walkingkooka.tree.expression.convert.FakeExpressionNumberConverterContext;
 
-public final class ColorConverterColorToNumberTest extends ColorConverterColorTestCase<ColorConverterColorToNumber<ExpressionNumberConverterContext>, ExpressionNumberConverterContext> {
+public final class ColorConverterColorToNumberTest extends ColorConverterColorTestCase<ColorConverterColorToNumber<ColorConverterContext>, ColorConverterContext> {
 
     @Test
     public void testConvertStringToNumberFails() {
@@ -201,13 +199,13 @@ public final class ColorConverterColorToNumberTest extends ColorConverterColorTe
     }
 
     @Override
-    public ColorConverterColorToNumber<ExpressionNumberConverterContext> createConverter() {
+    public ColorConverterColorToNumber<ColorConverterContext> createConverter() {
         return ColorConverterColorToNumber.instance();
     }
 
     @Override
-    public ExpressionNumberConverterContext createContext() {
-        return new FakeExpressionNumberConverterContext() {
+    public ColorConverterContext createContext() {
+        return new FakeColorConverterContext() {
 
             @Override
             public ExpressionNumberKind expressionNumberKind() {
@@ -234,7 +232,7 @@ public final class ColorConverterColorToNumberTest extends ColorConverterColorTe
                 );
             }
 
-            private final Converter<ExpressionNumberConverterContext> converter = Converters.collection(
+            private final Converter<ColorConverterContext> converter = Converters.collection(
                 Lists.of(
                     ExpressionNumberConverters.numberToNumber()
                 )
@@ -255,7 +253,7 @@ public final class ColorConverterColorToNumberTest extends ColorConverterColorTe
     // class............................................................................................................
 
     @Override
-    public Class<ColorConverterColorToNumber<ExpressionNumberConverterContext>> type() {
+    public Class<ColorConverterColorToNumber<ColorConverterContext>> type() {
         return Cast.to(ColorConverterColorToNumber.class);
     }
 }

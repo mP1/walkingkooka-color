@@ -27,10 +27,8 @@ import walkingkooka.color.HsvColor;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
-import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ConverterTesting;
 import walkingkooka.convert.Converters;
-import walkingkooka.convert.FakeConverterContext;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -180,18 +178,18 @@ public final class ColorConvertersTest implements ConverterTesting,
         this.convertAndCheck(
             Converters.collection(
                 Lists.of(
-                    new Converter<ConverterContext>() {
+                    new Converter<FakeColorConverterContext>() {
                         @Override
                         public boolean canConvert(final Object value,
                                                   final Class<?> type,
-                                                  final ConverterContext context) {
+                                                  final FakeColorConverterContext context) {
                             return (value instanceof Integer || value instanceof String) && Integer.class == type;
                         }
 
                         @Override
                         public <T> Either<T, String> convert(final Object value,
                                                              final Class<T> type,
-                                                             final ConverterContext context) {
+                                                             final FakeColorConverterContext context) {
                             if (value instanceof Integer && Integer.class == type) {
                                 return this.successfulConversion(
                                     type.cast(value),
@@ -219,7 +217,7 @@ public final class ColorConvertersTest implements ConverterTesting,
             ),
             value,
             type,
-            new FakeConverterContext() {
+            new FakeColorConverterContext() {
                 @Override
                 public boolean canConvert(final Object value,
                                           final Class<?> type) {
@@ -240,7 +238,7 @@ public final class ColorConvertersTest implements ConverterTesting,
                     );
                 }
 
-                private final Converter<FakeConverterContext> converter = Converters.collection(
+                private final Converter<FakeColorConverterContext> converter = Converters.collection(
                     Lists.of(
                         Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
                         Converters.numberToNumber(),
