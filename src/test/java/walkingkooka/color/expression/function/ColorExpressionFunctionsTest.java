@@ -85,7 +85,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
     }
 
     @Test
-    public void testColorWithRedColorCompionentAndGreenColorComponentAndBlueColorComponent() {
+    public void testColorWithRedColorComponentAndGreenColorComponentAndBlueColorComponent() {
         final RgbColor rgb = Color.parseRgb("#123");
 
         this.evaluateAndCheck(
