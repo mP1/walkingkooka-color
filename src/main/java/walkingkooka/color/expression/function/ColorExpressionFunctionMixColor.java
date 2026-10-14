@@ -2,7 +2,7 @@ package walkingkooka.color.expression.function;
 
 import walkingkooka.Cast;
 import walkingkooka.color.Color;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameterKind;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameterName;
@@ -12,16 +12,16 @@ import java.util.List;
 /**
  * A function that mixes two colors together using a third value as the amount parameter.
  */
-final class ColorExpressionFunctionMixColor<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<Color, C> {
+final class ColorExpressionFunctionMixColor<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<Color, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionMixColor<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionMixColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionMixColor<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionMixColor<>();
+    private final static ColorExpressionFunctionMixColor INSTANCE = new ColorExpressionFunctionMixColor<>();
 
     private ColorExpressionFunctionMixColor() {
         super("mixColor");

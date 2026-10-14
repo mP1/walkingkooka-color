@@ -18,6 +18,8 @@
 package walkingkooka.color.expression.function;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.Cast;
+import walkingkooka.Either;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.AlphaRgbColorComponent;
 import walkingkooka.color.BlueRgbColorComponent;
@@ -30,31 +32,30 @@ import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.WebColorName;
 import walkingkooka.color.convert.ColorConverters;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 import walkingkooka.convert.BinaryNumberConverterFunctions;
+import walkingkooka.convert.ConverterContext;
 import walkingkooka.convert.ConverterContexts;
 import walkingkooka.convert.Converters;
 import walkingkooka.currency.CurrencyLocaleContexts;
 import walkingkooka.datetime.DateTimeContexts;
-import walkingkooka.environment.EnvironmentContexts;
-import walkingkooka.locale.LocaleContexts;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.reflect.PublicStaticHelperTesting;
-import walkingkooka.text.CaseSensitivity;
-import walkingkooka.text.Indentation;
-import walkingkooka.text.LineEnding;
-import walkingkooka.text.TextPrinting;
+import walkingkooka.text.BinaryTextContextTesting;
 import walkingkooka.tree.expression.Expression;
-import walkingkooka.tree.expression.ExpressionEvaluationContexts;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionFunctionName;
-import walkingkooka.tree.expression.ExpressionNumberKind;
-import walkingkooka.tree.expression.ExpressionReference;
+import walkingkooka.tree.expression.function.ExpressionFunction;
+import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-public final class ColorExpressionFunctionsTest implements PublicStaticHelperTesting<ColorExpressionFunctions> {
+public final class ColorExpressionFunctionsTest implements PublicStaticHelperTesting<ColorExpressionFunctions>,
+    BinaryTextContextTesting {
 
     @Test
     public void testColorWithColor() {
@@ -514,12 +515,17 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                     .map(Expression::value)
                     .collect(Collectors.toList())
             ).toValue(
-                ExpressionEvaluationContexts.basic(
-                    ExpressionNumberKind.BIG_DECIMAL,
-                    (e, c) -> {
-                        throw new UnsupportedOperationException();
-                    },
-                    (name) -> {
+                new FakeColorExpressionEvaluationContext() {
+
+                    @Override
+                    public ExpressionFunction<?, ExpressionEvaluationContext> expressionFunction(final ExpressionFunctionName name) {
+                        Objects.requireNonNull(name, "name");
+                        return Cast.to(
+                            this.colorExpressionFunction(name)
+                        );
+                    }
+
+                    private ExpressionFunction<?, ColorExpressionEvaluationContext> colorExpressionFunction(final ExpressionFunctionName name) {
                         switch (name.value()) {
                             case "color":
                                 return ColorExpressionFunctions.color();
@@ -558,18 +564,38 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                             default:
                                 throw name.unknownExpressionFunctionException();
                         }
-                    }, // name -> function
-                    (final RuntimeException cause) -> {
-                        throw cause;
-                    },
-                    (ExpressionReference reference) -> {
-                        throw new UnsupportedOperationException();
-                    },
-                    (ExpressionReference reference) -> {
-                        throw new UnsupportedOperationException();
-                    },
-                    CaseSensitivity.SENSITIVE,
-                    ConverterContexts.basic(
+                    }
+
+                    @Override
+                    public <T> T prepareParameter(final ExpressionFunctionParameter<T> parameter,
+                                                  final Object value) {
+                        Objects.requireNonNull(parameter, "parameter");
+
+                        return parameter.convertOrFail(
+                            value,
+                            this
+                        );
+                    }
+
+                    @Override
+                    public boolean canConvert(final Object value,
+                                              final Class<?> type) {
+                        return this.converterContext.canConvert(
+                            value,
+                            type
+                        );
+                    }
+
+                    @Override
+                    public <T> Either<T, String> convert(final Object value,
+                                                         final Class<T> target) {
+                        return this.converterContext.convert(
+                            value,
+                            target
+                        );
+                    }
+
+                    private final ConverterContext converterContext = ConverterContexts.basic(
                         false, // canNumbersHaveGroupSeparator
                         Converters.EXCEL_1900_DATE_SYSTEM_OFFSET, // dateTimeOffset
                         ',', // valueSeparator
@@ -584,17 +610,12 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                             )
                         ),
                         BinaryNumberConverterFunctions.fake(), // multiplier
-                        TextPrinting.with(
-                            Indentation.SPACES2,
-                            LineEnding.NL
-                        ).setCharset(StandardCharsets.UTF_8),
+                        BINARY_TEXT_CONTEXT,
                         CurrencyLocaleContexts.fake(),
                         DateTimeContexts.fake(),
                         DecimalNumberContexts.fake()
-                    ),
-                    EnvironmentContexts.fake(),
-                    LocaleContexts.fake()
-                )
+                    );
+                }
             ),
             () -> functionName + " " + parameters
         );

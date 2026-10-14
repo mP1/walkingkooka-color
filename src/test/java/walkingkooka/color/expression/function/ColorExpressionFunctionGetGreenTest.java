@@ -23,9 +23,9 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.RgbColor;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 
-public final class ColorExpressionFunctionGetGreenTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionGetGreen<FakeExpressionEvaluationContext>, GreenRgbColorComponent> {
+public final class ColorExpressionFunctionGetGreenTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionGetGreen<FakeColorExpressionEvaluationContext>, GreenRgbColorComponent> {
 
     @Test
     public void testApply() {
@@ -41,7 +41,7 @@ public final class ColorExpressionFunctionGetGreenTest extends ColorExpressionFu
     }
 
     @Override
-    public ColorExpressionFunctionGetGreen<FakeExpressionEvaluationContext> createBiFunction() {
+    public ColorExpressionFunctionGetGreen<FakeColorExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionGetGreen.instance();
     }
 
@@ -63,7 +63,7 @@ public final class ColorExpressionFunctionGetGreenTest extends ColorExpressionFu
     // class............................................................................................................
 
     @Override
-    public Class<ColorExpressionFunctionGetGreen<FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunctionGetGreen<FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionGetGreen.class);
     }
 }

@@ -18,10 +18,10 @@
 package walkingkooka.color.expression.function;
 
 import walkingkooka.ToStringTesting;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionTesting2;
 
-public abstract class ColorExpressionFunctionTestCase<F extends ColorExpressionFunction<T, FakeExpressionEvaluationContext>, T> implements ExpressionFunctionTesting2<F, T, FakeExpressionEvaluationContext>,
+public abstract class ColorExpressionFunctionTestCase<F extends ColorExpressionFunction<T, FakeColorExpressionEvaluationContext>, T> implements ExpressionFunctionTesting2<F, T, FakeColorExpressionEvaluationContext>,
     ToStringTesting<F> {
 
     ColorExpressionFunctionTestCase() {
@@ -30,8 +30,8 @@ public abstract class ColorExpressionFunctionTestCase<F extends ColorExpressionF
 
 
     @Override
-    public final FakeExpressionEvaluationContext createContext() {
-        return new FakeExpressionEvaluationContext();
+    public final FakeColorExpressionEvaluationContext createContext() {
+        return new FakeColorExpressionEvaluationContext();
     }
 
     @Override

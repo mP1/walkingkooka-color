@@ -23,11 +23,11 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
-import walkingkooka.tree.expression.FakeExpressionEvaluationContext;
+import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 
 import java.util.Optional;
 
-public final class ColorExpressionFunctionToWebColorNameTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext>, WebColorName> {
+public final class ColorExpressionFunctionToWebColorNameTest extends ColorExpressionFunctionTestCase<ColorExpressionFunctionToWebColorName<FakeColorExpressionEvaluationContext>, WebColorName> {
 
     @Test
     public void testApplyWithColorWithWebColorName() {
@@ -57,7 +57,7 @@ public final class ColorExpressionFunctionToWebColorNameTest extends ColorExpres
     }
 
     @Override
-    public ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext> createBiFunction() {
+    public ColorExpressionFunctionToWebColorName<FakeColorExpressionEvaluationContext> createBiFunction() {
         return ColorExpressionFunctionToWebColorName.instance();
     }
 
@@ -79,7 +79,7 @@ public final class ColorExpressionFunctionToWebColorNameTest extends ColorExpres
     // class............................................................................................................
 
     @Override
-    public Class<ColorExpressionFunctionToWebColorName<FakeExpressionEvaluationContext>> type() {
+    public Class<ColorExpressionFunctionToWebColorName<FakeColorExpressionEvaluationContext>> type() {
         return Cast.to(ColorExpressionFunctionToWebColorName.class);
     }
 }

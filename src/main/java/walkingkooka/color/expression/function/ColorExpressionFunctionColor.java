@@ -6,7 +6,7 @@ import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.Color;
 import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.RedRgbColorComponent;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -14,16 +14,16 @@ import java.util.List;
 /**
  * A function that accepts a {@link String} and creates a {@link Color}.
  */
-final class ColorExpressionFunctionColor<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<Color, C> {
+final class ColorExpressionFunctionColor<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<Color, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionColor<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionColor<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionColor<>();
+    private final static ColorExpressionFunctionColor INSTANCE = new ColorExpressionFunctionColor<>();
 
     private ColorExpressionFunctionColor() {
         super("color");

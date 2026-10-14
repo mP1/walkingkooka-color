@@ -2,7 +2,7 @@ package walkingkooka.color.expression.function;
 
 import walkingkooka.Cast;
 import walkingkooka.color.Color;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.List;
 /**
  * A function that inverts using {@link Color#invert()}.
  */
-final class ColorExpressionFunctionInvertColor<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<Color, C> {
+final class ColorExpressionFunctionInvertColor<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<Color, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionInvertColor<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionInvertColor<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionInvertColor<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionInvertColor<>();
+    private final static ColorExpressionFunctionInvertColor INSTANCE = new ColorExpressionFunctionInvertColor<>();
 
     private ColorExpressionFunctionInvertColor() {
         super("invertColor");

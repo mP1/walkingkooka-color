@@ -2,7 +2,7 @@ package walkingkooka.color.expression.function;
 
 import walkingkooka.Cast;
 import walkingkooka.color.Color;
-import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.color.expression.ColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.List;
 /**
  * A function that returns the color in HEX string form.
  */
-final class ColorExpressionFunctionToRgbHexString<C extends ExpressionEvaluationContext> extends ColorExpressionFunction<String, C> {
+final class ColorExpressionFunctionToRgbHexString<C extends ColorExpressionEvaluationContext> extends ColorExpressionFunction<String, C> {
 
-    static <C extends ExpressionEvaluationContext> ColorExpressionFunctionToRgbHexString<C> instance() {
+    static <C extends ColorExpressionEvaluationContext> ColorExpressionFunctionToRgbHexString<C> instance() {
         return Cast.to(INSTANCE);
     }
 
     /**
      * Singleton
      */
-    private final static ColorExpressionFunctionToRgbHexString<ExpressionEvaluationContext> INSTANCE = new ColorExpressionFunctionToRgbHexString<>();
+    private final static ColorExpressionFunctionToRgbHexString INSTANCE = new ColorExpressionFunctionToRgbHexString<>();
 
     private ColorExpressionFunctionToRgbHexString() {
         super("toRgbHexString");
