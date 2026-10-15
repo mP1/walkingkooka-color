@@ -24,6 +24,8 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.HslColor;
 import walkingkooka.color.HsvColor;
+import walkingkooka.color.IndexedColor;
+import walkingkooka.color.NamedColor;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
@@ -44,6 +46,22 @@ public final class ColorConverterToColorTest extends ColorConverterColorTestCase
         this.convertFails(
             "#123456",
             Color.class
+        );
+    }
+
+    @Test
+    public void testConvertNumberToIndexedColorFails() {
+        this.convertFails(
+            123,
+            IndexedColor.class
+        );
+    }
+
+    @Test
+    public void testConvertStringToNamedColorFails() {
+        this.convertFails(
+            "RED",
+            NamedColor.class
         );
     }
 
@@ -78,6 +96,34 @@ public final class ColorConverterToColorTest extends ColorConverterColorTestCase
             RgbColor.class,
             WebColorName.RED.color()
                 .toRgb()
+        );
+    }
+
+    @Test
+    public void testConvertIndexedColorToColor() {
+        final IndexedColor indexedColor = Color.indexed(123);
+        this.convertAndCheck(
+            indexedColor,
+            Color.class,
+            indexedColor
+        );
+    }
+
+    @Test
+    public void testConvertIndexedColorToIndexedColor() {
+        final IndexedColor indexedColor = Color.indexed(123);
+        this.convertAndCheck(
+            indexedColor,
+            IndexedColor.class,
+            indexedColor
+        );
+    }
+
+    @Test
+    public void testConvertRgbColorToIndexedColorFails() {
+        this.convertFails(
+            Color.BLACK,
+            IndexedColor.class
         );
     }
 

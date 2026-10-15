@@ -21,6 +21,7 @@ import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.color.Color;
 import walkingkooka.color.HasColor;
+import walkingkooka.color.IndexedColor;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ShortCircuitingConverter;
 
@@ -75,11 +76,17 @@ final class ColorConverterToColor<C extends ColorConverterContext> extends Color
                 if (Color.isHsvColorClass(type)) {
                     result = color.toHsv();
                 } else {
-                    // any Color subclass to Color.class gives color
-                    if (Color.class == type) {
-                        result = color;
+                    if (IndexedColor.class == type) {
+                        result = value instanceof IndexedColor ?
+                            color :
+                            null;
                     } else {
-                        result = null;
+                        // any Color subclass to Color.class gives color
+                        if (type == Color.class) {
+                            result = color;
+                        } else {
+                            result = null;
+                        }
                     }
                 }
             }
