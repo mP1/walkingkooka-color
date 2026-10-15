@@ -20,7 +20,15 @@ package walkingkooka.color.convert;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.Either;
+import walkingkooka.color.AlphaRgbColorComponent;
+import walkingkooka.color.BlueRgbColorComponent;
 import walkingkooka.color.Color;
+import walkingkooka.color.ColorComponent;
+import walkingkooka.color.GreenRgbColorComponent;
+import walkingkooka.color.HslColor;
+import walkingkooka.color.HsvColor;
+import walkingkooka.color.RedRgbColorComponent;
+import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.color.WebColorName;
 import walkingkooka.convert.Converter;
@@ -49,46 +57,37 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
 
     @Test
     public void testConvertWithIndexedColor() {
-        this.convertAndCheck(
-            "123",
+        this.convertAndCheck4(
+            "111",
             Color.class,
-            Color.indexed(123)
+            Color.indexed(999)
         );
     }
 
     @Test
     public void testConvertWithNamedColor() {
-        this.convertAndCheck(
+        this.convertAndCheck4(
             "\"Red\"",
             Color.class,
-            Color.named("Red")
+            Color.named("Blue")
         );
     }
 
     @Test
     public void testConvertWithRgbColorStringHash3DigitsAndColor() {
-        this.convertAndCheck2(
-            "#123",
+        this.convertAndCheck4(
+            "#111",
             Color.class,
-            Color::parse
-        );
-    }
-
-    @Test
-    public void testConvertWithRgbColorStringHash6DigitsAndColor() {
-        this.convertAndCheck2(
-            "#123456",
-            Color.class,
-            Color::parse
+            Color.parse("#999")
         );
     }
 
     @Test
     public void testConvertWithRgbColorStringWebColorNameAndColor() {
-        this.convertAndCheck2(
+        this.convertAndCheck4(
             WebColorName.RED.text(),
             Color.class,
-            Color::parse
+            WebColorName.BLUE.color()
         );
     }
 
@@ -114,6 +113,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     public void testConvertWithStringAndRgbColor() {
         this.convertAndCheck2(
             "#123456",
+            RgbColor.class,
             Color::parseRgb
         );
     }
@@ -122,6 +122,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     public void testConvertWithStringAndAlphaRgbColor() {
         this.convertAndCheck2(
             "#12345678",
+            RgbColor.class,
             Color::parseRgb
         );
     }
@@ -130,6 +131,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     public void testConvertWithStringAndHslColor() {
         this.convertAndCheck2(
             "hsl(359,100%,50%)",
+            HslColor.class,
             Color::parseHsl
         );
     }
@@ -138,6 +140,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     public void testConvertWithStringAndAlphaHslColor() {
         this.convertAndCheck2(
             "hsl(359,100%,50%,100%)",
+            HslColor.class,
             Color::parseHsl
         );
     }
@@ -146,6 +149,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     public void testConvertWithStringAndHsvColor() {
         this.convertAndCheck2(
             "hsv(359,100%,50%)",
+            HsvColor.class,
             Color::parseHsv
         );
     }
@@ -154,66 +158,90 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     public void testConvertWithStringAndAlphaHsvColor() {
         this.convertAndCheck2(
             "hsv(359,100%,50%, 100%)",
+            HsvColor.class,
             Color::parseHsv
         );
     }
 
     @Test
     public void testConvertWithStringNumberToAlphaRgbColorComponent() {
-        this.convertAndCheck2(
+        this.convertAndCheck3(
             "111",
+            AlphaRgbColorComponent.class,
             RgbColorComponent::parseAlpha
         );
     }
 
     @Test
     public void testConvertWithStringNumberToBlueRgbColorComponent() {
-        this.convertAndCheck2(
+        this.convertAndCheck3(
             "22",
+            BlueRgbColorComponent.class,
             RgbColorComponent::parseBlue
         );
     }
 
     @Test
     public void testConvertWithStringNumberToGreenRgbColorComponent() {
-        this.convertAndCheck2(
+        this.convertAndCheck3(
             "33",
+            GreenRgbColorComponent.class,
             RgbColorComponent::parseGreen
         );
     }
 
     @Test
     public void testConvertWithStringNumberToRedRgbColorComponent() {
-        this.convertAndCheck2(
+        this.convertAndCheck3(
             "44",
+            RedRgbColorComponent.class,
             RgbColorComponent::parseRed
         );
     }
 
     @Test
     public void testConvertWithStringWithWebColorNameToRgbColor() {
-        final WebColorName webColorName = WebColorName.HOTPINK;
-        this.convertAndCheck(
-            webColorName.text(),
-            webColorName.color()
+        this.convertAndCheck4(
+            WebColorName.RED.text(),
+            RgbColor.class,
+            WebColorName.BLUE.color()
         );
     }
 
-    private void convertAndCheck2(final String text,
-                                  final Function<String, Object> parser) {
+    private <T extends Color> void convertAndCheck2(final String text,
+                                                    final Class<T> type,
+                                                    final Function<String, T> parser) {
+        final T expected = parser.apply(text);
+
         this.convertAndCheck(
             text,
-            parser.apply(text)
+            type,
+            this.createContext(text, expected),
+            expected
         );
     }
 
-    private void convertAndCheck2(final String text,
-                                  final Class<? extends Color> type,
-                                  final Function<String, Color> parser) {
+    private <T extends ColorComponent> void convertAndCheck3(final String text,
+                                                             final Class<T> type,
+                                                             final Function<String, T> parser) {
+        final T expected = parser.apply(text);
+
         this.convertAndCheck(
             text,
-            (Class<Color>) type,
-            parser.apply(text)
+            type,
+            this.createContext(),
+            expected
+        );
+    }
+
+    private <T extends Color> void convertAndCheck4(final String text,
+                                                    final Class<T> type,
+                                                    final T expected) {
+        this.convertAndCheck(
+            text,
+            type,
+            this.createContext(text, expected),
+            expected
         );
     }
 
@@ -224,6 +252,14 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
 
     @Override
     public FakeColorConverterContext createContext() {
+        return this.createContext(
+            null,
+            null
+        );
+    }
+
+    private FakeColorConverterContext createContext(final String text,
+                                                    final Color color) {
         return new FakeColorConverterContext() {
             @Override
             public boolean canConvert(final Object value,
@@ -246,6 +282,19 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
             }
 
             private final Converter<FakeColorConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
+
+            @Override
+            public Color parseColor(final String t) {
+                if (null == text) {
+                    throw new UnsupportedOperationException();
+                }
+                checkEquals(
+                    text,
+                    t,
+                    "parseColorText"
+                );
+                return color;
+            }
         };
     }
 
