@@ -18,7 +18,6 @@
 package walkingkooka.color.convert;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
@@ -160,15 +159,6 @@ public final class ColorConvertersTest implements ConverterTesting,
             rgb.toHsv(),
             RgbColor.class,
             rgb.toHsv().toRgb()
-        );
-    }
-
-    private void convertAndCheck(final Object value,
-                                 final Class<?> expected) {
-        this.convertAndCheck(
-            value,
-            expected.getClass(),
-            Cast.to(expected)
         );
     }
 
