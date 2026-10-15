@@ -501,7 +501,7 @@ public final class RgbColorTest extends ColorTestCase2<RgbColor> implements Pars
     public void testJsonTypeName() {
         this.checkEquals(
             Optional.of(
-                JsonNode.string("rgb")
+                JsonNode.string("rgb-color")
             ),
             JsonNodeMarshallContexts.basic()
                 .typeName(RgbColor.class)

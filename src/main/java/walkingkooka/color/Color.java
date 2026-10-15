@@ -620,9 +620,7 @@ public abstract class Color implements HasColor,
         final Class<T> type,
         final Class<? extends T>... types) {
         register(
-            CharSequences.subSequence(
-                JsonNodeContext.computeTypeName(type), 0, -"color-".length()
-            ).toString(), // drop the leading "color-".
+            JsonNodeContext.computeTypeName(type),
             unmarshaller,
             type,
             types
