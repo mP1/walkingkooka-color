@@ -22,6 +22,7 @@ import walkingkooka.color.Color;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.TextToTryingShortCircuitingConverter;
+import walkingkooka.text.CharSequences;
 
 /**
  * A {@link Converter} that handles parsing any given text using the Color type to select the right parseXXX method.
@@ -33,6 +34,7 @@ import walkingkooka.convert.TextToTryingShortCircuitingConverter;
  * hsv(359,100%,50%) // hsv
  * RED // WebColorName -> rgb
  * </pre>
+ * {@link Color}, {@link walkingkooka.color.RgbColor} targets will be forwarded to {@link walkingkooka.color.ColorContext#parseColor(String)}.
  */
 final class ColorConverterTextToColor<C extends ColorConverterContext> extends ColorConverter<C>
     implements TextToTryingShortCircuitingConverter<C> {
@@ -68,44 +70,48 @@ final class ColorConverterTextToColor<C extends ColorConverterContext> extends C
     public Object parseText(final String text,
                             final Class<?> type,
                             final C context) {
-        final Object color;
+        final Object parsed;
 
         switch (type.getSimpleName()) {
             case "Color":
-                color = Color.parse(text);
+                parsed = context.parseColor(text);
                 break;
             case "RgbColor":
             case "OpaqueRgbColor":
             case "AlphaRgbColor":
-                color = Color.parseRgb(text);
+                final Color color = context.parseColor(text);
+                if (false == color.isRgb()) {
+                    throw new IllegalArgumentException("Invalid color not rgb " + CharSequences.quote(text));
+                }
+                parsed = color;
                 break;
             case "HslColor":
             case "OpaqueHslColor":
             case "AlphaHslColor":
-                color = Color.parseHsl(text);
+                parsed = Color.parseHsl(text);
                 break;
             case "HsvColor":
             case "OpaqueHsvColor":
             case "AlphaHsvColor":
-                color = Color.parseHsv(text);
+                parsed = Color.parseHsv(text);
                 break;
             case "AlphaRgbColorComponent":
-                color = RgbColorComponent.parseAlpha(text);
+                parsed = RgbColorComponent.parseAlpha(text);
                 break;
             case "BlueRgbColorComponent":
-                color = RgbColorComponent.parseBlue(text);
+                parsed = RgbColorComponent.parseBlue(text);
                 break;
             case "GreenRgbColorComponent":
-                color = RgbColorComponent.parseGreen(text);
+                parsed = RgbColorComponent.parseGreen(text);
                 break;
             case "RedRgbColorComponent":
-                color = RgbColorComponent.parseRed(text);
+                parsed = RgbColorComponent.parseRed(text);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown color " + type.getName());
         }
 
-        return color;
+        return parsed;
     }
 
     // Object...........................................................................................................

@@ -245,6 +245,11 @@ public final class ColorConvertersTest implements ConverterTesting,
                         ColorConverters.textToColor()
                     )
                 );
+
+                @Override
+                public Color parseColor(final String text) {
+                    return Color.parse(text);
+                }
             },
             expected
         );

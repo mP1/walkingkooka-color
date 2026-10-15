@@ -696,6 +696,11 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                                 ColorConverters.numberToColor()
                             )
                         );
+
+                        @Override
+                        public Color parseColor(final String color) {
+                            return Color.parse(color);
+                        }
                     };
 /*
                     private final ConverterContext converterContext = ConverterContexts.basic(
