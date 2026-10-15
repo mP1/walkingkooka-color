@@ -120,10 +120,38 @@ public final class ColorConverterToColorTest extends ColorConverterColorTestCase
     }
 
     @Test
+    public void testConvertNamedColorToColor() {
+        final NamedColor namedColor = Color.named("RED");
+        this.convertAndCheck(
+            namedColor,
+            Color.class,
+            namedColor
+        );
+    }
+
+    @Test
+    public void testConvertNamedColorToNamedColor() {
+        final NamedColor namedColor = Color.named("RED");
+        this.convertAndCheck(
+            namedColor,
+            NamedColor.class,
+            namedColor
+        );
+    }
+
+    @Test
     public void testConvertRgbColorToIndexedColorFails() {
         this.convertFails(
             Color.BLACK,
             IndexedColor.class
+        );
+    }
+
+    @Test
+    public void testConvertRgbColorToINamedColorFails() {
+        this.convertFails(
+            Color.BLACK,
+            NamedColor.class
         );
     }
 
