@@ -77,6 +77,9 @@ final class ColorConverterTextToColor<C extends ColorConverterContext> extends C
             case "IndexedColor":
                 parsed = context.parseColor(text);
                 break;
+            case "NamedColor":
+                parsed = context.namedColor(text);
+                break;
             case "RgbColor":
             case "OpaqueRgbColor":
             case "AlphaRgbColor":

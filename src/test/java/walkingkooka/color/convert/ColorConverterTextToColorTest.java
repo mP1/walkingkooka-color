@@ -28,6 +28,7 @@ import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.HslColor;
 import walkingkooka.color.HsvColor;
 import walkingkooka.color.IndexedColor;
+import walkingkooka.color.NamedColor;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
@@ -75,11 +76,28 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     }
 
     @Test
-    public void testConvertWithNamedColor() {
+    public void testConvertWithNamedColorWithColor() {
         this.convertAndCheck4(
             "\"Red\"",
             Color.class,
             Color.named("Blue")
+        );
+    }
+
+    @Test
+    public void testConvertWithNamedColorWithNamedColor() {
+        this.convertAndCheck4(
+            "   Red   ",
+            NamedColor.class,
+            Color.named("Red")
+        );
+    }
+
+    @Test
+    public void testConvertWithNamedColorWithNotNamedColorFails() {
+        this.convertFails(
+            "\"123\"",
+            NamedColor.class
         );
     }
 
@@ -292,6 +310,13 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
             }
 
             private final Converter<FakeColorConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
+
+            @Override
+            public NamedColor namedColor(final String name) {
+                return Color.named(
+                    name.trim()
+                );
+            }
 
             @Override
             public Color parseColor(final String t) {
