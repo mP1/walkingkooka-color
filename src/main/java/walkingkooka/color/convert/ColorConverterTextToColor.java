@@ -74,6 +74,7 @@ final class ColorConverterTextToColor<C extends ColorConverterContext> extends C
 
         switch (type.getSimpleName()) {
             case "Color":
+            case "IndexedColor":
                 parsed = context.parseColor(text);
                 break;
             case "RgbColor":
