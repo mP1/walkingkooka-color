@@ -512,14 +512,20 @@ public abstract class Color implements HasColor,
     }
 
     /**
-     * Creates a {@link IndexedColor} from a {@link JsonNode}.
+     * Creates a {@link IndexedColor} from a {@link walkingkooka.tree.json.JsonNumber}.
      */
     static IndexedColor unmarshallIndexed(final JsonNode from,
                                           final JsonNodeUnmarshallContext context) {
-        return unmarshall(
-            from,
-            Color::parseIndexed
-        );
+        try {
+            return indexed(
+                from.numberOrFail()
+                    .intValue()
+            );
+        } catch (final JsonNodeUnmarshallException cause) {
+            throw cause;
+        } catch (final RuntimeException cause) {
+            throw new JsonNodeUnmarshallException(cause.getMessage(), from, cause);
+        }
     }
 
     /**
@@ -584,8 +590,12 @@ public abstract class Color implements HasColor,
         );
 
         //noinspection unchecked
-        register(
+        JsonNodeContext.register(
+            JsonNodeContext.computeTypeName(IndexedColor.class),
             Color::unmarshallIndexed,
+            (IndexedColor indexedColor, JsonNodeMarshallContext context) -> JsonNode.number(
+                indexedColor.index()
+            ),
             IndexedColor.class
         );
 
