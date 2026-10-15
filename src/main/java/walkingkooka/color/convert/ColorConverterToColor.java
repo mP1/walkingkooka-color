@@ -85,7 +85,7 @@ final class ColorConverterToColor<C extends ColorConverterContext> extends Color
             }
         }
 
-        return null != color ?
+        return null != result ?
             this.successfulConversion(
                 result,
                 type
