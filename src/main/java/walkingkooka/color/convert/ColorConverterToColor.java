@@ -22,6 +22,7 @@ import walkingkooka.Either;
 import walkingkooka.color.Color;
 import walkingkooka.color.HasColor;
 import walkingkooka.color.IndexedColor;
+import walkingkooka.color.NamedColor;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ShortCircuitingConverter;
 
@@ -81,11 +82,17 @@ final class ColorConverterToColor<C extends ColorConverterContext> extends Color
                             color :
                             null;
                     } else {
-                        // any Color subclass to Color.class gives color
-                        if (type == Color.class) {
-                            result = color;
+                        if (NamedColor.class == type) {
+                            result = value instanceof NamedColor ?
+                                color :
+                                null;
                         } else {
-                            result = null;
+                            // any Color subclass to Color.class gives color
+                            if (type == Color.class) {
+                                result = color;
+                            } else {
+                                result = null;
+                            }
                         }
                     }
                 }
