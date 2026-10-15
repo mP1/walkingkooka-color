@@ -702,27 +702,6 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
                             return Color.parse(color);
                         }
                     };
-/*
-                    private final ConverterContext converterContext = ConverterContexts.basic(
-                        false, // canNumbersHaveGroupSeparator
-                        Converters.EXCEL_1900_DATE_SYSTEM_OFFSET, // dateTimeOffset
-                        ',', // valueSeparator
-                        Converters.collection(
-                            Lists.of(
-                                Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
-                                Converters.numberToNumber(),
-                                Converters.simple(), // handles Text -> TextNode
-                                ColorConverters.textToColor(),
-                                ColorConverters.colorToNumber(),
-                                ColorConverters.numberToColor()
-                            )
-                        ),
-                        BinaryNumberConverterFunctions.fake(), // multiplier
-                        BINARY_TEXT_CONTEXT,
-                        CurrencyLocaleContexts.fake(),
-                        DateTimeContexts.fake(),
-                        DecimalNumberContexts.fake()
-                    );*/
                 }
             ),
             () -> functionName + " " + parameters
