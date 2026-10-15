@@ -92,6 +92,16 @@ public final class IndexedColorTest extends ColorTestCase<IndexedColor> implemen
 
     // Json.............................................................................................................
 
+    @Test
+    public void testMarshall2() {
+        final int value = 123;
+
+        this.marshallAndCheck(
+            Color.indexed(value),
+            JsonNode.number(value)
+        );
+    }
+
     @Override
     public IndexedColor unmarshall(final JsonNode from,
                                    final JsonNodeUnmarshallContext context) {
