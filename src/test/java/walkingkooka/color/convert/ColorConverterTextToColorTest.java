@@ -27,6 +27,7 @@ import walkingkooka.color.ColorComponent;
 import walkingkooka.color.GreenRgbColorComponent;
 import walkingkooka.color.HslColor;
 import walkingkooka.color.HsvColor;
+import walkingkooka.color.IndexedColor;
 import walkingkooka.color.RedRgbColorComponent;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
@@ -56,10 +57,19 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
     }
 
     @Test
-    public void testConvertWithIndexedColor() {
+    public void testConvertWithIndexedColorToColor() {
         this.convertAndCheck4(
             "111",
             Color.class,
+            Color.indexed(999)
+        );
+    }
+
+    @Test
+    public void testConvertWithIndexedColorToIndexedColor() {
+        this.convertAndCheck4(
+            "222",
+            IndexedColor.class,
             Color.indexed(999)
         );
     }
