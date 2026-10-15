@@ -19,6 +19,7 @@ package walkingkooka.color;
 
 import walkingkooka.HasValue;
 import walkingkooka.ToStringBuilder;
+import walkingkooka.environment.EnvironmentValueName;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
 import walkingkooka.text.CaseSensitivity;
@@ -33,7 +34,10 @@ import java.util.Optional;
 public final class NamedColor extends Color implements HasValue<String>,
     HasCaseSensitivity {
 
-    public final static CaseSensitivity CASE_SENSITIVITY = CaseSensitivity.INSENSITIVE;
+    /**
+     * Copy of {@link EnvironmentValueName#CASE_SENSITIVITY}
+     */
+    public final static CaseSensitivity CASE_SENSITIVITY = EnvironmentValueName.CASE_SENSITIVITY;
 
     private final static CharPredicate INITIAL = CharPredicates.letter();
     private final static CharPredicate PART = CharPredicates.letterOrDigit();
