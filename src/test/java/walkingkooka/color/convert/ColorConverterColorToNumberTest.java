@@ -26,7 +26,7 @@ import walkingkooka.color.RgbColor;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.Converters;
 import walkingkooka.tree.expression.ExpressionNumberKind;
-import walkingkooka.tree.expression.convert.ExpressionNumberConverters;
+import walkingkooka.tree.expression.convert.TreeConverters;
 
 public final class ColorConverterColorToNumberTest extends ColorConverterColorTestCase<ColorConverterColorToNumber<ColorConverterContext>, ColorConverterContext> {
 
@@ -234,7 +234,7 @@ public final class ColorConverterColorToNumberTest extends ColorConverterColorTe
 
             private final Converter<ColorConverterContext> converter = Converters.collection(
                 Lists.of(
-                    ExpressionNumberConverters.numberToNumber()
+                    TreeConverters.numberToNumber()
                 )
             );
         };
