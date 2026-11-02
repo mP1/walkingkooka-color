@@ -18,8 +18,8 @@
 package walkingkooka.color.convert;
 
 import walkingkooka.color.ColorContextTesting;
-import walkingkooka.tree.expression.convert.ExpressionNumberConverterContextTesting;
+import walkingkooka.tree.expression.convert.TreeConverterContextTesting;
 
-public interface ColorConverterContextTesting extends ExpressionNumberConverterContextTesting,
+public interface ColorConverterContextTesting extends TreeConverterContextTesting,
     ColorContextTesting {
 }

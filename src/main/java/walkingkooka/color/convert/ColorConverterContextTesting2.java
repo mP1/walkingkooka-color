@@ -18,9 +18,9 @@
 package walkingkooka.color.convert;
 
 import walkingkooka.color.ColorContextTesting2;
-import walkingkooka.tree.expression.convert.ExpressionNumberConverterContextTesting2;
+import walkingkooka.tree.expression.convert.TreeConverterContextTesting2;
 
-public interface ColorConverterContextTesting2<C extends ColorConverterContext> extends ExpressionNumberConverterContextTesting2<C>,
+public interface ColorConverterContextTesting2<C extends ColorConverterContext> extends TreeConverterContextTesting2<C>,
     ColorContextTesting2<C> {
 
     @Override
