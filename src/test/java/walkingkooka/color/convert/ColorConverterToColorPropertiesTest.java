@@ -76,7 +76,7 @@ public final class ColorConverterToColorPropertiesTest extends ColorConverterCol
 
             private final Converter<FakeColorConverterContext> converter = Converters.collection(
                 Lists.of(
-                    Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                    Converters.toText(),
                     Converters.textToProperties()
                 )
             );
