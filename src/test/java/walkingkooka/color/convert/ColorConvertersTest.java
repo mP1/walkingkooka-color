@@ -198,7 +198,7 @@ public final class ColorConvertersTest implements ConverterTesting,
                             return this.failConversion(value, type);
                         }
                     },
-                    Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                    Converters.toText(),
                     Converters.numberToNumber(),
                     ColorConverters.toColor(),
                     ColorConverters.numberToColor(),
@@ -230,7 +230,7 @@ public final class ColorConvertersTest implements ConverterTesting,
 
                 private final Converter<FakeColorConverterContext> converter = Converters.collection(
                     Lists.of(
-                        Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                        Converters.toText(),
                         Converters.numberToNumber(),
                         ColorConverters.textToColor()
                     )

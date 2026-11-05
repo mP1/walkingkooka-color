@@ -246,7 +246,7 @@ public final class ColorConverterToColorTest extends ColorConverterColorTestCase
 
             private final Converter<FakeColorConverterContext> converter = Converters.collection(
                 Lists.of(
-                    Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                    Converters.toText(),
                     ColorConverters.textToColor()
                 )
             );

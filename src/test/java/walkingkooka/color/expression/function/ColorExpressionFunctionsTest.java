@@ -688,7 +688,7 @@ public final class ColorExpressionFunctionsTest implements PublicStaticHelperTes
 
                         private final Converter<ColorConverterContext> converter = Converters.collection(
                             Lists.of(
-                                Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString(),
+                                Converters.toText(),
                                 Converters.numberToNumber(),
                                 Converters.simple(), // handles Text -> TextNode
                                 ColorConverters.textToColor(),

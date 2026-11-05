@@ -90,7 +90,7 @@ public final class ColorConverterTextToWebColorNameTest extends ColorConverterCo
                 );
             }
 
-            private final Converter<FakeColorConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
+            private final Converter<FakeColorConverterContext> converter = Converters.toText();
         };
     }
 

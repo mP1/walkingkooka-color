@@ -309,7 +309,7 @@ public final class ColorConverterTextToColorTest extends ColorConverterColorTest
                 );
             }
 
-            private final Converter<FakeColorConverterContext> converter = Converters.characterOrCharSequenceOrHasTextOrStringToCharacterOrCharSequenceOrString();
+            private final Converter<FakeColorConverterContext> converter = Converters.toText();
 
             @Override
             public NamedColor namedColor(final String name) {
