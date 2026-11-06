@@ -34,3 +34,8 @@ jobs:
           name: mvn-install.txt
           path: mvn-install.txt
 
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: gwt-jar-test-build.log
+          path: target/it-tests/gwt-jar-test/build.log
