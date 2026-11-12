@@ -22,7 +22,7 @@ import walkingkooka.color.expression.FakeColorExpressionEvaluationContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionTesting2;
 
 public abstract class ColorExpressionFunctionTestCase<F extends ColorExpressionFunction<T, FakeColorExpressionEvaluationContext>, T> implements ExpressionFunctionTesting2<F, T, FakeColorExpressionEvaluationContext>,
-    ToStringTesting<F> {
+    ToStringTesting {
 
     ColorExpressionFunctionTestCase() {
         super();

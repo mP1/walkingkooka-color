@@ -39,7 +39,7 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
     HasContentTypeTesting,
     JsonNodeMarshallerTesting<ColorProperties>,
     ParseStringTesting<ColorProperties>,
-    ToStringTesting<ColorProperties> {
+    ToStringTesting {
 
     private final static PropertiesPath HELLO = PropertiesPath.parse("hello");
 

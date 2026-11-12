@@ -29,7 +29,7 @@ import java.util.List;
 public final class ColorComparatorCollectionTest extends ColorComparatorTestCase<ColorComparatorCollection>
     implements ParseStringTesting<ColorComparatorCollection>,
     HashCodeEqualsDefinedTesting2<ColorComparatorCollection>,
-    ToStringTesting<ColorComparatorCollection> {
+    ToStringTesting {
 
     @Override
     public ColorComparatorCollection createComparator() {

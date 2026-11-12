@@ -31,7 +31,7 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
     HasWebColorNameTesting,
     JsonNodeMarshallerTesting<C>,
     HasTextTesting,
-    ToStringTesting<C>,
+    ToStringTesting,
     HasValueTesting {
 
     ColorTestCase() {
