@@ -29,7 +29,7 @@ public abstract class ColorComponentTestCase<C extends ColorComponent> implement
     HashCodeEqualsDefinedTesting2<C>,
     HasTextTesting,
     IsMethodTesting<C>,
-    ToStringTesting<C>,
+    ToStringTesting,
     TypeNameTesting<C>,
     HasValueTesting {
 
