@@ -338,7 +338,7 @@ public abstract class Color implements HasColor,
 
         InvalidTextLengthException.throwIfFail(
             text,
-            "text",
+            "NamedColor",
             2,
             256
         );
@@ -348,6 +348,8 @@ public abstract class Color implements HasColor,
             throw new InvalidCharacterException(
                 text,
                 0
+            ).setLabel(
+                Optional.of("NamedColor")
             );
         }
         final int lastIndex = text.length() - 1;
@@ -356,12 +358,21 @@ public abstract class Color implements HasColor,
             throw new InvalidCharacterException(
                 text,
                 0
+            ).setLabel(
+                Optional.of("NamedColor")
             );
         }
 
-        return named(
-            text.substring(1, lastIndex)
-        );
+        try {
+            return named(
+                text.substring(1, lastIndex)
+            );
+        } catch (final InvalidCharacterException invalidCharacterException) {
+            throw invalidCharacterException.setTextAndPosition(
+                text,
+                invalidCharacterException.position() + 1
+            );
+        }
     }
     
     /**

@@ -45,7 +45,7 @@ public final class NamedColor extends Color implements HasValue<String>,
     static NamedColor with(final String name) {
         CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
             name,
-            "name",
+            "NamedColor",
             INITIAL,
             PART
         );
