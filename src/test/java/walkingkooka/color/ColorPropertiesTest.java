@@ -224,16 +224,6 @@ public final class ColorPropertiesTest implements PropertiesLikeTesting2<ColorPr
         return ColorProperties.parse(text);
     }
 
-    @Override
-    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> thrown) {
-        return thrown;
-    }
-
-    @Override
-    public RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
-        return thrown;
-    }
-
     // class............................................................................................................
 
     @Override
