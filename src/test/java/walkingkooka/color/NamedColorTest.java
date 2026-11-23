@@ -25,6 +25,8 @@ import walkingkooka.text.CharSequences;
 import walkingkooka.tree.json.JsonNode;
 import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class NamedColorTest extends ColorTestCase<NamedColor> implements ParseStringTesting<NamedColor>,
@@ -47,6 +49,19 @@ public final class NamedColorTest extends ColorTestCase<NamedColor> implements P
         assertThrows(
             IllegalArgumentException.class,
             () -> NamedColor.with("")
+        );
+    }
+
+    @Test
+    public void testWithInvalidNameFails() {
+        this.parseStringFails(
+            "\"Red!\"",
+            new InvalidCharacterException("\"Red!\"", 4)
+                .setLabel(
+                    Optional.of(
+                        NamedColor.class.getSimpleName()
+                    )
+                )
         );
     }
 
