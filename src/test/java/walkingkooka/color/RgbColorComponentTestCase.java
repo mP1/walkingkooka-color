@@ -350,16 +350,6 @@ abstract public class RgbColorComponentTestCase<C extends RgbColorComponent> ext
         );
     }
 
-    @Override
-    public final Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> thrown) {
-        return thrown;
-    }
-
-    @Override
-    public final RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
-        return thrown;
-    }
-
     // IsMethodTesting..................................................................................................
 
     @Override
