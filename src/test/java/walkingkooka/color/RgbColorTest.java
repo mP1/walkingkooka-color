@@ -26,7 +26,33 @@ import walkingkooka.tree.json.marshall.JsonNodeUnmarshallContext;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public final class RgbColorTest extends ColorTestCase2<RgbColor> implements ParseStringTesting<RgbColor> {
+
+    // fromRgb..........................................................................................................
+
+    @Test
+    public void testFromRgbWithLessThanLowerBoundsFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                IllegalArgumentException.class,
+                () -> RgbColor.fromRgb0(-1)
+            ),
+            "Invalid rgb value 0xffffffff < 0 or > 0xffffff"
+        );
+    }
+
+    @Test
+    public void testFromRgbWithGreaterThanUpperBoundsFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                IllegalArgumentException.class,
+                () -> RgbColor.fromRgb0(0x1000000)
+            ),
+            "Invalid rgb value 0x1000000 < 0 or > 0xffffff"
+        );
+    }
 
     // parseRgb.........................................................................................................
 
