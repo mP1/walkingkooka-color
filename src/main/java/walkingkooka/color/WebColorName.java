@@ -278,7 +278,7 @@ public final class WebColorName implements Name,
      * Attempts to lookup a {@link WebColorName} by name.
      */
     public static Optional<WebColorName> with(final String name) {
-        Objects.requireNonNull(name, "name");
+        Objects.requireNonNull(name, "WebColorName");
 
         return Optional.ofNullable(
             NAME_CONSTANTS.get(name)
