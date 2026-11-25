@@ -56,7 +56,8 @@ final class ColorConverterNumberToColor<C extends ColorConverterContext> extends
                               final Class<?> type,
                               final C context) {
         return value instanceof Number &&
-            (IndexedColor.class == type ||
+            (Color.class == type ||
+                IndexedColor.class == type ||
                 Color.isRgbColorClass(type) ||
                 (RgbColorComponent.isRgbColorComponentClass(type) && RgbColorComponent.class != type));
     }
@@ -100,6 +101,7 @@ final class ColorConverterNumberToColor<C extends ColorConverterContext> extends
                     )
                 );
                 break;
+            case "Color":
             case "RgbColor":
             case "OpaqueRgbColor":
                 colorLike = Color.fromRgb(

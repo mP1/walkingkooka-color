@@ -150,6 +150,15 @@ public final class ColorConverterNumberToColorTest extends ColorConverterColorTe
     }
 
     @Test
+    public void testConvertIntegerToColor() {
+        this.convertAndCheck(
+            INTEGER,
+            Color.class,
+            Color.fromRgb(INTEGER)
+        );
+    }
+
+    @Test
     public void testConvertIntegerToRgbColor() {
         this.convertAndCheck(
             INTEGER,
