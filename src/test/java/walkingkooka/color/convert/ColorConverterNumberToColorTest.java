@@ -24,6 +24,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.color.Color;
 import walkingkooka.color.HslColor;
 import walkingkooka.color.HsvColor;
+import walkingkooka.color.IndexedColor;
 import walkingkooka.color.RgbColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
@@ -140,6 +141,15 @@ public final class ColorConverterNumberToColorTest extends ColorConverterColorTe
     }
 
     @Test
+    public void testConvertIntegerToIndexedColor() {
+        this.convertAndCheck(
+            INTEGER,
+            IndexedColor.class,
+            Color.indexed(2 * INTEGER)
+        );
+    }
+
+    @Test
     public void testConvertIntegerToRgbColor() {
         this.convertAndCheck(
             INTEGER,
@@ -189,6 +199,13 @@ public final class ColorConverterNumberToColorTest extends ColorConverterColorTe
                     Converters.numberToNumber()
                 )
             );
+
+            @Override
+            public IndexedColor indexedColor(final int index) {
+                return Color.indexed(
+                    index * 2
+                );
+            }
         };
     }
 
