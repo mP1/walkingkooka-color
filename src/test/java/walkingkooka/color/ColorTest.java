@@ -18,6 +18,7 @@
 package walkingkooka.color;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.EmptyTextException;
 import walkingkooka.collect.set.Sets;
 import walkingkooka.reflect.ConstantsTesting;
 import walkingkooka.reflect.PublicClassTesting;
@@ -357,6 +358,40 @@ public final class ColorTest implements PublicClassTesting<Color>,
     }
 
     // parse............................................................................................................
+
+    @Test
+    public void testParseIndexedColorWithNullFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                NullPointerException.class,
+                () -> Color.parseIndexed(null)
+            ),
+            "IndexedColor"
+        );
+    }
+
+    @Test
+    public void testParseIndexedColorWithEmptyFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                EmptyTextException.class,
+                () -> Color.parseIndexed("")
+            ),
+            "Empty \"IndexedColor\""
+        );
+    }
+
+
+    @Test
+    public void testParseIndexedColorWithInvalidIndexNumberFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                NumberFormatException.class,
+                () -> Color.parseIndexed("abc123")
+            ),
+            "Invalid \"IndexedColor\" number \"abc123\""
+        );
+    }
 
     @Test
     public void testParseIndexedColor() {
