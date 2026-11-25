@@ -327,6 +327,8 @@ public abstract class Color implements HasColor,
     private final static Parser<ParserContext> HSV_FUNCTION_PARSER = ColorParsers.hsv()
         .orReport(ParserReporters.basic());
 
+    private final static String NAMED_COLOR_LABEL = NamedColor.class.getSimpleName();
+
     /**
      * Expects a quoted named color.
      * <pre>
@@ -334,11 +336,9 @@ public abstract class Color implements HasColor,
      * </pre>
      */
     public static NamedColor parseNamed(final String text) {
-        CharSequences.failIfNullOrEmpty(text, "text");
-
         InvalidTextLengthException.throwIfFail(
             text,
-            "NamedColor",
+            NAMED_COLOR_LABEL,
             2,
             256
         );
@@ -349,7 +349,7 @@ public abstract class Color implements HasColor,
                 text,
                 0
             ).setLabel(
-                Optional.of("NamedColor")
+                Optional.of(NAMED_COLOR_LABEL)
             );
         }
         final int lastIndex = text.length() - 1;
@@ -359,7 +359,7 @@ public abstract class Color implements HasColor,
                 text,
                 0
             ).setLabel(
-                Optional.of("NamedColor")
+                Optional.of(NAMED_COLOR_LABEL)
             );
         }
 
