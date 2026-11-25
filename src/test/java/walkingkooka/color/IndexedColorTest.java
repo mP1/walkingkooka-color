@@ -83,6 +83,15 @@ public final class IndexedColorTest extends ColorTestCase<IndexedColor> implemen
         return Color.parseIndexed(text);
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor()
+        );
+    }
+
     // Class ...........................................................................................................
 
     @Override

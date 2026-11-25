@@ -25,6 +25,8 @@ import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.tree.json.marshall.JsonNodeMarshallerTesting;
 
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>,
     HashCodeEqualsDefinedTesting2<C>,
     HasColorTesting,
@@ -78,6 +80,30 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         this.checkEquals(color instanceof RgbColor,
             color.isRgb(),
             () -> "isRgb " + color);
+    }
+
+    final void withoutAlphaAndCheck(final C color) {
+        this.withoutAlphaAndCheck(
+            color,
+            color
+        );
+    }
+
+    final void withoutAlphaAndCheck(final C color,
+                                    final Color expected) {
+        final Color actual = color.withoutAlpha();
+        if (color.equals(expected)) {
+            assertSame(
+                color,
+                actual
+            );
+        } else {
+            this.checkEquals(
+                expected,
+                actual,
+                color::toString
+            );
+        }
     }
 
     // factory..........................................................................................................

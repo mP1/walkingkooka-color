@@ -59,6 +59,15 @@ final class AlphaHslColor extends HslColor {
         return color.set(this.alpha.toAlphaColorComponent());
     }
 
+    @Override
+    public HslColor withoutAlpha() {
+        return OpaqueHslColor.withOpaque(
+            this.hue,
+            this.saturation,
+            this.lightness
+        );
+    }
+
     // Object..........................................................................................................
 
     @Override

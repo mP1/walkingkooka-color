@@ -111,6 +111,15 @@ public final class NamedColorTest extends ColorTestCase<NamedColor> implements P
         return Color.parseNamed(text);
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor()
+        );
+    }
+
     // Class ...........................................................................................................
 
     @Override

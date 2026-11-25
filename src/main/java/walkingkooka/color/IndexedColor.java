@@ -63,6 +63,11 @@ public final class IndexedColor extends Color {
     }
 
     @Override
+    public IndexedColor withoutAlpha() {
+        return this;
+    }
+
+    @Override
     public Optional<WebColorName> webColorName() {
         return NO_WEB_COLOR_NAME;
     }

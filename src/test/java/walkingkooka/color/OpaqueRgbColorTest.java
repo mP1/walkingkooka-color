@@ -249,6 +249,15 @@ public final class OpaqueRgbColorTest extends RgbColorTestCase<OpaqueRgbColor> {
         );
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor()
+        );
+    }
+
     @Override
     OpaqueRgbColor createColor(final RedRgbColorComponent red,
                                final GreenRgbColorComponent green,

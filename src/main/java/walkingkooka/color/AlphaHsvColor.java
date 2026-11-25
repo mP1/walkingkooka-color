@@ -59,6 +59,15 @@ final class AlphaHsvColor extends HsvColor {
         return color.set(this.alpha.toAlphaColorComponent());
     }
 
+    @Override
+    public HsvColor withoutAlpha() {
+        return Color.hsv(
+            this.hue,
+            this.saturation,
+            this.value
+        );
+    }
+
     // Object..........................................................................................................
 
     @Override

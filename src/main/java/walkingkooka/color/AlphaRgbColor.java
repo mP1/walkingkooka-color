@@ -135,6 +135,15 @@ final class AlphaRgbColor extends RgbColor {
         return this.argb();
     }
 
+    @Override
+    public RgbColor withoutAlpha() {
+        return Color.rgb(
+            this.red,
+            this.green,
+            this.blue
+        );
+    }
+
     // AWT..............................................................................................................
 
     @GwtIncompatible
