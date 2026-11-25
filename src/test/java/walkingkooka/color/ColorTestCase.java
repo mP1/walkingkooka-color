@@ -122,16 +122,6 @@ public abstract class ColorTestCase<C extends Color> implements ClassTesting2<C>
         return this.createColor();
     }
 
-    // ParseStringTesting .............................................................................................
-
-    public final RuntimeException parseStringFailedExpected(final RuntimeException expected) {
-        return expected;
-    }
-
-    public final Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
-        return expected;
-    }
-
     // HasColor.........................................................................................................
 
     @Test
