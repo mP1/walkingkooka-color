@@ -374,7 +374,9 @@ public abstract class Color implements HasColor,
             );
         }
     }
-    
+
+    private final static String INDEXED_COLOR_LABEL = IndexedColor.class.getSimpleName();
+
     /**
      * Expects a positive number which contains the index.
      * <pre>
@@ -383,11 +385,15 @@ public abstract class Color implements HasColor,
      * </pre>
      */
     public static IndexedColor parseIndexed(final String text) {
-        CharSequences.failIfNullOrEmpty(text, "text");
+        CharSequences.failIfNullOrEmpty(text, INDEXED_COLOR_LABEL);
 
-        return indexed(
-            Integer.parseInt(text)
-        );
+        try {
+            return indexed(
+                Integer.parseInt(text)
+            );
+        } catch (final NumberFormatException numberFormatException) {
+            throw new NumberFormatException("Invalid \"" + INDEXED_COLOR_LABEL + "\" number " + CharSequences.quoteAndEscape(text));
+        }
     }
 
     Color() {
