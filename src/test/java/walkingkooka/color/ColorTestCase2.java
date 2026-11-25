@@ -104,7 +104,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
                         -0.01f
                     )
             ),
-            "Invalid amount -0.01 not between 0.0 and 1.0"
+            "Invalid \"mixAmount\" -0.01 not between 0.0 and 1.0"
         );
     }
 
@@ -119,7 +119,7 @@ public abstract class ColorTestCase2<C extends Color> extends ColorTestCase<C>
                         1.01f
                     )
             ),
-            "Invalid amount 1.01 not between 0.0 and 1.0"
+            "Invalid \"mixAmount\" 1.01 not between 0.0 and 1.0"
         );
     }
 

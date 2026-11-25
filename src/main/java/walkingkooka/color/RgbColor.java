@@ -325,7 +325,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
     public final RgbColor mix(final Color color,
                               final float amount) {
         Objects.requireNonNull(color, "color");
-        checkAmount(amount);
+        checkMixAmount(amount);
 
         return isMixSmall(amount) ? //
             this : // amount of new component is too small ignore
@@ -380,7 +380,7 @@ abstract public class RgbColor extends Color implements ColorLike<Integer> {
     public RgbColor mix(final RgbColorComponent component,
                         final float amount) {
         Objects.requireNonNull(component, "component");
-        checkAmount(amount);
+        checkMixAmount(amount);
 
         return isMixSmall(amount) ? //
             this : // amount of new component is too small ignore
