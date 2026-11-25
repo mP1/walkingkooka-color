@@ -217,7 +217,7 @@ public abstract class HsvColor extends Color {
     public final HsvColor mix(final Color color,
                               final float amount) {
         Objects.requireNonNull(color, "color");
-        checkAmount(amount);
+        checkMixAmount(amount);
 
         return isMixSmall(amount) ? //
             this : // amount of new component is too small ignore
