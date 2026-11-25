@@ -56,6 +56,11 @@ final class OpaqueHslColor extends HslColor {
         return color;
     }
 
+    @Override
+    public HslColor withoutAlpha() {
+        return this;
+    }
+
     // Object..........................................................................................................
 
     @Override

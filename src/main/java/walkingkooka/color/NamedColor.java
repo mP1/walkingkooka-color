@@ -84,6 +84,11 @@ public final class NamedColor extends Color implements HasValue<String>,
     }
 
     @Override
+    public NamedColor withoutAlpha() {
+        return this;
+    }
+
+    @Override
     public Optional<WebColorName> webColorName() {
         return NO_WEB_COLOR_NAME;
     }

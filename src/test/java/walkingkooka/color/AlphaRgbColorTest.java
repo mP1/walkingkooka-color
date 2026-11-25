@@ -221,6 +221,20 @@ public final class AlphaRgbColorTest extends RgbColorTestCase<AlphaRgbColor> {
         );
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor(),
+            Color.rgb(
+                RED,
+                GREEN,
+                BLUE
+            )
+        );
+    }
+
     @Override
     AlphaRgbColor createColor(final RedRgbColorComponent red,
                               final GreenRgbColorComponent green,

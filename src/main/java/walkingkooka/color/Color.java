@@ -432,6 +432,11 @@ public abstract class Color implements HasColor,
 
     public abstract RgbColor toRgb();
 
+    /**
+     * Returns this {@link Color} without its alpha component. Note that {@link IndexedColor} and {@link NamedColor} always return this.
+     */
+    public abstract Color withoutAlpha();
+
     // WebColorName.....................................................................................................
 
     public final static Optional<WebColorName> NO_WEB_COLOR_NAME = Optional.empty();

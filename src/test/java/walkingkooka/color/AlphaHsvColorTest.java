@@ -65,6 +65,20 @@ public final class AlphaHsvColorTest extends HsvColorTestCase<AlphaHsvColor> {
                 HsvColorComponent.alpha(0.25f)));
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor(),
+            Color.hsv(
+                HUE,
+                SATURATION,
+                VALUE
+            )
+        );
+    }
+
     // mix..............................................................................................................
 
     @Test

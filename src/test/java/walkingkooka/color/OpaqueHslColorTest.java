@@ -75,6 +75,15 @@ public final class OpaqueHslColorTest extends HslColorTestCase<OpaqueHslColor> {
                 HslColorComponent.lightness(0.5f)));
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor()
+        );
+    }
+
     // text............................................................................................................
 
     @Test

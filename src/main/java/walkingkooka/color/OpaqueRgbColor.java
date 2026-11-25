@@ -142,6 +142,11 @@ final class OpaqueRgbColor extends RgbColor {
         return this.rgb();
     }
 
+    @Override
+    public RgbColor withoutAlpha() {
+        return this;
+    }
+
     // AWT..............................................................................................................
 
     @GwtIncompatible

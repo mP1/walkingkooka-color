@@ -65,6 +65,20 @@ public final class AlphaHslColorTest extends HslColorTestCase<AlphaHslColor> {
                 HslColorComponent.alpha(0.25f)));
     }
 
+    // withoutAlpha.....................................................................................................
+
+    @Test
+    public void testWithoutAlpha() {
+        this.withoutAlphaAndCheck(
+            this.createColor(),
+            Color.hsl(
+                HUE,
+                SATURATION,
+                LIGHTNESS
+            )
+        );
+    }
+
     // mix..............................................................................................................
 
     @Test
