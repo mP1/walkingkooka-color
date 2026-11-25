@@ -63,7 +63,7 @@ final class ColorConverterNumberToColor<C extends ColorConverterContext> extends
     public <T> Either<T, String> doConvert(final Object value,
                                            final Class<T> type,
                                            final C context) {
-        Object colorLike = null;
+        final Object colorLike;
 
         switch (type.getSimpleName()) {
             case "AlphaRgbColorComponent":
