@@ -21,6 +21,7 @@ import walkingkooka.Cast;
 import walkingkooka.Either;
 import walkingkooka.color.Color;
 import walkingkooka.color.ColorLike;
+import walkingkooka.color.IndexedColor;
 import walkingkooka.color.RgbColorComponent;
 import walkingkooka.convert.Converter;
 import walkingkooka.convert.ShortCircuitingConverter;
@@ -55,7 +56,8 @@ final class ColorConverterNumberToColor<C extends ColorConverterContext> extends
                               final Class<?> type,
                               final C context) {
         return value instanceof Number &&
-            (Color.isRgbColorClass(type) ||
+            (IndexedColor.class == type ||
+                Color.isRgbColorClass(type) ||
                 (RgbColorComponent.isRgbColorComponentClass(type) && RgbColorComponent.class != type));
     }
 
@@ -109,6 +111,14 @@ final class ColorConverterNumberToColor<C extends ColorConverterContext> extends
                 break;
             case "AlphaRgbColor":
                 colorLike = Color.fromArgb(
+                    context.convertOrFail(
+                        value,
+                        Integer.class
+                    )
+                );
+                break;
+            case "IndexedColor":
+                colorLike = context.indexedColor(
                     context.convertOrFail(
                         value,
                         Integer.class
